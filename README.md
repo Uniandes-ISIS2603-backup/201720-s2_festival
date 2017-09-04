@@ -769,7 +769,7 @@ El objeto Función tiene 2 representaciones JSON:
 #### GET /funciones
 
 Retorna una colección de objetos Funcion en representación Detail.
-Cada Funcion en la colección tiene embebidos los siguientes objetos: Boleta.
+
 
 #### Parámetros
 
@@ -787,7 +787,6 @@ Código|Descripción|Cuerpo
 #### GET /funciones/{id}
 
 Retorna un objeto Calificación en representación Detail.
-Cada Calificación en la colección tiene los siguientes objetos: Boleta.
 
 #### Parámetros
 
