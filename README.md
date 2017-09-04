@@ -29,13 +29,13 @@
     - [POST críticas/{críticasid}/crítico](#post-críticascríticasidcrítico)
     - [PUT críticas/{críticasid}/crítico](#put-críticascríticasidcrítico)
     - [DELETE críticas/{críticasid}/crítico](#delete-críticascríticasidcrítico)
-  - [Recurso Calificacion](#recurso-calificación)
+  - [Recurso Calificacion](#recurso-calificacion)
     - [GET /calificaciones](#get-calificaciones)
     - [GET /calificaciones/{id}](#get-calificacionesid)
     - [POST /calificaciones](#post-calificaciones)
     - [PUT /calificaciones/{id}](#put-calificacionesid)
     - [DELETE /calificaciones/{id}](#delete-calificacionesid)
-  - [Recurso Funcion](#recurso-función)
+  - [Recurso Funcion](#recurso-funcion)
     - [GET /funciones](#get-funciones)
     - [GET /funciones/{id}](#get-funcionesid)
     - [POST /funciones](#post-funciones)
@@ -616,7 +616,7 @@ Código|Descripción|Cuerpo
 500|Error interno|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 
-### Recurso Calificación
+### Recurso Calificacion
 
 El objeto Calificación tiene 2 representaciones JSON:	
 
@@ -735,7 +735,7 @@ Código|Descripción|Cuerpo
 
 
 
-### Recurso Función
+### Recurso Funcion
 
 El objeto Función tiene 2 representaciones JSON:	
 
