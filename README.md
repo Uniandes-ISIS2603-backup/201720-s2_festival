@@ -107,7 +107,30 @@
 		- [GET boletas/{boletasid}/espectador](#GET-/boletas/{boletasid}/espectador)
 		- [POST boletas/{boletasid}/espectador](#POST-/boletas/{boletasid}/espectador)
 		- [PUT boletas/{boletasid}/espectador](#PUT-/boletas/{boletasid}/espectador)	
-    
+    	- [Recurso Sala](#recurso-sala)
+		- [GET /salas](#get-salas)
+		- [GET /salas/{id}](#get-salasid)
+		- [POST /salas](#post-salas)
+		- [PUT /salas/{id}](#put-salasid)
+		- [DELETE /salas/{id}](#delete-salasid)
+		- [GET /salas/{id}/teatro](#get-salas/{salasid}/teatro)
+		- [GET /salas/{id}/funciones](#get-salasidfunciones)
+		- [GET /salas/{salasid}/funcinoes/{funcinoesid}](#get-salasidfuncionesid)
+		- [POST /salas/{id}/funciones](#post-salasfunciones)
+		- [PUT /salas/{salasid}/funciones/{funcionesid}](#put-salasfuncionesid)
+		- [DELETE /salas/{salasid}/funciones](#delete-salasidfunciones)
+		- [DELETE /salas/{salasid}/funciones/{funcionesid}](#delete-salasidfuncionesid)
+	- [Recurso Patrocinador](#recurso-patrocinador)
+		- [GET /patrocinadores](#get-patrocinadores)
+		- [GET /patrocinadores/{id}](#get-patrocinadoresid)
+		- [POST /patrocinadores](#post-patrocinadores)
+		- [PUT /patrocinadores/{id}](#put-patrocinadoresid)
+		- [DELETE /patrocinadores/{id}](#delete-patrocinadoresid)
+		- [GET /patrocinadores/{id}/festivales](#get-patrocinadores/{patrocinadorid}/festivales)
+		- [GET /patrocinadores/{patrocinadorid}/festivales/{festivalid}](#get-patrocinadores/{patrocinadorid}/festivales/{festivalid})
+		- [POST /patrocinadores/{id}/festivales](#post-patrocinadoridfestivales)
+		- [PUT /patrocinadores/{patrocinadorid}/festivales/{festivalid}](#put-patrocinadoridfestivalid)
+		- [DELETE /patrocinadores/{patrocinadorid}/festivales/{festivalid}](#delete-patrocinadoridfestivalid)
 
 # API Rest
 ## Introducción
@@ -2829,4 +2852,493 @@ Código|Descripción|Cuerpo
 :--|:--|:--
 200|Se remplazó el objeto Espectador|Objeto Espectador en [Representación Detail](#recurso-espectador)
 500|No se pudo remplazar el objeto|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+
+### Recurso Sala
+
+El objeto Sala tiene dos representaciones JSON
+
+#### Representación Minimum
+```javascript
+{
+    id: '' /*Tipo Long*/,
+    nombre: '' /*Tipo String*/,
+}
+```
+
+#### Representación Detail
+```javascript
+{
+          // todo lo de la representación Minimum más los objetos Minimum con relación simple.
+     teatro: {
+          id: '' /*Tipo Long*/
+          nombre: '' /*Tipo String*/,
+     }
+     funcion: {
+      id: '' /*Tipo Long*/,
+      horaInicio : '' /*Tipo Date*/,
+      horaFin: '' /*Tipo Date*/,
+    }
+
+}
+```
+#### GET /salas
+
+Retorna una colección de objetos Sala en representación Detail
+Cada Sala incluye un teatro y funciones.
+
+#### Parámetros
+N/A
+
+####Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|OK|Colección de [representaciones Detail](#recurso-sala)
+412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|Error interno|Mensaje de error
+
+#### GET /salas/{id}
+
+Retorna una Sala en representación Detail
+Incluye un teatro y funciones.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+id|Path|ID del objeto Sala a consultar|Sí|Integer
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|OK|Sala en [representaciones Detail](#recurso-sala)
+404|No existe un objeto con el ID solicitado|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|Error interno|Mensaje de error
+
+#### POST /salas
+
+Se crea un nuevo objeto Sala
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+body|body|Objeto Sala que será creado|Sí|[Representación Detail](#recurso-sala)
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+201|El objeto Sala ha sido creado|[Representación Detail](#recurso-sala)
+412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|No se pudo crear la Sala|Mensaje de error
+
+#### PUT /salas/{id}
+
+Es el encargado de actualizar objetos Sala.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+id|Path|ID de la Sala a actualizar|Sí|Integer
+body|body|Objeto Sala nuevo|Sí|[Representación Detail](#recurso-sala)
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+201|El objeto Sala actualizado|[Representación Detail](#recurso-abono)
+412|business exception, no se cumple con las reglas de negocio|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|No se pudo actualizar el objeto Abono|Mensaje de error
+
+#### DELETE /salas/{id}
+
+Elimina un objeto Sala.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+id|Path|ID de la Sala a eliminar|Sí|Integer
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+204|Objeto eliminado|N/A
+500|Error interno|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+
+#### GET /salas/{id}/teatro
+
+Retorna un objeto Teatro asociado a la sala consultada por id en representación Detail.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+id|Path|ID de la Sala a consultar|Sí|Integer
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|OK|objeto Teatro en [representación Detail](#recurso-teatro)
+500|Error de consulta |Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+
+#### GET /salas/{id}/funciones
+
+Retorna una colección de objetos Funcion asociados a la Sala en representación Detail.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+id|Path|ID de la Sala cuyas funciones se quieren consultar|Sí|Integer
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|OK|Colección de objetos Funcion en [representación Detail](#recurso-funcion)
+500|Error consultando boletas |Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+
+
+#### GET /salas/{salasid}/funciones/{funcionesid}
+
+Retorna un objeto funcion asociado a una Sala en representación Detail.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+salasid|Path|ID del objeto Sala a consultar|Sí|Integer
+funcionesid|Path|ID del objeto Funcion a consultar|Sí|Integer
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|OK|Objeto Funcion en [representación Detail](#recurso-funcion)
+404|No existe un objeto Funcion con el ID solicitado asociado al objeto Sala indicado |Mensaje de error
+404|No existe un objeto Sala con el ID solicitado|Mensaje de error
+500|Error interno|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+
+#### POST /salas/{id}/funciones/
+
+Asocia una o más Funciones a una Sala.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+id|PathParam|ID de la Sala al cual se asociará la Funcion|Sí|Integer
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|Funcion asociada|[Representación Detail de Funcion](#recurso-funcion)
+500|No se pudo asociar el objeto Funcion|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+
+#### PUT salas/{salasid}/funciones/{funcionesid}
+
+Es el encargado de actualizar una Funcion asociada a una Sala.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+salasid|Path|ID de la Sala cuya función será remplazada|Sí|Integer
+funcionesid|path|Nueva Funcion|Sí|[Representación Detail](#recurso-funcion)
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|Se actualizo el objeto|Objeto funcion en [Representación Detail](#recurso-funcion)
+500|No se pudo actualizar|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+
+#### DELETE /sala/{salasid}/funciones/
+
+Remueve todas las funciones de una Sala.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+salasid|Path|ID de la Sala|Sí|Integer
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+204|Funciones removidas|N/A
+500|Error interno|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+
+#### DELETE /sala/{salasid}/funciones/{funcionesid}
+
+Remueve una Funcion de una Sala
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+salasid|Path|ID de la Sala|Sí|Integer
+funcionesid|Path|ID de la Funcion|Sí|Integer
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+204|funcion removida|N/A
+500|Error interno|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+### Recurso Patrocinador
+
+El objeto Patrocinador tiene dos representaciones JSON
+
+#### Representación Minimum
+```javascript
+{
+    id: '' /*Tipo Long*/,
+    nombre: '' /*Tipo String*/,
+    patrocinio: '' /*Tipo Double*/,
+    NIT: '' /*Tipo Long*/,
+}
+```
+
+#### Representación Detail
+```javascript
+{
+          // todo lo de la representación Minimum más los objetos Minimum con relación simple.
+     festival: {
+      id: '' /*Tipo long*/,
+      nombre: '' /*Tipo String*/
+      fechaInicio : '' /*Tipo Date*/,
+      fechaFin: '' /*Tipo Date*/,
+    }
+
+}
+```
+
+#### GET /patrocinadores
+
+Retorna una colección de objetos Patrocinador en representación Detail
+Cada Patrocinador incluye uno o más Festivales.
+
+#### Parámetros
+N/A
+
+####Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|OK|Colección de Patrocinadores [representaciones Detail](#recurso-patrocinador)
+412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|Error interno|Mensaje de error
+
+#### GET /patrocinadores/{id}
+
+Retorna un Patrocinador en representación Detail
+Incluye uno o más festivales.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+id|Path|ID del objeto Patrocinador a consultar|Sí|Integer
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|OK|Patrocinador en [representaciones Detail](#recurso-patrocinador)
+404|No existe un objeto con el ID solicitado|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|Error interno|Mensaje de error
+
+#### POST /patrocinadores
+
+Se crea un nuevo objeto Patrocinador
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+body|body|Objeto Patrocinador que será creado|Sí|[Representación Detail](#recurso-patrocinador)
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+201|El objeto Patrocinador ha sido creado|[Representación Detail](#recurso-patrocinador)
+412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|No se pudo crear el Patrocinador|Mensaje de error
+
+#### PUT /patrocinadores/{id}
+
+Es el encargado de actualizar objetos Patrocinador.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+id|Path|ID del Patrocinador a actualizar|Sí|Integer
+body|body|Objeto Patrocinador nuevo|Sí|[Representación Detail](#recurso-patrocinador)
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+201|Objeto Patrocinador actualizado|[Representación Detail](#recurso-abono)
+412|business exception, no se cumple con las reglas de negocio|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|No se pudo actualizar el Patrocinador|Mensaje de error
+
+#### DELETE /patrocinadores/{id}
+
+Elimina un objeto Patrocinador.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+id|Path|ID del Patrocinador a eliminar|Sí|Integer
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+204|Objeto eliminado|N/A
+500|Error interno|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+
+#### GET /patrocinadores/{id}/festivales
+
+Retorna una colección de objetos Festival asociados al Patrocinador en representación Detail.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+id|Path|ID del Patrocinador cuyos festivales se quieren consultar|Sí|Integer
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|OK|Colección de objetos Festival en [representación Detail](#recurso-festival)
+500|Error consultando patrocinadores |Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+
+
+#### GET /patrocinadores/{patrocinadoresid}/festivales/{festivalesid}
+
+Retorna un objeto Festival asociado a un Patrocinador en representación Detail.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+patrocinadoresid|Path|ID del objeto Patrocinador a consultar|Sí|Integer
+festivalesid|Path|ID del objeto Festival a consultar|Sí|Integer
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|OK|Objeto Festival en [representación Detail](#recurso-festival)
+404|No existe un objeto Festival con el ID solicitado asociado al objeto Patrocinador indicado |Mensaje de error
+404|No existe un objeto Patrocinador con el ID solicitado|Mensaje de error
+500|Error interno|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+
+#### POST /patrocinadores/{id}/festivales/
+
+Asocia uno o más festivales a un Patrocinador.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+id|PathParam|ID del Patrocinador al cual se asociará el Festival|Sí|Integer
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|Festival asociado|[Representación Detail de Festival](#recurso-festival)
+500|No se pudo asociar el objeto Festival|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+
+#### PUT patrocinadores/{patrocinadoresid}/festivales/{festivalesid}
+
+Es el encargado de actualizar un Festival asociado a un Patrocinador.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+patrocinadoresid|Path|ID del Patrocinador cuya función será remplazada|Sí|Integer
+festivalesid|path|Nuevo Festival|Sí|[Representación Detail](#recurso-festival)
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|Se actualizo el objeto|Objeto Festival en [Representación Detail](#recurso-festival)
+500|No se pudo actualizar|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+
+#### DELETE /patrocinador/{patrocinadoresid}/festivales/
+
+Remueve todos los Festivales de un Patrocinador.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+patrocinadoresid|Path|ID del Patrocinador|Sí|Integer
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+204|Festivales removidos|N/A
+500|Error interno|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+
+#### DELETE /patrocinador/{patrocinadoresid}/festivales/{festivalesid}
+
+Remueve un Festival de un Patrocinador
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+patrocinadoresid|Path|ID del Patrocinador|Sí|Integer
+festivalesid|Path|ID del Festival|Sí|Integer
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+204|Festival removido|N/A
+500|Error interno|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
