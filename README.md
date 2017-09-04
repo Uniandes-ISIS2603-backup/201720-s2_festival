@@ -616,4 +616,62 @@ Código|Descripción|Cuerpo
 500|Error interno|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 
+### Recurso Calificación
+
+El objeto Calificación tiene 2 representaciones JSON:	
+
+#### Representación Minimum
+```javascript
+{
+    id: '' /*Tipo Long*/,
+    calificacion: '' /*Tipo double/*
+}
+```
+
+#### Representación Detail
+```javascript
+{
+    // todo lo de la representación Minimum más los objetos Minimum con relación simple.
+    boleta: {
+      id: '' /*Tipo long/*
+    }
+}
+```
+### Recurso Función
+
+El objeto Función tiene 2 representaciones JSON:	
+
+#### Representación Minimum
+```javascript
+{
+    id: '' /*Tipo Long*/,
+    horaInicio: '' /*Tipo Date/*,
+    horaFin: '' /*Tipo Date/*
+}
+```
+
+#### Representación Detail
+```javascript
+{
+    // todo lo de la representación Minimum más los objetos Minimum con relación simple.
+    sala: {
+      id: '' /*Tipo long/*,
+      nombre: '' /*Tipo String/*
+    },
+    pelicula: {
+      id: '' /*Tipo long/*,
+      nombre: '' /*Tipo String/*,
+      generos: '' /*Tipo ArrayList<String>/*,
+      duracionMinutos: '' /*Tipo int/*,
+      director: '' /*Tipo String/*,
+      creditos: '' /*Tipo String/*,
+      pais: '' /*Tipo String/*,
+      corto: '' /*Tipo String/*
+    }
+}
+```
+
+
+
+
 [Volver arriba](#tabla-de-contenidos)
