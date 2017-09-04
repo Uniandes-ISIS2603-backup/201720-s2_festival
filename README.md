@@ -713,6 +713,7 @@ Código|Descripción|Cuerpo
 412|business exception, no se cumple con las reglas de negocio|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 500|No se pudo actualizar el objeto Calificacion|Mensaje de error
+404|No existe un objeto calificacion con el ID solicitado. | Mensaje de error
 
 #### DELETE /calificaciones/{id}
 
@@ -731,6 +732,7 @@ Código|Descripción|Cuerpo
 204|Objeto eliminado|N/A
 500|Error interno|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
+404|No existe un objeto calificacion con el ID solicitado. | Mensaje de error
 
 
 
@@ -845,6 +847,7 @@ Código|Descripción|Cuerpo
 412|business exception, no se cumple con las reglas de negocio|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 500|No se pudo actualizar el objeto Funcion|Mensaje de error
+404|No existe un objeto funcion con el ID solicitado. | Mensaje de error
 
 #### DELETE /funciones/{id}
 
@@ -863,6 +866,7 @@ Código|Descripción|Cuerpo
 204|Objeto eliminado|N/A
 500|Error interno|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
+404|No existe un objeto funcion con el ID solicitado. | Mensaje de error
 
 
 
