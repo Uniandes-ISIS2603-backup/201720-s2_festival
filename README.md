@@ -640,7 +640,7 @@ El objeto Calificación tiene 2 representaciones JSON:
 #### GET /calificaciones
 
 Retorna una colección de objetos Calificacion en representación Detail.
-Cada Silla en la colección tiene embebidos los siguientes objetos: Boleta.
+Cada Calificacion en la colección tiene embebidos los siguientes objetos: Boleta.
 
 #### Parámetros
 
@@ -768,6 +768,101 @@ El objeto Función tiene 2 representaciones JSON:
     }
 }
 ```
+
+#### GET /funciones
+
+Retorna una colección de objetos Funcion en representación Detail.
+Cada Funcion en la colección tiene embebidos los siguientes objetos: Boleta.
+
+#### Parámetros
+
+#### N/A
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|OK|Colección de Funcion en [representaciones Detail](#recurso-funcion)
+412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|Error interno|Mensaje de error
+
+#### GET /funciones/{id}
+
+Retorna un objeto Calificación en representación Detail.
+Cada Calificación en la colección tiene los siguientes objetos: Boleta.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+id|Path|ID del objeto Funcion a consultar|Sí|Integer
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|OK|Objeto Funcion en [representaciones Detail](#recurso-funcion)
+404|No existe un objeto Funcion con el ID solicitado|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|Error interno|Mensaje de error
+
+#### POST /funciones
+
+Es el encargado de crear objetos Funcion.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+body|body|Objeto Funcion que será creado|Sí|[Representación Detail](#recurso-funcion)
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+201|El objeto Funcion ha sido creado|[Representación Detail](#recurso-funcion)
+412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|No se pudo crear el objeto Funcion|Mensaje de error
+
+#### PUT /funciones/{id}
+
+Es el encargado de actualizar objetos Funcion.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+id|Path|ID del objeto Funcion a actualizar|Sí|Integer
+body|body|Objeto Funcion nuevo|Sí|[Representación Detail](#recurso-funcion)
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+201|El objeto Funcion actualizado|[Representación Detail](#recurso-silla)
+412|business exception, no se cumple con las reglas de negocio|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|No se pudo actualizar el objeto Funcion|Mensaje de error
+
+#### DELETE /funciones/{id}
+
+Elimina un objeto Funcion.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+id|Path|ID del objeto Funcion a eliminar|Sí|Integer
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+204|Objeto eliminado|N/A
+500|Error interno|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
 
 
 
