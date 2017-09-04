@@ -29,7 +29,13 @@
     - [POST críticas/{críticasid}/crítico](#post-críticascríticasidcrítico)
     - [PUT críticas/{críticasid}/crítico](#put-críticascríticasidcrítico)
     - [DELETE críticas/{críticasid}/crítico](#delete-críticascríticasidcrítico)
-
+  - [Recurso Calificacion](#recurso-silla)
+    - [GET /calificacion](#get-calificacion)
+    - [GET /calificacion/{id}](#get-calificacionid)
+    - [POST /calificacion](#post-calificacion)
+    - [PUT /calificacion/{id}](#put-calificacionid)
+    - [DELETE /calificacion/{id}](#delete-calificacionid)
+  - [Recurso Funcion](#recurso-silla)
 
 # API Rest
 ## Introducción
