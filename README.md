@@ -1010,5 +1010,269 @@ Código|Descripción|Cuerpo
 404|No existe un objeto Funcion con el ID solicitado|Mensaje de error
 404|No existe un objeto Silla con el ID solicitado|Mensaje de error
 
+////////////////////////////////
+### Recurso Teatro
 
+El objeto teatro tiene dos representaciones JSON
+
+#### Representación Minimum
+```javascript
+{
+    id: '' /*Tipo Long*/,
+   nombre: '' /*Tipo String*/,
+}
+```
+
+#### Representación Detail
+```javascript
+{
+        // todo lo de la representación Minimum más los objetos Minimum con relación simple.
+    festival: {},
+    sala: {
+          id: '' /*Tipo Long*/
+          nombre: '' /*Tipo String*/,
+    }
+
+}
+```
+
+#### GET /teatros
+Retorna una colección de objetos Teatro en representación Detail. Cada Teatro en la colección tiene embebidos los siguientes objetos: Festival y sala.
+
+#### Parámetros
+
+#### N/A
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|OK|Colección de Teatro en [representaciones Detail](#recurso-funcion)
+412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|Error interno|Mensaje de error
+
+#### GET /teatros/{id}
+
+Retorna un objeto Teatro en representación Detail.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+id|Path|ID del objeto Teatro a consultar|Sí|Integer
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|OK|Objeto Teatro en [representaciones Detail](#recurso-funcion)
+404|No existe un objeto Teatro con el ID solicitado|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|Error interno|Mensaje de error
+
+#### POST /teatros
+
+Es el encargado de crear objetos Teatro.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+body|body|Objeto Teatro que será creado|Sí|[Representación Detail](#recurso-funcion)
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+201|El objeto Funcion ha sido creado|[Representación Detail](#recurso-funcion)
+412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|No se pudo crear el objeto Teatro|Mensaje de error
+
+#### PUT /teatros/{id}
+
+Es el encargado de actualizar objetos Teatro.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+id|Path|ID del objeto Teatro a actualizar|Sí|Integer
+body|body|Objeto Teatro nuevo|Sí|[Representación Detail](#recurso-funcion)
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+201|El objeto Teatro actualizado|[Representación Detail](#recurso-silla)
+412|business exception, no se cumple con las reglas de negocio|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|No se pudo actualizar el objeto Teatro|Mensaje de error
+404|No existe un objeto Teatro con el ID solicitado. | Mensaje de error
+
+#### DELETE /teatros/{id}
+
+Elimina un objeto Teatro.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+id|Path|ID del objeto Teatro a eliminar|Sí|Integer
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+204|Objeto eliminado|N/A
+500|Error interno|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+404|No existe un objeto funcion con el ID solicitado. | Mensaje de error
+
+#### GET /teatros/{teatrosid}/salas
+
+Retorna una colección de objetos Teatro en representación Detail.
+
+#### Parámetros
+
+#### N/A
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|OK|Colección de Teatro en [representaciones Detail](#recurso-critica)
+412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|Error interno|Mensaje de error
+404|No existe un objeto Teatro con el ID solicitado|Mensaje de error
+
+#### GET /teatros/{teatrosid}/salas/{salasid}
+
+Retorna un objeto Sala en representación Detail.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+funcionesid|Path|ID del objeto Teatro a consultar|Sí|Integer
+criticasid|Path|ID del objeto Sala a consultar|Si|Integer 
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|OK|Objeto Sala en [representaciones Detail](#recurso-critica)
+404|No existe un objeto Teatro con el ID solicitado|Mensaje de error
+404|No existe un objeto Sala con el ID solicitado|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|Error interno|Mensaje de error
+
+
+#### GET /teatros/{teatrosid}/sillas
+
+Retorna una colección de objetos Sala representación Detail.
+
+#### Parámetros
+
+#### N/A
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|OK|Colección de Sala[representaciones Detail](#recurso-silla)
+412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|Error interno|Mensaje de error
+404|No existe un objeto Funcion con el ID solicitado|Mensaje de error
+
+#### GET /teatrosonesid}/salaslasid
+
+Retorna un objeto Sala reprentacion Detail.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+funcionesid|Path|ID del objeto Teatro a consultar|Si|Integer
+sillaid|Path|ID del objeto Sala consultar|Sí|Integer
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|OK|Objeto Silla en [representaciones Detail](#recurso-calificacion)
+404|No existe un objeto Teatro D solicitado|Mensaje de error
+404|No existe un objeto Silla con el ID solicitado|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|Error interno|Mensaje de error
+
+#### POST /teatros/{teatrosid}/sala
+
+Es el encargado de crear objetos Sala.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+body|body|Objeto Sala  será creado||[Representación Detail](#recurso-calificacion)
+funcionesid|Path|ID del objeto Teatro  a consultar|Sí|Integer
+
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+201|El objeto Sala ha sido creado|[Representación Detail](#recurso-calificacion)
+412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|No se pudo crear el objeto Sala |Mensaje de error
+404|No existe un objeto Teatro  con el ID solicitado|Mensaje de error
+
+#### PUT/teatros/{teatrosid}/sala
+
+Es el encargado de actualizar objetos Sala dentro de un objeto Teatro.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+id|Path|ID del objeto Sala  a actualizar|Sí|Integer
+body|body|Objeto Sala  nuevo|Sí|[Representación Detail](#recurso-calificacion)
+funcionesid|Path|ID del objeto Teatro a consultar|Sí|Integer
+sillaid|Path|ID del objeto Sala a consultar|Sí|Integer
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+201|El objeto Sala  actualizado|[Representación Detail](#recurso-silla)
+412|business exception, no se cumple con las reglas de negocio|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|No se pudo actualizar el objeto Sala |Mensaje de error
+404|No existe un objeto Teatro con el ID solicitado|Mensaje de error
+404|No existe un objeto Sala con el ID solicitado|Mensaje de error
+
+#### DELETE /teatros/{teatrosid}/salas/{salasid}
+
+Elimina un objeto Sala en un objeto Teatro.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+funcionesid|Path|ID del objeto  Teatro a consultar|Sí|Integer
+sillaid|Path|ID del objeto Sala a consultar|Sí|Integer
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+204|Objeto eliminado|N/A
+500|Error interno|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+404|No existe un objeto Teatro  con el ID solicitado|Mensaje de error
+404|No existe un objeto Sala con el ID solicitado|Mensaje de error
 [Volver arriba](#tabla-de-contenidos)
