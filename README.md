@@ -43,9 +43,6 @@
     - [DELETE /funciones/{id}](#delete-funcionesid)
     - [GET /funciones/{funcionesid}/criticas](#get-funcionesidcriticas)
     - [GET /funciones/{funcionesid}/criticas/{criticasid}](#get-funcionesidcriticasid)
-    - [POST /funciones/{funcionesid}/criticas](#post-funcionesidcriticas)
-    - [PUT /funciones/{funcionasid}/criticas/{criticasid}](#put-funcionesidcriticasid)
-    - [DELETE /funciones/{funcionesid}/criticas/{criticasid}](#delete-funcionesidcriticasid)
     - [GET /funciones/{funcionesid}/sillas](#get-funcionesidsillas)
     - [GET /funciones/{funcionesid}/sillas/{sillasid}](#get-funcionesidsillasid)
     - [POST /funciones/{funcionesid}/sillas](#post-funcionesidsillas)
@@ -867,6 +864,46 @@ Código|Descripción|Cuerpo
 500|Error interno|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 404|No existe un objeto funcion con el ID solicitado. | Mensaje de error
+
+#### GET /funciones/{funcionesid}/criticas
+
+Retorna una colección de objetos Critica en representación Detail.
+
+
+#### Parámetros
+
+#### N/A
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|OK|Colección de Critica en [representaciones Detail](#recurso-critica)
+412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|Error interno|Mensaje de error
+
+#### GET /funciones/{funcionesid}/criticas/{criticasid}
+
+Retorna un objeto Critica en representación Detail.
+
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+funcionesid|Path|ID del objeto Funcion a consultar|Sí|Integer
+criticasid|Path|ID del objeto Critica a consiltar|Si|Integer 
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|OK|Objeto Critica en [representaciones Detail](#recurso-critica)
+404|No existe un objeto Funcion con el ID solicitado|Mensaje de error
+404|No existe un objeto Critica con el ID solicitado|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|Error interno|Mensaje de error
 
 
 
