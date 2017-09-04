@@ -671,7 +671,7 @@ id|Path|ID del objeto Calificacion a consultar|Sí|Integer
 Código|Descripción|Cuerpo
 :--|:--|:--
 200|OK|Objeto Calificacion en [representaciones Detail](#recurso-calificacion)
-404|No existe un objeto Silla con el ID solicitado|Mensaje de error
+404|No existe un objeto Calificacion con el ID solicitado|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 500|Error interno|Mensaje de error
 
@@ -692,7 +692,7 @@ Código|Descripción|Cuerpo
 201|El objeto Calificacion ha sido creado|[Representación Detail](#recurso-calificacion)
 412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
-500|No se pudo crear el objeto Silla|Mensaje de error
+500|No se pudo crear el objeto Calificacion|Mensaje de error
 
 #### PUT /calificaciones/{id}
 
