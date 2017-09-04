@@ -637,6 +637,104 @@ El objeto Calificación tiene 2 representaciones JSON:
     }
 }
 ```
+#### GET /calificaciones
+
+Retorna una colección de objetos Calificacion en representación Detail.
+Cada Silla en la colección tiene embebidos los siguientes objetos: Boleta.
+
+#### Parámetros
+
+#### N/A
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|OK|Colección de Calificacion en [representaciones Detail](#recurso-calificacion)
+412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|Error interno|Mensaje de error
+
+#### GET /calificaciones/{id}
+
+Retorna un objeto Calificación en representación Detail.
+Cada Calificación en la colección tiene los siguientes objetos: Boleta.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+id|Path|ID del objeto Calificacion a consultar|Sí|Integer
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|OK|Objeto Calificacion en [representaciones Detail](#recurso-calificacion)
+404|No existe un objeto Silla con el ID solicitado|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|Error interno|Mensaje de error
+
+#### POST /calificaciones
+
+Es el encargado de crear objetos Calificacion.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+body|body|Objeto Calificacion que será creado|Sí|[Representación Detail](#recurso-calificacion)
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+201|El objeto Calificacion ha sido creado|[Representación Detail](#recurso-calificacion)
+412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|No se pudo crear el objeto Silla|Mensaje de error
+
+#### PUT /calificaciones/{id}
+
+Es el encargado de actualizar objetos Calificacion.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+id|Path|ID del objeto Calificacion a actualizar|Sí|Integer
+body|body|Objeto Calificacion nuevo|Sí|[Representación Detail](#recurso-calificacion)
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+201|El objeto Calificacion actualizado|[Representación Detail](#recurso-silla)
+412|business exception, no se cumple con las reglas de negocio|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|No se pudo actualizar el objeto Calificacion|Mensaje de error
+
+#### DELETE /calificaciones/{id}
+
+Elimina un objeto Calificacion.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+id|Path|ID del objeto Calificacion a eliminar|Sí|Integer
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+204|Objeto eliminado|N/A
+500|Error interno|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+
+
+
+
 ### Recurso Función
 
 El objeto Función tiene 2 representaciones JSON:	
