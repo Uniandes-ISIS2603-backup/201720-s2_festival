@@ -637,7 +637,6 @@ El objeto Calificación tiene 2 representaciones JSON:
 #### GET /calificaciones
 
 Retorna una colección de objetos Calificacion en representación Detail.
-Cada Calificacion en la colección tiene embebidos los siguientes objetos: Boleta.
 
 #### Parámetros
 
@@ -655,7 +654,6 @@ Código|Descripción|Cuerpo
 #### GET /calificaciones/{id}
 
 Retorna un objeto Calificación en representación Detail.
-Cada Calificación en la colección tiene los siguientes objetos: Boleta.
 
 #### Parámetros
 
@@ -882,6 +880,7 @@ Código|Descripción|Cuerpo
 412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 500|Error interno|Mensaje de error
+404|No existe un objeto Funcion con el ID solicitado|Mensaje de error
 
 #### GET /funciones/{funcionesid}/criticas/{criticasid}
 
@@ -922,6 +921,7 @@ Código|Descripción|Cuerpo
 412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 500|Error interno|Mensaje de error
+404|No existe un objeto Funcion con el ID solicitado|Mensaje de error
 
 #### GET /funciones/{funcionesid}/sillas/{sillasid}
 
