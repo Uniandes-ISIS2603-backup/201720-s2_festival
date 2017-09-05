@@ -49,13 +49,13 @@
 		- [POST críticas/{críticasid}/crítico](#post-críticascríticasidcrítico)
 		- [PUT críticas/{críticasid}/crítico](#put-críticascríticasidcrítico)
 		- [DELETE críticas/{críticasid}/crítico](#delete-críticascríticasidcrítico)
-	- [Recurso Calificacion](#recurso-calificacion)
-		- [GET /calificaciones](#get-calificaciones)
-		- [GET /calificaciones/{id}](#get-calificacionesid)
-		- [POST /calificaciones](#post-calificaciones)
-		- [PUT /calificaciones/{id}](#put-calificacionesid)
-		- [DELETE /calificaciones/{id}](#delete-calificacionesid)
-	- [Recurso Funcion](#recurso-funcion)
+	- [Recurso Calificación](#recurso-calificación)
+		- [GET /calificaciónes](#get-calificaciónes)
+		- [GET /calificaciónes/{id}](#get-calificaciónesid)
+		- [POST /calificaciónes](#post-calificaciónes)
+		- [PUT /calificaciónes/{id}](#put-calificaciónesid)
+		- [DELETE /calificaciónes/{id}](#delete-calificaciónesid)
+	- [Recurso Función](#recurso-funcion)
 		- [GET /funciones](#get-funciones)
 		- [GET /funciones/{id}](#get-funcionesid)
 		- [POST /funciones](#post-funciones)
@@ -69,7 +69,7 @@
 		- [PUT /funciones/{funcionasid}/sillas/{sillasid}](#put-funcionesidsillasid)
 		- [DELETE /funciones/{funcionesid}/sillas/{sillasid}](#delete-funcionesidsillasid)
 	- [Recurso Teatro](#recurso-teatro)
-	        - [GET /teatros](#get-teatros)
+        - [GET /teatros](#get-teatros)
 		- [GET /teatros/{id}](#get-teatrosid)
 		- [POST /teatros](#post-teatros)
 		- [PUT /teatros/{id}](#put-teatros)
@@ -85,18 +85,18 @@
 		- [POST abonos/{abonosid}/boletas/{boletasid}](#POST-/abonos/{abonosid}/boletas/{boletasid})
 		- [POST abonos/{abonosid}/boletas](#POST-/abonos/{abonosid}/boletas)
 		- [PUT abonos/{abonosid}/boletas/{boletasid}](PUT-/abonos/{abonoid}/boletas/{boletaid})
-		- [DELETE abonos/{abonosid}/boletas] (#DELETE-/abonos/{abonosid}/boletas)
-		- [DELETE abonos/{abonosid}/boletas/{boletasid}] (#DELETE-/abonos/{abonosid}/boletas7{boletasid})
+		- [DELETE abonos/{abonosid}/boletas](#DELETE-/abonos/{abonosid}/boletas)
+		- [DELETE abonos/{abonosid}/boletas/{boletasid}](#DELETE-/abonos/{abonosid}/boletas7{boletasid})
 	- [Recurso Boleta](#recurso-boleta)
 		- [GET /boletas](#GET-/boleta)
 		- [GET /boletas/{id}](#GET-/boletas/{id})
 		- [POST /boletas](#POST-/boletas)
 		- [PUT /boletas/{id}](#PUT-/boletas/{id})
 		- [DELETE /boletas/{id}](#DELETE-/boletas/{id})
-		- [GET boletas/{boletasid}/calificacion](#GET-/boletas/{boletasid}/calificacion)
-		- [POST abonos/{boletasid}/calificacion/{calificacionid}](#POST-/abonos/{boletasid}/calificacion/{calificacionid})
-		- [PUT abonos/{boletasid}/calificacion](#PUT-/boletas/{boletasid}/calificacion)
-		- [DELETE boletas/{boletasid}/calificacion](#DELETE-/boletas/boletasid/calificacion)
+		- [GET boletas/{boletasid}/calificación](#GET-/boletas/{boletasid}/calificación)
+		- [POST abonos/{boletasid}/calificación/{calificaciónid}](#POST-/abonos/{boletasid}/calificación/{calificaciónid})
+		- [PUT abonos/{boletasid}/calificación](#PUT-/boletas/{boletasid}/calificación)
+		- [DELETE boletas/{boletasid}/calificación](#DELETE-/boletas/boletasid/calificación)
 		- [GET boletas/{boletasid}/silla](#GET-/boletas/{boletasid}/silla)
 		- [POST boletas/{boletasid}/silla](#POST-/boletas/{boletasid}/silla)
 		- [PUT boletas/{boletasid}/silla](#PUT-/boletas/{boletasid}/silla)
@@ -790,13 +790,24 @@ Código|Descripción|Cuerpo
 
 ### Recurso Espectador
 
-El objeto Espectador tiene 1 representación Detail JSON:	
+El objeto Espectador tiene 2 representaciones JSON:	
 
+#### Representación Minimum
 ```javascript
 {
     id: '' /*Tipo Long*/,
     nombre: '' /*Tipo String*/,
-    direccion: '' /*Tipo String*/,
+    direccion: '' /*Tipo String+/,
+}
+```
+
+#### Representación Detail
+```javascript
+{
+    // todo lo de la representación Minimum más los objetos Minimum con relación simple.
+    abono: {
+        id: '' /*Tipo Long*/,  
+    }
 }
 ```
 
@@ -891,6 +902,78 @@ Código|Descripción|Cuerpo
 :--|:--|:--
 204|Objeto eliminado|N/A
 500|Error interno|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+
+#### GET espectadores/{espectadoresid}/abono
+
+Retorna una Abono asociada a un objeto Espectador en representación Detail.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+espectadoresid|Path|ID del objeto Espectador a consultar|Sí|Integer
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|OK|Objeto Función en [Representación Detail](#recurso-abono)
+500|Error consultando abono |Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+
+#### POST espectadores/{espectadoresid}/abono
+Asocia un objeto Abono a un objeto Espectador.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+espectadoresid|PathParam|ID del objeto Espectador al cual se asociará el objeto Abono|Sí|Integer
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|Objeto Abono asociado|[Representación Detail de Abono](#recurso-abono)
+500|No se pudo asociar el objeto Abono|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+
+#### PUT espectadores/{espectadoresid}/abono
+
+Es el encargado de remplazar la Abono asociada a un objeto Espectador.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+espectadoresid|Path|ID del objeto Espectador cuya asociación será remplazada|Sí|Integer
+body|body|Objeto Abono|Sí|[Representación Detail](#recurso-abono)
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|Se remplazó el objeto|Objeto Abono en [Representación Detail](#recurso-abono)
+500|No se pudo remplazar el objeto|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+
+#### DELETE espectadores/{espectadoresid}/abono
+
+Remueve un objeto Abono de un objeto Espectador.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+espectadoresid|Path|ID del objeto Espectador asociado al objeto Abono|Sí|Integer
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|OK|Objeto Abono en [Representación Detail](#recurso-función)
+500|Error consultando Abono |Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 
 [Volver arriba](#tabla-de-contenidos)
@@ -1160,7 +1243,7 @@ Código|Descripción|Cuerpo
 500|Error interno|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 
-### Recurso Calificacion
+### Recurso Calificación
 
 El objeto Calificación tiene 2 representaciones JSON:	
 
@@ -1181,9 +1264,9 @@ El objeto Calificación tiene 2 representaciones JSON:
     }
 }
 ```
-#### GET /calificaciones
+#### GET /calificaciónes
 
-Retorna una colección de objetos Calificacion en representación Detail.
+Retorna una colección de objetos Calificación en representación Detail.
 
 #### Parámetros
 
@@ -1193,12 +1276,12 @@ Retorna una colección de objetos Calificacion en representación Detail.
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Colección de Calificacion en [Representaciones Detail](#recurso-calificacion)
+200|OK|Colección de Calificación en [Representaciones Detail](#recurso-calificación)
 412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 500|Error interno|Mensaje de error
 
-#### GET /calificaciones/{id}
+#### GET /calificaciónes/{id}
 
 Retorna un objeto Calificación en representación Detail.
 
@@ -1206,66 +1289,66 @@ Retorna un objeto Calificación en representación Detail.
 
 Nombre|Ubicación|Descripción|Requerido|Esquema
 :--|:--|:--|:--|:--
-id|Path|ID del objeto Calificacion a consultar|Sí|Integer
+id|Path|ID del objeto Calificación a consultar|Sí|Integer
 
 #### Respuesta
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Objeto Calificacion en [Representaciones Detail](#recurso-calificacion)
-404|No existe un objeto Calificacion con el ID solicitado|Mensaje de error
+200|OK|Objeto Calificación en [Representaciones Detail](#recurso-calificación)
+404|No existe un objeto Calificación con el ID solicitado|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 500|Error interno|Mensaje de error
 
-#### POST /calificaciones
+#### POST /calificaciónes
 
-Es el encargado de crear objetos Calificacion.
+Es el encargado de crear objetos Calificación.
 
 #### Parámetros
 
 Nombre|Ubicación|Descripción|Requerido|Esquema
 :--|:--|:--|:--|:--
-body|body|Objeto Calificacion que será creado|Sí|[Representación Detail](#recurso-calificacion)
+body|body|Objeto Calificación que será creado|Sí|[Representación Detail](#recurso-calificación)
 
 #### Respuesta
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-201|El objeto Calificacion ha sido creado|[Representación Detail](#recurso-calificacion)
+201|El objeto Calificación ha sido creado|[Representación Detail](#recurso-calificación)
 412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
-500|No se pudo crear el objeto Calificacion|Mensaje de error
+500|No se pudo crear el objeto Calificación|Mensaje de error
 
-#### PUT /calificaciones/{id}
+#### PUT /calificaciónes/{id}
 
-Es el encargado de actualizar objetos Calificacion.
+Es el encargado de actualizar objetos Calificación.
 
 #### Parámetros
 
 Nombre|Ubicación|Descripción|Requerido|Esquema
 :--|:--|:--|:--|:--
-id|Path|ID del objeto Calificacion a actualizar|Sí|Integer
-body|body|Objeto Calificacion nuevo|Sí|[Representación Detail](#recurso-calificacion)
+id|Path|ID del objeto Calificación a actualizar|Sí|Integer
+body|body|Objeto Calificación nuevo|Sí|[Representación Detail](#recurso-calificación)
 
 #### Respuesta
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-201|El objeto Calificacion actualizado|[Representación Detail](#recurso-silla)
+201|El objeto Calificación actualizado|[Representación Detail](#recurso-silla)
 412|business exception, no se cumple con las reglas de negocio|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
-500|No se pudo actualizar el objeto Calificacion|Mensaje de error
-404|No existe un objeto calificacion con el ID solicitado. | Mensaje de error
+500|No se pudo actualizar el objeto Calificación|Mensaje de error
+404|No existe un objeto calificación con el ID solicitado. | Mensaje de error
 
-#### DELETE /calificaciones/{id}
+#### DELETE /calificaciónes/{id}
 
-Elimina un objeto Calificacion.
+Elimina un objeto Calificación.
 
 #### Parámetros
 
 Nombre|Ubicación|Descripción|Requerido|Esquema
 :--|:--|:--|:--|:--
-id|Path|ID del objeto Calificacion a eliminar|Sí|Integer
+id|Path|ID del objeto Calificación a eliminar|Sí|Integer
 
 #### Respuesta
 
@@ -1274,7 +1357,7 @@ Código|Descripción|Cuerpo
 204|Objeto eliminado|N/A
 500|Error interno|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
-404|No existe un objeto calificacion con el ID solicitado. | Mensaje de error
+404|No existe un objeto calificación con el ID solicitado. | Mensaje de error
 
 
 
@@ -1484,7 +1567,7 @@ sillaid|Path|ID del objeto Silla a consultar|Sí|Integer
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Objeto Silla en [Representaciones Detail](#recurso-calificacion)
+200|OK|Objeto Silla en [Representaciones Detail](#recurso-calificación)
 404|No existe un objeto Funcion con el ID solicitado|Mensaje de error
 404|No existe un objeto Silla con el ID solicitado|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
@@ -1498,7 +1581,7 @@ Es el encargado de crear objetos Sillas.
 
 Nombre|Ubicación|Descripción|Requerido|Esquema
 :--|:--|:--|:--|:--
-body|body|Objeto Silla que será creada|Sí|[Representación Detail](#recurso-calificacion)
+body|body|Objeto Silla que será creada|Sí|[Representación Detail](#recurso-calificación)
 funcionesid|Path|ID del objeto Funcion a consultar|Sí|Integer
 
 
@@ -1506,10 +1589,10 @@ funcionesid|Path|ID del objeto Funcion a consultar|Sí|Integer
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-201|El objeto Calificacion ha sido creado|[Representación Detail](#recurso-calificacion)
+201|El objeto Calificación ha sido creado|[Representación Detail](#recurso-calificación)
 412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
-500|No se pudo crear el objeto Calificacion|Mensaje de error
+500|No se pudo crear el objeto Calificación|Mensaje de error
 404|No existe un objeto Funcion con el ID solicitado|Mensaje de error
 
 #### PUT /funciones/{funcionesid}/sillas/{sillasid}
@@ -1520,8 +1603,8 @@ Es el encargado de actualizar objetos Silla dentro de un objeto Funcion.
 
 Nombre|Ubicación|Descripción|Requerido|Esquema
 :--|:--|:--|:--|:--
-id|Path|ID del objeto Calificacion a actualizar|Sí|Integer
-body|body|Objeto Calificacion nuevo|Sí|[Representación Detail](#recurso-calificacion)
+id|Path|ID del objeto Calificación a actualizar|Sí|Integer
+body|body|Objeto Calificación nuevo|Sí|[Representación Detail](#recurso-calificación)
 funcionesid|Path|ID del objeto Funcion a consultar|Sí|Integer
 sillaid|Path|ID del objeto Silla a consultar|Sí|Integer
 
@@ -1529,10 +1612,10 @@ sillaid|Path|ID del objeto Silla a consultar|Sí|Integer
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-201|El objeto Calificacion actualizado|[Representación Detail](#recurso-silla)
+201|El objeto Calificación actualizado|[Representación Detail](#recurso-silla)
 412|business exception, no se cumple con las reglas de negocio|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
-500|No se pudo actualizar el objeto Calificacion|Mensaje de error
+500|No se pudo actualizar el objeto Calificación|Mensaje de error
 404|No existe un objeto Funcion con el ID solicitado|Mensaje de error
 404|No existe un objeto Silla con el ID solicitado|Mensaje de error
 
@@ -1557,6 +1640,115 @@ Código|Descripción|Cuerpo
 404|No existe un objeto Funcion con el ID solicitado|Mensaje de error
 404|No existe un objeto Silla con el ID solicitado|Mensaje de error
 
+//-------------------------------------------------------------------------------------------------------------//
+
+### Recurso Película
+
+El objeto Película tiene 2 representaciones JSON:	
+
+```javascript
+{
+    id: '' /*Tipo Long*/,
+    nombre: '' /*Tipo String*/,
+    direccion: '' /*Tipo String*/,
+}
+```
+
+#### GET /películas
+
+Retorna una colección de objetos Película en representación Detail.
+
+#### Parámetros
+
+#### N/A
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|OK|Colección de Películaes en [Representaciones Detail](#recurso-película)
+412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|Error interno|Mensaje de error
+
+#### GET /películas/{id}
+
+Retorna un objeto Película en representación Detail.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+id|Path|ID del objeto Película a consultar|Sí|Integer
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|OK|Objeto Película en [Representación Detail](#recurso-películas)
+404|No existe un objeto Película con el ID solicitado|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|Error interno|Mensaje de error
+
+#### POST /películas
+
+Es el encargado de crear objetos Película.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+body|body|Objeto Película que será creado|Sí|[Representación Detail](#recurso-película)
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+201|El objeto Película ha sido creado|[Representación Detail](#recurso-película)
+412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|No se pudo crear el objeto Película|Mensaje de error
+
+#### PUT /películas/{id}
+
+Es el encargado de actualizar objetos Película.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+id|Path|ID del objeto Película a actualizar|Sí|Integer
+body|body|Objeto Película nuevo|Sí|[Representación Detail](#recurso-película)
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+201|El objeto Película actualizado|[Representación Detail](#recurso-película)
+412|business exception, no se cumple con las reglas de negocio|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|No se pudo actualizar el objeto Película|Mensaje de error
+
+#### DELETE /películas/{id}
+
+Elimina un objeto Película.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+id|Path|ID del objeto Película a eliminar|Sí|Integer
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+204|Objeto eliminado|N/A
+500|Error interno|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+
+
+//.............................................................................................................//
 
 ### Recurso Teatro
 
@@ -2410,7 +2602,7 @@ El objeto Boleta tiene 2 representaciones JSON:
 {
     id: '' /*Tipo Long*/,
     espectador: '' /*Tipo Espectador*/,
-    calificacion: '' /*Tipo Calificacion*/,
+    calificación: '' /*Tipo Calificación*/,
 	silla: ''/*Tipo Silla*/
 }
 ```
@@ -2530,9 +2722,9 @@ Código|Descripción|Cuerpo
 500|Error consultando espectadores |Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 
-#### GET boletas/{boletasid}/calificacion
+#### GET boletas/{boletasid}/calificación
 
-Retorna una colección de objetos Calificacion asociados a un objeto Boleta en representación Detail.
+Retorna una colección de objetos Calificación asociados a un objeto Boleta en representación Detail.
 
 #### Parámetros
 
@@ -2544,30 +2736,30 @@ id|Path|ID del objeto Boleta a consultar|Sí|Integer
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Objeto Calificacion en [Representación Detail](#recurso-Calificacion)
-500|Error consultando calificacion |Mensaje de error
+200|OK|Objeto Calificación en [Representación Detail](#recurso-Calificación)
+500|Error consultando calificación |Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 
-#### POST abonos/{boletasid}/calificacion/{calificacionid}
+#### POST abonos/{boletasid}/calificación/{calificaciónid}
 
-Asocia un objeto Calificacion a un objeto Boleta.
+Asocia un objeto Calificación a un objeto Boleta.
 
 #### Parámetros
 
 Nombre|Ubicación|Descripción|Requerido|Esquema
 :--|:--|:--|:--|:--
-boletasid|PathParam|ID del objeto Boleta al cual se asociará el objeto Calificacion|Sí|Integer
-calificacionid|PathParam|ID del objeto Calificacion a asociar|Sí|Integer
+boletasid|PathParam|ID del objeto Boleta al cual se asociará el objeto Calificación|Sí|Integer
+calificaciónid|PathParam|ID del objeto Calificación a asociar|Sí|Integer
 
 #### Respuesta
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|Objeto Calificacion asociado|[Representación Detail de Calificacion](#recurso-calificacion)
-500|No se pudo asociar el objeto Calificacion|Mensaje de error
+200|Objeto Calificación asociado|[Representación Detail de Calificación](#recurso-calificación)
+500|No se pudo asociar el objeto Calificación|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 
-#### PUT abonos/{boletasid}/calificacion
+#### PUT abonos/{boletasid}/calificación
 
 Método encargado de reemplazar el objeto Calificación asociado a un objeto Boleta.
 
@@ -2575,26 +2767,26 @@ Método encargado de reemplazar el objeto Calificación asociado a un objeto Bol
 
 Nombre|Ubicación|Descripción|Requerido|Esquema
 :--|:--|:--|:--|:--
-boletasid|PathParam|ID del objeto Boleta al cual se asociará el objeto Calificacion|Sí|Integer
-|body|body|objeto Calificacion|si|[Representación Detail] (#recurso-calificacion)
+boletasid|PathParam|ID del objeto Boleta al cual se asociará el objeto Calificación|Sí|Integer
+|body|body|objeto Calificación|si|[Representación Detail] (#recurso-calificación)
 
 #### Respuesta
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|Se remplazó la calificacion|Objeto Calificacion en [Representación Detail](#recurso-calificacion)
+200|Se remplazó la calificación|Objeto Calificación en [Representación Detail](#recurso-calificación)
 500|No se pudo remplazar el objeto.|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 
-#### DELETE boletas/{boletasid}/calificacion
+#### DELETE boletas/{boletasid}/calificación
 
-Remueve un objeto Calificacion de un objeto Boleta.
+Remueve un objeto Calificación de un objeto Boleta.
 
 #### Parámetros
 
 Nombre|Ubicación|Descripción|Requerido|Esquema
 :--|:--|:--|:--|:--
-boletasid|Path|ID del objeto Boleta asociado al objeto Calificacion|Sí|Integer
+boletasid|Path|ID del objeto Boleta asociado al objeto Calificación|Sí|Integer
 
 
 #### Respuesta
