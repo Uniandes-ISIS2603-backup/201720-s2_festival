@@ -35,10 +35,10 @@
 		- [POST /críticos/{críticosid}/crítica](#post-críticoscríticosidcrítica)
 		- [PUT /críticos/{críticosid}/crítica](#put-críticoscríticosidcrítica)
 		- [DELETE /críticos/{críticosid}/crítica](#delete-críticoscríticosidcrítica)
-		- [GET /críticos/{críticosid}/pelicula](#get-críticoscríticosidpelicula)
-		- [POST /críticos/{críticosid}/pelicula](#post-críticoscríticosidpelicula)
-		- [PUT /críticos/{críticosid}/pelicula](#put-críticoscríticosidpelicula)
-		- [DELETE /críticos/{críticosid}/pelicula](#delete-críticoscríticosidpelicula)
+		- [GET /críticos/{críticosid}/película](#get-críticoscríticosidpelícula)
+		- [POST /críticos/{críticosid}/película](#post-críticoscríticosidpelícula)
+		- [PUT /críticos/{críticosid}/película](#put-críticoscríticosidpelícula)
+		- [DELETE /críticos/{críticosid}/película](#delete-críticoscríticosidpelícula)
 	- [Recurso Crítica](#recurso-crítica)
 		- [GET /críticas](#get-críticas)
 		- [GET /críticas/{id}](#get-críticasid)
@@ -72,6 +72,16 @@
 		- [POST /funciones/{funcionesid}/sillas](#post-funcionesidsillas)
 		- [PUT /funciones/{funcionasid}/sillas/{sillasid}](#put-funcionesidsillasid)
 		- [DELETE /funciones/{funcionesid}/sillas/{sillasid}](#delete-funcionesidsillasid)
+    - [Recurso Película](#recurso-película)
+		- [GET /películas](#get-películas)
+		- [GET /películas/{id}](#get-películasid)
+		- [POST /películas](#post-películas)
+		- [PUT /películas/{id}](#put-películasid)
+		- [DELETE /películas/{id}](#delete-películasid)
+        - [GET películas/{películasid}/abono](#get-películaspelículasidabono)
+		- [POST películas/{películasid}/abono](#post-películaspelículasidabono)
+		- [PUT películas/{películasid}/abono](#put-películaspelículasidabono)
+		- [DELETE películas/{películasid}/abono](#delete-películaspelículasidabono)
 	- [Recurso Teatro](#recurso-teatro)
         - [GET /teatros](#get-teatros)
 		- [GET /teatros/{id}](#get-teatrosid)
@@ -455,7 +465,7 @@ El objeto Crítico tiene 2 representaciones JSON:
         id: '' /*Tipo Long*/,  
 		comentario: '' /*Tipo String*/,
     },
-    pelicula: {
+    pelssicula: {
         nombre: '' /*Tipo String*/,
         generos: [{genero1: '' /*Tipo String*/},{genero2: '' /*Tipo String*/}, {generoN: '' /*Tipo String*/}] /*Tipo JsonList*/,
         duracionMinutos: '' /*Tipo Integer*/,
@@ -717,7 +727,7 @@ Código|Descripción|Cuerpo
 500|Error interno|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 
-#### GET críticos/{críticosid}/pelicula
+#### GET críticos/{críticosid}/película
 
 Retorna una Película asociada a un objeto Crítico en representación Detail.
 
@@ -735,7 +745,7 @@ Código|Descripción|Cuerpo
 500|Error consultando función |Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 
-#### POST críticos/{críticosid}/pelicula
+#### POST críticos/{críticosid}/película
 Asocia un objeto Película a un objeto Crítico.
 
 #### Parámetros
@@ -748,11 +758,11 @@ críticosid|PathParam|ID del objeto Crítico al cual se asociará el objeto Pel�
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|Objeto Película asociado|[Representación Detail de Película](#recurso-pelicula)
+200|Objeto Película asociado|[Representación Detail de Película](#recurso-película)
 500|No se pudo asociar el objeto Película |Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 
-#### PUT críticos/{críticosid}/pelicula
+#### PUT críticos/{críticosid}/película
 
 Es el encargado de remplazar la Película asociada a un objeto Crítico.
 
@@ -761,17 +771,17 @@ Es el encargado de remplazar la Película asociada a un objeto Crítico.
 Nombre|Ubicación|Descripción|Requerido|Esquema
 :--|:--|:--|:--|:--
 críticosid|Path|ID del objeto Crítico cuya asociación será remplazada|Sí|Integer
-body|body|Objeto Película|Sí|[Representación Detail](#recurso-pelicula)
+body|body|Objeto Película|Sí|[Representación Detail](#recurso-película)
 
 #### Respuesta
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|Se remplazó el objeto|Objeto Película en [Representación Detail](#recurso-pelicula)
+200|Se remplazó el objeto|Objeto Película en [Representación Detail](#recurso-película)
 500|No se pudo remplazar el objeto|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 
-#### DELETE críticos/{críticosid}/pelicula
+#### DELETE críticos/{críticosid}/película
 
 Remueve un objeto Película de un objeto Crítico.
 
@@ -1387,7 +1397,7 @@ El objeto Función tiene 2 representaciones JSON:
       id: '' /*Tipo long/*,
       nombre: '' /*Tipo String/*
     },
-    pelicula: {
+    película: {
       id: '' /*Tipo long/*,
       nombre: '' /*Tipo String/*,
       generos: '' /*Tipo ArrayList<String>/*,
@@ -1644,17 +1654,24 @@ Código|Descripción|Cuerpo
 404|No existe un objeto Funcion con el ID solicitado|Mensaje de error
 404|No existe un objeto Silla con el ID solicitado|Mensaje de error
 
-//-------------------------------------------------------------------------------------------------------------//
+
 
 ### Recurso Película
 
-El objeto Película tiene 2 representaciones JSON:	
+El objeto Película tiene 1 representación JSON:	
 
+#### Representación
 ```javascript
 {
-    id: '' /*Tipo Long*/,
-    nombre: '' /*Tipo String*/,
-    direccion: '' /*Tipo String*/,
+   id: '' /*Tipo Long*/,
+   nombre: '' /*Tipo String*/,
+   generos: [{genero1: '' /*Tipo String*/},{genero2: '' /*Tipo String*/}, {generoN: '' /*Tipo String*/}] /*Tipo JsonList*/,
+   duracion-minutos: '' /*Tipo Integer*/,
+   director: '' /*Tipo String*/,
+   creditos: '' /*Tipo Integer*/,
+   pais: '' /*Tipo String/,
+   corto: '' /*Tipo String*/
+   
 }
 ```
 
@@ -1752,7 +1769,6 @@ Código|Descripción|Cuerpo
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 
 
-//.............................................................................................................//
 
 ### Recurso Teatro
 
@@ -2042,7 +2058,7 @@ El objeto Festival tiene dos representaciones JSON
           id: '' /*Tipo Long*/
           nombre: '' /*Tipo String*/,
     }
-pelicula: {
+película: {
       id: '' /*Tipo long/*,
       nombre: '' /*Tipo String/*,
       generos: '' /*Tipo ArrayList<String>/*,
@@ -2064,7 +2080,7 @@ Patrocinador:{
 ```
 
 #### GET /festivales
-Retorna una colección de objetos Festival en representación Detail. Cada Festival en la colección tiene embebidos los siguientes objetos: Teatro, Pelicula, Espectador y Patrocinador.
+Retorna una colección de objetos Festival en representación Detail. Cada Festival en la colección tiene embebidos los siguientes objetos: Teatro, Película, Espectador y Patrocinador.
 
 #### Parámetros
 
