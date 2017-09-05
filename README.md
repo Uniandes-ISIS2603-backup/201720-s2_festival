@@ -35,10 +35,10 @@
 		- [POST /criticos](#post-criticos)
 		- [PUT /criticos/{id}](#put-criticosid)
 		- [DELETE /criticos/{id}](#delete-criticosid)
-		- [GET /criticos/{criticosid}/critica](#get-criticoscriticosidcritica)
-		- [POST /criticos/{criticosid}/critica](#post-criticoscriticosidcritica)
-		- [PUT /criticos/{criticosid}/critica](#put-criticoscriticosidcritica)
-		- [DELETE /criticos/{criticosid}/critica](#delete-criticoscriticosidcritica)
+		- [GET /criticos/{criticosid}/crítica](#get-criticoscriticosidcrítica)
+		- [POST /criticos/{criticosid}/crítica](#post-criticoscriticosidcrítica)
+		- [PUT /criticos/{criticosid}/crítica](#put-criticoscriticosidcrítica)
+		- [DELETE /criticos/{criticosid}/crítica](#delete-criticoscriticosidcrítica)
 		- [GET /criticos/{criticosid}/pelicula](#get-criticoscriticosidpelicula)
 		- [POST /criticos/{criticosid}/pelicula](#post-criticoscriticosidpelicula)
 		- [PUT /criticos/{criticosid}/pelicula](#put-criticoscriticosidpelicula)
@@ -69,8 +69,8 @@
 		- [POST /funciones](#post-funciones)
 		- [PUT /funciones/{id}](#put-funcionesid)
 		- [DELETE /funciones/{id}](#delete-funcionesid)
-		- [GET /funciones/{funcionesid}/criticas](#get-funciones/{funcionesid}/criticas)
-		- [GET /funciones/{funcionesid}/criticas/{criticasid}](#get-funciones/{funcionesid|/criticas/{criticasid})
+		- [GET /funciones/{funcionesid}/críticas](#get-funciones/{funcionesid}/críticas)
+		- [GET /funciones/{funcionesid}/críticas/{críticasid}](#get-funciones/{funcionesid|/críticas/{críticasid})
 		- [GET /funciones/{funcionesid}/sillas](#get-funcionesidsillas)
 		- [GET /funciones/{funcionesid}/sillas/{sillasid}](#get-funcionesidsillasid)
 		- [POST /funciones/{funcionesid}/sillas](#post-funcionesidsillas)
@@ -456,7 +456,7 @@ El objeto Crítico tiene 2 representaciones JSON:
 ```javascript
 {
     // todo lo de la representación Minimum más los objetos Minimum con relación simple.
-    critica: {
+    crítica: {
         id: '' /*Tipo Long*/,  
 		comentario: '' /*Tipo String*/,
     },
@@ -650,7 +650,7 @@ Código|Descripción|Cuerpo
 500|Error interno|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 
-#### GET criticos/{criticosid}/critica
+#### GET criticos/{criticosid}/crítica
 
 Retorna una Crítica asociada a un objeto Crítico en representación Detail.
 
@@ -664,11 +664,11 @@ criticosid|Path|ID del objeto Crítico a consultar|Sí|Integer
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Objeto Función en [representación Detail](#recurso-función)
-500|Error consultando función |Mensaje de error
+200|OK|Objeto Función en [representación Detail](#recurso-crítica)
+500|Error consultando crítica |Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 
-#### POST criticos/{criticosid}/critica
+#### POST criticos/{criticosid}/crítica
 Asocia un objeto Crítica a un objeto Crítico.
 
 #### Parámetros
@@ -681,11 +681,11 @@ criticosid|PathParam|ID del objeto Crítico al cual se asociará el objeto Crít
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|Objeto Crítica asociado|[Representación Detail de Crítica](#recurso-critica)
+200|Objeto Crítica asociado|[Representación Detail de Crítica](#recurso-crítica)
 500|No se pudo asociar el objeto Crítica|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 
-#### PUT criticos/{criticosid}/critica
+#### PUT criticos/{criticosid}/crítica
 
 Es el encargado de remplazar la Crítica asociada a un objeto Crítico.
 
@@ -694,17 +694,17 @@ Es el encargado de remplazar la Crítica asociada a un objeto Crítico.
 Nombre|Ubicación|Descripción|Requerido|Esquema
 :--|:--|:--|:--|:--
 criticosid|Path|ID del objeto Crítico cuya asociación será remplazada|Sí|Integer
-body|body|Objeto Crítica|Sí|[Representación Detail](#recurso-critica)
+body|body|Objeto Crítica|Sí|[Representación Detail](#recurso-crítica)
 
 #### Respuesta
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|Se remplazó el objeto|Objeto Crítica en [Representación Detail](#recurso-critica)
+200|Se remplazó el objeto|Objeto Crítica en [Representación Detail](#recurso-crítica)
 500|No se pudo remplazar el objeto|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 
-#### DELETE criticos/{criticosid}/critica
+#### DELETE criticos/{criticosid}/crítica
 
 Remueve un objeto Crítica de un objeto Crítico.
 
@@ -813,7 +813,7 @@ El objeto Espectador tiene 2 representaciones JSON:
 ```javascript
 {
     // todo lo de la representación Minimum más los objetos Minimum con relación simple.
-    critica: {
+    crítica: {
         id: '' /*Tipo Long*/,  
 		comentario: '' /*Tipo String*/,
     },
@@ -1007,7 +1007,7 @@ Código|Descripción|Cuerpo
 500|Error interno|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 
-#### GET espectadores/{espectadoresid}/critica
+#### GET espectadores/{espectadoresid}/crítica
 
 Retorna una Crítica asociada a un objeto Espectador en representación Detail.
 
@@ -1025,7 +1025,7 @@ Código|Descripción|Cuerpo
 500|Error consultando función |Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 
-#### POST espectadores/{espectadoresid}/critica
+#### POST espectadores/{espectadoresid}/crítica
 Asocia un objeto Crítica a un objeto Espectador.
 
 #### Parámetros
@@ -1038,11 +1038,11 @@ espectadoresid|PathParam|ID del objeto Espectador al cual se asociará el objeto
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|Objeto Crítica asociado|[Representación Detail de Crítica](#recurso-critica)
+200|Objeto Crítica asociado|[Representación Detail de Crítica](#recurso-crítica)
 500|No se pudo asociar el objeto Crítica|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 
-#### PUT espectadores/{espectadoresid}/critica
+#### PUT espectadores/{espectadoresid}/crítica
 
 Es el encargado de remplazar la Crítica asociada a un objeto Espectador.
 
@@ -1051,17 +1051,17 @@ Es el encargado de remplazar la Crítica asociada a un objeto Espectador.
 Nombre|Ubicación|Descripción|Requerido|Esquema
 :--|:--|:--|:--|:--
 espectadoresid|Path|ID del objeto Espectador cuya asociación será remplazada|Sí|Integer
-body|body|Objeto Crítica|Sí|[Representación Detail](#recurso-critica)
+body|body|Objeto Crítica|Sí|[Representación Detail](#recurso-crítica)
 
 #### Respuesta
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|Se remplazó el objeto|Objeto Crítica en [Representación Detail](#recurso-critica)
+200|Se remplazó el objeto|Objeto Crítica en [Representación Detail](#recurso-crítica)
 500|No se pudo remplazar el objeto|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 
-#### DELETE espectadores/{espectadoresid}/critica
+#### DELETE espectadores/{espectadoresid}/crítica
 
 Remueve un objeto Crítica de un objeto Espectador.
 
@@ -1598,7 +1598,7 @@ Código|Descripción|Cuerpo
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 404|No existe un objeto funcion con el ID solicitado. | Mensaje de error
 
-#### GET /funciones/{funcionesid}/criticas
+#### GET /funciones/{funcionesid}/críticas
 
 Retorna una colección de objetos Crítica en representación Detail.
 
@@ -1611,13 +1611,13 @@ Retorna una colección de objetos Crítica en representación Detail.
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Colección de Crítica en [representaciones Detail](#recurso-critica)
+200|OK|Colección de Crítica en [representaciones Detail](#recurso-crítica)
 412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 500|Error interno|Mensaje de error
 404|No existe un objeto Funcion con el ID solicitado|Mensaje de error
 
-#### GET /funciones/{funcionesid}/criticas/{criticasid}
+#### GET /funciones/{funcionesid}/críticas/{críticasid}
 
 Retorna un objeto Crítica en representación Detail.
 
@@ -1627,13 +1627,13 @@ Retorna un objeto Crítica en representación Detail.
 Nombre|Ubicación|Descripción|Requerido|Esquema
 :--|:--|:--|:--|:--
 funcionesid|Path|ID del objeto Funcion a consultar|Sí|Integer
-criticasid|Path|ID del objeto Crítica a consiltar|Si|Integer 
+críticasid|Path|ID del objeto Crítica a consiltar|Si|Integer 
 
 #### Respuesta
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Objeto Crítica en [representaciones Detail](#recurso-critica)
+200|OK|Objeto Crítica en [representaciones Detail](#recurso-crítica)
 404|No existe un objeto Funcion con el ID solicitado|Mensaje de error
 404|No existe un objeto Crítica con el ID solicitado|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
@@ -2176,7 +2176,7 @@ Retorna un objeto Teatro en representación Detail.
 Nombre|Ubicación|Descripción|Requerido|Esquema
 :--|:--|:--|:--|:--
 funcionesid|Path|ID del objeto Festival a consultar|Sí|Integer
-criticasid|Path|ID del objeto Teatro a consultar|Si|Integer 
+críticasid|Path|ID del objeto Teatro a consultar|Si|Integer 
 
 #### Respuesta
 
