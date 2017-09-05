@@ -136,7 +136,7 @@
 		- [GET boletas/{boletasid}/espectador](#GET-/boletas/{boletasid}/espectador)
 		- [POST boletas/{boletasid}/espectador](#POST-/boletas/{boletasid}/espectador)
 		- [PUT boletas/{boletasid}/espectador](#PUT-/boletas/{boletasid}/espectador)	
-    	- [Recurso Sala](#recurso-sala)
+	- [Recurso Sala](#recurso-sala)
 		- [GET /salas](#get-salas)
 		- [GET /salas/{id}](#get-salasid)
 		- [POST /salas](#post-salas)
