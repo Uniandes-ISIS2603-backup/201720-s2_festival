@@ -29,20 +29,20 @@
 		- [POST espectadores/{espectadoresid}/función](#post-espectadoresespectadoresidfunción)
 		- [PUT espectadores/{espectadoresid}/función](#put-espectadoresespectadoresidfunción)
 		- [DELETE espectadores/{espectadoresid}/función](#delete-espectadoresespectadoresidfunción)
-	- [Recurso Crítico](#recurso-critico)
-		- [GET /criticos](#get-criticos)
-		- [GET /criticos/{id}](#get-criticosid)
-		- [POST /criticos](#post-criticos)
-		- [PUT /criticos/{id}](#put-criticosid)
-		- [DELETE /criticos/{id}](#delete-criticosid)
-		- [GET /criticos/{criticosid}/crítica](#get-criticoscriticosidcrítica)
-		- [POST /criticos/{criticosid}/crítica](#post-criticoscriticosidcrítica)
-		- [PUT /criticos/{criticosid}/crítica](#put-criticoscriticosidcrítica)
-		- [DELETE /criticos/{criticosid}/crítica](#delete-criticoscriticosidcrítica)
-		- [GET /criticos/{criticosid}/pelicula](#get-criticoscriticosidpelicula)
-		- [POST /criticos/{criticosid}/pelicula](#post-criticoscriticosidpelicula)
-		- [PUT /criticos/{criticosid}/pelicula](#put-criticoscriticosidpelicula)
-		- [DELETE /criticos/{criticosid}/pelicula](#delete-criticoscriticosidpelicula)
+	- [Recurso Crítico](#recurso-crítico)
+		- [GET /críticos](#get-críticos)
+		- [GET /críticos/{id}](#get-críticosid)
+		- [POST /críticos](#post-críticos)
+		- [PUT /críticos/{id}](#put-críticosid)
+		- [DELETE /críticos/{id}](#delete-críticosid)
+		- [GET /críticos/{críticosid}/crítica](#get-críticoscríticosidcrítica)
+		- [POST /críticos/{críticosid}/crítica](#post-críticoscríticosidcrítica)
+		- [PUT /críticos/{críticosid}/crítica](#put-críticoscríticosidcrítica)
+		- [DELETE /críticos/{críticosid}/crítica](#delete-críticoscríticosidcrítica)
+		- [GET /críticos/{críticosid}/pelicula](#get-críticoscríticosidpelicula)
+		- [POST /críticos/{críticosid}/pelicula](#post-críticoscríticosidpelicula)
+		- [PUT /críticos/{críticosid}/pelicula](#put-críticoscríticosidpelicula)
+		- [DELETE /críticos/{críticosid}/pelicula](#delete-críticoscríticosidpelicula)
 	- [Recurso Crítica](#recurso-crítica)
 		- [GET /críticas](#get-críticas)
 		- [GET /críticas/{id}](#get-críticasid)
@@ -140,7 +140,7 @@
 
 # API Rest
 ## Introducción
-La comunicación entre critico y servidor se realiza intercambiando objetos JSON. Para cada entidad se hace un mapeo a JSON, donde cada uno de sus atributos se transforma en una 
+La comunicación entre crítico y servidor se realiza intercambiando objetos JSON. Para cada entidad se hace un mapeo a JSON, donde cada uno de sus atributos se transforma en una 
 propiedad de un objeto JSON. Todos los servicios se generan en la URL /festival_cine/api/. Por defecto, todas las entidades tienen un atributo `id`, con el cual se identifica cada 
 registro:
 
@@ -483,7 +483,7 @@ El objeto Crítico tiene 2 representaciones JSON:
 
 
 
-#### GET /criticos
+#### GET /críticos
 
 Retorna una colección de objetos Crítico en representación Detail.
 Cada Crítico en la colección tiene embebidos los siguientes objetos: Crítica y Película.
@@ -496,12 +496,12 @@ Cada Crítico en la colección tiene embebidos los siguientes objetos: Crítica 
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Colección de Crítico en [representaciones Detail](#recurso-criticos)
+200|OK|Colección de Crítico en [representaciones Detail](#recurso-críticos)
 412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 500|Error interno|Mensaje de error
 
-#### GET /criticos/{id}
+#### GET /críticos/{id}
 
 Retorna un objeto Crítico en representación Detail.
 El Crítico en la colección tiene los siguientes objetos: Crítica, Festival y Película.
@@ -516,12 +516,12 @@ id|Path|ID del objeto Crítico a consultar|Sí|Integer
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Objeto Crítico en [representaciones Detail](#recurso-criticos)
+200|OK|Objeto Crítico en [representaciones Detail](#recurso-críticos)
 404|No existe un objeto Crítico con el ID solicitado|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 500|Error interno|Mensaje de error
 
-#### POST /criticos
+#### POST /críticos
 
 Es el encargado de crear objetos Crítico.
 
@@ -529,18 +529,18 @@ Es el encargado de crear objetos Crítico.
 
 Nombre|Ubicación|Descripción|Requerido|Esquema
 :--|:--|:--|:--|:--
-body|body|Objeto Crítico que será creado|Sí|[Representación Detail](#recurso-critico)
+body|body|Objeto Crítico que será creado|Sí|[Representación Detail](#recurso-crítico)
 
 #### Respuesta
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-201|El objeto Crítico ha sido creado|[Representación Detail](#recurso-critico)
+201|El objeto Crítico ha sido creado|[Representación Detail](#recurso-crítico)
 412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 500|No se pudo crear el objeto Crítico|Mensaje de error
 
-#### PUT /criticos/{id}
+#### PUT /críticos/{id}
 
 Es el encargado de actualizar objetos Crítico.
 
@@ -549,18 +549,18 @@ Es el encargado de actualizar objetos Crítico.
 Nombre|Ubicación|Descripción|Requerido|Esquema
 :--|:--|:--|:--|:--
 id|Path|ID del objeto Crítico a actualizar|Sí|Integer
-body|body|Objeto Crítico nuevo|Sí|[Representación Detail](#recurso-critico)
+body|body|Objeto Crítico nuevo|Sí|[Representación Detail](#recurso-crítico)
 
 #### Respuesta
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-201|El objeto Crítico actualizado|[Representación Detail](#recurso-critico)
+201|El objeto Crítico actualizado|[Representación Detail](#recurso-crítico)
 412|business exception, no se cumple con las reglas de negocio|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 500|No se pudo actualizar el objeto Crítico|Mensaje de error
 
-#### DELETE /criticos/{id}
+#### DELETE /críticos/{id}
 
 Elimina un objeto Crítico.
 
@@ -578,7 +578,7 @@ Código|Descripción|Cuerpo
 500|Error interno|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 
-#### GET criticos/{criticosid}/critico
+#### GET críticos/{críticosid}/crítico
 
 Retorna un Crítico asociado a un objeto Crítico en representación Detail.
 
@@ -586,34 +586,34 @@ Retorna un Crítico asociado a un objeto Crítico en representación Detail.
 
 Nombre|Ubicación|Descripción|Requerido|Esquemaw
 :--|:--|:--|:--|:--
-criticosid|Path|ID del objeto Crítico a consultar|Sí|Integer
+críticosid|Path|ID del objeto Crítico a consultar|Sí|Integer
 
 #### Respuesta
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Objeto Crítico en [representación Detail](#recurso-critico)
-500|Error consultando critico|Mensaje de error
+200|OK|Objeto Crítico en [representación Detail](#recurso-crítico)
+500|Error consultando crítico|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 
-#### POST criticos/{criticosid}/critico
+#### POST críticos/{críticosid}/crítico
 Asocia un objeto Crítico a un objeto Crítico.
 
 #### Parámetros
 
 Nombre|Ubicación|Descripción|Requerido|Esquema
 :--|:--|:--|:--|:--
-criticosid|PathParam|ID del objeto Crítico al cual se asociará el objeto Crítico|Sí|Integer
+críticosid|PathParam|ID del objeto Crítico al cual se asociará el objeto Crítico|Sí|Integer
 
 #### Respuesta
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|Objeto Crítico asociado|[Representación Detail de Crítico](#recurso-critico)
+200|Objeto Crítico asociado|[Representación Detail de Crítico](#recurso-crítico)
 500|No se pudo asociar el objeto Crítico|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 
-#### PUT criticos/{criticosid}/critico
+#### PUT críticos/{críticosid}/crítico
 
 Es el encargado de remplazar la Crítico asociada a un objeto Crítico.
 
@@ -621,18 +621,18 @@ Es el encargado de remplazar la Crítico asociada a un objeto Crítico.
 
 Nombre|Ubicación|Descripción|Requerido|Esquema
 :--|:--|:--|:--|:--
-criticosid|Path|ID del objeto Crítico cuya asociación será remplazada|Sí|Integer
-body|body|Objeto Crítico|Sí|[Representación Detail](#recurso-critico)
+críticosid|Path|ID del objeto Crítico cuya asociación será remplazada|Sí|Integer
+body|body|Objeto Crítico|Sí|[Representación Detail](#recurso-crítico)
 
 #### Respuesta
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|Se remplazó el objeto|Objeto Crítico en [Representación Detail](#recurso-critico)
+200|Se remplazó el objeto|Objeto Crítico en [Representación Detail](#recurso-crítico)
 500|No se pudo remplazar el objeto|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 
-#### DELETE criticos/{criticosid}/critico
+#### DELETE críticos/{críticosid}/crítico
 
 Remueve un objeto Crítico de un objeto Crítico.
 
@@ -640,7 +640,7 @@ Remueve un objeto Crítico de un objeto Crítico.
 
 Nombre|Ubicación|Descripción|Requerido|Esquema
 :--|:--|:--|:--|:--
-criticosid|Path|ID del objeto Crítico asociado al objeto Crítico|Sí|Integer
+críticosid|Path|ID del objeto Crítico asociado al objeto Crítico|Sí|Integer
 
 #### Respuesta
 
@@ -650,7 +650,7 @@ Código|Descripción|Cuerpo
 500|Error interno|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 
-#### GET criticos/{criticosid}/crítica
+#### GET críticos/{críticosid}/crítica
 
 Retorna una Crítica asociada a un objeto Crítico en representación Detail.
 
@@ -658,7 +658,7 @@ Retorna una Crítica asociada a un objeto Crítico en representación Detail.
 
 Nombre|Ubicación|Descripción|Requerido|Esquema
 :--|:--|:--|:--|:--
-criticosid|Path|ID del objeto Crítico a consultar|Sí|Integer
+críticosid|Path|ID del objeto Crítico a consultar|Sí|Integer
 
 #### Respuesta
 
@@ -668,14 +668,14 @@ Código|Descripción|Cuerpo
 500|Error consultando crítica |Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 
-#### POST criticos/{criticosid}/crítica
+#### POST críticos/{críticosid}/crítica
 Asocia un objeto Crítica a un objeto Crítico.
 
 #### Parámetros
 
 Nombre|Ubicación|Descripción|Requerido|Esquema
 :--|:--|:--|:--|:--
-criticosid|PathParam|ID del objeto Crítico al cual se asociará el objeto Crítica|Sí|Integer
+críticosid|PathParam|ID del objeto Crítico al cual se asociará el objeto Crítica|Sí|Integer
 
 #### Respuesta
 
@@ -685,7 +685,7 @@ Código|Descripción|Cuerpo
 500|No se pudo asociar el objeto Crítica|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 
-#### PUT criticos/{criticosid}/crítica
+#### PUT críticos/{críticosid}/crítica
 
 Es el encargado de remplazar la Crítica asociada a un objeto Crítico.
 
@@ -693,7 +693,7 @@ Es el encargado de remplazar la Crítica asociada a un objeto Crítico.
 
 Nombre|Ubicación|Descripción|Requerido|Esquema
 :--|:--|:--|:--|:--
-criticosid|Path|ID del objeto Crítico cuya asociación será remplazada|Sí|Integer
+críticosid|Path|ID del objeto Crítico cuya asociación será remplazada|Sí|Integer
 body|body|Objeto Crítica|Sí|[Representación Detail](#recurso-crítica)
 
 #### Respuesta
@@ -704,7 +704,7 @@ Código|Descripción|Cuerpo
 500|No se pudo remplazar el objeto|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 
-#### DELETE criticos/{criticosid}/crítica
+#### DELETE críticos/{críticosid}/crítica
 
 Remueve un objeto Crítica de un objeto Crítico.
 
@@ -712,7 +712,7 @@ Remueve un objeto Crítica de un objeto Crítico.
 
 Nombre|Ubicación|Descripción|Requerido|Esquema
 :--|:--|:--|:--|:--
-criticosid|Path|ID del objeto Crítico asociado al objeto Crítica|Sí|Integer
+críticosid|Path|ID del objeto Crítico asociado al objeto Crítica|Sí|Integer
 
 #### Respuesta
 
@@ -722,7 +722,7 @@ Código|Descripción|Cuerpo
 500|Error interno|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 
-#### GET criticos/{criticosid}/pelicula
+#### GET críticos/{críticosid}/pelicula
 
 Retorna una Película asociada a un objeto Crítico en representación Detail.
 
@@ -730,7 +730,7 @@ Retorna una Película asociada a un objeto Crítico en representación Detail.
 
 Nombre|Ubicación|Descripción|Requerido|Esquema
 :--|:--|:--|:--|:--
-criticosid|Path|ID del objeto Crítico a consultar|Sí|Integer
+críticosid|Path|ID del objeto Crítico a consultar|Sí|Integer
 
 #### Respuesta
 
@@ -740,14 +740,14 @@ Código|Descripción|Cuerpo
 500|Error consultando función |Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 
-#### POST criticos/{criticosid}/pelicula
+#### POST críticos/{críticosid}/pelicula
 Asocia un objeto Película a un objeto Crítico.
 
 #### Parámetros
 
 Nombre|Ubicación|Descripción|Requerido|Esquema
 :--|:--|:--|:--|:--
-criticosid|PathParam|ID del objeto Crítico al cual se asociará el objeto Película|Sí|Integer
+críticosid|PathParam|ID del objeto Crítico al cual se asociará el objeto Película|Sí|Integer
 
 #### Respuesta
 
@@ -757,7 +757,7 @@ Código|Descripción|Cuerpo
 500|No se pudo asociar el objeto Película |Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 
-#### PUT criticos/{criticosid}/pelicula
+#### PUT críticos/{críticosid}/pelicula
 
 Es el encargado de remplazar la Película asociada a un objeto Crítico.
 
@@ -765,7 +765,7 @@ Es el encargado de remplazar la Película asociada a un objeto Crítico.
 
 Nombre|Ubicación|Descripción|Requerido|Esquema
 :--|:--|:--|:--|:--
-criticosid|Path|ID del objeto Crítico cuya asociación será remplazada|Sí|Integer
+críticosid|Path|ID del objeto Crítico cuya asociación será remplazada|Sí|Integer
 body|body|Objeto Película|Sí|[Representación Detail](#recurso-pelicula)
 
 #### Respuesta
@@ -776,7 +776,7 @@ Código|Descripción|Cuerpo
 500|No se pudo remplazar el objeto|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 
-#### DELETE criticos/{criticosid}/pelicula
+#### DELETE críticos/{críticosid}/pelicula
 
 Remueve un objeto Película de un objeto Crítico.
 
@@ -784,7 +784,7 @@ Remueve un objeto Película de un objeto Crítico.
 
 Nombre|Ubicación|Descripción|Requerido|Esquema
 :--|:--|:--|:--|:--
-criticosid|Path|ID del objeto Crítico asociado al objeto Película|Sí|Integer
+críticosid|Path|ID del objeto Crítico asociado al objeto Película|Sí|Integer
 
 #### Respuesta
 
