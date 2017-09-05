@@ -83,6 +83,25 @@
 		- [GET /teatros/{id}](#get-teatrosid)
 		- [POST /teatros](#post-teatros)
 		- [PUT /teatros/{id}](#put-teatros)
+		- [DELETE /teatros/{id}](#put-teatros)
+		- [GET /teatros/{teatrosid}/salas](#put-teatros)
+		- [GET /teatros/{teatrosid}/salas/{salasid}](#put-teatros)
+		- [GET /teatros/{teatrosid}/salas](#put-teatros)
+		- [POST /teatros/{teatrosid}/sala](#put-teatros)
+		- [PUT/teatros/{teatrosid}/sala](#put-teatros)
+		- [DELETE /teatros/{teatrosid}/salas/{salasid}](#put-teatros)
+	- [Recurso Festival](#recurso-teatro)
+	- [GET /festivales](#get-festivales)
+	        - [GET /festivales/{id}](#get-festivales)
+		- [POST /festivales](#post-teatros)
+		- [PUT /festivales/{id}](#post-teatros)
+		- [DELETE /festivales/{id}](#post-teatros)
+		- [GET /festivales/{festivalesid}/teatros](#post-teatros)
+		- [GET /festivalesid}/teatrosid](#post-teatros)
+		- [POST /festivales/{festivalesid}/teatrosid](#post-teatros)
+		- [PUT/festivales/{festivalesid}/teatros](#post-teatros)
+		- [DELETE /festivales/{festivalesid}/teatros/{teatrosid}](#post-teatros)	
+		
 	- [Recurso Abono](#recurso-abono)
 		- [GET /abonos](#GET-/abonos)
 		- [GET /abonos/{id}](#GET-/abonos/{id})
@@ -2186,45 +2205,6 @@ Código|Descripción|Cuerpo
 500|Error interno|Mensaje de error
 404|No existe un objeto Festival con el ID solicitado|Mensaje de error
 
-#### GET /festvivales/{festivalesid}/teatros/{teatrosid}
-
-Retorna un objeto Teatro en representación Detail.
-
-#### Parámetros
-
-Nombre|Ubicación|Descripción|Requerido|Esquema
-:--|:--|:--|:--|:--
-funcionesid|Path|ID del objeto Festival a consultar|Sí|Integer
-críticasid|Path|ID del objeto Teatro a consultar|Si|Integer 
-
-#### Respuesta
-
-Código|Descripción|Cuerpo
-:--|:--|:--
-200|OK|Objeto Teatro en [Representaciones Detail](#recurso-teatro)
-404|No existe un objeto Festival con el ID solicitado|Mensaje de error
-404|No existe un objeto Teatro con el ID solicitado|Mensaje de error
-405|method not allowed, no existe permiso para el recurso|Mensaje de error
-500|Error interno|Mensaje de error
-
-
-#### GET /festivales/{festivalesid}/teatros
-
-Retorna una colección de objetos Teatro representación Detail.
-
-#### Parámetros
-
-#### N/A
-
-#### Respuesta
-
-Código|Descripción|Cuerpo
-:--|:--|:--
-200|OK|Colección de Teatro [Representaciones Detail](#recurso-teatro)
-412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
-405|method not allowed, no existe permiso para el recurso|Mensaje de error
-500|Error interno|Mensaje de error
-404|No existe un objeto Festival con el ID solicitado|Mensaje de error
 
 #### GET /festivalesid}/teatrosid
 
