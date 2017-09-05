@@ -15,20 +15,12 @@
 		- [POST sillas/{sillasid}/función](#post-sillassillasidfunción)
 		- [PUT sillas/{sillasid}/función](#put-sillassillasidfunción)
 		- [DELETE sillas/{sillasid}/función](#delete-sillassillasidfunción)
-	- [Recurso Espectador](#recurso-espectadores)
+	- [Recurso Espectador](#recurso-espectador)
 		- [GET /espectadores](#get-espectadores)
 		- [GET /espectadores/{id}](#get-espectadoresid)
 		- [POST /espectadores](#post-espectadores)
 		- [PUT /espectadores/{id}](#put-espectadoresid)
 		- [DELETE /espectadores/{id}](#delete-espectadoresid)
-		- [GET espectadores/{espectadoresid}/boleta](#get-espectadoresespectadoresidboleta)
-		- [POST espectadores/{espectadoresid}/boleta](#post-espectadoresespectadoresidboleta)
-		- [PUT espectadores/{espectadoresid}/boleta](#put-espectadoresespectadoresidboleta)
-		- [DELETE espectadores/{espectadoresid}/boleta](#delete-espectadoresespectadoresidboleta)
-		- [GET espectadores/{espectadoresid}/función](#get-espectadoresespectadoresidfunción)
-		- [POST espectadores/{espectadoresid}/función](#post-espectadoresespectadoresidfunción)
-		- [PUT espectadores/{espectadoresid}/función](#put-espectadoresespectadoresidfunción)
-		- [DELETE espectadores/{espectadoresid}/función](#delete-espectadoresespectadoresidfunción)
 	- [Recurso Crítico](#recurso-crítico)
 		- [GET /críticos](#get-críticos)
 		- [GET /críticos/{id}](#get-críticosid)
@@ -76,7 +68,6 @@
 		- [POST /funciones/{funcionesid}/sillas](#post-funcionesidsillas)
 		- [PUT /funciones/{funcionasid}/sillas/{sillasid}](#put-funcionesidsillasid)
 		- [DELETE /funciones/{funcionesid}/sillas/{sillasid}](#delete-funcionesidsillasid)
-	
 	- [Recurso Teatro](#recurso-teatro)
 	        - [GET /teatros](#get-teatros)
 		- [GET /teatros/{id}](#get-teatrosid)
@@ -210,7 +201,7 @@ Cada Silla en la colección tiene embebidos los siguientes objetos: Boleta y Fun
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Colección de Silla en [representaciones Detail](#recurso-silla)
+200|OK|Colección de Silla en [Representaciones Detail](#recurso-silla)
 412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 500|Error interno|Mensaje de error
@@ -230,7 +221,7 @@ id|Path|ID del objeto Silla a consultar|Sí|Integer
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Objeto Silla en [representaciones Detail](#recurso-silla)
+200|OK|Objeto Silla en [Representaciones Detail](#recurso-silla)
 404|No existe un objeto Silla con el ID solicitado|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 500|Error interno|Mensaje de error
@@ -306,7 +297,7 @@ sillasid|Path|ID del objeto Silla a consultar|Sí|Integer
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Objeto Boleta en [representación Detail](#recurso-boleta)
+200|OK|Objeto Boleta en [Representación Detail](#recurso-boleta)
 500|Error consultando boleta |Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 
@@ -378,7 +369,7 @@ sillasid|Path|ID del objeto Silla a consultar|Sí|Integer
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Objeto Función en [representación Detail](#recurso-función)
+200|OK|Objeto Función en [Representación Detail](#recurso-función)
 500|Error consultando función |Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 
@@ -496,7 +487,7 @@ Cada Crítico en la colección tiene embebidos los siguientes objetos: Crítica 
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Colección de Crítico en [representaciones Detail](#recurso-críticos)
+200|OK|Colección de Crítico en [Representaciones Detail](#recurso-críticos)
 412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 500|Error interno|Mensaje de error
@@ -516,7 +507,7 @@ id|Path|ID del objeto Crítico a consultar|Sí|Integer
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Objeto Crítico en [representaciones Detail](#recurso-críticos)
+200|OK|Objeto Crítico en [Representaciones Detail](#recurso-críticos)
 404|No existe un objeto Crítico con el ID solicitado|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 500|Error interno|Mensaje de error
@@ -592,7 +583,7 @@ críticosid|Path|ID del objeto Crítico a consultar|Sí|Integer
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Objeto Crítico en [representación Detail](#recurso-crítico)
+200|OK|Objeto Crítico en [Representación Detail](#recurso-crítico)
 500|Error consultando crítico|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 
@@ -664,7 +655,7 @@ críticosid|Path|ID del objeto Crítico a consultar|Sí|Integer
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Objeto Función en [representación Detail](#recurso-crítica)
+200|OK|Objeto Función en [Representación Detail](#recurso-crítica)
 500|Error consultando crítica |Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 
@@ -736,7 +727,7 @@ críticosid|Path|ID del objeto Crítico a consultar|Sí|Integer
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Objeto Película en [representación Detail](#recurso-función)
+200|OK|Objeto Película en [Representación Detail](#recurso-función)
 500|Error consultando función |Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 
@@ -799,51 +790,19 @@ Código|Descripción|Cuerpo
 
 ### Recurso Espectador
 
-El objeto Espectador tiene 2 representaciones JSON:	
+El objeto Espectador tiene 1 representación Detail JSON:	
 
-#### Representación Minimum
 ```javascript
 {
     id: '' /*Tipo Long*/,
     nombre: '' /*Tipo String*/,
+    direccion: '' /*Tipo String*/,
 }
 ```
-
-#### Representación Detail
-```javascript
-{
-    // todo lo de la representación Minimum más los objetos Minimum con relación simple.
-    crítica: {
-        id: '' /*Tipo Long*/,  
-		comentario: '' /*Tipo String*/,
-    },
-    pelicula: {
-        nombre: '' /*Tipo String*/,
-        generos: [{genero1: '' /*Tipo String*/},{genero2: '' /*Tipo String*/}, {generoN: '' /*Tipo String*/}] /*Tipo JsonList*/,
-        duracionMinutos: '' /*Tipo Integer*/,
-		director: '' /*Tipo String*/,
-		creditos: '' /*Tipo Integer*/,
-		pais: '' /*Tipo String*/,
-		id: '' /*Tipo String*/,
-		corto: '' /*Tipo String*/,
-    }, 
-	festival: {
-		id: '' /*Tipo Long*/,
-		nombre: '' /*Tipo String*/,
-		horaInicio: '' /*Tipo Date/*,
-		horaFin: '' /*Tipo Date/*
-		patrocinador: '' /*Tipo String/*
-	},
-	
-}
-```
-
-
 
 #### GET /espectadores
 
 Retorna una colección de objetos Espectador en representación Detail.
-Cada Espectador en la colección tiene embebidos los siguientes objetos: Crítica, Festival y Película.
 
 #### Parámetros
 
@@ -853,7 +812,7 @@ Cada Espectador en la colección tiene embebidos los siguientes objetos: Crític
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Colección de Espectador en [representaciones Detail](#recurso-espectadores)
+200|OK|Colección de Espectadores en [Representaciones Detail](#recurso-espectador)
 412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 500|Error interno|Mensaje de error
@@ -861,7 +820,6 @@ Código|Descripción|Cuerpo
 #### GET /espectadores/{id}
 
 Retorna un objeto Espectador en representación Detail.
-El Espectador en la colección tiene los siguientes objetos: Crítica, Festival y Película.
 
 #### Parámetros
 
@@ -873,7 +831,7 @@ id|Path|ID del objeto Espectador a consultar|Sí|Integer
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Objeto Espectador en [representaciones Detail](#recurso-espectadores)
+200|OK|Objeto Espectador en [Representación Detail](#recurso-espectadores)
 404|No existe un objeto Espectador con el ID solicitado|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 500|Error interno|Mensaje de error
@@ -935,154 +893,9 @@ Código|Descripción|Cuerpo
 500|Error interno|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 
-#### GET espectadores/{espectadoresid}/espectador
-
-Retorna un Espectador asociado a un objeto Espectador en representación Detail.
-
-#### Parámetros
-
-Nombre|Ubicación|Descripción|Requerido|Esquemaw
-:--|:--|:--|:--|:--
-espectadoresid|Path|ID del objeto Espectador a consultar|Sí|Integer
-
-#### Respuesta
-
-Código|Descripción|Cuerpo
-:--|:--|:--
-200|OK|Objeto Espectador en [representación Detail](#recurso-espectador)
-500|Error consultando espectador|Mensaje de error
-405|method not allowed, no existe permiso para el recurso|Mensaje de error
-
-#### POST espectadores/{espectadoresid}/espectador
-Asocia un objeto Espectador a un objeto Espectador.
-
-#### Parámetros
-
-Nombre|Ubicación|Descripción|Requerido|Esquema
-:--|:--|:--|:--|:--
-espectadoresid|PathParam|ID del objeto Espectador al cual se asociará el objeto Espectador|Sí|Integer
-
-#### Respuesta
-
-Código|Descripción|Cuerpo
-:--|:--|:--
-200|Objeto Espectador asociado|[Representación Detail de Espectador](#recurso-espectador)
-500|No se pudo asociar el objeto Espectador|Mensaje de error
-405|method not allowed, no existe permiso para el recurso|Mensaje de error
-
-#### PUT espectadores/{espectadoresid}/espectador
-
-Es el encargado de remplazar la Espectador asociada a un objeto Espectador.
-
-#### Parámetros
-
-Nombre|Ubicación|Descripción|Requerido|Esquema
-:--|:--|:--|:--|:--
-espectadoresid|Path|ID del objeto Espectador cuya asociación será remplazada|Sí|Integer
-body|body|Objeto Espectador|Sí|[Representación Detail](#recurso-espectador)
-
-#### Respuesta
-
-Código|Descripción|Cuerpo
-:--|:--|:--
-200|Se remplazó el objeto|Objeto Espectador en [Representación Detail](#recurso-espectador)
-500|No se pudo remplazar el objeto|Mensaje de error
-405|method not allowed, no existe permiso para el recurso|Mensaje de error
-
-#### DELETE espectadores/{espectadoresid}/espectador
-
-Remueve un objeto Espectador de un objeto Espectador.
-
-#### Parámetros
-
-Nombre|Ubicación|Descripción|Requerido|Esquema
-:--|:--|:--|:--|:--
-espectadoresid|Path|ID del objeto Espectador asociado al objeto Espectador|Sí|Integer
-
-#### Respuesta
-
-Código|Descripción|Cuerpo
-:--|:--|:--
-204|Objeto removido|N/A
-500|Error interno|Mensaje de error
-405|method not allowed, no existe permiso para el recurso|Mensaje de error
-
-#### GET espectadores/{espectadoresid}/crítica
-
-Retorna una Crítica asociada a un objeto Espectador en representación Detail.
-
-#### Parámetros
-
-Nombre|Ubicación|Descripción|Requerido|Esquema
-:--|:--|:--|:--|:--
-espectadoresid|Path|ID del objeto Espectador a consultar|Sí|Integer
-
-#### Respuesta
-
-Código|Descripción|Cuerpo
-:--|:--|:--
-200|OK|Objeto Función en [representación Detail](#recurso-función)
-500|Error consultando función |Mensaje de error
-405|method not allowed, no existe permiso para el recurso|Mensaje de error
-
-#### POST espectadores/{espectadoresid}/crítica
-Asocia un objeto Crítica a un objeto Espectador.
-
-#### Parámetros
-
-Nombre|Ubicación|Descripción|Requerido|Esquema
-:--|:--|:--|:--|:--
-espectadoresid|PathParam|ID del objeto Espectador al cual se asociará el objeto Crítica|Sí|Integer
-
-#### Respuesta
-
-Código|Descripción|Cuerpo
-:--|:--|:--
-200|Objeto Crítica asociado|[Representación Detail de Crítica](#recurso-crítica)
-500|No se pudo asociar el objeto Crítica|Mensaje de error
-405|method not allowed, no existe permiso para el recurso|Mensaje de error
-
-#### PUT espectadores/{espectadoresid}/crítica
-
-Es el encargado de remplazar la Crítica asociada a un objeto Espectador.
-
-#### Parámetros
-
-Nombre|Ubicación|Descripción|Requerido|Esquema
-:--|:--|:--|:--|:--
-espectadoresid|Path|ID del objeto Espectador cuya asociación será remplazada|Sí|Integer
-body|body|Objeto Crítica|Sí|[Representación Detail](#recurso-crítica)
-
-#### Respuesta
-
-Código|Descripción|Cuerpo
-:--|:--|:--
-200|Se remplazó el objeto|Objeto Crítica en [Representación Detail](#recurso-crítica)
-500|No se pudo remplazar el objeto|Mensaje de error
-405|method not allowed, no existe permiso para el recurso|Mensaje de error
-
-#### DELETE espectadores/{espectadoresid}/crítica
-
-Remueve un objeto Crítica de un objeto Espectador.
-
-#### Parámetros
-
-Nombre|Ubicación|Descripción|Requerido|Esquema
-:--|:--|:--|:--|:--
-espectadoresid|Path|ID del objeto Espectador asociado al objeto Crítica|Sí|Integer
-
-#### Respuesta
-
-Código|Descripción|Cuerpo
-:--|:--|:--
-204|Objeto removido|N/A
-500|Error interno|Mensaje de error
-405|method not allowed, no existe permiso para el recurso|Mensaje de error
-
 [Volver arriba](#tabla-de-contenidos)
 
 
-//---------------------------------------------------------------------------------------//
 ### Recurso Crítica
 
 El objeto Crítica tiene 2 representaciones JSON:	
@@ -1108,8 +921,6 @@ El objeto Crítica tiene 2 representaciones JSON:
 }
 ```
 
-
-
 #### GET /críticas
 
 Retorna una colección de objetos Crítica en representación Detail.
@@ -1123,7 +934,7 @@ Cada Crítica en la colección tiene embebidos los siguientes objetos: Crítico 
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Colección de Crítica en [representaciones Detail](#recurso-crítica)
+200|OK|Colección de Crítica en [Representaciones Detail](#recurso-crítica)
 412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 500|Error interno|Mensaje de error
@@ -1143,7 +954,7 @@ id|Path|ID del objeto Crítica a consultar|Sí|Integer
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Objeto Crítica en [representaciones Detail](#recurso-crítica)
+200|OK|Objeto Crítica en [Representaciones Detail](#recurso-crítica)
 404|No existe un objeto Crítica con el ID solicitado|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 500|Error interno|Mensaje de error
@@ -1219,7 +1030,7 @@ críticasid|Path|ID del objeto Crítica a consultar|Sí|Integer
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Objeto Función en [representación Detail](#recurso-función)
+200|OK|Objeto Función en [Representación Detail](#recurso-función)
 500|Error consultando función |Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 
@@ -1291,7 +1102,7 @@ críticasid|Path|ID del objeto Crítica a consultar|Sí|Integer
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Objeto Crítico en [representación Detail](#recurso-crítico)
+200|OK|Objeto Crítico en [Representación Detail](#recurso-crítico)
 500|Error consultando crítico |Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 
@@ -1382,7 +1193,7 @@ Retorna una colección de objetos Calificacion en representación Detail.
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Colección de Calificacion en [representaciones Detail](#recurso-calificacion)
+200|OK|Colección de Calificacion en [Representaciones Detail](#recurso-calificacion)
 412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 500|Error interno|Mensaje de error
@@ -1401,7 +1212,7 @@ id|Path|ID del objeto Calificacion a consultar|Sí|Integer
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Objeto Calificacion en [representaciones Detail](#recurso-calificacion)
+200|OK|Objeto Calificacion en [Representaciones Detail](#recurso-calificacion)
 404|No existe un objeto Calificacion con el ID solicitado|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 500|Error interno|Mensaje de error
@@ -1515,7 +1326,7 @@ Retorna una colección de objetos Funcion en representación Detail.
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Colección de Funcion en [representaciones Detail](#recurso-funcion)
+200|OK|Colección de Funcion en [Representaciones Detail](#recurso-funcion)
 412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 500|Error interno|Mensaje de error
@@ -1534,7 +1345,7 @@ id|Path|ID del objeto Funcion a consultar|Sí|Integer
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Objeto Funcion en [representaciones Detail](#recurso-funcion)
+200|OK|Objeto Funcion en [Representaciones Detail](#recurso-funcion)
 404|No existe un objeto Funcion con el ID solicitado|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 500|Error interno|Mensaje de error
@@ -1611,7 +1422,7 @@ Retorna una colección de objetos Crítica en representación Detail.
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Colección de Crítica en [representaciones Detail](#recurso-crítica)
+200|OK|Colección de Crítica en [Representaciones Detail](#recurso-crítica)
 412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 500|Error interno|Mensaje de error
@@ -1633,7 +1444,7 @@ críticasid|Path|ID del objeto Crítica a consiltar|Si|Integer
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Objeto Crítica en [representaciones Detail](#recurso-crítica)
+200|OK|Objeto Crítica en [Representaciones Detail](#recurso-crítica)
 404|No existe un objeto Funcion con el ID solicitado|Mensaje de error
 404|No existe un objeto Crítica con el ID solicitado|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
@@ -1652,7 +1463,7 @@ Retorna una colección de objetos Silla en representación Detail.
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Colección de Silla en [representaciones Detail](#recurso-silla)
+200|OK|Colección de Silla en [Representaciones Detail](#recurso-silla)
 412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 500|Error interno|Mensaje de error
@@ -1673,7 +1484,7 @@ sillaid|Path|ID del objeto Silla a consultar|Sí|Integer
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Objeto Silla en [representaciones Detail](#recurso-calificacion)
+200|OK|Objeto Silla en [Representaciones Detail](#recurso-calificacion)
 404|No existe un objeto Funcion con el ID solicitado|Mensaje de error
 404|No existe un objeto Silla con el ID solicitado|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
@@ -1783,7 +1594,7 @@ Retorna una colección de objetos Teatro en representación Detail. Cada Teatro 
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Colección de Teatro en [representaciones Detail](#recurso-Teatro)
+200|OK|Colección de Teatro en [Representaciones Detail](#recurso-Teatro)
 412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 500|Error interno|Mensaje de error
@@ -1802,7 +1613,7 @@ id|Path|ID del objeto Teatro a consultar|Sí|Integer
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Objeto Teatro en [representaciones Detail](#recurso-teatros)
+200|OK|Objeto Teatro en [Representaciones Detail](#recurso-teatros)
 404|No existe un objeto Teatro con el ID solicitado|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 500|Error interno|Mensaje de error
@@ -1878,7 +1689,7 @@ Retorna una colección de objetos Teatro en representación Detail.
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Colección de Teatro en [representaciones Detail](#recurso-teatro)
+200|OK|Colección de Teatro en [Representaciones Detail](#recurso-teatro)
 412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 500|Error interno|Mensaje de error
@@ -1899,7 +1710,7 @@ salasid|Path|ID del objeto Sala a consultar|Si|Integer
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Objeto Sala en [representaciones Detail](#recurso-sala)
+200|OK|Objeto Sala en [Representaciones Detail](#recurso-sala)
 404|No existe un objeto Teatro con el ID solicitado|Mensaje de error
 404|No existe un objeto Sala con el ID solicitado|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
@@ -1918,7 +1729,7 @@ Retorna una colección de objetos Sala representación Detail.
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Colección de Sala[representaciones Detail](#recurso-sala)
+200|OK|Colección de Sala[Representaciones Detail](#recurso-sala)
 412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 500|Error interno|Mensaje de error
@@ -1939,7 +1750,7 @@ salasid|Path|ID del objeto Sala consultar|Sí|Integer
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Objeto Sala en [representaciones Detail](#recurso-sala)
+200|OK|Objeto Sala en [Representaciones Detail](#recurso-sala)
 404|No existe un objeto Teatro  solicitado|Mensaje de error
 404|No existe un objeto Sala con el ID solicitado|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
@@ -2067,7 +1878,7 @@ Retorna una colección de objetos Festival en representación Detail. Cada Festi
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Colección de Festival en [representaciones Detail](#recurso-Festival)
+200|OK|Colección de Festival en [Representaciones Detail](#recurso-Festival)
 412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 500|Error interno|Mensaje de error
@@ -2086,7 +1897,7 @@ id|Path|ID del objeto Festival a consultar|Sí|Integer
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Objeto Festival en [representaciones Detail](#recurso-festival)
+200|OK|Objeto Festival en [Representaciones Detail](#recurso-festival)
 404|No existe un objeto Festival con el ID solicitado|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 500|Error interno|Mensaje de error
@@ -2161,7 +1972,7 @@ Retorna una colección de objetos Teatro en representación Detail.
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Colección de Festival en [representaciones Detail](#recurso-teatro)
+200|OK|Colección de Festival en [Representaciones Detail](#recurso-teatro)
 412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 500|Error interno|Mensaje de error
@@ -2182,7 +1993,7 @@ críticasid|Path|ID del objeto Teatro a consultar|Si|Integer
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Objeto Teatro en [representaciones Detail](#recurso-teatro)
+200|OK|Objeto Teatro en [Representaciones Detail](#recurso-teatro)
 404|No existe un objeto Festival con el ID solicitado|Mensaje de error
 404|No existe un objeto Teatro con el ID solicitado|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
@@ -2201,7 +2012,7 @@ Retorna una colección de objetos Teatro representación Detail.
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Colección de Teatro [representaciones Detail](#recurso-teatro)
+200|OK|Colección de Teatro [Representaciones Detail](#recurso-teatro)
 412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 500|Error interno|Mensaje de error
@@ -2222,7 +2033,7 @@ teatrosid|Path|ID del objeto Teatro consultar|Sí|Integer
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Objeto Teatro en [representaciones Detail](#recurso-teatro)
+200|OK|Objeto Teatro en [Representaciones Detail](#recurso-teatro)
 404|No existe un objeto Festival D solicitado|Mensaje de error
 404|No existe un objeto Teatro con el ID solicitado|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
@@ -2329,7 +2140,7 @@ Cada Abono en la colección tiene embebidos los siguientes objetos: Espectador, 
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Colección de [representaciones Detail](#recurso-abono)
+200|OK|Colección de [Representaciones Detail](#recurso-abono)
 412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 500|Error interno|Mensaje de error
@@ -2349,7 +2160,7 @@ id|Path|ID del objeto Abono a consultar|Sí|Integer
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Objeto Abono en [representaciones Detail](#recurso-abono)
+200|OK|Objeto Abono en [Representaciones Detail](#recurso-abono)
 404|No existe un objeto Abono con el ID solicitado|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 500|Error interno|Mensaje de error
@@ -2425,7 +2236,7 @@ id|Path|ID del objeto Abono a consultar|Sí|Integer
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|objeto Espectador en [representación Detail](#recurso-espectador)
+200|OK|objeto Espectador en [Representación Detail](#recurso-espectador)
 500|Error consultando espectadores |Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 
@@ -2443,7 +2254,7 @@ id|Path|ID del objeto Abono cuya boleta se quiere consultar|Sí|Integer
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Colección de objetos Boleta en [representación Detail](#recurso-boleta)
+200|OK|Colección de objetos Boleta en [Representación Detail](#recurso-boleta)
 500|Error consultando boletas |Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 
@@ -2463,7 +2274,7 @@ boletasid|Path|ID del objeto Boleta a consultar|Sí|Integer
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Objeto Boleta en [representación Detail](#recurso-boleta)
+200|OK|Objeto Boleta en [Representación Detail](#recurso-boleta)
 404|No existe un objeto Boleta con el ID solicitado asociado al objeto Abono indicado |Mensaje de error
 500|Error interno|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
@@ -2617,7 +2428,7 @@ Retorna una colección de objetos Boleta en representación Detail.
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Colección de [representaciones Detail](#recurso-boleta)
+200|OK|Colección de [Representaciones Detail](#recurso-boleta)
 412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 500|Error interno|Mensaje de error
@@ -2637,7 +2448,7 @@ id|Path|ID del objeto Boleta a consultar|Sí|Integer
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Objeto Boleta en [representaciones Detail](#recurso-boleta)
+200|OK|Objeto Boleta en [Representaciones Detail](#recurso-boleta)
 404|No existe un objeto Boleta con el ID solicitado|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 500|Error interno|Mensaje de error
@@ -2715,7 +2526,7 @@ id|Path|ID del objeto Boleta a consultar|Sí|Integer
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Colección de objetos Boleta en [representación Detail](#recurso-boleta)
+200|OK|Colección de objetos Boleta en [Representación Detail](#recurso-boleta)
 500|Error consultando espectadores |Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 
@@ -2733,7 +2544,7 @@ id|Path|ID del objeto Boleta a consultar|Sí|Integer
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Objeto Calificacion en [representación Detail](#recurso-Calificacion)
+200|OK|Objeto Calificacion en [Representación Detail](#recurso-Calificacion)
 500|Error consultando calificacion |Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 
@@ -2765,7 +2576,7 @@ Método encargado de reemplazar el objeto Calificación asociado a un objeto Bol
 Nombre|Ubicación|Descripción|Requerido|Esquema
 :--|:--|:--|:--|:--
 boletasid|PathParam|ID del objeto Boleta al cual se asociará el objeto Calificacion|Sí|Integer
-|body|body|objeto Calificacion|si|[representación Detail] (#recurso-calificacion)
+|body|body|objeto Calificacion|si|[Representación Detail] (#recurso-calificacion)
 
 #### Respuesta
 
@@ -2813,7 +2624,7 @@ id|Path|ID del objeto Silla a consultar|Sí|Integer
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Objeto Silla en [representación Detail](#recurso-silla)
+200|OK|Objeto Silla en [Representación Detail](#recurso-silla)
 500|Error consultando sillas |Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 
@@ -2845,7 +2656,7 @@ Método encargado de reemplazar el objeto Silla asociado a un objeto Boleta.
 Nombre|Ubicación|Descripción|Requerido|Esquema
 :--|:--|:--|:--|:--
 boletasid|PathParam|ID del objeto Boleta al cual se asociará el objeto Silla|Sí|Integer
-|body|body|objeto Silla|si|[representación Detail] (#recurso-silla)
+|body|body|objeto Silla|si|[Representación Detail] (#recurso-silla)
 
 #### Respuesta
 
@@ -2888,7 +2699,7 @@ id|Path|ID del objeto Espectador a consultar|Sí|Integer
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Objeto Espectador en [representación Detail](#recurso-espectador)
+200|OK|Objeto Espectador en [Representación Detail](#recurso-espectador)
 500|Error consultando espectadores |Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 
@@ -2920,7 +2731,7 @@ Método encargado de reemplazar el objeto Espectador asociado a un objeto Boleta
 Nombre|Ubicación|Descripción|Requerido|Esquema
 :--|:--|:--|:--|:--
 boletasid|PathParam|ID del objeto Boleta al cual se asociará el objeto Espectador|Sí|Integer
-|body|body|objeto Espectador|si|[representación Detail] (#recurso-espectador)
+|body|body|objeto Espectador|si|[Representación Detail] (#recurso-espectador)
 
 #### Respuesta
 
@@ -2970,7 +2781,7 @@ N/A
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Colección de [representaciones Detail](#recurso-sala)
+200|OK|Colección de [Representaciones Detail](#recurso-sala)
 412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 500|Error interno|Mensaje de error
@@ -2990,7 +2801,7 @@ id|Path|ID del objeto Sala a consultar|Sí|Integer
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Sala en [representaciones Detail](#recurso-sala)
+200|OK|Sala en [Representaciones Detail](#recurso-sala)
 404|No existe un objeto con el ID solicitado|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 500|Error interno|Mensaje de error
@@ -3066,7 +2877,7 @@ id|Path|ID de la Sala a consultar|Sí|Integer
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|objeto Teatro en [representación Detail](#recurso-teatro)
+200|OK|objeto Teatro en [Representación Detail](#recurso-teatro)
 500|Error de consulta |Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 
@@ -3084,7 +2895,7 @@ id|Path|ID de la Sala cuyas funciones se quieren consultar|Sí|Integer
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Colección de objetos Funcion en [representación Detail](#recurso-funcion)
+200|OK|Colección de objetos Funcion en [Representación Detail](#recurso-funcion)
 500|Error consultando boletas |Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 
@@ -3104,7 +2915,7 @@ funcionesid|Path|ID del objeto Funcion a consultar|Sí|Integer
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Objeto Funcion en [representación Detail](#recurso-funcion)
+200|OK|Objeto Funcion en [Representación Detail](#recurso-funcion)
 404|No existe un objeto Funcion con el ID solicitado asociado al objeto Sala indicado |Mensaje de error
 404|No existe un objeto Sala con el ID solicitado|Mensaje de error
 500|Error interno|Mensaje de error
@@ -3223,7 +3034,7 @@ N/A
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Colección de Patrocinadores [representaciones Detail](#recurso-patrocinador)
+200|OK|Colección de Patrocinadores [Representaciones Detail](#recurso-patrocinador)
 412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 500|Error interno|Mensaje de error
@@ -3243,7 +3054,7 @@ id|Path|ID del objeto Patrocinador a consultar|Sí|Integer
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Patrocinador en [representaciones Detail](#recurso-patrocinador)
+200|OK|Patrocinador en [Representaciones Detail](#recurso-patrocinador)
 404|No existe un objeto con el ID solicitado|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 500|Error interno|Mensaje de error
@@ -3319,7 +3130,7 @@ id|Path|ID del Patrocinador cuyos festivales se quieren consultar|Sí|Integer
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Colección de objetos Festival en [representación Detail](#recurso-festival)
+200|OK|Colección de objetos Festival en [Representación Detail](#recurso-festival)
 500|Error consultando patrocinadores |Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 
@@ -3339,7 +3150,7 @@ festivalesid|Path|ID del objeto Festival a consultar|Sí|Integer
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Objeto Festival en [representación Detail](#recurso-festival)
+200|OK|Objeto Festival en [Representación Detail](#recurso-festival)
 404|No existe un objeto Festival con el ID solicitado asociado al objeto Patrocinador indicado |Mensaje de error
 404|No existe un objeto Patrocinador con el ID solicitado|Mensaje de error
 500|Error interno|Mensaje de error
