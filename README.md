@@ -73,13 +73,7 @@
 		- [PUT /funciones/{funcionasid}/sillas/{sillasid}](#put-funcionesidsillasid)
 		- [DELETE /funciones/{funcionesid}/sillas/{sillasid}](#delete-funcionesidsillasid)
 		
-       - [Recurso Película](#recurso-película)
-		- [GET /películas](#get-películas)
-		- [GET /películas/{id}](#get-películasid)
-		- [POST /películas](#post-películas)
-		- [PUT /películas/{id}](#put-películasid)
-		- [DELETE /películas/{id}](#delete-películasid)
-		
+       		
 	- [Recurso Teatro](#recurso-teatro)
                 - [GET /teatros](#get-teatros)
 		- [GET /teatros/{id}](#get-teatrosid)
@@ -105,6 +99,12 @@
 		- [PUT/festivales/{festivalesid}/teatros](#post-teatros)
 		- [DELETE /festivales/{festivalesid}/teatros/{teatrosid}](#post-teatros)	
 		
+        - [Recurso Película](#recurso-película)
+		- [GET /películas](#get-películas)
+		- [GET /películas/{id}](#get-películasid)
+		- [POST /películas](#post-películas)
+		- [PUT /películas/{id}](#put-películasid)
+		- [DELETE /películas/{id}](#delete-películasid)
 	- [Recurso Abono](#recurso-abono)
 		- [GET /abonos](#GET-/abonos)
 		- [GET /abonos/{id}](#GET-/abonos/{id})
