@@ -115,7 +115,7 @@ public class FestivalPersistence {
      * FestivalEntity;" - "SELECT * FROM table_codigo" en SQL.
      */
     public List<FestivalEntity> findAll() {
-        LOGGER.info("Consultando todas losfestivales");
+        LOGGER.info("Consultando todos los festivales");
         // Se crea un query para buscar todas losfestivales en la base de datos.
         TypedQuery query = em.createQuery("select u from FestivalEntity u", FestivalEntity.class);
         // Note que en el query se hace uso del método getResultList() que obtiene una lista de Festivales.
