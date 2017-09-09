@@ -49,7 +49,7 @@ public class SillaPersistenceTest {
     private EntityManager em;
 
     /**
-     * Variable para martcar las transacciones del em anterior cuando se
+     * Variable para marcar las transacciones del em anterior cuando se
      * crean/borran datos para las pruebas.
      */
     @Inject
@@ -63,7 +63,7 @@ public class SillaPersistenceTest {
     /**
      *
      * @return Devuelve el jar que Arquillian va a desplegar en el Glassfish
-     * embebido. El jar contiene las clases de XYZ, el descriptor de la
+     * embebido. El jar contiene las clases de Silla, el descriptor de la
      * base de datos y el archivo beans.xml para resolver la inyección de
      * dependencias.
      */

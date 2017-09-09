@@ -54,7 +54,7 @@ public class SillaPersistence {
     }
     
     /**
-     * Consulta todas la sillas del festival.
+     * Consulta todas las sillas del festival.
      * @return Una List con las sillas.
      */
     public List<SillaEntity> findAll(){
