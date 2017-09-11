@@ -17,6 +17,7 @@ import javax.persistence.TypedQuery;
  *
  * @author jc.corrales
  */
+@Stateless
 public class BoletaPersistence
 {
     private static final Logger LOGGER = Logger.getLogger(BoletaPersistence.class.getName());
