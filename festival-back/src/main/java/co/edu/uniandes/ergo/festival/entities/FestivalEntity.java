@@ -25,6 +25,7 @@ package co.edu.uniandes.ergo.festival.entities;
 
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Entity;
 
 /**
@@ -33,5 +34,88 @@ import javax.persistence.Entity;
  */
 @Entity
 public class FestivalEntity extends BaseEntity implements Serializable {
+   private Long id;
+   private String nombre;
+   private Date fechaInicio;
+   private Date fechaFin;
+   private String patrocinador;
+
+   /**
+    * @return the id of festival
+    */
+    public Long getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    /**
+     * 
+     * @return the nombre of festival
+     */
+    public String getNombre() {
+        return nombre;
+    }
+
+    /**
+     * 
+     * @param nombre the nombre to set
+     */
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    /**
+     * 
+     * @return the fechaInicio of festival
+     */
+    public Date getFechaInicio() {
+        return fechaInicio;
+    }
+
+    /**
+     * 
+     * @param fechaInicio the fechaInicio to set
+     */
+    public void setFechaInicio(Date fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    /**
+     * 
+     * @return the fechaFin of festival
+     */
+    public Date getFechaFin() {
+        return fechaFin;
+    }
+
+    /**
+     * 
+     * @param fechaFin the festivalFin to set
+     */
+    public void setFechaFin(Date fechaFin) {
+        this.fechaFin = fechaFin;
+    }
+
+    /**
+     * 
+     * @return the patrocinador of festival
+     */
+    public String getPatrocinador() {
+        return patrocinador;
+    }
+
+    /**
+     * 
+     * @param patrocinador the patrocinador to set
+     */
+    public void setPatrocinador(String patrocinador) {
+        this.patrocinador = patrocinador;
+    }
    
 }
