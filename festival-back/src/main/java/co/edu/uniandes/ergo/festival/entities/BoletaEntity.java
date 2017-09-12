@@ -45,6 +45,10 @@ public class BoletaEntity extends BaseEntity implements Serializable
      */
     //private SillaEntity silla;
     /**
+     * Función a la que la Boleta concede acceso a.
+     */
+    //private Funcion funcion;
+    /**
      * Método que obtiene la calificación asociada.
      * @return CalificacionEntity
      */
@@ -91,5 +95,21 @@ public class BoletaEntity extends BaseEntity implements Serializable
     //public void setSilla (SillaEntity silla)
     //{
     //    this.silla = silla;
+    //}
+    /**
+     * Mérodo que returna la función de la Boleta.
+     * @return 
+     */
+   // public Funcion getFuncion()
+   //{
+   //     return funcion;
+   // }
+    /**
+     * Método que establece la función de la Boleta.
+     * @param funcion 
+     */
+    //public void setFuncion(Funcion funcion)
+    //{
+    //    this.funcion = funcion;
     //}
 }
