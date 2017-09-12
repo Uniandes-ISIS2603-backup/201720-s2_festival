@@ -8,6 +8,8 @@ package co.edu.uniandes.ergo.festival.entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -23,13 +25,21 @@ public class PeliculaEntity extends BaseEntity implements Serializable {
     private String pais;
     private String datos;
     private String corto;
-    //private Critico critico;
+    @OneToOne
+    private CriticoEntity critico;
+    private ArrayList<FuncionEntity> funciones;
+    @OneToMany
+    private ArrayList<CriticoEntity> criticos;
     
     
     public String getNombre(){
         return nombre;
     }
     
+    public ArrayList<FuncionEntity> getFunciones(){
+        return funciones;
+    }
+
     public ArrayList<String> getGeneros(){
         return generos;
     }
@@ -56,6 +66,10 @@ public class PeliculaEntity extends BaseEntity implements Serializable {
     
     public String getDatos(){
         return datos;
+    }
+    
+    public CriticoEntity getCritico(){
+        return critico;
     }
     
     public void setNombre(String nombre){
@@ -100,5 +114,29 @@ public class PeliculaEntity extends BaseEntity implements Serializable {
     
     public void setGeneros(ArrayList<String> generos){
         this.generos = generos;
+    }
+    
+    public void addGeneros(String genero){
+        generos.add(genero);
+    }
+    
+    public void setCritico(CriticoEntity critico){
+        this.critico = critico;
+    }
+    
+    public void setFunciones(ArrayList<FuncionEntity> funciones){
+        this.funciones = funciones;
+    }
+    
+    public void addFuncion(FuncionEntity funcion){
+        funciones.add(funcion);
+    }
+    
+    public void setCriticos(ArrayList<CriticoEntity> criticos){
+        this.criticos = criticos;
+    }
+    
+    public void addCritico(CriticoEntity critico){
+        criticos.add(critico);
     }
 }

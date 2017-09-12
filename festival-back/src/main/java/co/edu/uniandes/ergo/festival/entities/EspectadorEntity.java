@@ -6,6 +6,7 @@
 package co.edu.uniandes.ergo.festival.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import javax.persistence.Entity;
 
 /**
@@ -14,29 +15,49 @@ import javax.persistence.Entity;
  */
 @Entity
 public class EspectadorEntity extends PersonaEntity {
+
     /**
-     * Dirección del Espectador. 
+     * Dirección del Espectador.
      */
-    private String direccion; 
-    
+    private String direccion;
+
     /**
      * Boleta asociada a un espectador
      */
-    // TODO: Hacer entidad Boleta 
-    //private BoletaEntity boleta;
-    
-    
-     /**
+    private ArrayList<BoletaEntity> boletas;
+    private ArrayList<AbonoEntity> abonos;
+
+    /**
      * @param direccion la direccion a modificar del Estudiante.
      */
-    public void setDireccion(String direccion){
+    public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
-    
+
+    public void setBoletas(ArrayList<BoletaEntity> boletas) {
+        this.boletas = boletas;
+    }
+
+    public void addAbono(AbonoEntity abono){
+        abonos.add(abono);
+    }
+    public void setAbonos(ArrayList<AbonoEntity> abonos) {
+        this.abonos = abonos;
+    }
+
     /**
      * @return la dirección del Espectador.
      */
-    public String getDireccion(){
+    public String getDireccion() {
         return direccion;
+    }
+    
+    public ArrayList<AbonoEntity> getAbonos(){
+        return abonos;
+    }
+
+    
+    public ArrayList<BoletaEntity> getBoletas() {
+        return boletas;
     }
 }

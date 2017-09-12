@@ -5,7 +5,9 @@
  */
 package co.edu.uniandes.ergo.festival.entities;
 
+import java.util.ArrayList;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -13,6 +15,29 @@ import javax.persistence.Entity;
  */
 @Entity
 public class CriticoEntity extends PersonaEntity{
-    // private Critica critica;
     
+    @OneToMany
+    private ArrayList<CriticaEntity> criticas;
+    @OneToMany
+    private ArrayList<PeliculaEntity> peliculas;
+    
+    
+    public ArrayList<CriticaEntity> getCriticas(){
+        return criticas;
+    }
+    
+    public ArrayList<PeliculaEntity> GetPeliculas(){
+        return peliculas;
+    }
+    
+    public void setPeliculas(ArrayList<PeliculaEntity> peliculas){
+        this.peliculas = peliculas;
+    }
+    public void setCriticas(ArrayList<CriticaEntity> criticas){
+        this.criticas = criticas;
+    }
+    
+    public void addCritica(CriticaEntity critica){
+        criticas.add(critica);
+    }
 }
