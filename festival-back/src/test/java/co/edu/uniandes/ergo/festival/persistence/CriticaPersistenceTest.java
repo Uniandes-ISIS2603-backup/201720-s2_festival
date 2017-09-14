@@ -5,7 +5,7 @@
  */
 package co.edu.uniandes.ergo.festival.persistence;
 
-import co.edu.uniandes.ergo.festival.entities.CríticaEntity;
+import co.edu.uniandes.ergo.festival.entities.CriticaEntity;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -58,7 +58,7 @@ public class CriticaPersistenceTest {
      /**
      *
      */
-    private List<CríticaEntity> data = new ArrayList<CríticaEntity>();
+    private List<CriticaEntity> data = new ArrayList<CriticaEntity>();
     
     /**
      *
@@ -70,7 +70,7 @@ public class CriticaPersistenceTest {
     @Deployment
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
-                .addPackage(CríticaEntity.class.getPackage())
+                .addPackage(CriticaEntity.class.getPackage())
                 .addPackage(CriticaPersistence.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
@@ -110,13 +110,13 @@ public class CriticaPersistenceTest {
     }
     
     private void clearData() {
-        em.createQuery("delete from CríticaEntity").executeUpdate();
+        em.createQuery("delete from CriticaEntity").executeUpdate();
     }
 
     private void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
         for (int i = 0; i < 3; i++) {
-            CríticaEntity entity = factory.manufacturePojo(CríticaEntity.class);
+            CriticaEntity entity = factory.manufacturePojo(CriticaEntity.class);
 
             em.persist(entity);
             data.add(entity);
@@ -129,11 +129,11 @@ public class CriticaPersistenceTest {
     @Test
     public void testCreate() throws Exception {
         PodamFactory factory = new PodamFactoryImpl();
-        CríticaEntity newEntity = factory.manufacturePojo(CríticaEntity.class);
-        CríticaEntity result = persistence.create(newEntity);
+        CriticaEntity newEntity = factory.manufacturePojo(CriticaEntity.class);
+        CriticaEntity result = persistence.create(newEntity);
 
         Assert.assertNotNull(result);
-        CríticaEntity entity = em.find(CríticaEntity.class, result.getId());
+        CriticaEntity entity = em.find(CriticaEntity.class, result.getId());
         Assert.assertNotNull(entity);
         Assert.assertEquals(newEntity.getName(), entity.getName());
     }
@@ -143,8 +143,8 @@ public class CriticaPersistenceTest {
      */
     @Test
     public void testFind() throws Exception {
-        CríticaEntity entity = data.get(0);
-        CríticaEntity newEntity = persistence.find(entity.getId());
+        CriticaEntity entity = data.get(0);
+        CriticaEntity newEntity = persistence.find(entity.getId());
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getName(), newEntity.getName());
     }
@@ -154,11 +154,11 @@ public class CriticaPersistenceTest {
      */
     @Test
     public void testFindAll() throws Exception {
-        List<CríticaEntity> list = persistence.findAll();
+        List<CriticaEntity> list = persistence.findAll();
         Assert.assertEquals(data.size(), list.size());
-        for (CríticaEntity ent : list) {
+        for (CriticaEntity ent : list) {
             boolean found = false;
-            for (CríticaEntity entity : data) {
+            for (CriticaEntity entity : data) {
                 if (ent.getId().equals(entity.getId())) {
                     found = true;
                 }
@@ -172,15 +172,15 @@ public class CriticaPersistenceTest {
      */
     @Test
     public void testUpdate() throws Exception {
-        CríticaEntity entity = data.get(0);
+        CriticaEntity entity = data.get(0);
         PodamFactory factory = new PodamFactoryImpl();
-        CríticaEntity newEntity = factory.manufacturePojo(CríticaEntity.class);
+        CriticaEntity newEntity = factory.manufacturePojo(CriticaEntity.class);
 
         newEntity.setId(entity.getId());
 
         persistence.update(newEntity);
 
-        CríticaEntity resp = em.find(CríticaEntity.class, entity.getId());
+        CriticaEntity resp = em.find(CriticaEntity.class, entity.getId());
 
         Assert.assertEquals(newEntity.getName(), resp.getName());
     }
@@ -190,9 +190,9 @@ public class CriticaPersistenceTest {
      */
     @Test
     public void testDelete() throws Exception {
-        CríticaEntity entity = data.get(0);
+        CriticaEntity entity = data.get(0);
         persistence.delete(entity.getId());
-        CríticaEntity deleted = em.find(CríticaEntity.class, entity.getId());
+        CriticaEntity deleted = em.find(CriticaEntity.class, entity.getId());
         Assert.assertNull(deleted);
     }
     
