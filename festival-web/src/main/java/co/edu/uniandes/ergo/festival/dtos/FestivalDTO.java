@@ -24,6 +24,7 @@ SOFTWARE.
 package co.edu.uniandes.ergo.festival.dtos;
 
 import co.edu.uniandes.ergo.festival.entities.FestivalEntity;
+import java.util.Date;
 
 /**
  * FestivalDTO Objeto de transferencia de datos de Festivales. Los DTO
@@ -36,6 +37,10 @@ public class FestivalDTO {
 
     private Long id;
 
+    private String nombre;
+    private Date fechaInicio;
+    private Date fechaFin;
+    private String patrocinador;
     /**
      * Constructor por defecto
      */
@@ -66,6 +71,38 @@ public class FestivalDTO {
         this.id = id;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public Date getFechaInicio() {
+        return fechaInicio;
+    }
+
+    public void setFechaInicio(Date fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public Date getFechaFin() {
+        return fechaFin;
+    }
+
+    public void setFechaFin(Date fechaDin) {
+        this.fechaFin = fechaDin;
+    }
+
+    public String getPatrocinador() {
+        return patrocinador;
+    }
+
+    public void setPatrocinador(String patrocinador) {
+        this.patrocinador = patrocinador;
+    }
+
     /**
      * Convertir DTO a Entity
      *
@@ -74,6 +111,10 @@ public class FestivalDTO {
     public FestivalEntity toEntity() {
         FestivalEntity entity = new FestivalEntity();
         entity.setId(this.id);
+        entity.setNombre(this.nombre);
+        entity.setFechaInicio(this.fechaInicio);
+        entity.setFechaFin(this.fechaFin);
+        entity.setPatrocinador(this.patrocinador);
         return entity;
     }
     
