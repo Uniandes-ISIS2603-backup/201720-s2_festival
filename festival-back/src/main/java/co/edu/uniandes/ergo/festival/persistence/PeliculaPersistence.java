@@ -23,7 +23,8 @@ public class PeliculaPersistence {
 
     private static final Logger LOGGER = Logger.getLogger(PeliculaPersistence.class.getName());
 
-    @PersistenceContext(unitName = "peliculaPU")
+
+    @PersistenceContext(unitName = "festivalPU")
     protected EntityManager em;
 
     /**
