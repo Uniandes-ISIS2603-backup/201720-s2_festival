@@ -130,7 +130,7 @@ public class PeliculaPersistenceTest {
         PeliculaEntity entity = em.find(PeliculaEntity.class, result.getId());
         Assert.assertNotNull(entity);
         Assert.assertEquals(newEntity.getName(), entity.getName());
-       
+
     }
 
     /**
@@ -149,7 +149,6 @@ public class PeliculaPersistenceTest {
         PeliculaEntity actualizado = em.find(PeliculaEntity.class, entity.getId());
         assertNotNull(actualizado);
         assertNotEquals(generada.getName(), actualizado.getName());
-       
     }
 
     /**
@@ -162,7 +161,6 @@ public class PeliculaPersistenceTest {
         persistence.delete(entity.getId());
         PeliculaEntity espNull = em.find(PeliculaEntity.class, entity.getId());
         Assert.assertNull(espNull);
-        
         
     }
 
@@ -194,7 +192,6 @@ public class PeliculaPersistenceTest {
             }
             Assert.assertTrue(found);
         }
-        
     }
 
 }

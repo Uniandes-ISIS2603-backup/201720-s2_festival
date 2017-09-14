@@ -6,6 +6,7 @@
 package co.edu.uniandes.ergo.festival.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -18,6 +19,18 @@ public class CríticaEntity extends BaseEntity{
      * Comentario hecho por el crítico sobre una función.
      */
     private String comentario;
+    
+    /**
+     * Crítico que hace la crítica.
+     */
+    @ManyToOne()
+    private CriticoEntity crítico;
+    
+    /**
+     * Función sobre la que es la crítica.
+     */
+    @ManyToOne(optional = false)
+    private FuncionEntity función;
 
     /**
      * @return the comentario
@@ -31,6 +44,34 @@ public class CríticaEntity extends BaseEntity{
      */
     public void setComentario(String comentario) {
         this.comentario = comentario;
+    }
+
+    /**
+     * @return the crítico
+     */
+    public CriticoEntity getCrítico() {
+        return crítico;
+    }
+
+    /**
+     * @param crítico the crítico to set
+     */
+    public void setCrítico(CriticoEntity crítico) {
+        this.crítico = crítico;
+    }
+
+    /**
+     * @return the función
+     */
+    public FuncionEntity getFunción() {
+        return función;
+    }
+
+    /**
+     * @param función the función to set
+     */
+    public void setFunción(FuncionEntity función) {
+        this.función = función;
     }
     
     
