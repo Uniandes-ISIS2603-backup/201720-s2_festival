@@ -23,7 +23,7 @@ public class EspectadorPersistence {
 
     private static final Logger LOGGER = Logger.getLogger(EspectadorPersistence.class.getName());
 
-    @PersistenceContext(unitName = "espectadorPU")
+    @PersistenceContext(unitName = "festivalPU")
     protected EntityManager em;
 
     /**

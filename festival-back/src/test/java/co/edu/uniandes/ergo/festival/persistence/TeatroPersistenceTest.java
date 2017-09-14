@@ -84,7 +84,7 @@ public class TeatroPersistenceTest {
     }
     private void clearData()
     {
-        em.createQuery("Delete from TeatroPersistence").executeUpdate();
+        em.createQuery("Delete from TeatroEntity").executeUpdate();
     }
     private void insertData()
     {
@@ -107,22 +107,7 @@ public class TeatroPersistenceTest {
             .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
    
-    @Test
-    public void createTeatroEntityTest()
-    {
-        PodamFactory factory = new PodamFactoryImpl();
-        TeatroEntity newEntity = factory.manufacturePojo(TeatroEntity.class);
-        TeatroEntity result = persistence.create(newEntity);
-        
-        Assert.assertNotNull(result);
-        TeatroEntity entity = em.find(TeatroEntity.class, result.getId());
-        Assert.assertNotNull(entity);
-        Assert.assertNotEquals(newEntity.getNombre(), entity.getNombre());
-    }
   
-    public TeatroPersistenceTest() {
-    }
-    
     
     @BeforeClass
     public static void setUpClass() {
@@ -136,13 +121,19 @@ public class TeatroPersistenceTest {
     public void tearDown() {
     }
 
-    /**
-     * Test of create method, of class TeatroPersistence.
-     */
-    @Test
-    public void testCreate() throws Exception {  
+  @Test
+    public void testCreate() throws Exception
+    {
+        PodamFactory factory = new PodamFactoryImpl();
+        TeatroEntity newEntity = factory.manufacturePojo(TeatroEntity.class);
+        TeatroEntity result = persistence.create(newEntity);
+        
+        Assert.assertNotNull(result);
+        TeatroEntity entity = em.find(TeatroEntity.class, result.getId());
+        Assert.assertNotNull(entity);
+        Assert.assertEquals(newEntity.getNombre(), entity.getNombre());
     }
-
+    
     /**
      * Test of find method, of class TeatroPersistence.
      */
@@ -192,7 +183,7 @@ public class TeatroPersistenceTest {
      persistence.update(newEntity);
      
      TeatroEntity res = em.find(TeatroEntity.class, entity.getId());
-     Assert.assertNotEquals(newEntity.getName(), res.getName());
+     Assert.assertEquals(newEntity.getName(), res.getName());
     }
 
     /**

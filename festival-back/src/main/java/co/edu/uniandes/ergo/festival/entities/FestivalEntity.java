@@ -26,7 +26,10 @@ package co.edu.uniandes.ergo.festival.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -34,26 +37,24 @@ import javax.persistence.Entity;
  */
 @Entity
 public class FestivalEntity extends BaseEntity implements Serializable {
-   private Long id;
+   
    private String nombre;
    private Date fechaInicio;
    private Date fechaFin;
    private String patrocinador;
-
-   /**
-    * @return the id of festival
-    */
-    public Long getId() {
-        return id;
-    }
-
-    /**
-     * @param id the id to set
-     */
-    public void setId(long id) {
-        this.id = id;
-    }
-
+   @PodamExclude
+   @OneToMany
+   private List<TeatroEntity> teatro;
+   @PodamExclude
+   @OneToMany
+   private List<PeliculaEntity> peliculas;
+   @PodamExclude
+   @OneToMany 
+   private List<EspectadorEntity> espectadores;
+   @PodamExclude
+   @OneToMany
+   private List<CriticoEntity> criticos;
+   
     /**
      * 
      * @return the nombre of festival
@@ -100,6 +101,38 @@ public class FestivalEntity extends BaseEntity implements Serializable {
      */
     public void setFechaFin(Date fechaFin) {
         this.fechaFin = fechaFin;
+    }
+
+    public List<TeatroEntity> getTeatro() {
+        return teatro;
+    }
+
+    public void setTeatro(List<TeatroEntity> teatro) {
+        this.teatro = teatro;
+    }
+
+    public List<PeliculaEntity> getPeliculas() {
+        return peliculas;
+    }
+
+    public void setPeliculas(List<PeliculaEntity> peliculas) {
+        this.peliculas = peliculas;
+    }
+
+    public List<EspectadorEntity> getEspectadores() {
+        return espectadores;
+    }
+
+    public void setEspectadores(List<EspectadorEntity> espectadores) {
+        this.espectadores = espectadores;
+    }
+
+    public List<CriticoEntity> getCriticos() {
+        return criticos;
+    }
+
+    public void setCriticos(List<CriticoEntity> criticos) {
+        this.criticos = criticos;
     }
 
     /**
