@@ -29,7 +29,7 @@ public class SillaEntity extends BaseEntity implements Serializable{
      * Indica si la silla es o no preferencial.
      */
     private boolean esPreferencial;
-
+    
     /**
      * @return the reservada
      */
