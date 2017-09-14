@@ -5,10 +5,38 @@
  */
 package co.edu.uniandes.ergo.festival.entities;
 
+import java.io.Serializable;
+import java.util.Date;
+import javax.persistence.Entity;
+
 /**
  *
  * @author dj.bautista10
  */
-public class FuncionEntity {
+@Entity
+public class FuncionEntity extends BaseEntity implements Serializable{
+    
+    private Date horaInicio;
+    
+    private Date horaFin;
+
+    public Date getHoraInicio() {
+        return horaInicio;
+    }
+
+    public void setHoraInicio(Date horaInicio) {
+        this.horaInicio = horaInicio;
+    }
+
+    public Date getHoraFin() {
+        return horaFin;
+    }
+
+    public void setHoraFin(Date horaFin) {
+        this.horaFin = horaFin;
+    }
+    
+    
+    
     
 }
