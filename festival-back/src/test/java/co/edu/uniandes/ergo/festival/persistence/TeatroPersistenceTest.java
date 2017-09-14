@@ -33,7 +33,8 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  */
 @RunWith(Arquillian.class)
 public class TeatroPersistenceTest {
-  /**
+ 
+    /**
      * Inyección de la dependencia a la clase TeatroPersistence cuyos métodos
      * se van a probar.
      */
@@ -96,7 +97,16 @@ public class TeatroPersistenceTest {
             data.add(entity);
         }
     }
-    
+      @Deployment
+   public static JavaArchive createDeployment()
+   {   
+          return ShrinkWrap.create(JavaArchive.class)
+            .addPackage(TeatroEntity.class.getPackage())
+            .addPackage(TeatroPersistence.class.getPackage())
+            .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
+            .addAsManifestResource("META-INF/beans.xml", "beans.xml");
+    }
+   
     @Test
     public void createTeatroEntityTest()
     {
@@ -107,18 +117,9 @@ public class TeatroPersistenceTest {
         Assert.assertNotNull(result);
         TeatroEntity entity = em.find(TeatroEntity.class, result.getId());
         Assert.assertNotNull(entity);
-        Assert.assertNotEquals(newEntity.getName(), entity.getName());
+        Assert.assertNotEquals(newEntity.getNombre(), entity.getNombre());
     }
-    @Deployment
-   public static JavaArchive createDeployment()
-   {   
-          return ShrinkWrap.create(JavaArchive.class)
-            .addPackage(TeatroEntity.class.getPackage())
-            .addPackage(TeatroPersistence.class.getPackage())
-            .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
-            .addAsManifestResource("META-INF/beans.xml", "beans.xml");
-    }
-   
+  
     public TeatroPersistenceTest() {
     }
     
@@ -155,6 +156,7 @@ public class TeatroPersistenceTest {
 
     /**
      * Test of findAll method, of class TeatroPersistence.
+     * @throws java.lang.Exception
      */
     @Test
     public void testFindAll() throws Exception 

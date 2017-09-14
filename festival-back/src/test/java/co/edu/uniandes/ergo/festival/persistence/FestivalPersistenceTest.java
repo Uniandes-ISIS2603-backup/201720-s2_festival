@@ -97,6 +97,15 @@ public class FestivalPersistenceTest
             data.add(entity);
         }
     }
+     @Deployment
+   public static JavaArchive createDeployment()
+   {   
+          return ShrinkWrap.create(JavaArchive.class)
+            .addPackage(FestivalEntity.class.getPackage())
+            .addPackage(FestivalPersistence.class.getPackage())
+            .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
+            .addAsManifestResource("META-INF/beans.xml", "beans.xml");
+    }
     public FestivalPersistenceTest() {
     }
     
@@ -129,15 +138,7 @@ public class FestivalPersistenceTest
         Assert.assertNotNull(entity);
         Assert.assertNotEquals(newEntity.getNombre(), entity.getNombre());
     }
- @Deployment
-   public static JavaArchive createDeployment()
-   {   
-          return ShrinkWrap.create(JavaArchive.class)
-            .addPackage(FestivalEntity.class.getPackage())
-            .addPackage(FestivalPersistence.class.getPackage())
-            .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
-            .addAsManifestResource("META-INF/beans.xml", "beans.xml");
-    }
+
    
     /**
      * Test of update method, of class FestivalPersistence.
