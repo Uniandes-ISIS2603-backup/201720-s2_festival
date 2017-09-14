@@ -84,7 +84,7 @@ public class FestivalPersistenceTest
     }
     private void clearData()
     {
-        em.createQuery("Delete from TeatroPersistence").executeUpdate();
+        em.createQuery("Delete from FestivalEntity").executeUpdate();
     }
     private void insertData()
     {
@@ -136,7 +136,7 @@ public class FestivalPersistenceTest
         Assert.assertNotNull(result);
         FestivalEntity entity = em.find(FestivalEntity.class, result.getId());
         Assert.assertNotNull(entity);
-        Assert.assertNotEquals(newEntity.getNombre(), entity.getNombre());
+        Assert.assertEquals(newEntity.getNombre(), entity.getNombre());
     }
 
    
@@ -155,7 +155,7 @@ public class FestivalPersistenceTest
      persistence.update(newEntity);
      
      FestivalEntity res = em.find(FestivalEntity.class, entity.getId());
-     Assert.assertNotEquals(newEntity.getNombre(), res.getNombre());
+     Assert.assertEquals(newEntity.getNombre(), res.getNombre());
     } 
 
     /**
