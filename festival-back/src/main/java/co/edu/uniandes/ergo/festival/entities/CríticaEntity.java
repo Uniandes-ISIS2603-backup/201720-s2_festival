@@ -45,6 +45,34 @@ public class CríticaEntity extends BaseEntity{
     public void setComentario(String comentario) {
         this.comentario = comentario;
     }
+
+    /**
+     * @return the crítico
+     */
+    public CriticoEntity getCrítico() {
+        return crítico;
+    }
+
+    /**
+     * @param crítico the crítico to set
+     */
+    public void setCrítico(CriticoEntity crítico) {
+        this.crítico = crítico;
+    }
+
+    /**
+     * @return the función
+     */
+    public FuncionEntity getFunción() {
+        return función;
+    }
+
+    /**
+     * @param función the función to set
+     */
+    public void setFunción(FuncionEntity función) {
+        this.función = función;
+    }
     
     
     
