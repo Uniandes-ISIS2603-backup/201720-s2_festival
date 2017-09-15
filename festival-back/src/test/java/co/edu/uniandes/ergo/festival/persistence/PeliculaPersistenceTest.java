@@ -94,8 +94,16 @@ public class PeliculaPersistenceTest {
             utx.begin();
             em.joinTransaction();
             clearData();
+            insertData();
+            utx.commit();
 
         } catch (Exception e) {
+            e.printStackTrace();
+            try {
+                utx.rollback();
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
         }
 
     }
@@ -148,7 +156,7 @@ public class PeliculaPersistenceTest {
         
         PeliculaEntity actualizado = em.find(PeliculaEntity.class, entity.getId());
         assertNotNull(actualizado);
-        assertNotEquals(generada.getName(), actualizado.getName());
+        assertEquals(generada.getName(), actualizado.getName());
        
     }
 
