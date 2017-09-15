@@ -19,6 +19,8 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class SillaEntity extends BaseEntity implements Serializable{
     
+    private String prueba;
+    
     /**
      * Indica si la silla está reservada.
      */
@@ -88,6 +90,20 @@ public class SillaEntity extends BaseEntity implements Serializable{
      */
     public void setEsPreferencial(boolean esPreferencial) {
         this.esPreferencial = esPreferencial;
+    }
+
+    /**
+     * @return the prueba
+     */
+    public String getPrueba() {
+        return prueba;
+    }
+
+    /**
+     * @param prueba the prueba to set
+     */
+    public void setPrueba(String prueba) {
+        this.prueba = prueba;
     }
     
     
