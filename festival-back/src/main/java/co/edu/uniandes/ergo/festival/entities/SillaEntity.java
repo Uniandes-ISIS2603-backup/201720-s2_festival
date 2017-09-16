@@ -6,11 +6,7 @@
 package co.edu.uniandes.ergo.festival.entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -36,20 +32,6 @@ public class SillaEntity extends BaseEntity implements Serializable{
      */
     private boolean esPreferencial;
     
-    /**
-     * Sala a la que pertenece la silla.
-     */
-    @PodamExclude
-    @ManyToOne(optional = false)
-    private SalaEntity sala;
-    
-    /**
-     * Boletas que tienen esta silla.
-     */
-    @PodamExclude
-    @OneToMany(mappedBy="silla")
-    private ArrayList<BoletaEntity> boletas;
-
     /**
      * @return the reservada
      */

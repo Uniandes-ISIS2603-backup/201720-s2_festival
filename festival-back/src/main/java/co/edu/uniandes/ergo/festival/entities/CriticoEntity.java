@@ -8,6 +8,7 @@ package co.edu.uniandes.ergo.festival.entities;
 import java.util.ArrayList;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -16,8 +17,10 @@ import javax.persistence.OneToMany;
 @Entity
 public class CriticoEntity extends PersonaEntity{
     
+    @PodamExclude
     @OneToMany
     private ArrayList<CriticaEntity> criticas;
+    @PodamExclude
     @OneToMany
     private ArrayList<PeliculaEntity> peliculas;
     

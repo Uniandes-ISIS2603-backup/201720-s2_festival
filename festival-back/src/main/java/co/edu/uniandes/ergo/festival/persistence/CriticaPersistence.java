@@ -59,7 +59,7 @@ public class CriticaPersistence {
     public List<CriticaEntity> findAll(){
         LOGGER.log(Level.INFO, "Buscando todas las críticas.");
         
-        TypedQuery query = em.createQuery("select u from CríticaEntity u", CriticaEntity.class);
+        TypedQuery query = em.createQuery("select u from CriticaEntity u", CriticaEntity.class);
         
         return query.getResultList();
     }

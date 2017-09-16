@@ -8,6 +8,8 @@ package co.edu.uniandes.ergo.festival.entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -24,7 +26,11 @@ public class EspectadorEntity extends PersonaEntity {
     /**
      * Boleta asociada a un espectador
      */
+    @PodamExclude
+    @OneToMany
     private ArrayList<BoletaEntity> boletas;
+    @PodamExclude
+    @OneToMany
     private ArrayList<AbonoEntity> abonos;
 
     /**

@@ -5,7 +5,7 @@
  */
 package co.edu.uniandes.ergo.festival.persistence;
 
-import co.edu.uniandes.ergo.festival.entities.PeliculaEntity;
+import co.edu.uniandes.ergo.festival.entities.CriticoEntity;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.embeddable.EJBContainer;
@@ -33,14 +33,14 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  * @author dj.bautista10
  */
 @RunWith(Arquillian.class)
-public class PeliculaPersistenceTest {
+public class CriticoPersistenceTest {
 
     /**
-     * Inyección de la dependencia a la clase Pelicula cuyos métodos se van a
+     * Inyección de la dependencia a la clase Critico cuyos métodos se van a
      * probar.
      */
     @Inject
-    private PeliculaPersistence persistence;
+    private CriticoPersistence persistence;
 
     /**
      * Contexto de Persistencia que se va a utilizar para acceder a la Base de
@@ -59,7 +59,7 @@ public class PeliculaPersistenceTest {
     /**
      *
      */
-    private List<PeliculaEntity> data = new ArrayList<PeliculaEntity>();
+    private List<CriticoEntity> data = new ArrayList<CriticoEntity>();
 
     /**
      *
@@ -71,13 +71,13 @@ public class PeliculaPersistenceTest {
     @Deployment
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
-                .addPackage(PeliculaEntity.class.getPackage())
-                .addPackage(PeliculaPersistence.class.getPackage())
+                .addPackage(CriticoEntity.class.getPackage())
+                .addPackage(CriticoPersistence.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
 
-    public PeliculaPersistenceTest() {
+    public CriticoPersistenceTest() {
     }
 
     @BeforeClass
@@ -113,89 +113,89 @@ public class PeliculaPersistenceTest {
     }
 
     private void clearData() {
-        em.createQuery("delete from PeliculaEntity").executeUpdate();
+        em.createQuery("delete from CriticoEntity").executeUpdate();
     }
 
     private void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
         for (int i = 0; i < 3; i++) {
-            PeliculaEntity entity = factory.manufacturePojo(PeliculaEntity.class);
+            CriticoEntity entity = factory.manufacturePojo(CriticoEntity.class);
             em.persist(entity);
             data.add(entity);
         }
     }
 
     /**
-     * Test of create method, of class PeliculaPersistence.
+     * Test of create method, of class CriticoPersistence.
      */
     @Test
     public void testCreate() throws Exception {
         PodamFactory factory = new PodamFactoryImpl();
-        PeliculaEntity newEntity = factory.manufacturePojo(PeliculaEntity.class);
-        PeliculaEntity result = persistence.create(newEntity);
+        CriticoEntity newEntity = factory.manufacturePojo(CriticoEntity.class);
+        CriticoEntity result = persistence.create(newEntity);
 
         Assert.assertNotNull(result);
-        PeliculaEntity entity = em.find(PeliculaEntity.class, result.getId());
+        CriticoEntity entity = em.find(CriticoEntity.class, result.getId());
         Assert.assertNotNull(entity);
         Assert.assertEquals(newEntity.getName(), entity.getName());
        
     }
 
     /**
-     * Test of update method, of class PeliculaPersistence.
+     * Test of update method, of class CriticoPersistence.
      */
     @Test
     public void testUpdate() throws Exception {
         System.out.println("Update test");
-        PeliculaEntity entity = data.get(0);
+        CriticoEntity entity = data.get(0);
         PodamFactory factory = new PodamFactoryImpl();
-        PeliculaEntity generada = factory.manufacturePojo(PeliculaEntity.class);
+        CriticoEntity generada = factory.manufacturePojo(CriticoEntity.class);
         
         generada.setId(entity.getId());
         persistence.update(generada);
         
-        PeliculaEntity actualizado = em.find(PeliculaEntity.class, entity.getId());
+        CriticoEntity actualizado = em.find(CriticoEntity.class, entity.getId());
         assertNotNull(actualizado);
         assertEquals(generada.getName(), actualizado.getName());
        
     }
 
     /**
-     * Test of delete method, of class PeliculaPersistence.
+     * Test of delete method, of class CriticoPersistence.
      */
     @Test
     public void testDelete() throws Exception {
         System.out.println("Delete test");
-        PeliculaEntity entity = data.get(0);
+        CriticoEntity entity = data.get(0);
         persistence.delete(entity.getId());
-        PeliculaEntity espNull = em.find(PeliculaEntity.class, entity.getId());
+        CriticoEntity espNull = em.find(CriticoEntity.class, entity.getId());
         Assert.assertNull(espNull);
         
         
     }
 
     /**
-     * Test of find method, of class PeliculaPersistence.
+     * Test of find method, of class CriticoPersistence.
      */
     @Test
     public void testFind() throws Exception {
         System.out.println("Test find");
-        PeliculaEntity pelicula = data.get(0);
-        PeliculaEntity CompPelicula = persistence.find(pelicula.getId());
-        Assert.assertNotNull(CompPelicula);
-        Assert.assertEquals(pelicula, CompPelicula);
+        CriticoEntity critico = data.get(0);
+        CriticoEntity CompCritico = persistence.find(critico.getId());
+        Assert.assertNotNull(CompCritico);
+        Assert.assertEquals(critico, CompCritico);
     }
 
     /**
-     * Test of findAll method, of class PeliculaPersistence.
+     * Test of findAll method, of class CriticoPersistence.
      */
     @Test
     public void testFindAll() throws Exception {
         System.out.println("Test findAll");
-        List<PeliculaEntity> peliculas = persistence.findAll();
-        for (PeliculaEntity ent : peliculas) {
+        List<CriticoEntity> criticos = persistence.findAll();
+        for (CriticoEntity ent : criticos) {
             boolean found = false;
-            for (PeliculaEntity entity : data) {
+            for (CriticoEntity entity : data) {
                 if (ent.getId().equals(entity.getId())) {
                     found = true;
                 }

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -25,9 +26,13 @@ public class PeliculaEntity extends BaseEntity implements Serializable {
     private String pais;
     private String datos;
     private String corto;
+    @PodamExclude
     @OneToOne
     private CriticoEntity critico;
+    
+    @PodamExclude
     private ArrayList<FuncionEntity> funciones;
+    @PodamExclude
     @OneToMany
     private ArrayList<CriticoEntity> criticos;
     
