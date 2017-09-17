@@ -121,6 +121,12 @@
 		- [PUT /salas/{salasid}/funciones/{funcionesid}](#put-salasfuncionesid)
 		- [DELETE /salas/{salasid}/funciones](#delete-salasidfunciones)
 		- [DELETE /salas/{salasid}/funciones/{funcionesid}](#delete-salasidfuncionesid)
+		- [GET /salas/{id}/sillas](#get-salasidsillas)
+		- [GET /salas/{salasid}/funcinoes/{funcinoesid}](#get-salasidsillasid)
+		- [POST /salas/{id}/sillas](#post-salassillas)
+		- [PUT /salas/{salasid}/sillas/{sillasid}](#put-salassillasid)
+		- [DELETE /salas/{salasid}/sillas](#delete-salasidsillas)
+		- [DELETE /salas/{salasid}/sillas/{sillasid}](#delete-salasidsillasid)
 	- [Recurso Patrocinador](#recurso-patrocinador)
 		- [GET /patrocinadores](#get-patrocinadores)
 		- [GET /patrocinadores/{id}](#get-patrocinadoresid)
@@ -2259,17 +2265,27 @@ El objeto Sala tiene dos representaciones JSON
 #### Representación Detail
 ```javascript
 {
-          // todo lo de la representación Minimum más los objetos Minimum con relación simple.
+ // todo lo de la representación Minimum más los objetos Minimum con relación simple.
      teatro: {
           id: '' /*Tipo Long*/
           nombre: '' /*Tipo String*/,
      }
-     funcion: {
-      id: '' /*Tipo Long*/,
-      horaInicio : '' /*Tipo Date*/,
-      horaFin: '' /*Tipo Date*/,
-    }
+	[
+	funcion: {
+		id: '' /*Tipo Long*/,
+		horaInicio : '' /*Tipo Date*/,
+		horaFin: '' /*Tipo Date*/,
+	},
+	]
 
+	[
+	Silla {
+		id: '' /*Tipo Long*/,
+		reservada: '' /*Tipo Boolean*/
+		tarifa: '' /*Tipo Double*/,
+		esPreferencial'' /*Tipo Boolean*/,
+	},
+	]
 }
 ```
 #### GET /salas
@@ -2497,6 +2513,104 @@ Código|Descripción|Cuerpo
 204|funcion removida|N/A
 500|Error interno|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
+
+#### GET /salas/{id}/sillas
+
+Retorna una colección de objetos Silla asociados a la Sala en representación Detail.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+id|Path|ID de la Sala cuyas sillas se quieren consultar|Sí|Integer
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|OK|Colección de objetos Silla en [representación Detail](#recurso-silla)
+500|Error consultando salas |Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+
+
+#### GET /salas/{salasid}/sillas/{sillasid}
+
+Retorna un objeto silla asociado a una Sala en representación Detail.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+salasid|Path|ID del objeto Sala a consultar|Sí|Integer
+sillasid|Path|ID del objeto Silla a consultar|Sí|Integer
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|OK|Objeto Silla en [representación Detail](#recurso-silla)
+404|No existe un objeto Silla con el ID solicitado asociado al objeto Sala indicado |Mensaje de error
+404|No existe un objeto Sala con el ID solicitado|Mensaje de error
+500|Error interno|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+
+#### POST /salas/{id}/sillas/
+
+Asocia una o más Sillas a una Sala.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+id|PathParam|ID de la Sala al cual se asociará la Silla|Sí|Integer
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|Silla asociada|[Representación Detail de Silla](#recurso-silla)
+500|No se pudo asociar el objeto Silla|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+
+#### PUT salas/{salasid}/sillas/{sillasid}
+
+Se encarga de actualizar una Silla asociada a una Sala.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+salasid|Path|ID de la Sala cuya silla será remplazada|Sí|Integer
+sillasid|path|Nueva Silla|Sí|[Representación Detail](#recurso-silla)
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|Se actualizo el objeto|Objeto silla en [Representación Detail](#recurso-silla)
+500|No se pudo actualizar|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+
+#### DELETE /sala/{salasid}/sillas/{sillasid}
+
+Remueve una Silla de una Sala
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+salasid|Path|ID de la Sala|Sí|Integer
+sillasid|Path|ID de la Silla|Sí|Integer
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+204|silla removida|N/A
+500|Error interno|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+
+
 ### Recurso Patrocinador
 
 El objeto Patrocinador tiene dos representaciones JSON
