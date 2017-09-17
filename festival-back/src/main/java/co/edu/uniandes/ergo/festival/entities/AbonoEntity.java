@@ -26,6 +26,8 @@ package co.edu.uniandes.ergo.festival.entities;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -34,16 +36,47 @@ import javax.persistence.Entity;
 @Entity
 public class AbonoEntity extends BaseEntity implements Serializable
 {
-    private BoletaEntity[] boletas;
+    /**
+     * Atributo que contiene la información del espectador dueño del abono.
+     */
+    //@ManyToOne
+    //private EspectadorEntity espectador;
+    /**
+     * Atributo que contiene las boletas.
+     */
+    //@OneToMany
+    //private BoletaEntity[] boletas;
     
-   
-    public BoletaEntity[] getBoletas()
-    {
-        return boletas;
-    }
-    
-    public void setBoletas(BoletaEntity[] boletas)
-    {
-        this.boletas = boletas;
-    }
+    /**
+     * Método que retorna el arreglo de las boletas vinculadas a este abono.
+     * @return BoletaEntity[]
+     */
+    //public BoletaEntity[] getBoletas()
+    //{
+        //return boletas;
+    //}
+    /**
+     * Método que establece una arreglo de Boletas vinculadas a este Abono.
+     * @param boletas 
+     */
+    //public void setBoletas(BoletaEntity[] boletas)
+    //{
+        //this.boletas = boletas;
+    //}
+    /**
+     * Método que obtiene el Espectador dueño de este Abono.
+     * @return EspectadorEntity
+     */
+    //public EspectadorEntity getEspectador()
+    //{
+        //return espectador;
+    //}
+    /**
+     * Método que establece el Espectador dueño de este Abono.
+     * @param espectador EspectadorEntity
+     */
+    //public void setEspectador(EspectadorEntity espectador)
+    //{
+        //this.espectador = espectador;
+    //}
 }
