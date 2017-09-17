@@ -6,7 +6,7 @@
 package co.edu.uniandes.ergo.festival.entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import uk.co.jemos.podam.common.PodamExclude;
@@ -28,10 +28,10 @@ public class EspectadorEntity extends PersonaEntity {
      */
     @PodamExclude
     @OneToMany
-    private ArrayList<BoletaEntity> boletas;
+    private List<BoletaEntity> boletas;
     @PodamExclude
     @OneToMany
-    private ArrayList<AbonoEntity> abonos;
+    private List<AbonoEntity> abonos;
 
     /**
      * @param direccion la direccion a modificar del Estudiante.
@@ -40,14 +40,14 @@ public class EspectadorEntity extends PersonaEntity {
         this.direccion = direccion;
     }
 
-    public void setBoletas(ArrayList<BoletaEntity> boletas) {
+    public void setBoletas(List<BoletaEntity> boletas) {
         this.boletas = boletas;
     }
 
     public void addAbono(AbonoEntity abono){
         abonos.add(abono);
     }
-    public void setAbonos(ArrayList<AbonoEntity> abonos) {
+    public void setAbonos(List<AbonoEntity> abonos) {
         this.abonos = abonos;
     }
 
@@ -58,12 +58,12 @@ public class EspectadorEntity extends PersonaEntity {
         return direccion;
     }
     
-    public ArrayList<AbonoEntity> getAbonos(){
+    public List<AbonoEntity> getAbonos(){
         return abonos;
     }
 
     
-    public ArrayList<BoletaEntity> getBoletas() {
+    public List<BoletaEntity> getBoletas() {
         return boletas;
     }
 }
