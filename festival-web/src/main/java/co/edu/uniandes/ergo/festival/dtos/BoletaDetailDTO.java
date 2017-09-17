@@ -13,7 +13,7 @@ import co.edu.uniandes.ergo.festival.entities.BoletaEntity;
  */
 public class BoletaDetailDTO extends BoletaDTO
 {
-         /**
+    /**
      * Conviertir Entity a DTO
      * (Crea un nuevo DTO con los valores que recibe en la entidad que viene de argumento.
      * @param boleta: Es la entidad que se va a convertir a DTO 

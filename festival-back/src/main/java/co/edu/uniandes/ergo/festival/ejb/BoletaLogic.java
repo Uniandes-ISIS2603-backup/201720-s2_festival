@@ -78,7 +78,7 @@ public class BoletaLogic
      * @param pID Long, id de la Boleta.
      * @return BoletaEntity, Boleta que se busca.
      */
-    public BoletaEntity getBoletaByID(Long pID)
+    public BoletaEntity getBoleta(Long pID)
     {
         return persistenceBoleta.find(pID);
     }
@@ -88,32 +88,23 @@ public class BoletaLogic
      * @return BoletaEntity, Boleta actualizada.
      * @throws BusinessLogicException 
      */
-    public BoletaEntity update(BoletaEntity entity) throws BusinessLogicException
+    public BoletaEntity updateBoleta(Long id, BoletaEntity entity) throws BusinessLogicException
     {
-        if(persistenceBoleta.find(entity.getId()) == null)
-        {
-            throw new BusinessLogicException("No existe una Boleta con el ID \"" + entity.getId()+"\"");
-        }
-      //if(entity.getEspectador() == null)
-        //
-      //if(persistenceEspectador.find(entity.getEspectador().getId()) == null)
-       //   
-      
-      return persistenceBoleta.update(entity);
+        LOGGER.log(Level.INFO, "Inicia proceso de actualizar editorial con id={0}", id);
+        // Note que, por medio de la inyección de dependencias se llama al método "update(entity)" que se encuentra en la persistencia.
+        BoletaEntity newEntity = persistenceBoleta.update(entity);
+        LOGGER.log(Level.INFO, "Termina proceso de actualizar editorial con id={0}", entity.getId());
+        return newEntity;
     }
     /**
      * Método que elimina una boleta.
      * @param entity BoletaEntity, Boleta a eliminar.
      * @throws BusinessLogicException
      */
-    public void deleteBoleta(BoletaEntity entity)throws BusinessLogicException
+    public void deleteBoleta(Long id)throws BusinessLogicException
     {
-        LOGGER.log(Level.INFO, "Inicia proceso de borrar boleta con id={0}", entity.getId());
-        if(persistenceBoleta.find(entity.getId()) == null)
-        {
-            throw new BusinessLogicException("No existe una Boleta con ID = \"" + entity.getId()+"\"");
-        }
-        persistenceBoleta.delete(entity.getId());
-        LOGGER.log(Level.INFO, "Termina proceso de borrar boleta con id={0}", entity.getId());
+        LOGGER.log(Level.INFO, "Inicia proceso de borrar boleta con id={0}",id);
+        persistenceBoleta.delete(id);
+        LOGGER.log(Level.INFO, "Termina proceso de borrar boleta con id={0}",id);
     }
 }
