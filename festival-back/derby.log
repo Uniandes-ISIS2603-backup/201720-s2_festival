@@ -1,11 +1,10 @@
-----------------------------------------------------------------
-Sat Sep 16 18:58:50 COT 2017:
- Iniciando instancia a816c00e-015e-8d21-66c0-00000df61008 de Derby, versión The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): 
-en el directorio de base de datos C:\Users\dj.bautista10\AppData\Local\Temp\gfembed1630961470839772419tmp\lib\databases\embedded_default con el cargador de clases sun.misc.Launcher$AppClassLoader@6bc7c054
-Cargado desde file:/C:/Users/dj.bautista10/.m2/repository/org/glassfish/main/extras/glassfish-embedded-all/4.1.1/glassfish-embedded-all-4.1.1.jar
+Sat Sep 16 20:07:00 COT 2017:
+ Iniciando instancia a816c00e-015e-8d5f-d12c-00000cb773e0 de Derby, versiÃ³n The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): 
+en el directorio de base de datos C:\Users\jc.corrales\AppData\Local\Temp\gfembed8588721472445620036tmp\lib\databases\embedded_default con el cargador de clases sun.misc.Launcher$AppClassLoader@6bc7c054
+Cargado desde file:/C:/Users/jc.corrales/.m2/repository/org/glassfish/main/extras/glassfish-embedded-all/4.1.1/glassfish-embedded-all-4.1.1.jar
 java.vendor=Oracle Corporation
 java.runtime.version=1.8.0_144-b01
-user.dir=C:\Users\dj.bautista10\Documents\Repo desarrollo\s2_festival\festival-back
+user.dir=C:\Users\jc.corrales\Documents\repositoriosGrupales\repositorioParaSubirNetBeans\s2_festival\festival-back
 os.name=Windows 7
 os.arch=amd64
 os.version=6.1
