@@ -5,34 +5,34 @@
  */
 package co.edu.uniandes.ergo.festival.dtos;
 
-import co.edu.uniandes.ergo.festival.entities.SillaEntity;
+import co.edu.uniandes.ergo.festival.entities.CriticaEntity;
 
 /**
  *
  * @author f.reyes948
  */
-public class SillaDetailDTO extends SillaDTO {
+public class CriticaDetailDTO extends CriticaDTO {
     
     /**
      * Constructor sin parámetros.
      */
-    public SillaDetailDTO(){
+    public CriticaDetailDTO(){
         
     }
     
     /**
-     * Crea una SillaDetailDTO a partir de la entidad.
-     * @param entity La entidad SillaEntity.
+     * Crea una CriticaDetailDTO a partir de la entidad.
+     * @param entity La entidad CriticaEntity.
      */
-    public SillaDetailDTO(SillaEntity entity){
+    public CriticaDetailDTO(CriticaEntity entity){
         super(entity);
     }
     
     /**
-     * Convierte la SillaDetailDTO a un entity.
-     * @return La SillaEntity.
+     * Convierte la CriticaDetailDTO a un entity.
+     * @return La CriticaEntity.
      */
-    public SillaEntity toEntity(){
+    public CriticaEntity toEntity(){
         return super.toEntity();
     }
 }

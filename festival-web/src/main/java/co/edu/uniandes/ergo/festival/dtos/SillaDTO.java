@@ -14,7 +14,7 @@ import co.edu.uniandes.ergo.festival.entities.SillaEntity;
 public class SillaDTO {
     
     /**
-     * Identificador de la silla en la base de datos.
+     * Identificador de la SillaEntity en la base de datos.
      */
     private Long id;
     
