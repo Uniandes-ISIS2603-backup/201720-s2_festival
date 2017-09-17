@@ -29,6 +29,8 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import uk.co.jemos.podam.common.PodamExclude;
 
 /**
@@ -39,7 +41,9 @@ import uk.co.jemos.podam.common.PodamExclude;
 public class FestivalEntity extends BaseEntity implements Serializable {
    
    private String nombre;
+   @Temporal(TemporalType.DATE)
    private Date fechaInicio;
+   @Temporal(TemporalType.DATE)
    private Date fechaFin;
    private String patrocinador;
    @PodamExclude

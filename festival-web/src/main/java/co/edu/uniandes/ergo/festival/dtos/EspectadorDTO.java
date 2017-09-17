@@ -50,4 +50,14 @@ public class EspectadorDTO {
     public void setDireccion(String direccion){
         this.direccion = direccion;
     }
+    
+    public EspectadorEntity toEntity(){
+        EspectadorEntity entEsp = new EspectadorEntity();
+        
+        entEsp.setId(this.id);
+        entEsp.setName(this.nombre);
+        entEsp.setDireccion(this.direccion);
+        
+        return entEsp;
+    }
 }

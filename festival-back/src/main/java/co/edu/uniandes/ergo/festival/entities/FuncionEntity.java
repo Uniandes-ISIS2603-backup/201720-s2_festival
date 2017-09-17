@@ -8,6 +8,8 @@ package co.edu.uniandes.ergo.festival.entities;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -16,8 +18,10 @@ import javax.persistence.Entity;
 @Entity
 public class FuncionEntity extends BaseEntity implements Serializable{
     
+    @Temporal(TemporalType.DATE)
     private Date horaInicio;
     
+    @Temporal(TemporalType.DATE)
     private Date horaFin;
 
     public Date getHoraInicio() {
