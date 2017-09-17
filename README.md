@@ -1280,7 +1280,7 @@ Código|Descripción|Cuerpo
 500|Error interno|Mensaje de error
 404|No existe un objeto Funcion con el ID solicitado|Mensaje de error
 
-#### GET /teatrosonesid}/salaslasid
+#### GET /teatrosonesid}/salasid
 
 Retorna un objeto Sala reprentacion Detail.
 
@@ -1288,8 +1288,8 @@ Retorna un objeto Sala reprentacion Detail.
 
 Nombre|Ubicación|Descripción|Requerido|Esquema
 :--|:--|:--|:--|:--
-funcionesid|Path|ID del objeto Teatro a consultar|Si|Integer
-sillaid|Path|ID del objeto Sala consultar|Sí|Integer
+teatrosid|Path|ID del objeto Teatro a consultar|Si|Integer
+salasid|Path|ID del objeto Sala consultar|Sí|Integer
 
 #### Respuesta
 
@@ -1301,7 +1301,7 @@ Código|Descripción|Cuerpo
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 500|Error interno|Mensaje de error
 
-#### POST /teatros/{teatrosid}/salaid
+#### POST /teatros/{teatrosid}/salasid
 
 Es el encargado de crear objetos Sala.
 
@@ -1310,8 +1310,8 @@ Es el encargado de crear objetos Sala.
 Nombre|Ubicación|Descripción|Requerido|Esquema
 :--|:--|:--|:--|:--
 body|body|Objeto Sala  será creado||[Representación Detail](#recurso-sala)
-funcionesid|Path|ID del objeto Teatro  a consultar|Sí|Integer
-
+teatrosid|Path|ID del objeto Teatro  a consultar|Sí|Integer
+salasid|Path|ID del objeto Sala a consultar|Sí|Integer
 
 #### Respuesta
 
@@ -1323,7 +1323,7 @@ Código|Descripción|Cuerpo
 500|No se pudo crear el objeto Sala |Mensaje de error
 404|No existe un objeto Teatro  con el ID solicitado|Mensaje de error
 
-#### PUT/teatros/{teatrosid}/salaid
+#### PUT/teatros/{teatrosid}/salasid
 
 Es el encargado de actualizar objetos Sala dentro de un objeto Teatro.
 
@@ -1333,8 +1333,8 @@ Nombre|Ubicación|Descripción|Requerido|Esquema
 :--|:--|:--|:--|:--
 id|Path|ID del objeto Sala  a actualizar|Sí|Integer
 body|body|Objeto Sala  nuevo|Sí|[Representación Detail](#recurso-sala)
-funcionesid|Path|ID del objeto Teatro a consultar|Sí|Integer
-sillaid|Path|ID del objeto Sala a consultar|Sí|Integer
+teatrosid|Path|ID del objeto Teatro a consultar|Sí|Integer
+salasid|Path|ID del objeto Sala a consultar|Sí|Integer
 
 #### Respuesta
 
@@ -1355,8 +1355,8 @@ Elimina un objeto Sala en un objeto Teatro.
 
 Nombre|Ubicación|Descripción|Requerido|Esquema
 :--|:--|:--|:--|:--
-funcionesid|Path|ID del objeto  Teatro a consultar|Sí|Integer
-sillaid|Path|ID del objeto Sala a consultar|Sí|Integer
+teatrosid|Path|ID del objeto  Teatro a consultar|Sí|Integer
+salasid|Path|ID del objeto Sala a consultar|Sí|Integer
 
 #### Respuesta
 
