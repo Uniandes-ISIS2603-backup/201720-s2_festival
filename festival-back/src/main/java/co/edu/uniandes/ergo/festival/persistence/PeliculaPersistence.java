@@ -86,4 +86,11 @@ public class PeliculaPersistence {
         TypedQuery query = em.createQuery("select u from PeliculaEntity u", PeliculaEntity.class);
         return query.getResultList();
     }
+    
+        public PeliculaEntity findByName(String name) {
+        LOGGER.log(Level.INFO, "Consultando company por nombre= ", name);
+        TypedQuery<PeliculaEntity> q = em.createQuery("select u from CompanyEntity u where u.name = :name", PeliculaEntity.class);
+        q = q.setParameter("name", name);
+        return q.getSingleResult();
+    }
 }
