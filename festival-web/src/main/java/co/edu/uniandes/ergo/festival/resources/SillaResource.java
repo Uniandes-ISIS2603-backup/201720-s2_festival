@@ -56,7 +56,7 @@ public class SillaResource {
     public SillaDetailDTO getSilla(@PathParam("id") Long id){
         SillaEntity entity = sillaLogic.getSilla(id);
         if (entity == null){
-            throw new WebApplicationException("La silla con id: " + id + "no existe.", 404);
+            throw new WebApplicationException("La silla con id: " + id + " no existe.", 404);
         }
         return new SillaDetailDTO(sillaLogic.getSilla(id));
     }
@@ -81,7 +81,7 @@ public class SillaResource {
     public SillaDetailDTO updateSilla(@PathParam("id") Long id, SillaDetailDTO dto){
         SillaEntity oldEntity = sillaLogic.getSilla(id);
         if (oldEntity == null){
-            throw new WebApplicationException("La silla con id: " + id + "no existe.", 404);
+            throw new WebApplicationException("La silla con id: " + id + " no existe.", 404);
         }
         SillaEntity entity = dto.toEntity();
         entity.setId(id);
@@ -97,7 +97,7 @@ public class SillaResource {
     public void deleteSilla(@PathParam("id") Long id){
         SillaEntity entity = sillaLogic.getSilla(id);
         if (entity == null){
-            throw new WebApplicationException("La silla con id: " + id + "no existe.", 404);
+            throw new WebApplicationException("La silla con id: " + id + " no existe.", 404);
         }
         sillaLogic.deleteSilla(id);
     }

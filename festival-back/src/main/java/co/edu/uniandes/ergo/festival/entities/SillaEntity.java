@@ -7,7 +7,6 @@ package co.edu.uniandes.ergo.festival.entities;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -37,7 +36,6 @@ public class SillaEntity extends BaseEntity implements Serializable{
     /**
      * Indica si la silla está reservada.
      */
-    @Basic
     private boolean reservada;
 
     /**
@@ -48,7 +46,6 @@ public class SillaEntity extends BaseEntity implements Serializable{
     /**
      * Indica si la silla es o no preferencial.
      */
-    @Basic
     private boolean esPreferencial;
     
     /**
