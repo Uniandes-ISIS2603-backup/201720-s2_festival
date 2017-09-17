@@ -107,6 +107,10 @@ public class SillaDTO {
         this.id = id;
     }
     
+    /**
+     * Retorna una SillaEntity a partir del DTO.
+     * @return la SillaEntity.
+     */
     public SillaEntity toEntity(){
         SillaEntity entity = new SillaEntity();
         entity.setId(id);

@@ -6,7 +6,12 @@
 package co.edu.uniandes.ergo.festival.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import javax.persistence.Basic;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -15,11 +20,24 @@ import javax.persistence.Entity;
 @Entity
 public class SillaEntity extends BaseEntity implements Serializable{
     
-    private String prueba;
+//    /**
+//     * Sala a la que pertenece una silla.
+//     */
+//    @ManyToOne()
+//    @PodamExclude
+//    private SalaEntity sala;
+//    
+//    /**
+//     * Boletas que tienen esta silla.
+//     */
+//    @OneToMany(mappedBy="silla")
+//    @PodamExclude
+//    private ArrayList<BoletaEntity> boletas;
     
     /**
      * Indica si la silla está reservada.
      */
+    @Basic
     private boolean reservada;
 
     /**
@@ -30,6 +48,7 @@ public class SillaEntity extends BaseEntity implements Serializable{
     /**
      * Indica si la silla es o no preferencial.
      */
+    @Basic
     private boolean esPreferencial;
     
     /**
@@ -72,20 +91,6 @@ public class SillaEntity extends BaseEntity implements Serializable{
      */
     public void setEsPreferencial(boolean esPreferencial) {
         this.esPreferencial = esPreferencial;
-    }
-
-    /**
-     * @return the prueba
-     */
-    public String getPrueba() {
-        return prueba;
-    }
-
-    /**
-     * @param prueba the prueba to set
-     */
-    public void setPrueba(String prueba) {
-        this.prueba = prueba;
     }
     
     
