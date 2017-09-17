@@ -5,7 +5,10 @@
  */
 package co.edu.uniandes.ergo.festival.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -14,9 +17,24 @@ import javax.persistence.Entity;
 @Entity
 public class CriticaEntity extends BaseEntity{
     
+//    /**
+//     * Función a la que pertenece una crítica.
+//     */
+//    @PodamExclude
+//    @ManyToOne()
+//    private FuncionEntity funcion;
+//    
+//    /**
+//     * Crítico que hace la crítica.
+//     */
+//    @ManyToOne()
+//    @PodamExclude
+//    private CriticoEntity critico;
+    
     /**
      * Comentario hecho por el crítico sobre una función.
      */
+    @Column(length=500)
     private String comentario;
 
     /**
