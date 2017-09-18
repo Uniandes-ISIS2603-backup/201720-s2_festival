@@ -5,7 +5,7 @@
  */
 package co.edu.uniandes.ergo.festival.persistence;
 
-import co.edu.uniandes.ergo.festival.entities.CríticaEntity;
+import co.edu.uniandes.ergo.festival.entities.CriticaEntity;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,7 +31,7 @@ public class CriticaPersistence {
      * @param entity Entidad de la crítica a crear.
      * @return La entidad con el id.
      */
-    public CríticaEntity create(CríticaEntity entity){
+    public CriticaEntity create(CriticaEntity entity){
         LOGGER.log(Level.INFO, "Creando la crítica nueva.");
         
         em.persist(entity);
@@ -46,20 +46,20 @@ public class CriticaPersistence {
      * @param id El id de la crítica en la base de datos.
      * @return La crítica buscada.
      */
-    public CríticaEntity find(Long id){
+    public CriticaEntity find(Long id){
         LOGGER.log(Level.INFO, "Buscando crítica con id: {0}", id);
         
-        return em.find(CríticaEntity.class, id);
+        return em.find(CriticaEntity.class, id);
     }
     
     /**
      * Consulta todas las críticas del festival.
      * @return Una List con las críticas.
      */
-    public List<CríticaEntity> findAll(){
+    public List<CriticaEntity> findAll(){
         LOGGER.log(Level.INFO, "Buscando todas las críticas.");
         
-        TypedQuery query = em.createQuery("select u from CríticaEntity u", CríticaEntity.class);
+        TypedQuery query = em.createQuery("select u from CriticaEntity u", CriticaEntity.class);
         
         return query.getResultList();
     }
@@ -69,7 +69,7 @@ public class CriticaPersistence {
      * @param entity La crítica a actualizar.
      * @return La crítica actualizada.
      */
-    public CríticaEntity update(CríticaEntity entity){
+    public CriticaEntity update(CriticaEntity entity){
         LOGGER.log(Level.INFO, "Actualizando crítica con id: {0}", entity.getId());
         
         return em.merge(entity);
@@ -82,7 +82,7 @@ public class CriticaPersistence {
     public void delete(Long id){
         LOGGER.log(Level.INFO, "Borrando la crítica con id: {0}", id);
         
-        em.remove(em.find(CríticaEntity.class, id));
+        em.remove(em.find(CriticaEntity.class, id));
     }
     
 }

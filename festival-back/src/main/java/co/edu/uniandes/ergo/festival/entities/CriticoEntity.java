@@ -5,7 +5,10 @@
  */
 package co.edu.uniandes.ergo.festival.entities;
 
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -13,6 +16,31 @@ import javax.persistence.Entity;
  */
 @Entity
 public class CriticoEntity extends PersonaEntity{
-    // private Critica critica;
     
+    @PodamExclude
+    @OneToMany
+    private List<CriticaEntity> criticas;
+    @PodamExclude
+    @OneToMany
+    private List<PeliculaEntity> peliculas;
+    
+
+    public List<CriticaEntity> getCriticas(){
+        return criticas;
+    }
+    
+    public List<PeliculaEntity> GetPeliculas(){
+        return peliculas;
+    }
+    
+    public void setPeliculas(List<PeliculaEntity> peliculas){
+        this.peliculas = peliculas;
+    }
+    public void setCriticas(List<CriticaEntity> criticas){
+        this.criticas = criticas;
+    }
+    
+    public void addCritica(CriticaEntity critica){
+        criticas.add(critica);
+    }
 }

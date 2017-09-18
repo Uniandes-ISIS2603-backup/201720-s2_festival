@@ -5,9 +5,10 @@
  */
 package co.edu.uniandes.ergo.festival.persistence;
 
-import co.edu.uniandes.ergo.festival.entities.CriticaEntity;
+import co.edu.uniandes.ergo.festival.entities.PeliculaEntity;
 import java.util.ArrayList;
 import java.util.List;
+import javax.ejb.embeddable.EJBContainer;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -29,17 +30,17 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 
 /**
  *
- * @author f.reyes948
+ * @author dj.bautista10
  */
 @RunWith(Arquillian.class)
-public class CriticaPersistenceTest {
-    
+public class PeliculaPersistenceTest {
+
     /**
-     * Inyección de la dependencia a la clase CríticaPersistence cuyos métodos
-     * se van a probar.
+     * Inyección de la dependencia a la clase Pelicula cuyos métodos se van a
+     * probar.
      */
     @Inject
-    private CriticaPersistence persistence;
+    private PeliculaPersistence persistence;
 
     /**
      * Contexto de Persistencia que se va a utilizar para acceder a la Base de
@@ -55,38 +56,38 @@ public class CriticaPersistenceTest {
     @Inject
     UserTransaction utx;
 
-     /**
+    /**
      *
      */
-    private List<CriticaEntity> data = new ArrayList<CriticaEntity>();
-    
+    private List<PeliculaEntity> data = new ArrayList<PeliculaEntity>();
+
     /**
      *
      * @return Devuelve el jar que Arquillian va a desplegar en el Glassfish
-     * embebido. El jar contiene las clases de Crítica, el descriptor de la
-     * base de datos y el archivo beans.xml para resolver la inyección de
+     * embebido. El jar contiene las clases de Silla, el descriptor de la base
+     * de datos y el archivo beans.xml para resolver la inyección de
      * dependencias.
      */
     @Deployment
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
-                .addPackage(CriticaEntity.class.getPackage())
-                .addPackage(CriticaPersistence.class.getPackage())
+                .addPackage(PeliculaEntity.class.getPackage())
+                .addPackage(PeliculaPersistence.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
-    
-    public CriticaPersistenceTest() {
+
+    public PeliculaPersistenceTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
         try {
@@ -95,6 +96,7 @@ public class CriticaPersistenceTest {
             clearData();
             insertData();
             utx.commit();
+
         } catch (Exception e) {
             e.printStackTrace();
             try {
@@ -103,62 +105,95 @@ public class CriticaPersistenceTest {
                 e1.printStackTrace();
             }
         }
+
     }
-    
+
     @After
     public void tearDown() {
     }
-    
+
     private void clearData() {
-        em.createQuery("delete from CriticaEntity").executeUpdate();
+        em.createQuery("delete from PeliculaEntity").executeUpdate();
     }
 
     private void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
         for (int i = 0; i < 3; i++) {
-            CriticaEntity entity = factory.manufacturePojo(CriticaEntity.class);
-
+            PeliculaEntity entity = factory.manufacturePojo(PeliculaEntity.class);
             em.persist(entity);
             data.add(entity);
         }
     }
 
     /**
-     * Test of create method, of class CríticaPersistence.
+     * Test of create method, of class PeliculaPersistence.
      */
     @Test
     public void testCreate() throws Exception {
         PodamFactory factory = new PodamFactoryImpl();
-        CriticaEntity newEntity = factory.manufacturePojo(CriticaEntity.class);
-        CriticaEntity result = persistence.create(newEntity);
+        PeliculaEntity newEntity = factory.manufacturePojo(PeliculaEntity.class);
+        PeliculaEntity result = persistence.create(newEntity);
 
         Assert.assertNotNull(result);
-        CriticaEntity entity = em.find(CriticaEntity.class, result.getId());
+        PeliculaEntity entity = em.find(PeliculaEntity.class, result.getId());
         Assert.assertNotNull(entity);
         Assert.assertEquals(newEntity.getName(), entity.getName());
+
     }
 
     /**
-     * Test of find method, of class CríticaPersistence.
+     * Test of update method, of class PeliculaPersistence.
+     */
+    @Test
+    public void testUpdate() throws Exception {
+        System.out.println("Update test");
+        PeliculaEntity entity = data.get(0);
+        PodamFactory factory = new PodamFactoryImpl();
+        PeliculaEntity generada = factory.manufacturePojo(PeliculaEntity.class);
+        
+        generada.setId(entity.getId());
+        persistence.update(generada);
+        
+        PeliculaEntity actualizado = em.find(PeliculaEntity.class, entity.getId());
+        assertNotNull(actualizado);
+        assertEquals(generada.getName(), actualizado.getName());
+    }
+
+    /**
+     * Test of delete method, of class PeliculaPersistence.
+     */
+    @Test
+    public void testDelete() throws Exception {
+        System.out.println("Delete test");
+        PeliculaEntity entity = data.get(0);
+        persistence.delete(entity.getId());
+        PeliculaEntity espNull = em.find(PeliculaEntity.class, entity.getId());
+        Assert.assertNull(espNull);
+        
+    }
+
+    /**
+     * Test of find method, of class PeliculaPersistence.
      */
     @Test
     public void testFind() throws Exception {
-        CriticaEntity entity = data.get(0);
-        CriticaEntity newEntity = persistence.find(entity.getId());
-        Assert.assertNotNull(newEntity);
-        Assert.assertEquals(entity.getName(), newEntity.getName());
+        System.out.println("Test find");
+        PeliculaEntity pelicula = data.get(0);
+        PeliculaEntity CompPelicula = persistence.find(pelicula.getId());
+        Assert.assertNotNull(CompPelicula);
+        Assert.assertEquals(pelicula, CompPelicula);
     }
 
     /**
-     * Test of findAll method, of class CríticaPersistence.
+     * Test of findAll method, of class PeliculaPersistence.
      */
     @Test
     public void testFindAll() throws Exception {
-        List<CriticaEntity> list = persistence.findAll();
-        Assert.assertEquals(data.size(), list.size());
-        for (CriticaEntity ent : list) {
+        System.out.println("Test findAll");
+        List<PeliculaEntity> peliculas = persistence.findAll();
+        for (PeliculaEntity ent : peliculas) {
             boolean found = false;
-            for (CriticaEntity entity : data) {
+            for (PeliculaEntity entity : data) {
                 if (ent.getId().equals(entity.getId())) {
                     found = true;
                 }
@@ -167,33 +202,4 @@ public class CriticaPersistenceTest {
         }
     }
 
-    /**
-     * Test of update method, of class CríticaPersistence.
-     */
-    @Test
-    public void testUpdate() throws Exception {
-        CriticaEntity entity = data.get(0);
-        PodamFactory factory = new PodamFactoryImpl();
-        CriticaEntity newEntity = factory.manufacturePojo(CriticaEntity.class);
-
-        newEntity.setId(entity.getId());
-
-        persistence.update(newEntity);
-
-        CriticaEntity resp = em.find(CriticaEntity.class, entity.getId());
-
-        Assert.assertEquals(newEntity.getName(), resp.getName());
-    }
-
-    /**
-     * Test of delete method, of class CríticaPersistence.
-     */
-    @Test
-    public void testDelete() throws Exception {
-        CriticaEntity entity = data.get(0);
-        persistence.delete(entity.getId());
-        CriticaEntity deleted = em.find(CriticaEntity.class, entity.getId());
-        Assert.assertNull(deleted);
-    }
-    
 }

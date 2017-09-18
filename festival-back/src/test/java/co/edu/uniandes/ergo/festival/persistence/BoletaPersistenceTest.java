@@ -209,7 +209,7 @@ public class BoletaPersistenceTest
      *
      */
     @Test
-    public void updateEmployeeTest() {
+    public void updateBoletaTest() {
         BoletaEntity entity = data.get(0);
         PodamFactory factory = new PodamFactoryImpl();
         BoletaEntity newEntity = factory.manufacturePojo(BoletaEntity.class);

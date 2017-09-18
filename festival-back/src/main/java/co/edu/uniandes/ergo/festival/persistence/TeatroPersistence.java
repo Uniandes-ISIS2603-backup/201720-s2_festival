@@ -18,10 +18,11 @@ import javax.persistence.TypedQuery;
  *
  * @author de.gutierrez
  */
+@Stateless
 public class TeatroPersistence 
 {
     private static final Logger LOGGER = Logger.getLogger(TeatroPersistence.class.getName());
-    @PersistenceContext (unitName = "teatroPU")
+    @PersistenceContext (unitName = "festivalPU")
     protected EntityManager em;
     
     /**

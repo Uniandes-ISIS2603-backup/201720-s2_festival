@@ -24,12 +24,15 @@ SOFTWARE.
 package co.edu.uniandes.ergo.festival.dtos;
 import co.edu.uniandes.ergo.festival.entities.FestivalEntity;
 
+
 /**
  *
  * @author ISIS2603
  */
 public class FestivalDetailDTO extends FestivalDTO {
 
+    
+    
     /**
      * Constructor por defecto
      */
@@ -45,6 +48,7 @@ public class FestivalDetailDTO extends FestivalDTO {
         super(entity);
     }
 
+    
     /**
      * Transformar un DTO a un Entity
      *
