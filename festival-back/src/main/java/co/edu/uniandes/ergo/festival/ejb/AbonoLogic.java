@@ -66,42 +66,34 @@ public class AbonoLogic
      * @param pID Long, id del Abono.
      * @return AbonoEntity, Abono que se busca.
      */
-    public AbonoEntity getAbonoByID(Long pID)
+    public AbonoEntity getAbono(Long pID)
     {
         return persistenceAbono.find(pID);
     }
     /**
      * Método que actualiza un Abono.
+     * @param id Long, id del abono.
      * @param entity AbonoEntity, Abono con información nueva.
      * @return AbonoEntity, Abono actualizado.
      * @throws BusinessLogicException 
      */
-    public AbonoEntity update(AbonoEntity entity) throws BusinessLogicException
+    public AbonoEntity updateAbono(Long id, AbonoEntity entity) throws BusinessLogicException
     {
-        if(persistenceAbono.find(entity.getId()) == null)
-        {
-            throw new BusinessLogicException("No existe un Abono con el ID \"" + entity.getId()+"\"");
-        }
-      //if(entity.getEspectador() == null)
-        //
-      //if(persistenceEspectador.find(entity.getEspectador().getId()) == null)
-       //   
-      
-      return persistenceAbono.update(entity);
+        LOGGER.log(Level.INFO, "Inicia proceso de actualizar editorial con id={0}", id);
+        // Note que, por medio de la inyección de dependencias se llama al método "update(entity)" que se encuentra en la persistencia.
+        AbonoEntity newEntity = persistenceAbono.update(entity);
+        LOGGER.log(Level.INFO, "Termina proceso de actualizar editorial con id={0}", entity.getId());
+        return newEntity;
     }
     /**
      * Método que elimina un Abono.
-     * @param entity AbonoEntity, Abono a eliminar.
+     * @param id Long, id del abono.
      * @throws BusinessLogicException
      */
-    public void deleteAbono(AbonoEntity entity)throws BusinessLogicException
+    public void deleteAbono(Long id)throws BusinessLogicException
     {
-        LOGGER.log(Level.INFO, "Inicia proceso de borrar Abono con id={0}", entity.getId());
-        if(persistenceAbono.find(entity.getId()) == null)
-        {
-            throw new BusinessLogicException("No existe un Abono con ID = \"" + entity.getId()+"\"");
-        }
-        persistenceAbono.delete(entity.getId());
-        LOGGER.log(Level.INFO, "Termina proceso de borrar Abono con id={0}", entity.getId());
+        LOGGER.log(Level.INFO, "Inicia proceso de borrar abono con id={0}",id);
+        persistenceAbono.delete(id);
+        LOGGER.log(Level.INFO, "Termina proceso de borrar abono con id={0}",id);
     }
 }
