@@ -12,13 +12,24 @@ import co.edu.uniandes.ergo.festival.entities.AbonoEntity;
  */
 public class AbonoDetailDTO extends AbonoDTO
 {
-             /**
-     * Conviertir Entity a DTO
-     * (Crea un nuevo DTO con los valores que recibe en la entidad que viene de argumento.
-     * @param boleta: Es la entidad que se va a convertir a DTO 
+    public AbonoDetailDTO() {
+    }
+        
+    /**
+     * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
+     * la entidad que viene de argumento.
+     *
+     * @param abono: Es la entidad que se va a convertir a DTO
      */
-    public AbonoDetailDTO(AbonoEntity boleta)
-    {
+    public AbonoDetailDTO(AbonoEntity abono) {
+        super(abono);
+    }
+
+    @Override
+    public AbonoEntity toEntity() {
+        AbonoEntity entity = super.toEntity();
+
+        return entity;
 
     }
 }
