@@ -25,6 +25,9 @@ package co.edu.uniandes.ergo.festival.entities;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 /**
  * Clase que contiene la información de una boleta.
  * @author jc.corrales
@@ -35,22 +38,36 @@ public class BoletaEntity extends BaseEntity implements Serializable
     /**
      * Atributo que contiene la calificación asociada.
      */
+    //@OneToOne
     //private CalificacionEntity calificacion;
     /**
      * Atributo que contiene la información del espectador asociado.
      */
+   // @OneToOne
     //private EspectadorEntity espectador;
     /**
      * Atributo que contiene la información de la silla asignada.
      */
+    //@OneToOne
     //private SillaEntity silla;
     /**
-     * Método que obtiene la calificación asociada.
+     * Función a la que la Boleta concede acceso a.
+     */
+    //@ManyToMany
+    //private FuncionEntity funcion;
+    /**
+     * Atributo que contiene el Abono al cual está asociado, si hay.
+     */
+    //@ManyToOne
+    //private AbonoEntity abono;
+    /**
+     * Atributo que obtiene la calificación asociada.
      * @return CalificacionEntity
      */
+
     //public CalificacionEntity getCalificacion()
     //{
-    //    return calificacion;
+        //return calificacion;
     //}
     /**
      * Método que establece la calificación asociada.
@@ -58,15 +75,15 @@ public class BoletaEntity extends BaseEntity implements Serializable
      */
     //public void setCalificacion(CalificacionEntity calificacion)
     //{
-    //    this.calificacion = calificacion;
-   // }
+        //this.calificacion = calificacion;
+    //}
     /**
      * Método que obtiene el espectador asociado.
      * @return EspectadorEntity
      */
     //public EspectadorEntity getEspectador()
     //{
-    //    return espectador;
+       // return espectador;
     //}
     /**
      * Método que establece el espectador asociado.
@@ -74,7 +91,7 @@ public class BoletaEntity extends BaseEntity implements Serializable
      */
     //public void setEspectador(EspectadorEntity espectador)
     //{
-    //    this.espectador = espectador;
+       // this.espectador = espectador;
     //}
     /**
      * Método que obtiene la silla asociada.
@@ -82,7 +99,7 @@ public class BoletaEntity extends BaseEntity implements Serializable
      */
     //public SillaEntity getSilla()
     //{
-    //    return silla;
+        //return silla;
     //}
     /**
      * Método que establece la silla asociada.
@@ -90,6 +107,38 @@ public class BoletaEntity extends BaseEntity implements Serializable
      */
     //public void setSilla (SillaEntity silla)
     //{
-    //    this.silla = silla;
+        //this.silla = silla;
+    //}
+    /**
+     * Mérodo que returna la función de la Boleta.
+     * @return 
+     */
+    //public FuncionEntity getFuncion()
+    //{
+       // return funcion;
+    //}
+    /**
+     * Método que establece la función de la Boleta.
+     * @param funcion 
+     */
+    //public void setFuncion(FuncionEntity funcion)
+    //{
+        //this.funcion = funcion;
+    //}
+    /**
+     * Método qque retorna el Abono asociado, si lo hay.
+     * @return Abono AbonoEntity
+     */
+    //public AbonoEntity getAbono()
+    //{
+        //return abono;
+    //}
+    /**
+     * Método que establece el Abono al que esta Boleta pertenece.
+     * @param abono AbonoEntity
+     */
+    //public void setAbono(AbonoEntity abono)
+    //{
+        //this.abono = abono;
     //}
 }

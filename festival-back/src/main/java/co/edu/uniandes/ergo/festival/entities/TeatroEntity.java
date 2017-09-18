@@ -6,7 +6,10 @@
 package co.edu.uniandes.ergo.festival.entities;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import uk.co.jemos.podam.common.PodamExclude;
 
 
 /**
@@ -16,17 +19,20 @@ import javax.persistence.Entity;
 @Entity 
 public class TeatroEntity extends BaseEntity implements Serializable
 {
-    private Long id;
     private String nombre;
 
-    public Long getId() {
-        return id;
+    @PodamExclude
+    @OneToMany
+    private List<SalaEntity> salas;
+
+    public List<SalaEntity> getSala() {
+        return salas;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setSala(List<SalaEntity> sala) {
+        this.salas = sala;
     }
-
+    
     public String getNombre() {
         return nombre;
     }

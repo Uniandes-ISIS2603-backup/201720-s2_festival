@@ -23,10 +23,9 @@ SOFTWARE.
  */
 package co.edu.uniandes.ergo.festival.persistence;
 
-import co.edu.uniandes.ergo.festival.entities.BoletaEntity;
+//import co.edu.uniandes.ergo.festival.entities.BoletaEntity;
 import co.edu.uniandes.ergo.festival.entities.AbonoEntity;
-import co.edu.uniandes.ergo.festival.persistence.BoletaPersistence;
-import co.edu.uniandes.ergo.festival.persistence.AbonoPersistence;
+//import co.edu.uniandes.ergo.festival.persistence.BoletaPersistence;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,9 +61,9 @@ public class AbonoPersistenceTest
     public static JavaArchive createDevelopment()
     {
         return ShrinkWrap.create(JavaArchive.class)
-                .addPackage(BoletaEntity.class.getPackage())
+                //.addPackage(BoletaEntity.class.getPackage())
                 .addPackage(AbonoEntity.class.getPackage())
-                .addPackage(BoletaPersistence.class.getPackage())
+                //.addPackage(BoletaPersistence.class.getPackage())
                 .addPackage(AbonoPersistence.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
@@ -142,5 +141,88 @@ public class AbonoPersistenceTest
             em.persist(entity);
             data.add(entity);
         }
+    }
+    
+        /**
+     * Prueba para crear un Abono.
+     *
+     *
+     */
+    @Test
+    public void createAbonoTest() {
+        PodamFactory factory = new PodamFactoryImpl();
+        AbonoEntity newEntity = factory.manufacturePojo(AbonoEntity.class);
+        AbonoEntity result = abonoPersistence.create(newEntity);
+
+        Assert.assertNotNull(result);
+
+        AbonoEntity entity = em.find(AbonoEntity.class, result.getId());
+
+        Assert.assertEquals(newEntity.getName(), entity.getName());
+    }
+    
+    /**
+     * Prueba para consultar la lista de abonos.
+     *
+     *
+     */
+    @Test
+    public void getAbonosTest() {
+        List<AbonoEntity> list = abonoPersistence.findAll();
+        Assert.assertEquals(data.size(), list.size());
+        for (AbonoEntity ent : list) {
+            boolean found = false;
+            for (AbonoEntity entity : data) {
+                if (ent.getId().equals(entity.getId())) {
+                    found = true;
+                }
+            }
+            Assert.assertTrue(found);
+        }
+    }
+    
+    /**
+     * Prueba para consultar un Abono.
+     *
+     *
+     */
+    @Test
+    public void getAbonoTest() {
+        AbonoEntity entity = data.get(0);
+        AbonoEntity newEntity = abonoPersistence.find(entity.getId());
+        Assert.assertNotNull(newEntity);
+    }
+    
+     /**
+     * Prueba para eliminar un Abono.
+     *
+     *
+     */
+    @Test
+    public void deleteAbonoTest() {
+        AbonoEntity entity = data.get(0);
+        abonoPersistence.delete(entity.getId());
+        AbonoEntity deleted = em.find(AbonoEntity.class, entity.getId());
+        Assert.assertNull(deleted);
+    }
+
+    /**
+     * Prueba para actualizar un Abono.
+     *
+     *
+     */
+    @Test
+    public void updateAbonoTest() {
+        AbonoEntity entity = data.get(0);
+        PodamFactory factory = new PodamFactoryImpl();
+        AbonoEntity newEntity = factory.manufacturePojo(AbonoEntity.class);
+
+        newEntity.setId(entity.getId());
+
+        abonoPersistence.update(newEntity);
+
+        AbonoEntity resp = em.find(AbonoEntity.class, entity.getId());
+
+        Assert.assertEquals(newEntity.getName(), resp.getName());
     }
 }

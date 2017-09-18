@@ -13,6 +13,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import uk.co.jemos.podam.common.PodamExclude;
 
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+
 /**
  *
  * @author dj.bautista10
@@ -20,8 +24,10 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class FuncionEntity extends BaseEntity implements Serializable{
     
+    @Temporal(TemporalType.DATE)
     private Date horaInicio;
     
+    @Temporal(TemporalType.DATE)
     private Date horaFin;
     
     @PodamExclude

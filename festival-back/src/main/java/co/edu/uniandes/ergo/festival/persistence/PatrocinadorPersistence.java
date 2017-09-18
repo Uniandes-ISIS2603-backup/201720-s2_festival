@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package co.edu.uniandes.ergo.festival.entities;
+package co.edu.uniandes.ergo.festival.persistence;
 
 /**
  *
  * @author f.mayenberger10
  */
-@Entity
-public class SalaEntity extends BaseEntity implements Serializable {
+public class PatrocinadorPersistence {
+    
 }
