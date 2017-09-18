@@ -5,10 +5,14 @@
  */
 package co.edu.uniandes.ergo.festival.entities;
 
+import java.io.Serializable;
+import javax.persistence.Entity;
+
 /**
  *
  * @author dj.bautista10
  */
-public class FuncionEntity {
+@Entity
+public class FuncionEntity extends BaseEntity implements Serializable{
     
 }
