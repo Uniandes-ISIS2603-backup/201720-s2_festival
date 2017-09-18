@@ -1,5 +1,11 @@
 delete from FestivalEntity;
 
+/* BoletaEntity*/
+insert into BoletaEntity (id) values(10);
+insert into BoletaEntity (id) values(20);
+insert into BoletaEntity (id) values(30);
+insert into BoletaEntity (id) values(40);
+insert into BoletaEntity (id) values(50);
 /* SillaEntity */
 
     insert into SillaEntity (reservada, tarifa, esPreferencial) values (1, 71.92, 0);
