@@ -5,6 +5,9 @@
  */
 package co.edu.uniandes.ergo.festival.entities;
 
+import java.io.Serializable;
+import javax.persistence.Entity;
+
 /**
  *
  * @author f.mayenberger10
