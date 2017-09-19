@@ -25,7 +25,7 @@ public class SalaLogic {
     private SalaPersistence persistence;
     
     public SalaEntity create (SalaEntity entity) {
-        LOGGER.log(Level.INFO, "Logic creando sala");
+        LOGGER.log(Level.INFO, "Logic creando sala {0}", entity.getName());
         return persistence.create(entity);
     }
     

@@ -24,6 +24,8 @@ public class PatrocinadorDTO {
     public PatrocinadorDTO(PatrocinadorEntity entity) {
         this.id = entity.getId();
         this.name = entity.getName();
+        this.patrocinio = entity.getPatrocinio();
+        this.NIT = entity.getNIT();
     }
 
     /**

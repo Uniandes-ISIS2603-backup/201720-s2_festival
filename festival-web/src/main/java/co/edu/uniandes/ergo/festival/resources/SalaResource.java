@@ -7,6 +7,7 @@ package co.edu.uniandes.ergo.festival.resources;
 
 
 import co.edu.uniandes.ergo.festival.dtos.SalaDetailDTO;
+import co.edu.uniandes.ergo.festival.dtos.SalaDTO;
 import co.edu.uniandes.ergo.festival.ejb.SalaLogic;
 import co.edu.uniandes.ergo.festival.entities.SalaEntity;
 import co.edu.uniandes.ergo.festival.exceptions.BusinessLogicException;
@@ -58,9 +59,9 @@ public class SalaResource {
     
     @POST
     public SalaDetailDTO create(SalaDetailDTO nueva) {
-        logic.create(nueva.toEntity());
-        return new SalaDetailDTO(logic.get(nueva.getId()));
+        return new SalaDetailDTO(logic.create(nueva.toEntity()));
     }
+    
     @DELETE
     @Path("{id: \\d+}")
     public void remove(@PathParam("id") Long id) {

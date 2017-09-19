@@ -57,8 +57,7 @@ public class PatrocinadorResource {
     
     @POST
     public PatrocinadorDetailDTO create(PatrocinadorDetailDTO nuevo) {
-        logic.create(nuevo.toEntity());
-        return new PatrocinadorDetailDTO(logic.get(nuevo.getId()));
+        return new PatrocinadorDetailDTO(logic.create(nuevo.toEntity()));
     }
     @DELETE
     @Path("{id: \\d+}")
