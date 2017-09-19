@@ -9,6 +9,7 @@ package co.edu.uniandes.ergo.festival.entities;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 /**
  *
  * @author f.mayenberger10
@@ -19,6 +20,7 @@ public class PatrocinadorEntity extends PersonaEntity implements Serializable {
     
     private double patrocinio;
     private long NIT;
+    @PodamExclude
     @ManyToOne
     private FestivalEntity festival;
     
