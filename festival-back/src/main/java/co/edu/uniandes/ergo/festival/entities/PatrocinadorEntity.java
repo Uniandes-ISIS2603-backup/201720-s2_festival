@@ -8,6 +8,7 @@ package co.edu.uniandes.ergo.festival.entities;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 /**
  *
  * @author f.mayenberger10
@@ -18,6 +19,9 @@ public class PatrocinadorEntity extends PersonaEntity implements Serializable {
     
     private double patrocinio;
     private long NIT;
+    @ManyToOne
+    private FestivalEntity festival;
+    
     /**
      * @return the patrocinio
      */
@@ -44,6 +48,20 @@ public class PatrocinadorEntity extends PersonaEntity implements Serializable {
      */
     public void setNIT(long NIT) {
         this.NIT = NIT;
+    }
+
+    /**
+     * @return the festival
+     */
+    public FestivalEntity getFestival() {
+        return festival;
+    }
+
+    /**
+     * @param festival the festival to set
+     */
+    public void setFestival(FestivalEntity festival) {
+        this.festival = festival;
     }
     
 }

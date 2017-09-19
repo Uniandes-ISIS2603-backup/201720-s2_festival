@@ -34,7 +34,7 @@ public class PatrocinadorPersistence {
     
     public List<PatrocinadorEntity> findAll() {
         LOGGER.log(Level.INFO, "Consultando salas" );
-        TypedQuery<PatrocinadorEntity> tq = em.createQuery("SELECT p FROM Patrocinadores p", PatrocinadorEntity.class);
+        TypedQuery<PatrocinadorEntity> tq = em.createQuery("SELECT p FROM PatrocinadorEntity p", PatrocinadorEntity.class);
         List<PatrocinadorEntity> result = tq.getResultList();
         LOGGER.log(Level.INFO, "{0} Patrocinadores encontrados con exito", result.size());
         return result;
