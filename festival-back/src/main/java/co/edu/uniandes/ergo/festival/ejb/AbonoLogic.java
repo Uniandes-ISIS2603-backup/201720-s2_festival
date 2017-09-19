@@ -40,13 +40,10 @@ public class AbonoLogic
     public AbonoEntity createAbono(AbonoEntity entity)throws BusinessLogicException
     {
         LOGGER.info("Inicia proceso de creación de Abono");
-        // Verifica la regla de negocio que dice que no puede haber dos cityes con el mismo nombre
-        if (persistenceAbono.find(entity.getId())!= null)
-            throw new BusinessLogicException("Ya existe un Abono con el ID \"" + entity.getId()+"\""); 
-        
+        // Verifica la regla de negocio que dice que no puede haber dos cityes con el mismo nombre        
         // Invoca la persistencia para crear el Abono.
         persistenceAbono.create(entity);
-        LOGGER.info("Termina proceso de actualizacion de Abono");
+        LOGGER.info("Termina proceso de creación de Abono");
         return entity;
     }
     /**
