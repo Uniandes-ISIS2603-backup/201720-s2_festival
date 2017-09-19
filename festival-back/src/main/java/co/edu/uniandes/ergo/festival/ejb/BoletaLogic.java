@@ -47,8 +47,14 @@ public class BoletaLogic
     {
         LOGGER.info("Inicia proceso de creación de Boleta");
         // Verifica la regla de negocio que dice que no puede haber dos cityes con el mismo nombre
-        if (persistenceBoleta.find(entity.getId())!= null)
-            throw new BusinessLogicException("Ya existe una Boleta con el ID \"" + entity.getId()+"\""); 
+        if(entity.getCodigoBarras() == null)
+        {
+            throw new BusinessLogicException("La boleta no tiene un código asignado \"" + entity.getCodigoBarras()+"\"");
+        }
+        if(persistenceBoleta.findByCode(entity.getCodigoBarras()) != null)
+        {
+            throw new BusinessLogicException("Ya existe una Boleta con el código de barras \"" + entity.getCodigoBarras()+"\""); 
+        }
         //if(entity.getEspectador() == null)
             //throw new BusinessLogicException("La boleta no tiene un Espectador asignado \"" + entity.getEspectador()+"\"");
         //if (persistenceEspectador.find(entity.getEspectador().getId())== null)
@@ -84,6 +90,7 @@ public class BoletaLogic
     }
     /**
      * Método que actualiza una boleta.
+     * @param id Long, id de la boleta.
      * @param entity BoletaEntity, Boleta con información nueva.
      * @return BoletaEntity, Boleta actualizada.
      * @throws BusinessLogicException 
@@ -92,6 +99,10 @@ public class BoletaLogic
     {
         LOGGER.log(Level.INFO, "Inicia proceso de actualizar editorial con id={0}", id);
         // Note que, por medio de la inyección de dependencias se llama al método "update(entity)" que se encuentra en la persistencia.
+        if(persistenceBoleta.find(entity.getCodigoBarras()) != null)
+        {
+            throw new BusinessLogicException("Ya existe una Boleta con el código de barras \"" + entity.getCodigoBarras()+"\""); 
+        }
         BoletaEntity newEntity = persistenceBoleta.update(entity);
         LOGGER.log(Level.INFO, "Termina proceso de actualizar editorial con id={0}", entity.getId());
         return newEntity;
@@ -106,5 +117,14 @@ public class BoletaLogic
         LOGGER.log(Level.INFO, "Inicia proceso de borrar boleta con id={0}",id);
         persistenceBoleta.delete(id);
         LOGGER.log(Level.INFO, "Termina proceso de borrar boleta con id={0}",id);
+    }
+    /**
+     * Método que obtiene una boleta con un código dado.
+     * @param codigoBarras, Long, código de la boleta a buscar.
+     * @return BoletaEntity, entidad de la boleta buscada.
+     */
+    public BoletaEntity getBoletaPorCodigo(Long codigoBarras)
+    {
+        return persistenceBoleta.findByCode(codigoBarras);
     }
 }

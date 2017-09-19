@@ -37,6 +37,10 @@ import javax.persistence.OneToMany;
 public class AbonoEntity extends BaseEntity implements Serializable
 {
     /**
+     * Atributo que contiene el precio de la Boleta.
+     */
+    private Double precio;
+    /**
      * Atributo que contiene la información del espectador dueño del abono.
      */
     //@ManyToOne
@@ -79,4 +83,20 @@ public class AbonoEntity extends BaseEntity implements Serializable
     //{
         //this.espectador = espectador;
     //}
+    /**
+     * Método que obtiene el precio del abono.
+     * @return Double, precio del abono.
+     */
+    public Double getPrecio()
+    {
+        return precio;
+    }
+    /**
+     * Método que establece el precio del abono.
+     * @param precio Double, 
+     */
+    public void setPrecio(Double precio)
+    {
+        this.precio = precio;
+    }
 }
