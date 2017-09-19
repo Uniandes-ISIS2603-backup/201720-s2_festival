@@ -6,18 +6,21 @@
 package co.edu.uniandes.ergo.festival.dtos;
 
 import co.edu.uniandes.ergo.festival.entities.SalaEntity;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author f.mayenberger10
  */
 public class SalaDTO {
+
     private Long id;
     private String name;
     
     public SalaDTO() {
-        
     }
+    
     public SalaDTO(SalaEntity entity) {
         this.id = entity.getId();
         this.name = entity.getName();
@@ -31,17 +34,17 @@ public class SalaDTO {
     }
 
     /**
-     * @param id the id to set
-     */
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    /**
      * @return the name
      */
     public String getName() {
         return name;
+    }
+    
+    /**
+     * @param id the id to set
+     */
+    public void setId(Long id) {
+        this.id = id;
     }
 
     /**

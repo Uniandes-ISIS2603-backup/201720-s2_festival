@@ -6,7 +6,11 @@
 package co.edu.uniandes.ergo.festival.entities;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -14,4 +18,56 @@ import javax.persistence.Entity;
  */
 @Entity
 public class SalaEntity extends BaseEntity implements Serializable {
+
+    @PodamExclude
+    @OneToMany
+    private List<FuncionEntity> funciones;
+    @PodamExclude
+    @OneToMany
+    private List<SillaEntity> sillas;
+    @PodamExclude
+    @ManyToOne
+    private TeatroEntity teatro;
+    
+    /**
+     * @return the funciones
+     */
+    public List<FuncionEntity> getFunciones() {
+        return funciones;
+    }
+
+    /**
+     * @param funciones the funciones to set
+     */
+    public void setFunciones(List<FuncionEntity> funciones) {
+        this.funciones = funciones;
+    }
+
+    /**
+     * @return the sillas
+     */
+    public List<SillaEntity> getSillas() {
+        return sillas;
+    }
+
+    /**
+     * @param sillas the sillas to set
+     */
+    public void setSillas(List<SillaEntity> sillas) {
+        this.sillas = sillas;
+    }
+
+    /**
+     * @return the teatro
+     */
+    public TeatroEntity getTeatro() {
+        return teatro;
+    }
+
+    /**
+     * @param teatro the teatro to set
+     */
+    public void setTeatro(TeatroEntity teatro) {
+        this.teatro = teatro;
+    }
 }
