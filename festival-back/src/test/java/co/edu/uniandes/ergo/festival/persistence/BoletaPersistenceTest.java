@@ -170,7 +170,7 @@ public class BoletaPersistenceTest
         for (BoletaEntity ent : list) {
             boolean found = false;
             for (BoletaEntity entity : data) {
-                if (ent.getId().equals(entity.getId())) {
+                if ((ent.getId().equals(entity.getId()))&&(ent.getCodigoBarras().equals(entity.getCodigoBarras() ))) {
                     found = true;
                 }
             }

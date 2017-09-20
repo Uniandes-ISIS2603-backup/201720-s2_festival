@@ -18,6 +18,10 @@ public class CalificacionEntity extends BaseEntity implements Serializable {
      private double calificacion;
      
      private String comentario;
+//     
+//     @PodamExclude
+//     @OneToOne(mappedBy=)
+//     private Boleta boleta;
 
     public double getCalificacion() {
         return calificacion;

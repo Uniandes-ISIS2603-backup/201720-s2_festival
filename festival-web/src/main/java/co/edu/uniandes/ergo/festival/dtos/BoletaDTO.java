@@ -12,10 +12,34 @@ import co.edu.uniandes.ergo.festival.entities.BoletaEntity;
  */
 public class BoletaDTO
 {
+        /**
+     * Constante que representa que esta boleta está disponible.
+     */
+    public final static String DISPONIBLE="DISPONIBLE";
+    /**
+     * Constante que representa que esta boleta está reservada.
+     */
+    public final static String RESERVADA="RESERVADA";
+    /**
+     * Constate que representa que esta boleta está comprada.
+     */
+    public final static String COMPRADA="COMPRADA";
     /**
      * Atributo que contiene el ID.
      */
     private Long id;
+    /**
+     * Atributo que contiene el código de barras.
+     */
+    private Long codigoDeBarras;
+    /**
+     * Atributo que contiene el estado .
+     */
+    private String estado;
+    /**
+     * Atributo que contiene el precio.
+     */
+    private Double precio;
     /**
      * Constructor por defecto
      */
@@ -32,6 +56,26 @@ public class BoletaDTO
     public BoletaDTO(BoletaEntity boleta)
     {
         this.id = boleta.getId();
+        this.codigoDeBarras = boleta.getCodigoBarras();
+        Integer estadoBoleta = boleta.getEstado();
+        if(estadoBoleta.equals(BoletaEntity.DISPONIBLE))
+        {
+            this.estado = DISPONIBLE;
+        }
+        else if(estadoBoleta.equals(BoletaEntity.RESERVADA))
+        {
+            this.estado = RESERVADA;
+        }
+        else if(estadoBoleta.equals(BoletaEntity.COMPRADA))
+        {
+            this.estado = COMPRADA;
+        }
+        else
+        {
+            //TODO SOLUCIONAR CASO EXCEPCIONAL
+            this.estado = DISPONIBLE;
+        }
+        this.precio = boleta.getPrecio();
     }
     /**
      * Método que obtiene el ID.
@@ -49,6 +93,54 @@ public class BoletaDTO
         this.id = id;
     }
     /**
+     * Método que obtiene el código de barras.
+     * @return Long, código de barras.
+     */
+    public Long getCodigoDeBarras()
+    {
+        return codigoDeBarras;
+    }
+    /**
+     * Método que establece el código de barras de la boleta.
+     * @param codigoDeBarras Long, nuevo código de barras.
+     */
+    public void setCodigoDeBarras(Long codigoDeBarras)
+    {
+        this.codigoDeBarras = codigoDeBarras;
+    }
+    /**
+     * Método que obtiene el estado de la boleta.
+     * @return String, estado de la boleta.
+     */
+    public String getEstado()
+    {
+        return estado;
+    }
+    /**
+     * Método que establece el estado de la boleta.
+     * @param estado 
+     */
+    public void setEstado(String estado)
+    {
+        this.estado = estado;
+    }
+    /**
+     * Método que retorna el precio de esta boleta.
+     * @return Double, precio.
+     */
+    public Double getPrecio()
+    {
+        return this.precio;
+    }
+    /**
+     * Método que establece el precio de esta boleta.
+     * @param precio Double, precio.
+     */
+    public void setPrecio(Double precio)
+    {
+        this.precio = precio;
+    }
+    /**
      * Convertir DTO a Entity.
      * @return BoletaEntity, un Entity con los valores del DTO.
      */
@@ -56,6 +148,25 @@ public class BoletaDTO
     {
         BoletaEntity entity = new BoletaEntity();
         entity.setId(this.id);
+        entity.setCodigoDeBarras(this.codigoDeBarras);
+        if(estado.equals(DISPONIBLE))
+        {
+            entity.setEstado(BoletaEntity.DISPONIBLE);
+        }
+        else if(estado.equals(RESERVADA))
+        {
+             entity.setEstado(BoletaEntity.RESERVADA);
+        }
+        else if(estado.equals(COMPRADA))
+        {
+             entity.setEstado(BoletaEntity.COMPRADA);
+        }
+        else
+        {
+            //TODO SOLUCIONAR CASO EXCEPTIONAL
+            entity.setEstado(BoletaEntity.DISPONIBLE);
+        }
+        entity.setPrecio(this.precio);
         return entity;
     }
 }
