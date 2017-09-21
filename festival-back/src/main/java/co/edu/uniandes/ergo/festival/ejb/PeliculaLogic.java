@@ -33,7 +33,7 @@ public class PeliculaLogic {
         return peliculas;
     }
 
-    public PeliculaEntity getPeliculas(Long id) {
+    public PeliculaEntity getPelicula(Long id) {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar la película con id={0}", id);
 
         PeliculaEntity pelicula = persistence.find(id);
@@ -49,44 +49,51 @@ public class PeliculaLogic {
     public PeliculaEntity createPelicula(PeliculaEntity nueva) throws BusinessLogicException {
         LOGGER.info("Inicia proceso de creación de la película.");
 
-        int val = ValidarCreate(nueva); 
-        if (val == 0) {
-            PeliculaEntity conId = persistence.create(nueva);
-            LOGGER.info("Termina proceso de creación de la película.");
-            return conId;
+        //int val = ValidarCreate(nueva);
+        int val = 0;
+        if (val != 0) {
+            String excepcion = (val == 1) ? "El nombre de la película no es válido."
+                    : (val == 2) ? "Ya existe una película con el mismo nombre"
+                            : (val == 3) ? "La película no puede durar 0 minutos"
+                                    : "La película debe tener al menos 1 género";
+
+            throw new BusinessLogicException(excepcion);
         }
-        String excepcion = (val == 1) ? "El nombre de la película no es válido." :
-                           (val == 2) ? "Ya existe una película con el mismo nombre" :
-                           (val == 3) ? "La película no puede durar 0 minutos" :
-                                        "La película debe tener al menos 1 género" ;
         
-        throw new BusinessLogicException(excepcion);
+        PeliculaEntity conId = persistence.create(nueva);
+        LOGGER.info("Termina proceso de creación de la película.");
+        return conId;
     }
-    
+
     public PeliculaEntity updatePelicula(Long id, PeliculaEntity entity) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de actualizar libro con id={0}", id);
-        if (persistence.find(id) == null){
-            throw new BusinessLogicException("No se encuentra la película con el id " + id + " "); 
+        if (persistence.find(id) == null) {
+            throw new BusinessLogicException("No se encuentra la película con el id " + id + " ");
         }
         PeliculaEntity newEntity = persistence.update(entity);
         LOGGER.log(Level.INFO, "Termina proceso de actualizar la pelícla con id={0}", entity.getId());
         return newEntity;
     }
-    
+
     public void deletePelicula(Long id) {
         LOGGER.log(Level.INFO, "Inicia proceso de borrar la película con id={0}", id);
         persistence.delete(id);
         LOGGER.log(Level.INFO, "Termina proceso de borrar la película con id={0}", id);
     }
-    
 
-    public int ValidarCreate(PeliculaEntity peli) {
-        
-        return (peli.getName() == null || peli.getName().isEmpty()) ? 1 : 
-                (persistence.findByName(peli.getName()) != null)? 2 : 
-                (peli.getDuracionMinutos() == 0) ? 3 :
-                ( peli.getGeneros() == null || peli.getGeneros().isEmpty()) ? 4 :
-                0;
-        
-    }
+//    public int ValidarCreate(PeliculaEntity peli) {
+//        LOGGER.log(Level.INFO, "corto={0}", peli.getCorto());
+//        LOGGER.log(Level.INFO, "nombre={0}", peli.getName());
+//        LOGGER.log(Level.INFO, "diracionMinutos={0}", peli.getDuracionMinutos());
+//        LOGGER.log(Level.INFO, "director={0}", peli.getDirector());
+//        LOGGER.log(Level.INFO, "creiditos={0}", peli.getCreditos());
+//        LOGGER.log(Level.INFO, "pais={0}", peli.getPais());
+//        LOGGER.log(Level.INFO, "datos={0}", peli.getDatos());
+//        return (peli.getName() == null || peli.getName().isEmpty()) ? 1
+//                : (persistence.findByName(peli.getName()) != null) ? 2
+//                : (peli.getDuracionMinutos() == 0) ? 3
+//                : (peli.getGeneros() == null || peli.getGeneros().isEmpty()) ? 4
+//                : 0;
+//
+//    }
 }

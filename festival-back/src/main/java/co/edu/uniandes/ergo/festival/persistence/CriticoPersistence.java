@@ -81,7 +81,7 @@ public class CriticoPersistence {
      * CriticoEntity;" - "SELECT * FROM table_codigo" en SQL.
      */
     public List<CriticoEntity> findAll() {
-        LOGGER.info("Consultando todos los criticoes");
+        LOGGER.info("Consultando todos los criticos");
         TypedQuery query = em.createQuery("select u from CriticoEntity u", CriticoEntity.class);
         return query.getResultList();
     }
