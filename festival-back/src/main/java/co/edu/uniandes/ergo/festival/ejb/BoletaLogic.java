@@ -97,9 +97,9 @@ public class BoletaLogic
      */
     public BoletaEntity updateBoleta(Long id, BoletaEntity entity) throws BusinessLogicException
     {
-        LOGGER.log(Level.INFO, "Inicia proceso de actualizar editorial con id={0}", id);
+        LOGGER.log(Level.INFO, "Inicia proceso de actualizar boleta con id={0}", id);
         // Note que, por medio de la inyección de dependencias se llama al método "update(entity)" que se encuentra en la persistencia.
-        if(persistenceBoleta.find(entity.getCodigoBarras()) != null)
+        if(persistenceBoleta.findByCode(entity.getCodigoBarras()) != null)
         {
             throw new BusinessLogicException("Ya existe una Boleta con el código de barras \"" + entity.getCodigoBarras()+"\""); 
         }
