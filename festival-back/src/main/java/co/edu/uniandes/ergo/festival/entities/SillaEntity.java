@@ -32,11 +32,6 @@ public class SillaEntity extends BaseEntity implements Serializable{
 //    @OneToMany(mappedBy="silla")
 //    @PodamExclude
 //    private ArrayList<BoletaEntity> boletas;
-    
-    /**
-     * Indica si la silla está reservada.
-     */
-    private boolean reservada;
 
     /**
      * Indica la tarifa pagada por la silla.
@@ -47,20 +42,6 @@ public class SillaEntity extends BaseEntity implements Serializable{
      * Indica si la silla es o no preferencial.
      */
     private boolean esPreferencial;
-    
-    /**
-     * @return the reservada
-     */
-    public boolean isReservada() {
-        return reservada;
-    }
-
-    /**
-     * @param reservada the reservada to set
-     */
-    public void setReservada(boolean reservada) {
-        this.reservada = reservada;
-    }
 
     /**
      * @return the tarifa

@@ -199,7 +199,6 @@ El objeto Silla tiene 2 representaciones JSON:
 ```javascript
 {
     id: '' /*Tipo Long*/,
-    reservada: '' /*Tipo Boolean*/,
     tarifa: '' /*Tipo Double*/,
     esPreferencial: '' /*Tipo Boolean*/,
 }
@@ -210,7 +209,10 @@ El objeto Silla tiene 2 representaciones JSON:
 {
     // todo lo de la representación Minimum más los objetos Minimum con relación simple.
     boleta: {
-        id: '' /*Tipo Long*/,    
+        id: '' /*Tipo Long*/,
+        precio: '' /*Tipo Double*/,
+        estado: '' /*Tipo Integer*/,
+        reservada: '' /*Tipo Boolean*/
     },
     sala: {
         nombre: '' /*Tipo String*/,
