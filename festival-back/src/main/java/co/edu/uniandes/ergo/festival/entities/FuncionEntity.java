@@ -7,8 +7,15 @@ package co.edu.uniandes.ergo.festival.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import uk.co.jemos.podam.common.PodamExclude;
+
 import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 
 /**
  *
@@ -17,12 +24,29 @@ import javax.persistence.Temporal;
 @Entity
 public class FuncionEntity extends BaseEntity implements Serializable{
     
-    @Temporal(javax.persistence.TemporalType.DATE)
+    @Temporal(TemporalType.DATE)
     private Date horaInicio;
     
-    @Temporal(javax.persistence.TemporalType.DATE)
+    @Temporal(TemporalType.DATE)
     private Date horaFin;
+    
+    @PodamExclude
+    @OneToMany
+    private List<BoletaEntity> boletas;
 
+    @PodamExclude
+    @OneToMany
+    private List<CriticaEntity> criticas;
+    
+    @PodamExclude
+    @ManyToOne
+    private PeliculaEntity pelicula;
+    
+    @PodamExclude
+    @ManyToOne
+    private SalaEntity sala;
+    
+    
     public Date getHoraInicio() {
         return horaInicio;
     }
@@ -38,8 +62,5 @@ public class FuncionEntity extends BaseEntity implements Serializable{
     public void setHoraFin(Date horaFin) {
         this.horaFin = horaFin;
     }
-    
-    
-    
     
 }

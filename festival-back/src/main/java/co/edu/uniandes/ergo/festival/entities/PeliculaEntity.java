@@ -20,7 +20,6 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class PeliculaEntity extends BaseEntity implements Serializable {
 
-    private String nombre;
     private List<String> generos;
     private int duracionMinutos;
     private String director;
@@ -28,18 +27,14 @@ public class PeliculaEntity extends BaseEntity implements Serializable {
     private String pais;
     private String datos;
     private String corto;
-    
+
     @PodamExclude
     @OneToMany
     private List<FuncionEntity> funciones;
     @PodamExclude
-    
+
     @OneToMany
     private List<CriticoEntity> criticos;
-
-    public String getNombre() {
-        return nombre;
-    }
 
     public List<FuncionEntity> getFunciones() {
         return funciones;
@@ -72,13 +67,9 @@ public class PeliculaEntity extends BaseEntity implements Serializable {
     public String getDatos() {
         return datos;
     }
-    
-    public List<CriticoEntity> getCriticos(){
-        return criticos;
-    }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public List<CriticoEntity> getCriticos() {
+        return criticos;
     }
 
     public void setGenero(String genero) {

@@ -6,7 +6,6 @@
 package co.edu.uniandes.ergo.festival.dtos;
 
 import co.edu.uniandes.ergo.festival.entities.PeliculaEntity;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -32,7 +31,7 @@ public class PeliculaDTO {
     public PeliculaDTO(PeliculaEntity pelicula) {
         if (pelicula != null) {
             this.id = pelicula.getId();
-            this.nombre = pelicula.getNombre();
+            this.nombre = pelicula.getName();
             this.generos = pelicula.getGeneros();
             this.duracionMinutos = pelicula.getDuracionMinutos();
             this.director = pelicula.getDirector();
@@ -47,7 +46,7 @@ public class PeliculaDTO {
         return id;
     }
 
-    public String getNombre() {
+    public String getname() {
         return nombre;
     }
 
@@ -79,7 +78,7 @@ public class PeliculaDTO {
         return datos;
     }
 
-    public void setNombre(String nombre) {
+    public void setname(String nombre) {
         this.nombre = nombre;
     }
 
@@ -127,13 +126,14 @@ public class PeliculaDTO {
 
         PeliculaEntity pelicula = new PeliculaEntity();
         pelicula.setId(this.id);
-        pelicula.setNombre(this.nombre);
+        pelicula.setName(this.nombre);
         pelicula.setGeneros(this.generos);
         pelicula.setDuracionMinutos(this.duracionMinutos);
         pelicula.setDirector(this.director);
         pelicula.setCreditos(this.creditos);
         pelicula.setPais(this.pais);
         pelicula.setCorto(this.corto);
+        pelicula.setDatos(this.datos);
 
         return pelicula;
     }

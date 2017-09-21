@@ -5,7 +5,7 @@
  */
 package co.edu.uniandes.ergo.festival.persistence;
 
-import co.edu.uniandes.ergo.festival.entities.CalificacionEntity;
+import co.edu.uniandes.ergo.festival.entities.FuncionEntity;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -31,28 +31,27 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  * @author m.neira10
  */
 @RunWith(Arquillian.class)
-public class CalificacionPersistenceTest {
+public class FuncionPersistenceTest {
     @Inject
-    private CalificacionPersistence persistence;
+    private FuncionPersistence persistence;
     
     @PersistenceContext
     private EntityManager em;
     @Inject
     UserTransaction utx;
     
-    private List<CalificacionEntity> data = new ArrayList<>();
-    
+    private List<FuncionEntity> data = new ArrayList<>();
     
     @Deployment
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
-                .addPackage(CalificacionEntity.class.getPackage())
-                .addPackage(CalificacionPersistence.class.getPackage())
+                .addPackage(FuncionEntity.class.getPackage())
+                .addPackage(FuncionPersistence.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
 
-    public CalificacionPersistenceTest() {
+    public FuncionPersistenceTest() {
     }
 
     @BeforeClass
@@ -84,12 +83,12 @@ public class CalificacionPersistenceTest {
 
     
     private void clearData() {
-        em.createQuery("delete from CalificacionEntity").executeUpdate();
+        em.createQuery("delete from FuncionEntity").executeUpdate();
     }
     private void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
         for (int i = 0; i < 3; i++) {
-            CalificacionEntity entity = factory.manufacturePojo(CalificacionEntity.class);
+            FuncionEntity entity = factory.manufacturePojo(FuncionEntity.class);
 
             em.persist(entity);
             data.add(entity);
@@ -102,30 +101,30 @@ public class CalificacionPersistenceTest {
     @Test 
     public void testCreate() throws Exception{
         PodamFactory factory = new PodamFactoryImpl();
-        CalificacionEntity newEntity = factory.manufacturePojo(CalificacionEntity.class);
-        CalificacionEntity result = persistence.create(newEntity);
+        FuncionEntity newEntity = factory.manufacturePojo(FuncionEntity.class);
+        FuncionEntity result = persistence.create(newEntity);
         
         Assert.assertNotNull(result);
-        CalificacionEntity entity = em.find(CalificacionEntity.class, result.getId());
+        FuncionEntity entity = em.find(FuncionEntity.class, result.getId());
         Assert.assertNotNull(entity);
         Assert.assertEquals(newEntity.getName(), entity.getName());
     }
     
     @Test
     public void testFind() throws Exception{
-        CalificacionEntity entity = data.get(0);
-        CalificacionEntity newEntity = persistence.find(entity.getId());
+        FuncionEntity entity = data.get(0);
+        FuncionEntity newEntity = persistence.find(entity.getId());
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getName(), newEntity.getName());
     }
 
      @Test
     public void testFindAll() throws Exception {
-        List<CalificacionEntity> list = persistence.findAll();
+        List<FuncionEntity> list = persistence.findAll();
         Assert.assertEquals(data.size(), list.size());
-        for (CalificacionEntity ent : list) {
+        for (FuncionEntity ent : list) {
             boolean found = false;
-            for (CalificacionEntity entity : data) {
+            for (FuncionEntity entity : data) {
                 if (ent.getId().equals(entity.getId())) {
                     found = true;
                 }
@@ -136,24 +135,24 @@ public class CalificacionPersistenceTest {
     
     @Test
     public void testUpdate() throws Exception {
-        CalificacionEntity entity = data.get(0);
+        FuncionEntity entity = data.get(0);
         PodamFactory factory = new PodamFactoryImpl();
-        CalificacionEntity newEntity = factory.manufacturePojo(CalificacionEntity.class);
+        FuncionEntity newEntity = factory.manufacturePojo(FuncionEntity.class);
 
         newEntity.setId(entity.getId());
 
         persistence.update(newEntity);
 
-        CalificacionEntity resp = em.find(CalificacionEntity.class, entity.getId());
+        FuncionEntity resp = em.find(FuncionEntity.class, entity.getId());
 
         Assert.assertEquals(newEntity.getName(), resp.getName());
     }
     
     @Test
     public void testDelete() throws Exception {
-        CalificacionEntity entity = data.get(0);
+        FuncionEntity entity = data.get(0);
         persistence.delete(entity.getId());
-        CalificacionEntity deleted = em.find(CalificacionEntity.class, entity.getId());
+        FuncionEntity deleted = em.find(FuncionEntity.class, entity.getId());
         Assert.assertNull(deleted);
     }
 }

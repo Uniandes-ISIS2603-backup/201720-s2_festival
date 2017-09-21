@@ -1,4 +1,12 @@
 delete from FestivalEntity;
+delete from BoletaEntity;
+
+/* BoletaEntity*/
+insert into BoletaEntity (id, codigoDeBarras, estado, precio) values(10, 120, 1, 500.50);
+insert into BoletaEntity (id, codigoDeBarras, estado, precio) values(20, 130, 2, 600.50);
+insert into BoletaEntity (id, codigoDeBarras, estado, precio) values(30, 110, 1, 700.50);
+insert into BoletaEntity (id, codigoDeBarras, estado, precio) values(40, 50, 3, 400.50);
+insert into BoletaEntity (id, codigoDeBarras, estado, precio) values(50, 650, 3, 300.25);
 
 /* SillaEntity */
 
