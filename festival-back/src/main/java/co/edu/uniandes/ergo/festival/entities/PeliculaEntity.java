@@ -20,7 +20,6 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class PeliculaEntity extends BaseEntity implements Serializable {
 
-    private String name;
     private List<String> generos;
     private int duracionMinutos;
     private String director;
