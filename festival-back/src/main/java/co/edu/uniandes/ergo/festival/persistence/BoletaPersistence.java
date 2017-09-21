@@ -47,6 +47,23 @@ public class BoletaPersistence
         
         return em.find(BoletaEntity.class, id);
     }
+    
+    public BoletaEntity findByCode(Long codigoDeBarras)
+    {
+        LOGGER.log(Level.INFO, "Consultando Boleta por codigo ", codigoDeBarras);
+
+        // Se crea un query para buscar cityes con el nombre que recibe el método como argumento. ":name" es un placeholder que debe ser remplazado
+        TypedQuery query = em.createQuery("Select e From BoletaEntity e where e.codigoDeBarras = :codigoDeBarras", BoletaEntity.class);
+        // Se remplaza el placeholder ":name" con el valor del argumento 
+        query = query.setParameter("codigoDeBarras", codigoDeBarras);
+        // Se invoca el query se obtiene la lista resultado
+        List<BoletaEntity> sameName = query.getResultList();
+        if (sameName.isEmpty()) {
+            return null;
+        } else {
+            return sameName.get(0);
+        }
+    }
     /**
      * Método que retorna todos las boletas.
      * @return List<BoletaEntity> Lista de boletas

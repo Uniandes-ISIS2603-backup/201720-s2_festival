@@ -24,6 +24,7 @@ SOFTWARE.
 package co.edu.uniandes.ergo.festival.entities;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -35,6 +36,30 @@ import javax.persistence.OneToOne;
 @Entity
 public class BoletaEntity extends BaseEntity implements Serializable
 {
+    /**
+     * Constante que representa que esta boleta está disponible.
+     */
+    public final static Integer DISPONIBLE=1;
+    /**
+     * Constante que representa que esta boleta está reservada.
+     */
+    public final static Integer RESERVADA=2;
+    /**
+     * Constate que representa que esta boleta está comprada.
+     */
+    public final static Integer COMPRADA=3;
+    /**
+     * Atributo que contiene el código de barras de a boleta.
+     */
+    private Long codigoDeBarras;
+    /**
+     * Atributo que contiene el precio de la Boleta.
+     */
+    private Double precio;
+    /**
+     * Atributo que contiene el estado de la boleta.
+     */
+    private Integer estado;
     /**
      * Atributo que contiene la calificación asociada.
      */
@@ -141,4 +166,73 @@ public class BoletaEntity extends BaseEntity implements Serializable
     //{
         //this.abono = abono;
     //}
+    /**
+     * Método que retorna el código de barras.
+     * @return Long, codigoDeBarras
+     */
+    public Long getCodigoBarras()
+    {
+        return codigoDeBarras;
+    }
+    /**
+     * Método que establece el código de barras.
+     * @param codigoDeBarras Long, nuevo codigo de barras.
+     */
+    public void setCodigoDeBarras(Long codigoDeBarras)
+    {
+        this.codigoDeBarras = codigoDeBarras;
+    }
+    /**
+     * Método que obtiene el precio de esta boleta.
+     * @return Double, precio de la boleta.
+     */
+    public Double getPrecio()
+    {
+        return precio;
+    }
+    /**
+     * Método que establece el precio de esta boleta.
+     * @param precio Double, precio nuevo de la boleta.
+     */
+    public void setPrecio(Double precio)
+    {
+        this.precio = precio;
+    }
+    /**
+     * Método que devuelve el estado de esta boleta.
+     * 1 si está disponible.
+     * 2 si está reservada.
+     * 3 si está comprada.
+     * @return Integer, 1, 2 o 3.
+     */
+    public Integer getEstado()
+    {
+        return estado;
+    }
+    /**
+     * Metodo que establece el estado de esta boleta.
+     * @param estado Estado de la boleta, sólo puede tener un valor entre 1 y 3
+     * 1 para disponible.
+     * 2 para reservada.
+     * 3 para comprada.
+     */
+    public void setEstado(Integer estado)
+    {
+        if(Objects.equals(estado, DISPONIBLE))
+        {
+            this.estado = estado;
+        }
+        else if(Objects.equals(estado, RESERVADA))
+        {
+            this.estado = estado;
+        }
+        else if(Objects.equals(estado, COMPRADA))
+        {
+            this.estado = estado;
+        }
+        else
+        {
+            
+        }
+    }
 }

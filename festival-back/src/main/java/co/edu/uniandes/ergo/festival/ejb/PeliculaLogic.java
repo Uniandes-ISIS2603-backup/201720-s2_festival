@@ -81,19 +81,19 @@ public class PeliculaLogic {
         LOGGER.log(Level.INFO, "Termina proceso de borrar la película con id={0}", id);
     }
 
-    public int ValidarCreate(PeliculaEntity peli) {
-        LOGGER.log(Level.INFO, "corto={0}", peli.getCorto());
-        LOGGER.log(Level.INFO, "nombre={0}", peli.getName());
-        LOGGER.log(Level.INFO, "diracionMinutos={0}", peli.getDuracionMinutos());
-        LOGGER.log(Level.INFO, "director={0}", peli.getDirector());
-        LOGGER.log(Level.INFO, "creiditos={0}", peli.getCreditos());
-        LOGGER.log(Level.INFO, "pais={0}", peli.getPais());
-        LOGGER.log(Level.INFO, "datos={0}", peli.getDatos());
-        return (peli.getName() == null || peli.getName().isEmpty()) ? 1
-                : (persistence.findByName(peli.getName()) != null) ? 2
-                : (peli.getDuracionMinutos() == 0) ? 3
-                : (peli.getGeneros() == null || peli.getGeneros().isEmpty()) ? 4
-                : 0;
-
-    }
+//    public int ValidarCreate(PeliculaEntity peli) {
+//        LOGGER.log(Level.INFO, "corto={0}", peli.getCorto());
+//        LOGGER.log(Level.INFO, "nombre={0}", peli.getName());
+//        LOGGER.log(Level.INFO, "diracionMinutos={0}", peli.getDuracionMinutos());
+//        LOGGER.log(Level.INFO, "director={0}", peli.getDirector());
+//        LOGGER.log(Level.INFO, "creiditos={0}", peli.getCreditos());
+//        LOGGER.log(Level.INFO, "pais={0}", peli.getPais());
+//        LOGGER.log(Level.INFO, "datos={0}", peli.getDatos());
+//        return (peli.getName() == null || peli.getName().isEmpty()) ? 1
+//                : (persistence.findByName(peli.getName()) != null) ? 2
+//                : (peli.getDuracionMinutos() == 0) ? 3
+//                : (peli.getGeneros() == null || peli.getGeneros().isEmpty()) ? 4
+//                : 0;
+//
+//    }
 }

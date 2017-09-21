@@ -63,7 +63,4 @@ public class FuncionEntity extends BaseEntity implements Serializable{
         this.horaFin = horaFin;
     }
     
-    
-    
-    
 }
