@@ -85,4 +85,5 @@ public class SillaPersistence {
         
         em.remove(em.find(SillaEntity.class, id));
     }
+    
 }
