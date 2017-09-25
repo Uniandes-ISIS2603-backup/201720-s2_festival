@@ -14,16 +14,6 @@ import co.edu.uniandes.ergo.festival.entities.CriticaEntity;
 public class CriticaDetailDTO extends CriticaDTO {
     
     /**
-     * Represetnación Minimum de la FuncionEntity asociada.
-     */
-    private FuncionDTO funcion;
-    
-    /**
-     * Represetnación Minimum de la CriticoEntity asociada.
-     */
-    private CriticoDTO critico;
-    
-    /**
      * Constructor sin parámetros.
      */
     public CriticaDetailDTO(){
@@ -36,8 +26,6 @@ public class CriticaDetailDTO extends CriticaDTO {
      */
     public CriticaDetailDTO(CriticaEntity entity){
         super(entity);
-        funcion = new FuncionDTO(entity.getFuncion());
-        critico = new CriticoDTO(entity.getCritico());        
     }
     
     /**
@@ -46,33 +34,5 @@ public class CriticaDetailDTO extends CriticaDTO {
      */
     public CriticaEntity toEntity(){
         return super.toEntity();
-    }
-
-    /**
-     * @return the funcion
-     */
-    public FuncionDTO getFuncion() {
-        return funcion;
-    }
-
-    /**
-     * @param funcion the funcion to set
-     */
-    public void setFuncion(FuncionDTO funcion) {
-        this.funcion = funcion;
-    }
-
-    /**
-     * @return the critico
-     */
-    public CriticoDTO getCritico() {
-        return critico;
-    }
-
-    /**
-     * @param critico the critico to set
-     */
-    public void setCritico(CriticoDTO critico) {
-        this.critico = critico;
     }
 }

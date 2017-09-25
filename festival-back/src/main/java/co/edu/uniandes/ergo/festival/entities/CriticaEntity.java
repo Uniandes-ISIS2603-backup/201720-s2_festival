@@ -17,19 +17,19 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class CriticaEntity extends BaseEntity{
     
-    /**
-     * Función a la que pertenece una crítica.
-     */
-    @PodamExclude
-    @ManyToOne(optional = false)
-    private FuncionEntity funcion;
-    
-    /**
-     * Crítico que hace la crítica.
-     */
-    @ManyToOne()
-    @PodamExclude
-    private CriticoEntity critico;
+//    /**
+//     * Función a la que pertenece una crítica.
+//     */
+//    @PodamExclude
+//    @ManyToOne()
+//    private FuncionEntity funcion;
+//    
+//    /**
+//     * Crítico que hace la crítica.
+//     */
+//    @ManyToOne()
+//    @PodamExclude
+//    private CriticoEntity critico;
     
     /**
      * Comentario hecho por el crítico sobre una función.
@@ -49,34 +49,6 @@ public class CriticaEntity extends BaseEntity{
      */
     public void setComentario(String comentario) {
         this.comentario = comentario;
-    }
-
-    /**
-     * @return the funcion
-     */
-    public FuncionEntity getFuncion() {
-        return funcion;
-    }
-
-    /**
-     * @param funcion the funcion to set
-     */
-    public void setFuncion(FuncionEntity funcion) {
-        this.funcion = funcion;
-    }
-
-    /**
-     * @return the critico
-     */
-    public CriticoEntity getCritico() {
-        return critico;
-    }
-
-    /**
-     * @param critico the critico to set
-     */
-    public void setCritico(CriticoEntity critico) {
-        this.critico = critico;
     }
     
     

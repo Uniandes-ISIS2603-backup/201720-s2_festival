@@ -18,7 +18,7 @@ import uk.co.jemos.podam.common.PodamExclude;
 public class CriticoEntity extends PersonaEntity{
     
     @PodamExclude
-    @OneToMany(mappedBy = "critico")
+    @OneToMany
     private List<CriticaEntity> criticas;
     @PodamExclude
     @OneToMany
