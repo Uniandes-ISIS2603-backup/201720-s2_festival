@@ -27,9 +27,14 @@ import co.edu.uniandes.ergo.festival.ejb.FestivalLogic;
 import co.edu.uniandes.ergo.festival.dtos.FestivalDetailDTO;
 import co.edu.uniandes.ergo.festival.ejb.BoletaLogic;
 import co.edu.uniandes.ergo.festival.dtos.BoletaDetailDTO;
+import co.edu.uniandes.ergo.festival.dtos.CalificacionDTO;
+import co.edu.uniandes.ergo.festival.dtos.EspectadorDetailDTO;
+import co.edu.uniandes.ergo.festival.dtos.FuncionDTO;
+import co.edu.uniandes.ergo.festival.dtos.SillaDetailDTO;
 import co.edu.uniandes.ergo.festival.entities.FestivalEntity;
 import co.edu.uniandes.ergo.festival.entities.BoletaEntity;
 import co.edu.uniandes.ergo.festival.entities.AbonoEntity;
+import co.edu.uniandes.ergo.festival.entities.CalificacionEntity;
 import co.edu.uniandes.ergo.festival.exceptions.BusinessLogicException;
 import co.edu.uniandes.ergo.festival.persistence.BoletaPersistence;
 import co.edu.uniandes.ergo.festival.persistence.FestivalPersistence;
@@ -160,13 +165,283 @@ public class BoletaResource
     @DELETE
     @Path("{id: \\d+}")
     public void deleteBoleta(@PathParam("id") Long id) throws BusinessLogicException {
-        LOGGER.log(Level.INFO, "Inicia proceso de borrar una editorial con id {0}", id);
+        LOGGER.log(Level.INFO, "Inicia proceso de borrar una boleta con id {0}", id);
         BoletaEntity entity = boletaLogic.getBoleta(id);
         if (entity == null) {
             throw new WebApplicationException("El recurso /boletas/" + id + " no existe.", 404);
         }
         boletaLogic.deleteBoleta(id);
-
+    }
+    /**
+     * Método que obtiene la silla asociada a una boleta.
+     * @param id Long, ID de la boleta.
+     * @return SillaDetailDTO, silla asociada a la boleta dada por parámetro.
+     * @throws BusinessLogicException 
+     */
+    @GET
+    @Path("{id:\\d+}/sillas")
+    public SillaDetailDTO getSillaFromBoleta(@PathParam("id")Long id) throws BusinessLogicException
+    {
+        BoletaEntity entity = boletaLogic.getBoleta(id);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /boletas/" + id + " no existe.", 404);
+        }
+        SillaDetailDTO respuesta = new SillaDetailDTO(boletaLogic.getSillaFromBoleta(id));
+        if(respuesta == null)
+        {
+            throw new WebApplicationException("No hay una silla asociada a el recurso /boletas/"+ id ,404);
+        }
+        return respuesta;
+    }
+    /**
+     * Métod que le asocia a boleta una silla, la silla debe existir en la base de datos.
+     * @param boletaId Long, ID de la Boleta.
+     * @param sillaId Long, ID de la silla a asociar.
+     * @return SillaDetailDTO
+     * @throws BusinessLogicException 
+     */
+    @POST
+    @Path("{boletaid:\\d+}/sillas/{sillaid:\\d+}")
+    public SillaDetailDTO addSillaFromBoleta(@PathParam("boletaid")Long boletaId, @PathParam("sillaid")Long sillaId ) throws BusinessLogicException
+    {
+        BoletaEntity entity = boletaLogic.getBoleta(boletaId);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /boletas/" + boletaId + " no existe.", 404);
+        }
+        return new SillaDetailDTO(boletaLogic.addSillaFromBoleta(boletaId, sillaId));
+    }
+    
+    /**
+     * Método que actualiza una silla de una boleta con una silla existente.
+     * @param boletaId Long, ID de la boleta.
+     * @param sillaId Long, ID de la silla a asociar.
+     * @return SillaDetailDTO, silla que acaba de ser asociada.
+     * @throws BusinessLogicException 
+     */
+    @PUT
+    @Path("{boletaid:\\d+}/sillas/{sillaid:\\d+}")
+    public SillaDetailDTO updateSillaFromBoleta(@PathParam("boletaid")Long boletaId, @PathParam("sillaid")Long sillaId ) throws BusinessLogicException
+    {
+        BoletaEntity entity = boletaLogic.getBoleta(boletaId);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /boletas/" + boletaId + " no existe.", 404);
+        }
+        return new SillaDetailDTO(boletaLogic.updateSillaFromBoleta(boletaId, sillaId));
+    }
+    /**
+     * Método que obtiene la función asociada a una boleta.
+     * @param id Long, ID de la boleta.
+     * @return FuncionDTO, función asociada a la boleta dada por parámetro.
+     * @throws BusinessLogicException 
+     */
+    @GET
+    @Path("{id:\\d+}/funciones")
+    public FuncionDTO getFuncionFromBoleta(@PathParam("id")Long id) throws BusinessLogicException
+    {
+        BoletaEntity entity = boletaLogic.getBoleta(id);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /boletas/" + id + " no existe.", 404);
+        }
+        FuncionDTO respuesta = new FuncionDTO(boletaLogic.getFuncionFromBoleta(id));
+        if(respuesta == null)
+        {
+            throw new WebApplicationException("No hay una funcion asociada a el recurso /boletas/"+ id ,404);
+        }
+        return respuesta;   
+    }
+    /**
+     * Método que asocia una función a una Boleta.
+     * @param boletaId Long, ID de la boleta.
+     * @param funcionId Long, ID de la función.
+     * @return FunctionDTO, función que acaba de ser asociada.
+     * @throws BusinessLogicException 
+     */
+    @POST
+    @Path("{boletaid:\\d+}/funciones/{funcionid:\\d+}")
+    public FuncionDTO addFuncionFromBoleta(@PathParam("boletaid")Long boletaId, @PathParam("funcionid")Long funcionId ) throws BusinessLogicException
+    {
+        BoletaEntity entity = boletaLogic.getBoleta(boletaId);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /boletas/" + boletaId + " no existe.", 404);
+        }
+        return new FuncionDTO(boletaLogic.addFuncionFromBoleta(boletaId, funcionId));
+    }
+    
+    
+    /**
+     * Método que obtiene la calificación asociada a una boleta.
+     * @param id Long, ID de la boleta.
+     * @return CalificacionDTO, calificación asociada a la boleta dada por parámetro.
+     * @throws BusinessLogicException 
+     */
+    @GET
+    @Path("{id:\\d+}/calificaciones")
+    public CalificacionDTO getCalificacionFromBoleta(@PathParam("id")Long id) throws BusinessLogicException
+    {
+        BoletaEntity entity = boletaLogic.getBoleta(id);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /boletas/" + id + " no existe.", 404);
+        }
+        CalificacionDTO respuesta = new CalificacionDTO(boletaLogic.getCalificacionFromBoleta(id));
+        if(respuesta == null)
+        {
+            throw new WebApplicationException("No hay una calificacion asociada a el recurso /boletas/"+ id ,404);
+        }
+        return respuesta;
+    }
+    /**
+     * Método que asocia una calificación previamente existente a una boleta, la calificación DEBE existir en la base de datos.
+     * @param boletaId Long, ID de la boleta.
+     * @param calificacionId Long, ID de la calificación a asociar.
+     * @return CalificacionDTO, Calificación asociada.
+     * @throws BusinessLogicException 
+     */
+    @POST
+    @Path("{boletaid:\\d+}/calificaciones/{calificacionid:\\d+}")
+    public CalificacionDTO addCalificacionExistenteFromBoleta(@PathParam("boletaid")Long boletaId, @PathParam("calificacionid")Long calificacionId) throws BusinessLogicException
+    {
+        BoletaEntity entity = boletaLogic.getBoleta(boletaId);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /boletas/" + boletaId + " no existe.", 404);
+        }
+        return new CalificacionDTO(boletaLogic.addCalificacionYaExistenteFromBoleta(boletaId, calificacionId));
+    }
+    /**
+     * Método que crea una nueva calificacion y la asocia inmediatamente a la boleta designada por parámetro, se CREA una NUEVA calificación en la base de datos.
+     * @param boletaId Long, ID de la boleta.
+     * @param calificacion CalificacionDTO, calificacion nueva a crear y asociar.
+     * @return CalificacionDTO, Calificacion que se acaba de crar.
+     * @throws BusinessLogicException 
+     */
+    @POST
+    @Path("{boletaid:\\d+}/calificaciones")
+    public CalificacionDTO createCalificacionFromBoleta(@PathParam("boletaid")Long boletaId, CalificacionDTO calificacion) throws BusinessLogicException {
+        // Convierte el DTO (json) en un objeto Entity para ser manejado por la lógica.
+        CalificacionEntity calificacionEntity = calificacion.toEntity();
+        // Invoca la lógica para crear la editorial nueva
+        CalificacionEntity nuevaCalificacion = boletaLogic.createCalificacionFromBoleta(boletaId, calificacionEntity);
+        // Como debe retornar un DTO (json) se invoca el constructor del DTO con argumento el entity nuevo
+        return new CalificacionDTO(nuevaCalificacion);
+    }
+    /**
+     * Método que actualiza la calificación de una boleta, al reemplazarla con otra, la calificacion original no es eliminada de la base de datos.
+     * @param boletaId Long, ID de la boleta.
+     * @param calificacionId Long, ID de la calificacion nueva a asociar.
+     * @return CalificacionDTO, calificación nueva asociada a la boleta.
+     * @throws BusinessLogicException 
+     */
+    @PUT
+    @Path("{boletaid:\\d+}/calificaciones/{calificacionid:\\d+}")
+    public CalificacionDTO updateCalificacionExistenteFromBoleta(@PathParam("boletaid")Long boletaId, @PathParam("calificacionid")Long calificacionId) throws BusinessLogicException
+    {
+        BoletaEntity entity = boletaLogic.getBoleta(boletaId);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /boletas/" + boletaId + " no existe.", 404);
+        }
+        return new CalificacionDTO(boletaLogic.updateCalificacionYaExistenteFromBoleta(boletaId, calificacionId));
+    }
+    /**
+     * Metodo que actualizar una calificación con otra nueva, este método CREA una calificación nueva en la base de datos Y la calificación originao NO es eliminada de la base de datos.
+     * @param boletaId Long, ID de la boleta.
+     * @param calificacion CalificacionDTO, nueva calificación a crear y asociar.
+     * @return CalificacionDTO, calificación que acab de ser creada y asociada.
+     * @throws BusinessLogicException 
+     */
+    @PUT
+    @Path("{boletaid:\\d+}/calificaciones")
+    public CalificacionDTO createUpdateCalificacionFromBoleta(@PathParam("boletaid")Long boletaId, CalificacionDTO calificacion) throws BusinessLogicException {
+        // Convierte el DTO (json) en un objeto Entity para ser manejado por la lógica.
+        CalificacionEntity calificacionEntity = calificacion.toEntity();
+        // Invoca la lógica para crear la editorial nueva
+        CalificacionEntity nuevaCalificacion = boletaLogic.updateCreateCalificacionFromBoleta(boletaId, calificacionEntity);
+        // Como debe retornar un DTO (json) se invoca el constructor del DTO con argumento el entity nuevo
+        return new CalificacionDTO(nuevaCalificacion);
+    }
+    /**
+     * Método que des asocia una calificacion de una boleta, NO elimina la boleta de la base ded atos.
+     * @param id Long, ID de la boleta.
+     * @throws BusinessLogicException 
+     */
+    @DELETE
+    @Path("{boletaid:\\d+}/calificaciones")
+    public void deleteCalificacionFromBoleta(@PathParam("boletaid") Long id) throws BusinessLogicException {
+        LOGGER.log(Level.INFO, "Inicia proceso de borrar un espectador de una boleta con id {0}", id);
+        BoletaEntity entity = boletaLogic.getBoleta(id);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /boletas/" + id + " no existe.", 404);
+        }
+        boletaLogic.deleteCalificacionFromBoleta(id);
+    }
+    /**
+     * Método que obtiene el espectador asociada a una boleta.
+     * @param id Long, ID de la boleta.
+     * @return EspectadorDetailDTO, espectador asociado a la boleta dada por parámetro.
+     * @throws BusinessLogicException 
+     */
+    @GET
+    @Path("{id:\\d+}/espectadores")
+    public EspectadorDetailDTO getEspectadorFromBoleta(@PathParam("id")Long id) throws BusinessLogicException
+    {
+        BoletaEntity entity = boletaLogic.getBoleta(id);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /boletas/" + id + " no existe.", 404);
+        }
+        EspectadorDetailDTO respuesta = new EspectadorDetailDTO(boletaLogic.getEspectadorFromBoleta(id));
+        if(respuesta == null)
+        {
+            throw new WebApplicationException("No hay un espectador asociada a el recurso /boletas/"+ id ,404);
+        }
+        return respuesta;
+    }
+    /**
+     * Método que asocia un espectador previamente existente con una Boleta.
+     * @param boletaId Long, ID de la boleta.
+     * @param espectadorId Long, ID del espectador a asociar.
+     * @return EspectadorDetailDTO, espectador asociado.
+     * @throws BusinessLogicException 
+     */
+    @POST
+    @Path("{boletaid:\\d+}/escpectadores/{espectadorid:\\d+}")
+    public EspectadorDetailDTO addEspectadorFromBoleta(@PathParam("boletaid")Long boletaId, @PathParam("espectadorid")Long espectadorId ) throws BusinessLogicException
+    {
+        BoletaEntity entity = boletaLogic.getBoleta(boletaId);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /boletas/" + boletaId + " no existe.", 404);
+        }
+        return new EspectadorDetailDTO(boletaLogic.addEspectadorFromBoleta(boletaId, espectadorId));
+    }
+    /**
+     * Método que actualiza un espectador asociado a una boleta.
+     * @param boletaId Long, ID de la boleta.
+     * @param espectadorId Long, ID del espectador.
+     * @return EspectadorDetailDTO, espectador nuevo que acaba de ser asociado.
+     * @throws BusinessLogicException 
+     */
+    @PUT
+    @Path("{boletaid:\\d+}/espectadores/{espectadorid:\\d+}")
+    public EspectadorDetailDTO updateEspectadorFromBoleta(@PathParam("boletaid")Long boletaId, @PathParam("spectadorid")Long espectadorId ) throws BusinessLogicException
+    {
+        BoletaEntity entity = boletaLogic.getBoleta(boletaId);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /boletas/" + boletaId + " no existe.", 404);
+        }
+        return new EspectadorDetailDTO(boletaLogic.updateEspectadorFromBoleta(boletaId, espectadorId));
+    }
+    
+    /**
+     * Método que des asocia un espectador de una Boleta, NO borra el espectador de la base de datos.
+     * @param id Long, ID de la boleta.
+     * @throws BusinessLogicException 
+     */
+    @DELETE
+    @Path("{id:\\d+}/espectadores")
+    public void deleteEspectadorFromBoleta(@PathParam("id") Long id) throws BusinessLogicException {
+        LOGGER.log(Level.INFO, "Inicia proceso de borrar un espectador de una boleta con id {0}", id);
+        BoletaEntity entity = boletaLogic.getBoleta(id);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /boletas/" + id + " no existe.", 404);
+        }
+        boletaLogic.deleteEspectadorFromBoleta(id);
     }
      /**
      *
