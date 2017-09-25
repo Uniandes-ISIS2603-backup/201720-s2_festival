@@ -23,7 +23,7 @@ public class SalaEntity extends BaseEntity implements Serializable {
     @OneToMany
     private List<FuncionEntity> funciones;
     @PodamExclude
-    @OneToMany
+    @OneToMany(mappedBy = "sala")
     private List<SillaEntity> sillas;
     @PodamExclude
     @ManyToOne

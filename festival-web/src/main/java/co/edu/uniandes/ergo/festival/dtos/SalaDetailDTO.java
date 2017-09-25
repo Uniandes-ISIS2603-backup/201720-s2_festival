@@ -26,7 +26,7 @@ public class SalaDetailDTO extends SalaDTO {
     private TeatroDTO teatroDTO;
     
     public SalaDetailDTO() {
-        super();
+//        super();
     }
 
     public SalaDetailDTO(SalaEntity entity) {

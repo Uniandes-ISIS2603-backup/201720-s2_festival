@@ -29,6 +29,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 /**
  * Clase que contiene la información de una boleta.
  * @author jc.corrales
@@ -73,8 +74,9 @@ public class BoletaEntity extends BaseEntity implements Serializable
     /**
      * Atributo que contiene la información de la silla asignada.
      */
-    //@OneToOne
-    //private SillaEntity silla;
+    @PodamExclude
+    @ManyToOne(optional = false)
+    private SillaEntity silla;
     /**
      * Función a la que la Boleta concede acceso a.
      */
@@ -122,18 +124,18 @@ public class BoletaEntity extends BaseEntity implements Serializable
      * Método que obtiene la silla asociada.
      * @return SillaEntity
      */
-    //public SillaEntity getSilla()
-    //{
-        //return silla;
-    //}
+    public SillaEntity getSilla()
+    {
+        return silla;
+    }
     /**
      * Método que establece la silla asociada.
      * @param silla SillaEntity
      */
-    //public void setSilla (SillaEntity silla)
-    //{
-        //this.silla = silla;
-    //}
+    public void setSilla (SillaEntity silla)
+    {
+        this.silla = silla;
+    }
     /**
      * Mérodo que returna la función de la Boleta.
      * @return 

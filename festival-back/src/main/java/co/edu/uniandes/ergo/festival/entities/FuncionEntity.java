@@ -35,7 +35,7 @@ public class FuncionEntity extends BaseEntity implements Serializable{
     private List<BoletaEntity> boletas;
 
     @PodamExclude
-    @OneToMany
+    @OneToMany(mappedBy = "funcion")
     private List<CriticaEntity> criticas;
     
     @PodamExclude
