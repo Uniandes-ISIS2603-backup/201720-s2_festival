@@ -6,8 +6,7 @@
 package co.edu.uniandes.ergo.festival.entities;
 
 import java.io.Serializable;
-import java.util.List;
-import javax.persistence.Column;
+import java.util.ArrayList;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -20,20 +19,24 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class SillaEntity extends BaseEntity implements Serializable{
     
-    /**
-     * Sala a la que pertenece una silla.
-     */
-    @ManyToOne()
-    @PodamExclude
-    @Column(nullable = false) //¿Por qué no sirve?
-    private SalaEntity sala;
+//    /**
+//     * Sala a la que pertenece una silla.
+//     */
+//    @ManyToOne()
+//    @PodamExclude
+//    private SalaEntity sala;
+//    
+//    /**
+//     * Boletas que tienen esta silla.
+//     */
+//    @OneToMany(mappedBy="silla")
+//    @PodamExclude
+//    private ArrayList<BoletaEntity> boletas;
     
     /**
-     * Boletas que tienen esta silla.
+     * Indica si la silla está reservada.
      */
-    @OneToMany(mappedBy="silla")
-    @PodamExclude
-    private List<BoletaEntity> boletas;
+    private boolean reservada;
 
     /**
      * Indica la tarifa pagada por la silla.
@@ -44,6 +47,20 @@ public class SillaEntity extends BaseEntity implements Serializable{
      * Indica si la silla es o no preferencial.
      */
     private boolean esPreferencial;
+    
+    /**
+     * @return the reservada
+     */
+    public boolean isReservada() {
+        return reservada;
+    }
+
+    /**
+     * @param reservada the reservada to set
+     */
+    public void setReservada(boolean reservada) {
+        this.reservada = reservada;
+    }
 
     /**
      * @return the tarifa
@@ -71,34 +88,6 @@ public class SillaEntity extends BaseEntity implements Serializable{
      */
     public void setEsPreferencial(boolean esPreferencial) {
         this.esPreferencial = esPreferencial;
-    }
-
-    /**
-     * @return the sala
-     */
-    public SalaEntity getSala() {
-        return sala;
-    }
-
-    /**
-     * @param sala the sala to set
-     */
-    public void setSala(SalaEntity sala) {
-        this.sala = sala;
-    }
-
-    /**
-     * @return the boletas
-     */
-    public List<BoletaEntity> getBoletas() {
-        return boletas;
-    }
-
-    /**
-     * @param boletas the boletas to set
-     */
-    public void setBoletas(List<BoletaEntity> boletas) {
-        this.boletas = boletas;
     }
     
     
