@@ -18,9 +18,16 @@ public class FuncionDetailDTO extends FuncionDTO{
     private List<BoletaDTO> boletas;
     private List<CriticaDTO> criticas;
     private PeliculaDTO pelicula;
+    private SalaDTO sala;
+    private FestivalDTO festival;
     
-    public FuncionDetailDTO(FuncionEntity createFuncion) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public FuncionDetailDTO() {
+        
+    }
+    
+    public FuncionDetailDTO(FuncionEntity entity) {
+        super(entity);
+        
     }
 
     public FuncionEntity toEntity() {
