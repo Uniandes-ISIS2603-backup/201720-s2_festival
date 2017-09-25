@@ -24,6 +24,7 @@ public class FuncionDetailDTO extends FuncionDTO{
     private SalaDTO sala;
     private FestivalDTO festival;
     
+<<<<<<< HEAD
     public FuncionDetailDTO(FuncionEntity entity) {
         super(entity); 
         if(!(entity.getBoletas().isEmpty())){
@@ -62,6 +63,15 @@ public class FuncionDetailDTO extends FuncionDTO{
         else{
             festival = new FestivalDTO();
         }
+=======
+    public FuncionDetailDTO() {
+        
+    }
+    
+    public FuncionDetailDTO(FuncionEntity entity) {
+        super(entity);
+        
+>>>>>>> 5f56129... plz funciona
     }
 
     public FuncionEntity toEntity() {
