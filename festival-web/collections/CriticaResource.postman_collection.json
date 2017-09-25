@@ -1,14 +1,14 @@
 {
 	"variables": [],
 	"info": {
-		"name": "Pruebas de SillaEntity",
-		"_postman_id": "d3ab1b89-f722-e960-f7cd-dc1af403e9ce",
-		"description": "Pruebas de los servicios REST de SillaResource.",
+		"name": "Pruebas de CriticaEntity",
+		"_postman_id": "55ba6803-3617-cdea-d780-c80451882551",
+		"description": "Pruebas de los servicios REST de CriticaResource.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Crear una SillaEntity",
+			"name": "Crear una CriticaEntity",
 			"event": [
 				{
 					"listen": "test",
@@ -21,7 +21,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/festival-web/api/sillas",
+				"url": "http://localhost:8080/festival-web/api/criticas",
 				"method": "POST",
 				"header": [
 					{
@@ -32,14 +32,14 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"reservada\":false,\"tarifa\":73.78,\"esPreferencial\":false}"
+					"raw": "{\"comentario\":\"Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.\\n\\nPraesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.\\n\\nMorbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.\"}"
 				},
 				"description": ""
 			},
 			"response": []
 		},
 		{
-			"name": "Obtener una SillaEntity",
+			"name": "Obtener una CriticaEntity",
 			"event": [
 				{
 					"listen": "test",
@@ -54,16 +54,19 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/festival-web/api/sillas/1",
+				"url": "http://localhost:8080/festival-web/api/criticas/1",
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
 		},
 		{
-			"name": "Obtener una SillaEntity que no existe",
+			"name": "Obtener una CriticaEntity que no existe",
 			"event": [
 				{
 					"listen": "test",
@@ -76,16 +79,19 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/festival-web/api/sillas/100",
+				"url": "http://localhost:8080/festival-web/api/criticas/100",
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
 		},
 		{
-			"name": "Obtener todas las SillaEntity",
+			"name": "Obtener todas las CriticaEntity",
 			"event": [
 				{
 					"listen": "test",
@@ -100,7 +106,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/festival-web/api/sillas",
+				"url": "http://localhost:8080/festival-web/api/criticas",
 				"method": "GET",
 				"header": [
 					{
@@ -118,7 +124,7 @@
 			"response": []
 		},
 		{
-			"name": "Actualizar una SillaEntity",
+			"name": "Actualizar una CriticaEntity",
 			"event": [
 				{
 					"listen": "test",
@@ -133,7 +139,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/festival-web/api/sillas/1",
+				"url": "http://localhost:8080/festival-web/api/criticas/1",
 				"method": "PUT",
 				"header": [
 					{
@@ -144,14 +150,14 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"esPreferencial\": true,\n    \"reservada\": false,\n    \"tarifa\": 25.9\n}"
+					"raw": "{\"comentario\":\"Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.\"}"
 				},
 				"description": ""
 			},
 			"response": []
 		},
 		{
-			"name": "Actualizar una SillaEntity que no existe",
+			"name": "Actualizar una CriticaEntity que no existe",
 			"event": [
 				{
 					"listen": "test",
@@ -164,7 +170,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/festival-web/api/sillas/100",
+				"url": "http://localhost:8080/festival-web/api/criticas/100",
 				"method": "PUT",
 				"header": [
 					{
@@ -175,14 +181,14 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"esPreferencial\": true,\n    \"reservada\": false,\n    \"tarifa\": 25.9\n}"
+					"raw": "{\"comentario\":\"Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.\"}"
 				},
 				"description": ""
 			},
 			"response": []
 		},
 		{
-			"name": "Borrar una SillaEntity",
+			"name": "Borrar una CriticaEntity",
 			"event": [
 				{
 					"listen": "test",
@@ -195,16 +201,25 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/festival-web/api/sillas/11",
+				"url": "http://localhost:8080/festival-web/api/criticas/11",
 				"method": "DELETE",
-				"header": [],
-				"body": {},
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
 		},
 		{
-			"name": "Borrar una SillaEntity que no existe",
+			"name": "Borrar una CriticaEntity que no existe",
 			"event": [
 				{
 					"listen": "test",
@@ -217,16 +232,25 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/festival-web/api/sillas/100",
+				"url": "http://localhost:8080/festival-web/api/criticas/100",
 				"method": "DELETE",
-				"header": [],
-				"body": {},
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
 		},
 		{
-			"name": "Validar que la SillaEntity se borró",
+			"name": "Validar que la CriticaEntity se borró",
 			"event": [
 				{
 					"listen": "test",
@@ -239,10 +263,13 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/festival-web/api/sillas/11",
+				"url": "http://localhost:8080/festival-web/api/criticas/11",
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []

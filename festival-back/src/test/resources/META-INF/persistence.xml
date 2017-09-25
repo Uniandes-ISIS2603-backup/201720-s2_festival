@@ -11,6 +11,8 @@
     <class>co.edu.uniandes.ergo.festival.entities.FestivalEntity</class>
     <class>co.edu.uniandes.ergo.festival.entities.SillaEntity</class>
     <class>co.edu.uniandes.ergo.festival.entities.TeatroEntity</class>
+    <class>co.edu.uniandes.ergo.festival.entities.SalaEntity</class>
+    <class>co.edu.uniandes.ergo.festival.entities.PatrocinadorEntity</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <shared-cache-mode>NONE</shared-cache-mode>
     <properties>

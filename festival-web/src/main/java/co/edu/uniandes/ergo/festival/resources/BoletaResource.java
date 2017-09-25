@@ -137,7 +137,7 @@ public class BoletaResource
      */
     @PUT
     @Path("{id: \\d+}")
-    public BoletaDetailDTO updateEditorial(@PathParam("id") Long id, BoletaDetailDTO boleta) throws BusinessLogicException {
+    public BoletaDetailDTO updateBoleta(@PathParam("id") Long id, BoletaDetailDTO boleta) throws BusinessLogicException {
         boleta.setId(id);
         BoletaEntity entity = boletaLogic.getBoleta(id);
         if (entity == null) {
