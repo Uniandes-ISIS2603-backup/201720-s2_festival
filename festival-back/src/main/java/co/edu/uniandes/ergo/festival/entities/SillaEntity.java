@@ -7,8 +7,10 @@ package co.edu.uniandes.ergo.festival.entities;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import uk.co.jemos.podam.common.PodamExclude;
@@ -23,14 +25,18 @@ public class SillaEntity extends BaseEntity implements Serializable{
     /**
      * Sala a la que pertenece una silla.
      */
-    @ManyToOne()
+//    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne
     @PodamExclude
-    @Column(nullable = false) //¿Por qué no sirve?
+//    @Column(nullable = false) //¿Por qué no sirve? Porque se debe usar 
+//    @JoinColumn para las columnas con llaves foráneas. 
+    @JoinColumn(nullable = false)
     private SalaEntity sala;
     
     /**
      * Boletas que tienen esta silla.
      */
+//    @OneToMany(mappedBy="silla", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     @OneToMany(mappedBy="silla")
     @PodamExclude
     private List<BoletaEntity> boletas;
