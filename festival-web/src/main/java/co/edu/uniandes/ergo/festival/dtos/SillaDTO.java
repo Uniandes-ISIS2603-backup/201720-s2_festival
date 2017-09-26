@@ -46,7 +46,6 @@ public class SillaDTO {
      */
     public SillaDTO(SillaEntity entity){
         id = entity.getId();
-        reservada = entity.isReservada();
         tarifa = entity.getTarifa();
         esPreferencial = entity.isEsPreferencial();
     }
@@ -114,7 +113,6 @@ public class SillaDTO {
     public SillaEntity toEntity(){
         SillaEntity entity = new SillaEntity();
         entity.setId(id);
-        entity.setReservada(reservada);
         entity.setTarifa(tarifa);
         entity.setEsPreferencial(esPreferencial);
         return entity;

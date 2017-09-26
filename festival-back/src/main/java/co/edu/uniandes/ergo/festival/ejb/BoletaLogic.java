@@ -152,7 +152,6 @@ public class BoletaLogic
         if(getBoleta(boletaId).getSilla() != null)
         {
             respuesta.setId(getBoleta(boletaId).getSilla().getId());
-            respuesta.setReservada(getBoleta(boletaId).getSilla().isReservada());
             respuesta.setTarifa(getBoleta(boletaId).getSilla().getTarifa());
             respuesta.setEsPreferencial(getBoleta(boletaId).getSilla().isEsPreferencial());
         }
