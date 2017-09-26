@@ -54,7 +54,7 @@ public class SillaResource {
     /**
      * Crea una nueva SillaEntity.
      * @param dto información de la SillaEntity.
-     * @return Un SillaDetailDTO con la información de la nueva entidad.
+     * @return Un SillaDTO con la información de la nueva entidad.
      */
     @POST
     public SillaDTO createSilla(SillaDTO dto){
@@ -89,7 +89,7 @@ public class SillaResource {
      * Actualiza la informaición de la SillaEntity con el id especificado.
      * @param id de la SillaEntity a actualizar.
      * @param dto nueva información de la SillaEntity.
-     * @return Un SillaDetailDTO con la nueva información del SillaEntity.
+     * @return Un SillaDTO con la nueva información del SillaEntity.
      */
     @PUT
     @Path("{id: \\d+}")
