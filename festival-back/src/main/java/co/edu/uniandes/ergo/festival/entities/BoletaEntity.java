@@ -24,10 +24,13 @@ SOFTWARE.
 package co.edu.uniandes.ergo.festival.entities;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
 /**
@@ -64,8 +67,8 @@ public class BoletaEntity extends BaseEntity implements Serializable
     /**
      * Atributo que contiene la calificación asociada.
      */
-    //@OneToOne
-    //private CalificacionEntity calificacion;
+    @OneToMany(mappedBy = "boleta",orphanRemoval = true,cascade = CascadeType.ALL)
+    private List<CalificacionEntity> calificacion;
     /**
      * Atributo que contiene la información del espectador asociado.
      */
@@ -80,8 +83,8 @@ public class BoletaEntity extends BaseEntity implements Serializable
     /**
      * Función a la que la Boleta concede acceso a.
      */
-    //@ManyToMany
-    //private FuncionEntity funcion;
+    @ManyToOne
+    private FuncionEntity funcion;
     /**
      * Atributo que contiene el Abono al cual está asociado, si hay.
      */
@@ -92,18 +95,18 @@ public class BoletaEntity extends BaseEntity implements Serializable
      * @return CalificacionEntity
      */
 
-    //public CalificacionEntity getCalificacion()
-    //{
-        //return calificacion;
-    //}
+    public List<CalificacionEntity> getCalificacion()
+    {
+        return calificacion;
+    }
     /**
      * Método que establece la calificación asociada.
      * @param calificacion CalificacionEntity
      */
-    //public void setCalificacion(CalificacionEntity calificacion)
-    //{
-        //this.calificacion = calificacion;
-    //}
+    public void setCalificacion(List<CalificacionEntity> calificacion)
+    {
+        this.calificacion = calificacion;
+    }
     /**
      * Método que obtiene el espectador asociado.
      * @return EspectadorEntity
@@ -140,18 +143,18 @@ public class BoletaEntity extends BaseEntity implements Serializable
      * Mérodo que returna la función de la Boleta.
      * @return 
      */
-    //public FuncionEntity getFuncion()
-    //{
-       // return funcion;
-    //}
+    public FuncionEntity getFuncion()
+    {
+        return funcion;
+    }
     /**
      * Método que establece la función de la Boleta.
      * @param funcion 
      */
-    //public void setFuncion(FuncionEntity funcion)
-    //{
-        //this.funcion = funcion;
-    //}
+    public void setFuncion(FuncionEntity funcion)
+    {
+        this.funcion = funcion;
+    }
     /**
      * Método qque retorna el Abono asociado, si lo hay.
      * @return Abono AbonoEntity

@@ -25,7 +25,7 @@ public class SillaEntity extends BaseEntity implements Serializable{
      */
     @ManyToOne()
     @PodamExclude
-    @Column(nullable = false) //¿Por qué no sirve?
+    //@Column(nullable = false) //¿Por qué no sirve?
     private SalaEntity sala;
     
     /**

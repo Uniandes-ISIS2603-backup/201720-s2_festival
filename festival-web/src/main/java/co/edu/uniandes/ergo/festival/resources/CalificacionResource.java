@@ -7,7 +7,9 @@ package co.edu.uniandes.ergo.festival.resources;
 
 import co.edu.uniandes.ergo.festival.dtos.CalificacionDetailDTO;
 import co.edu.uniandes.ergo.festival.ejb.CalificacionLogic;
+import co.edu.uniandes.ergo.festival.entities.BoletaEntity;
 import co.edu.uniandes.ergo.festival.entities.CalificacionEntity;
+import co.edu.uniandes.ergo.festival.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
@@ -42,8 +44,19 @@ public class CalificacionResource {
     * @return Un CalificacionDetailDTO con la información de la nueva entidad.
     */
    @POST
-   public CalificacionDetailDTO createCalificacion(CalificacionDetailDTO dto){
-       return new CalificacionDetailDTO(calificacionLogic.createCalificacion(dto.toEntity()));
+   public CalificacionDetailDTO createCalificacion(CalificacionDetailDTO dto)throws BusinessLogicException{
+       if(dto.getBoleta()==null){
+           throw new WebApplicationException("La calificacion no tiene una boleta asociada",404);
+       }
+       if(dto.getBoleta().getId()==null){
+           throw new WebApplicationException("La calificacion no tiene un id de boleta",404);
+       }
+       BoletaEntity bolEnt = dto.getBoleta().toEntity();
+       if(bolEnt==null){
+           throw new WebApplicationException("La boleta entity es null",404);
+       }
+       CalificacionEntity ans =calificacionLogic.createCalificacion(dto.toEntity(),bolEnt);
+        return new CalificacionDetailDTO(ans);
    }
    
    /**

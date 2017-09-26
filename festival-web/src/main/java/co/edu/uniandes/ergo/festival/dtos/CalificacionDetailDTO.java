@@ -5,6 +5,8 @@
  */
 package co.edu.uniandes.ergo.festival.dtos;
 
+import co.edu.uniandes.ergo.festival.ejb.BoletaLogic;
+import co.edu.uniandes.ergo.festival.entities.BoletaEntity;
 import co.edu.uniandes.ergo.festival.entities.CalificacionEntity;
 
 /**
@@ -34,7 +36,7 @@ public class CalificacionDetailDTO extends CalificacionDTO{
         entity.setComentario(this.getComentario());
         entity.setId(this.getId());
         entity.setName(this.getName());
-        entity.setBoleta(boleta.toEntity());
+       
         return entity;
         
     }

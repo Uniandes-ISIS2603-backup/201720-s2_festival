@@ -26,8 +26,8 @@ public class FuncionLogic {
     
     public FuncionEntity createFuncion(FuncionEntity entity){
        LOGGER.log(Level.INFO, "Inicia proceso de crear una FuncionEntity.");
-       return persistence.create(entity);
-   }
+       return persistence.create(entity);  
+    }
    
    public FuncionEntity getFuncion(Long id){
        LOGGER.log(Level.INFO, "Inicia proceso de consultar una FuncionEntity.");

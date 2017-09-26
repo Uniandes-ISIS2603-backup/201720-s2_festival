@@ -8,6 +8,7 @@ package co.edu.uniandes.ergo.festival.entities;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -31,7 +32,7 @@ public class FuncionEntity extends BaseEntity implements Serializable{
     private Date horaFin;
     
     @PodamExclude
-    @OneToMany(mappedBy = "funcion")
+    @OneToMany(mappedBy = "funcion", cascade = CascadeType.REMOVE)
     private List<BoletaEntity> boletas;
 
     @PodamExclude

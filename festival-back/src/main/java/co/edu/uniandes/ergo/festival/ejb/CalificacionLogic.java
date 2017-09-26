@@ -5,7 +5,9 @@
  */
 package co.edu.uniandes.ergo.festival.ejb;
 
+import co.edu.uniandes.ergo.festival.entities.BoletaEntity;
 import co.edu.uniandes.ergo.festival.entities.CalificacionEntity;
+import co.edu.uniandes.ergo.festival.exceptions.BusinessLogicException;
 import co.edu.uniandes.ergo.festival.persistence.CalificacionPersistence;
 import java.util.List;
 import java.util.logging.Level;
@@ -24,8 +26,19 @@ public class CalificacionLogic {
     @Inject
     private CalificacionPersistence persistence;
     
-    public CalificacionEntity createCalificacion(CalificacionEntity entity){
+    public CalificacionEntity createCalificacion(CalificacionEntity entity,BoletaEntity bol) throws BusinessLogicException{
         LOGGER.log(Level.INFO, "Inicia proceso de crear una CalificacionEntity.");
+        entity.setBoleta(bol);
+        if(entity.getBoleta()==null){
+            throw new BusinessLogicException("La calificacion no tiene una boleta asignada");
+        }
+        if(entity.getBoleta().getCalificacion()==null){
+            return persistence.create(entity);
+        }
+        if(entity.getBoleta().getCalificacion().size()==1){
+            throw new BusinessLogicException("La boleta ya tiene una calificacion.");
+        }
+        
         return persistence.create(entity);
     }
     
@@ -44,7 +57,7 @@ public class CalificacionLogic {
         return persistence.update(entity);
     }
     
-    public void deleteCalificacion(Long id){
+    public void deleteCalificacion(Long id) {
         LOGGER.log(Level.INFO, "Inicia proceso de borrar una CalificacionEntity.");
         persistence.delete(id);
     }

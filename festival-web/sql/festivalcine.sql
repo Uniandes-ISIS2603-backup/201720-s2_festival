@@ -1,27 +1,32 @@
 delete from FestivalEntity;
+delete from CalificacionEntity;
 delete from BoletaEntity;
 
 /* BoletaEntity*/
+
+
 insert into BoletaEntity (id, codigoDeBarras, estado, precio) values(10, 120, 1, 500.50);
 insert into BoletaEntity (id, codigoDeBarras, estado, precio) values(20, 130, 2, 600.50);
 insert into BoletaEntity (id, codigoDeBarras, estado, precio) values(30, 110, 1, 700.50);
 insert into BoletaEntity (id, codigoDeBarras, estado, precio) values(40, 50, 3, 400.50);
 insert into BoletaEntity (id, codigoDeBarras, estado, precio) values(50, 650, 3, 300.25);
-
+insert into BoletaEntity (id, codigoDeBarras, estado, precio) values(60, 650, 3, 300.25);
 /* CalificacionEntity */
 
-delete from CalificacionEntity;
 
-insert into CalficacionEntity (id,calificacion, comentario) values(1,1.1,"a1");
-insert into CalficacionEntity (id,calificacion, comentario) values(2,2.2,"a2");
-insert into CalficacionEntity (id,calificacion, comentario) values(3,3.3,"a3");
-insert into CalficacionEntity (id,calificacion, comentario) values(4,4.4,"a4");
-insert into CalficacionEntity (id,calificacion, comentario) values(5,5.5,"a5");
-insert into CalficacionEntity (id,calificacion, comentario) values(6,6.6,"a6");
-insert into CalficacionEntity (id,calificacion, comentario) values(7,7.7,"a7");
-insert into CalficacionEntity (id,calificacion, comentario) values(8,8.8,"a8");
-insert into CalficacionEntity (id,calificacion, comentario) values(9,9.9,"a9");
-insert into CalficacionEntity (id,calificacion, comentario) values(10,10.10,"a10");
+
+insert into CalificacionEntity (id,calificacion, comentario,boleta_id) values(1,1.1,'a1',10);
+insert into CalificacionEntity (id,calificacion, comentario,boleta_id) values(2,2.2,'a2',20);
+insert into CalificacionEntity (id,calificacion, comentario,boleta_id) values(3,3.3,'a3',30);
+insert into CalificacionEntity (id,calificacion, comentario,boleta_id) values(4,4.4,'a4',40);
+insert into CalificacionEntity (id,calificacion, comentario,boleta_id) values(5,5.5,'a5',50);
+
+
+
+/* FuncionEntity */
+delete from FuncionEntity;
+
+
 
 /* SillaEntity */
 
