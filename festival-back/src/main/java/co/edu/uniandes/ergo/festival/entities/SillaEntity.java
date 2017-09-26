@@ -19,24 +19,19 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class SillaEntity extends BaseEntity implements Serializable{
     
-//    /**
-//     * Sala a la que pertenece una silla.
-//     */
-//    @ManyToOne()
-//    @PodamExclude
-//    private SalaEntity sala;
-//    
-//    /**
-//     * Boletas que tienen esta silla.
-//     */
-//    @OneToMany(mappedBy="silla")
-//    @PodamExclude
-//    private ArrayList<BoletaEntity> boletas;
+    /**
+     * Sala a la que pertenece una silla.
+     */
+    @ManyToOne()
+    @PodamExclude
+    private SalaEntity sala;
     
     /**
-     * Indica si la silla está reservada.
+     * Boletas que tienen esta silla.
      */
-    private boolean reservada;
+    @OneToMany(mappedBy="silla")
+    @PodamExclude
+    private ArrayList<BoletaEntity> boletas;
 
     /**
      * Indica la tarifa pagada por la silla.
@@ -47,20 +42,6 @@ public class SillaEntity extends BaseEntity implements Serializable{
      * Indica si la silla es o no preferencial.
      */
     private boolean esPreferencial;
-    
-    /**
-     * @return the reservada
-     */
-    public boolean isReservada() {
-        return reservada;
-    }
-
-    /**
-     * @param reservada the reservada to set
-     */
-    public void setReservada(boolean reservada) {
-        this.reservada = reservada;
-    }
 
     /**
      * @return the tarifa
@@ -88,6 +69,34 @@ public class SillaEntity extends BaseEntity implements Serializable{
      */
     public void setEsPreferencial(boolean esPreferencial) {
         this.esPreferencial = esPreferencial;
+    }
+
+    /**
+     * @return the sala
+     */
+    public SalaEntity getSala() {
+        return sala;
+    }
+
+    /**
+     * @param sala the sala to set
+     */
+    public void setSala(SalaEntity sala) {
+        this.sala = sala;
+    }
+
+    /**
+     * @return the boletas
+     */
+    public ArrayList<BoletaEntity> getBoletas() {
+        return boletas;
+    }
+
+    /**
+     * @param boletas the boletas to set
+     */
+    public void setBoletas(ArrayList<BoletaEntity> boletas) {
+        this.boletas = boletas;
     }
     
     
