@@ -67,33 +67,38 @@ public class BoletaEntity extends BaseEntity implements Serializable
     /**
      * Atributo que contiene la calificación asociada.
      */
+
     @OneToMany(mappedBy = "boleta",orphanRemoval = true,cascade = CascadeType.ALL)
     private List<CalificacionEntity> calificacion;
     /**
      * Atributo que contiene la información del espectador asociado.
      */
-   // @OneToOne
-    //private EspectadorEntity espectador;
+    @OneToOne
+    @PodamExclude
+    private EspectadorEntity espectador;
     /**
      * Atributo que contiene la información de la silla asignada.
      */
+    @OneToOne
     @PodamExclude
-    @ManyToOne(optional = false)
     private SillaEntity silla;
     /**
      * Función a la que la Boleta concede acceso a.
      */
     @ManyToOne
+    @PodamExclude
     private FuncionEntity funcion;
     /**
      * Atributo que contiene el Abono al cual está asociado, si hay.
      */
-    //@ManyToOne
-    //private AbonoEntity abono;
+    @ManyToOne
+    @PodamExclude
+    private AbonoEntity abono;
     /**
      * Atributo que obtiene la calificación asociada.
      * @return CalificacionEntity
      */
+
 
     public List<CalificacionEntity> getCalificacion()
     {
@@ -111,18 +116,18 @@ public class BoletaEntity extends BaseEntity implements Serializable
      * Método que obtiene el espectador asociado.
      * @return EspectadorEntity
      */
-    //public EspectadorEntity getEspectador()
-    //{
-       // return espectador;
-    //}
+    public EspectadorEntity getEspectador()
+    {
+        return espectador;
+    }
     /**
      * Método que establece el espectador asociado.
      * @param espectador EspectadorEntity
      */
-    //public void setEspectador(EspectadorEntity espectador)
-    //{
-       // this.espectador = espectador;
-    //}
+    public void setEspectador(EspectadorEntity espectador)
+    {
+        this.espectador = espectador;
+    }
     /**
      * Método que obtiene la silla asociada.
      * @return SillaEntity
@@ -159,18 +164,18 @@ public class BoletaEntity extends BaseEntity implements Serializable
      * Método qque retorna el Abono asociado, si lo hay.
      * @return Abono AbonoEntity
      */
-    //public AbonoEntity getAbono()
-    //{
-        //return abono;
-    //}
+    public AbonoEntity getAbono()
+    {
+        return abono;
+    }
     /**
      * Método que establece el Abono al que esta Boleta pertenece.
      * @param abono AbonoEntity
      */
-    //public void setAbono(AbonoEntity abono)
-    //{
-        //this.abono = abono;
-    //}
+    public void setAbono(AbonoEntity abono)
+    {
+        this.abono = abono;
+    }
     /**
      * Método que retorna el código de barras.
      * @return Long, codigoDeBarras

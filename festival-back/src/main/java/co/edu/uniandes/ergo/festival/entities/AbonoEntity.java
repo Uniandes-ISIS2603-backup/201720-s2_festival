@@ -25,9 +25,12 @@ package co.edu.uniandes.ergo.festival.entities;
 
 
 import java.io.Serializable;
+import java.util.Collection;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -43,46 +46,48 @@ public class AbonoEntity extends BaseEntity implements Serializable
     /**
      * Atributo que contiene la información del espectador dueño del abono.
      */
-    //@ManyToOne
-    //private EspectadorEntity espectador;
+    @ManyToOne
+    @PodamExclude
+    private EspectadorEntity espectador;
     /**
      * Atributo que contiene las boletas.
      */
-    //@OneToMany
-    //private BoletaEntity[] boletas;
+    @OneToMany
+    @PodamExclude
+    private List<BoletaEntity> boletas;
     
     /**
      * Método que retorna el arreglo de las boletas vinculadas a este abono.
      * @return BoletaEntity[]
      */
-    //public BoletaEntity[] getBoletas()
-    //{
-        //return boletas;
-    //}
+    public List<BoletaEntity> getBoletas()
+    {
+        return boletas;
+    }
     /**
      * Método que establece una arreglo de Boletas vinculadas a este Abono.
      * @param boletas 
      */
-    //public void setBoletas(BoletaEntity[] boletas)
-    //{
-        //this.boletas = boletas;
-    //}
+    public void setBoletas(List<BoletaEntity> boletas)
+    {
+        this.boletas = boletas;
+    }
     /**
      * Método que obtiene el Espectador dueño de este Abono.
      * @return EspectadorEntity
      */
-    //public EspectadorEntity getEspectador()
-    //{
-        //return espectador;
-    //}
+    public EspectadorEntity getEspectador()
+    {
+        return espectador;
+    }
     /**
      * Método que establece el Espectador dueño de este Abono.
      * @param espectador EspectadorEntity
      */
-    //public void setEspectador(EspectadorEntity espectador)
-    //{
-        //this.espectador = espectador;
-    //}
+    public void setEspectador(EspectadorEntity espectador)
+    {
+        this.espectador = espectador;
+    }
     /**
      * Método que obtiene el precio del abono.
      * @return Double, precio del abono.

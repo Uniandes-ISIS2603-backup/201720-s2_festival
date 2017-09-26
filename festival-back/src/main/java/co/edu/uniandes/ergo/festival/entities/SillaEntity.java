@@ -6,8 +6,7 @@
 package co.edu.uniandes.ergo.festival.entities;
 
 import java.io.Serializable;
-import java.util.List;
-import javax.persistence.Column;
+import java.util.ArrayList;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -33,7 +32,7 @@ public class SillaEntity extends BaseEntity implements Serializable{
      */
     @OneToMany(mappedBy="silla")
     @PodamExclude
-    private List<BoletaEntity> boletas;
+    private ArrayList<BoletaEntity> boletas;
 
     /**
      * Indica la tarifa pagada por la silla.
@@ -90,14 +89,14 @@ public class SillaEntity extends BaseEntity implements Serializable{
     /**
      * @return the boletas
      */
-    public List<BoletaEntity> getBoletas() {
+    public ArrayList<BoletaEntity> getBoletas() {
         return boletas;
     }
 
     /**
      * @param boletas the boletas to set
      */
-    public void setBoletas(List<BoletaEntity> boletas) {
+    public void setBoletas(ArrayList<BoletaEntity> boletas) {
         this.boletas = boletas;
     }
     

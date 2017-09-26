@@ -169,4 +169,5 @@ public class BoletaDTO
         entity.setPrecio(this.precio);
         return entity;
     }
+    
 }
