@@ -35,8 +35,10 @@ public class CriticaDTO {
      * @param entity La entidad CriticaEntity.
      */
     public CriticaDTO(CriticaEntity entity){
-        id = entity.getId();
-        comentario = entity.getComentario();
+        if (entity != null){
+            id = entity.getId();
+            comentario = entity.getComentario();
+        }
     }
 
     /**

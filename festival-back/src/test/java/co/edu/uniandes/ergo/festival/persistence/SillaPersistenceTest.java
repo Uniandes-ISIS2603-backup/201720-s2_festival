@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.ergo.festival.persistence;
 
+import co.edu.uniandes.ergo.festival.entities.SalaEntity;
 import co.edu.uniandes.ergo.festival.entities.SillaEntity;
 import java.util.ArrayList;
 import java.util.List;
@@ -115,9 +116,11 @@ public class SillaPersistenceTest {
 
     private void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
+        SalaEntity sala = factory.manufacturePojo(SalaEntity.class);
+        em.persist(sala);
         for (int i = 0; i < 3; i++) {
             SillaEntity entity = factory.manufacturePojo(SillaEntity.class);
-
+            entity.setSala(sala);
             em.persist(entity);
             data.add(entity);
         }
@@ -129,7 +132,12 @@ public class SillaPersistenceTest {
     @Test
     public void testCreate() throws Exception {
         PodamFactory factory = new PodamFactoryImpl();
+        SalaEntity sala = factory.manufacturePojo(SalaEntity.class);
+        utx.begin();
+        em.persist(sala);
+        utx.commit();
         SillaEntity newEntity = factory.manufacturePojo(SillaEntity.class);
+        newEntity.setSala(sala);
         SillaEntity result = persistence.create(newEntity);
 
         Assert.assertNotNull(result);
@@ -177,6 +185,7 @@ public class SillaPersistenceTest {
         SillaEntity newEntity = factory.manufacturePojo(SillaEntity.class);
 
         newEntity.setId(entity.getId());
+        newEntity.setSala(entity.getSala());
 
         persistence.update(newEntity);
 

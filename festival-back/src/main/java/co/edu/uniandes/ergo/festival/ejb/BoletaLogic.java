@@ -171,6 +171,7 @@ public class BoletaLogic
      */
     public BoletaEntity getBoleta(Long pID)
     {
+        LOGGER.severe("Buscando boleta con id m:" +pID);
         return persistenceBoleta.find(pID);
     }
     /**

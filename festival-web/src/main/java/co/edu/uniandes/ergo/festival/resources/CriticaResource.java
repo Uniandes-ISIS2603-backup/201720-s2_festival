@@ -30,7 +30,6 @@ import javax.ws.rs.core.MediaType;
 @Path("/criticas")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-@RequestScoped
 public class CriticaResource {
     
     @Inject

@@ -65,7 +65,6 @@ import javax.ws.rs.WebApplicationException;
 @Path("boletas")
 @Produces("application/json")
 @Consumes("application/json")
-@RequestScoped
 public class BoletaResource
 {
     @Inject
