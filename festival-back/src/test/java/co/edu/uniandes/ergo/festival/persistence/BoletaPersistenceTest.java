@@ -184,9 +184,19 @@ public class BoletaPersistenceTest
      *
      */
     @Test
-    public void getBoletaTest() {
+    public void getBoletaNormalTest() {
         BoletaEntity entity = data.get(0);
         BoletaEntity newEntity = boletaPersistence.find(entity.getId());
+        Assert.assertNotNull(newEntity);
+    }
+    /**
+     * Prueba para consultar una boleta mediante su código de barras.
+     */
+    @Test
+    public void getBoletaCodigoBarrasTest()
+    {
+        BoletaEntity entity = data.get(0);
+        BoletaEntity newEntity = boletaPersistence.findByCode(entity.getCodigoBarras());
         Assert.assertNotNull(newEntity);
     }
     

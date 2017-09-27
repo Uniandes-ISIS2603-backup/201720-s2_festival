@@ -21,7 +21,7 @@ public class CriticaEntity extends BaseEntity{
      * Función a la que pertenece una crítica.
      */
     @PodamExclude
-    @ManyToOne(optional = false)
+    @ManyToOne()
     private FuncionEntity funcion;
     
     /**

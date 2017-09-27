@@ -39,7 +39,7 @@ public class SillaEntity extends BaseEntity implements Serializable{
     @OneToMany(mappedBy="silla", cascade = {CascadeType.REMOVE})
 //    @OneToMany(mappedBy="silla")
     @PodamExclude
-    private List<BoletaEntity> boletas;
+    private ArrayList<BoletaEntity> boletas;
 
     /**
      * Indica la tarifa pagada por la silla.
@@ -96,14 +96,14 @@ public class SillaEntity extends BaseEntity implements Serializable{
     /**
      * @return the boletas
      */
-    public List<BoletaEntity> getBoletas() {
+    public ArrayList<BoletaEntity> getBoletas() {
         return boletas;
     }
 
     /**
      * @param boletas the boletas to set
      */
-    public void setBoletas(List<BoletaEntity> boletas) {
+    public void setBoletas(ArrayList<BoletaEntity> boletas) {
         this.boletas = boletas;
     }
     

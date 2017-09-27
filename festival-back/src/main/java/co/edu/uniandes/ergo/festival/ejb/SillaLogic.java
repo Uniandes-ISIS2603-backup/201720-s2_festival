@@ -28,12 +28,8 @@ public class SillaLogic {
     @Inject
     private SillaPersistence persistence;
     
-    @Inject
-    private BoletaLogic boletaLogic;
-    
     @Inject 
     private SalaLogic salaLogic;
-   
     
     /**
      * Ordena a la persistencia crear una SillaEntity.
@@ -100,26 +96,18 @@ public class SillaLogic {
     }
     
     /**
-     * Elimina una BoletaEntity de una SillaEntity.
-     * @param sillasid La identificación de la SillaEntity.
-     * @param boletaid La identificación de la BoletaEntity.
-     * @throws BusinessLogicException Si la BoletaEntity no
-     * está asociada a la SillaEntity especificada.
+     * Retorna la BoletaEntity de la SillaEntity.
+     * @param sillasid Identificación de la SillaEntity.
+     * @param boletaid Identificación de la BoletaEntity.
+     * @return La BoletaEntity.
      */
-    public void deleteBoletaSilla(Long sillasid, Long boletaid) throws BusinessLogicException{
-        LOGGER.log(Level.INFO, "Inicia proceso de eliminar la BoletaEntity "
-                + "con id: {0} de la SillaEntity con id: {1}.", 
-                new Object[]{boletaid, sillasid});
-        SillaEntity silla = getSilla(sillasid);
-        BoletaEntity boleta = boletaLogic.getBoleta(boletaid);
-        if (!boleta.getSilla().equals(silla)){
-            throw new BusinessLogicException("La BoletaEntity con id: " + boletaid 
-            + " no está asociada a la SillaEntity con id: " + sillasid);
-        }
-        boletaLogic.deleteBoleta(boleta.getId());
-        LOGGER.log(Level.INFO, "Finaliza proceso de eliminar la BoletaEntity "
-                + "con id: {0} de la SillaEntity con id: {1}.", 
-                new Object[]{boletaid, sillasid});
+    public BoletaEntity getBoletaSilla(Long sillasid, Long boletaid){
+        LOGGER.log(Level.INFO, "Consultando BoletaEntity con id: {0} de la "
+                + "SillaEntity con id: {1}.", new Object[]{boletaid, sillasid});        
+        SillaEntity silla = persistence.find(sillasid);
+        BoletaEntity boleta = new BoletaEntity();
+        boleta.setId(boletaid);
+        return silla.getBoletas().get(silla.getBoletas().indexOf(boleta));
     }
     
     /**
@@ -135,22 +123,22 @@ public class SillaLogic {
         return sala;
     }
     
-    /**
-     * Asocia una SalaEntity a una SillaEntity.
-     * @param sillasid Identificacion de la SillaEntity.
-     * @param salaid Identificación de la SalaEntity.
-     * @return La SalaEntity asociada.
-     */
-    public SalaEntity setSalaSilla(Long sillasid, Long salaid){
-        LOGGER.log(Level.INFO, "Inicia proceso de asociar la SalaEntity "
-                + "con id: {0} a la SillaEntity con id: {1}.", 
-                new Object[]{salaid, sillasid});
-        SillaEntity silla = getSilla(sillasid);
-        SalaEntity sala = salaLogic.get(salaid);
-        silla.setSala(sala);
-        LOGGER.log(Level.INFO, "Finaliza proceso de asociar la SalaEntity "
-                + "con id: {0} a la SillaEntity con id: {1}.", 
-                new Object[]{salaid, sillasid});
-        return sala;
-    }    
+//    /**
+//     * Asocia una SalaEntity a una SillaEntity.
+//     * @param sillasid Identificacion de la SillaEntity.
+//     * @param salaid Identificación de la SalaEntity.
+//     * @return La SalaEntity asociada.
+//     */
+//    public SalaEntity setSalaSilla(Long sillasid, Long salaid){
+//        LOGGER.log(Level.INFO, "Inicia proceso de asociar la SalaEntity "
+//                + "con id: {0} a la SillaEntity con id: {1}.", 
+//                new Object[]{salaid, sillasid});
+//        SillaEntity silla = getSilla(sillasid);
+//        SalaEntity sala = salaLogic.get(salaid);
+//        silla.setSala(sala);
+//        LOGGER.log(Level.INFO, "Finaliza proceso de asociar la SalaEntity "
+//                + "con id: {0} a la SillaEntity con id: {1}.", 
+//                new Object[]{salaid, sillasid});
+//        return sala;
+//    }    
 }
