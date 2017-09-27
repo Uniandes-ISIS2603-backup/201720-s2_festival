@@ -47,7 +47,7 @@ public class BoletaLogic
     private FuncionPersistence persistenceFuncion;
     
     @Inject
-    private CalificacionPersistence persistenceCalificacion;
+    private CalificacionLogic logicCalificacion;
     
    // @Inject
    // private CalificacionLogic calificacionLogic;
@@ -367,8 +367,9 @@ public class BoletaLogic
         {
             throw new BusinessLogicException("La Boleta con Id: \"" + boletaId +"\" ya tiene una calificacion asignada, usar el metodo PUT.");
         }
-        persistenceCalificacion.create(entity);
-        boletaEntity.setCalificacion(entity);
+        CalificacionEntity temp = logicCalificacion.createCalificacion(entity, boletaEntity);
+        boletaEntity.setCalificacion(temp);
+        persistenceBoleta.update(boletaEntity);
         LOGGER.info("Termina proceso de actualizacion de Boleta");
         return entity; 
     }
@@ -379,22 +380,22 @@ public class BoletaLogic
      * @return CalificacionEntity, calificacion que se acaba de asociar.
      * @throws BusinessLogicException 
      */
-    public CalificacionEntity addCalificacionYaExistenteFromBoleta(Long boletaId, Long calificacionId) throws BusinessLogicException
-    {
-        LOGGER.log(Level.INFO, "Inicia proceso de agregar una calificacion ya existente a la Boleta con id = {0}", boletaId);
-        BoletaEntity boletaEntity = getBoleta(boletaId);
-        if(boletaEntity.getCalificacion() != null)
-        {
-            throw new BusinessLogicException("La Boleta con Id: \"" + boletaId +"\" ya tiene una calificacion asignada, usar el metodo PUT.");
-        }
-        if(persistenceCalificacion.find(calificacionId) == null)
-        {
-            throw new BusinessLogicException("La Funcion con Id: \"" + calificacionId +"\" no existe, usar el metodo POST auxiliar y crear una calificacion alli");
-        }
-        boletaEntity.setCalificacion(persistenceCalificacion.find(calificacionId));
-        LOGGER.log(Level.INFO, "Termina proceso de agregar una calificacion a Boleta con id={0}", boletaEntity.getId());
-        return boletaEntity.getCalificacion();
-    }
+//    public CalificacionEntity addCalificacionYaExistenteFromBoleta(Long boletaId, Long calificacionId) throws BusinessLogicException
+//    {
+//        LOGGER.log(Level.INFO, "Inicia proceso de agregar una calificacion ya existente a la Boleta con id = {0}", boletaId);
+//        BoletaEntity boletaEntity = getBoleta(boletaId);
+//        if(boletaEntity.getCalificacion() != null)
+//        {
+//            throw new BusinessLogicException("La Boleta con Id: \"" + boletaId +"\" ya tiene una calificacion asignada, usar el metodo PUT.");
+//        }
+//        if(persistenceCalificacion.find(calificacionId) == null)
+//        {
+//            throw new BusinessLogicException("La Funcion con Id: \"" + calificacionId +"\" no existe, usar el metodo POST auxiliar y crear una calificacion alli");
+//        }
+//        boletaEntity.setCalificacion(persistenceCalificacion.find(calificacionId));
+//        LOGGER.log(Level.INFO, "Termina proceso de agregar una calificacion a Boleta con id={0}", boletaEntity.getId());
+//        return boletaEntity.getCalificacion();
+//    }
     /**
      * Método que reemplaza la calificacion asociada de una boleta con otra NUEVA que previamente NO existe en la base de datos.
      * @param boletaId Long, id de la boleta.
@@ -410,10 +411,10 @@ public class BoletaLogic
         {
             throw new BusinessLogicException("La Boleta con Id: \"" + boletaId +"\" ya tiene una calificacion asignada, usar el metodo POST.");
         }
-        persistenceCalificacion.create(entity);
+        CalificacionEntity temp = logicCalificacion.createCalificacion(entity, boletaEntity);
         CalificacionEntity calificacion = boletaEntity.getCalificacion();
-        boletaEntity.setCalificacion(entity);
-        persistenceCalificacion.delete(calificacion.getId());
+        boletaEntity.setCalificacion(temp);
+        logicCalificacion.deleteCalificacion(calificacion.getId());
         LOGGER.info("Termina proceso de actualizacion de Boleta");
         return entity;
     }
@@ -424,24 +425,24 @@ public class BoletaLogic
      * @return CalificacionEntity, calificacion que se acaba de asociar.
      * @throws co.edu.uniandes.ergo.festival.exceptions.BusinessLogicException
      */
-    public CalificacionEntity updateCalificacionYaExistenteFromBoleta(Long boletaId, Long calificacionId) throws BusinessLogicException
-    {
-        LOGGER.log(Level.INFO, "Inicia proceso de actualizar una calificacion ya existente a la Boleta con id = {0}", boletaId);
-        BoletaEntity boletaEntity = getBoleta(boletaId);
-        if(boletaEntity.getCalificacion() == null)
-        {
-            throw new BusinessLogicException("La Boleta con Id: \"" + boletaId +"\" no tiene una calificacion asignada, usar el metodo POST.");
-        }
-        if(persistenceCalificacion.find(calificacionId) == null)
-        {
-            throw new BusinessLogicException("La Calificacion con Id: \"" + calificacionId +"\" no existe, usar el metodo POST auxiliar y crear una calificacion alli");
-        }
-        Long idEntityABorrar = boletaEntity.getCalificacion().getId();
-        boletaEntity.setCalificacion(persistenceCalificacion.find(calificacionId));
-        persistenceCalificacion.delete(idEntityABorrar);
-        LOGGER.log(Level.INFO, "Termina proceso de agregar una calificacion a Boleta con id={0}", boletaEntity.getId());
-        return boletaEntity.getCalificacion();
-    }
+//    public CalificacionEntity updateCalificacionYaExistenteFromBoleta(Long boletaId, Long calificacionId) throws BusinessLogicException
+//    {
+//        LOGGER.log(Level.INFO, "Inicia proceso de actualizar una calificacion ya existente a la Boleta con id = {0}", boletaId);
+//        BoletaEntity boletaEntity = getBoleta(boletaId);
+//        if(boletaEntity.getCalificacion() == null)
+//        {
+//            throw new BusinessLogicException("La Boleta con Id: \"" + boletaId +"\" no tiene una calificacion asignada, usar el metodo POST.");
+//        }
+//        if(persistenceCalificacion.find(calificacionId) == null)
+//        {
+//            throw new BusinessLogicException("La Calificacion con Id: \"" + calificacionId +"\" no existe, usar el metodo POST auxiliar y crear una calificacion alli");
+//        }
+//        Long idEntityABorrar = boletaEntity.getCalificacion().getId();
+//        boletaEntity.setCalificacion(persistenceCalificacion.find(calificacionId));
+//        persistenceCalificacion.delete(idEntityABorrar);
+//        LOGGER.log(Level.INFO, "Termina proceso de agregar una calificacion a Boleta con id={0}", boletaEntity.getId());
+//        return boletaEntity.getCalificacion();
+//    }
     /**
      * Método que des asocia una calificaion de una boleta, este método BORRA la calificacion de la base de datos.
      * @param boletaId
@@ -456,8 +457,9 @@ public class BoletaLogic
             throw new BusinessLogicException("La Boleta con Id: \"" + boletaId +"\" no tiene una calificacion asociada.");
         }
         Long idCalificacionABorrar = entity.getCalificacion().getId();
-        persistenceCalificacion.delete(idCalificacionABorrar);
         entity.setCalificacion(null);
+        persistenceBoleta.update(entity);
+        logicCalificacion.deleteCalificacion(idCalificacionABorrar);
     }
     /**
      * Método que obtiene el espectador asociad de una boleta.
