@@ -23,17 +23,17 @@ public class CalificacionEntity extends BaseEntity implements Serializable {
      private String comentario;
      
      
-     @PodamExclude
-     @ManyToOne
-     private BoletaEntity boleta;
-
-    public BoletaEntity getBoleta() {
-        return boleta;
-    }
-
-    public void setBoleta(BoletaEntity boleta) {
-        this.boleta = boleta;
-    }
+//     @PodamExclude
+//     @OneToOne
+//     private BoletaEntity boleta;
+//
+//    public BoletaEntity getBoleta() {
+//        return boleta;
+//    }
+//
+//    public void setBoleta(BoletaEntity boleta) {
+//        this.boleta = boleta;
+//    }
 
 
     public double getCalificacion() {

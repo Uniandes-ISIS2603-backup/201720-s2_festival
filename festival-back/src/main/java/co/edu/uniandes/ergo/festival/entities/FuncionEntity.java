@@ -46,6 +46,9 @@ public class FuncionEntity extends BaseEntity implements Serializable{
     @ManyToOne
     private SalaEntity sala;
     
+    @PodamExclude
+    @ManyToOne
+    private FestivalEntity festival;
     
     public Date getHoraInicio() {
         return horaInicio;
@@ -101,5 +104,13 @@ public class FuncionEntity extends BaseEntity implements Serializable{
     public void setSala(SalaEntity sala)
     {
         this.sala = sala;
+    }
+
+    public FestivalEntity getFestival() {
+        return festival;
+    }
+
+    public void setFestival(FestivalEntity festival) {
+        this.festival = festival;
     }
 }

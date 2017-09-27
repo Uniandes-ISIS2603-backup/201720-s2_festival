@@ -68,8 +68,9 @@ public class BoletaEntity extends BaseEntity implements Serializable
      * Atributo que contiene la calificación asociada.
      */
 
-    @OneToMany(mappedBy = "boleta",orphanRemoval = true,cascade = CascadeType.ALL)
-    private List<CalificacionEntity> calificacion;
+    @PodamExclude
+    @OneToOne//(orphanRemoval = true,cascade = CascadeType.ALL)
+    private CalificacionEntity calificacion;
     /**
      * Atributo que contiene la información del espectador asociado.
      */
@@ -100,7 +101,7 @@ public class BoletaEntity extends BaseEntity implements Serializable
      */
 
 
-    public List<CalificacionEntity> getCalificacion()
+    public CalificacionEntity getCalificacion()
     {
         return calificacion;
     }
@@ -108,7 +109,7 @@ public class BoletaEntity extends BaseEntity implements Serializable
      * Método que establece la calificación asociada.
      * @param calificacion CalificacionEntity
      */
-    public void setCalificacion(List<CalificacionEntity> calificacion)
+    public void setCalificacion(CalificacionEntity calificacion)
     {
         this.calificacion = calificacion;
     }

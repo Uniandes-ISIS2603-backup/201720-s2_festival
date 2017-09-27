@@ -21,12 +21,12 @@ public class CalificacionDetailDTO extends CalificacionDTO{
     }
     public CalificacionDetailDTO(CalificacionEntity createCalificacion) {
         super(createCalificacion);
-        if(!(createCalificacion.getBoleta()==null)){
-            boleta = new BoletaDTO(createCalificacion.getBoleta());
-        }
-        else{
-            boleta = new BoletaDTO();
-        }
+//        if(!(createCalificacion.getBoleta()==null)){
+//            boleta = new BoletaDTO(createCalificacion.getBoleta());
+//        }
+//        else{
+//            boleta = new BoletaDTO();
+//        }
         
     }
 

@@ -70,7 +70,7 @@ public class FuncionDetailDTO extends FuncionDTO{
             festival = new FestivalDTO();
         }
     }
-
+    
     public FuncionEntity toEntity() {
         FuncionEntity entity = new FuncionEntity();
         entity.setHoraInicio(this.getHoraInicio());

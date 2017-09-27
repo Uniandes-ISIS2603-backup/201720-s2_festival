@@ -28,16 +28,16 @@ public class CalificacionLogic {
     
     public CalificacionEntity createCalificacion(CalificacionEntity entity,BoletaEntity bol) throws BusinessLogicException{
         LOGGER.log(Level.INFO, "Inicia proceso de crear una CalificacionEntity.");
-        entity.setBoleta(bol);
-        if(entity.getBoleta()==null){
-            throw new BusinessLogicException("La calificacion no tiene una boleta asignada");
-        }
-        if(entity.getBoleta().getCalificacion()==null){
-            return persistence.create(entity);
-        }
-        if(entity.getBoleta().getCalificacion().size()==1){
-            throw new BusinessLogicException("La boleta ya tiene una calificacion.");
-        }
+//        entity.setBoleta(bol);
+//        if(entity.getBoleta()==null){
+//            throw new BusinessLogicException("La calificacion no tiene una boleta asignada");
+//        }
+//        if(entity.getBoleta().getCalificacion()==null){
+//            return persistence.create(entity);
+//        }
+//        if(entity.getBoleta().getCalificacion() != null){
+//            throw new BusinessLogicException("La boleta ya tiene una calificacion.");
+//        }
         
         return persistence.create(entity);
     }
