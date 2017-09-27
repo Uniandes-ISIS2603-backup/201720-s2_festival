@@ -1,7 +1,7 @@
 {
 	"variables": [],
 	"info": {
-		"name": "Pruebas de CriticaEntity",
+		"name": "Pruebas de CriticaResource",
 		"_postman_id": "55ba6803-3617-cdea-d780-c80451882551",
 		"description": "Pruebas de los servicios REST de CriticaResource.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
@@ -201,7 +201,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/festival-web/api/criticas/11",
+				"url": "http://localhost:8080/festival-web/api/criticas/10",
 				"method": "DELETE",
 				"header": [
 					{

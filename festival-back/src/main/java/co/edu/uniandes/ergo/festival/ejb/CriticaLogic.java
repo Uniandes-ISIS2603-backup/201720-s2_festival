@@ -65,7 +65,7 @@ public class CriticaLogic {
     }
     
     /**
-     * Elimian una CriticaEntity de la persistencia.
+     * Elimina una CriticaEntity de la persistencia.
      * @param id el id de la CriticaEntity a eliminar.
      */
     public void deleteCritica(Long id){
