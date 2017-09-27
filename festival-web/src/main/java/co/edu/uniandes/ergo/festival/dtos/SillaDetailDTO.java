@@ -39,16 +39,12 @@ public class SillaDetailDTO extends SillaDTO {
      */
     public SillaDetailDTO(SillaEntity entity){
         super(entity);
-        if (!entity.getBoletas().isEmpty()){
+        if (!(entity.getBoletas() == null || entity.getBoletas().isEmpty())){
             boletas = listBoletas2DTO(entity);
-        } else {
-            boletas = new ArrayList();
         }
         if (!(entity.getSala() == null)){
             sala = new SalaDTO(entity.getSala());
-        } else {
-            sala = new SalaDTO();
-        }        
+        }       
     }
 
     /**
@@ -88,6 +84,32 @@ public class SillaDetailDTO extends SillaDTO {
         List<BoletaDTO> resp = new ArrayList();
         for (BoletaEntity boleta : entity.getBoletas()){
             resp.add(new BoletaDTO(boleta));
+        }
+        return resp;
+    }
+    
+    /**
+     * Convierte una SillaEntity en Representación Detail a una SillaEntity.
+     * @return La SillaEntity.
+     */
+    public SillaEntity toEntity(){
+        SillaEntity entity = super.toEntity();
+        entity.setSala(sala.toEntity());
+        entity.setBoletas(listDTO2Boletas());
+        return entity;
+    }
+    
+    /**
+     * Convierte las BoletaDTO de una SillaDetailDTO en BoletaEntity.
+     * @param entity La SillaEntity.
+     * @return Una lista con las BoletaEntity.
+     */
+    private List<BoletaEntity> listDTO2Boletas(){
+        List<BoletaEntity> resp = new ArrayList();
+        if (boletas != null){
+            for (BoletaDTO boleta : boletas){
+                resp.add(boleta.toEntity());
+            }
         }
         return resp;
     }

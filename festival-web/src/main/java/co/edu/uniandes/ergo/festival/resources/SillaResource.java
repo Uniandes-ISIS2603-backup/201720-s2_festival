@@ -54,11 +54,11 @@ public class SillaResource {
     /**
      * Crea una nueva SillaEntity.
      * @param dto información de la SillaEntity.
-     * @return Un SillaDTO con la información de la nueva entidad.
+     * @return Un SillaDetailDTO con la información de la nueva entidad.
      */
     @POST
-    public SillaDTO createSilla(SillaDTO dto){
-        return new SillaDTO(sillaLogic.createSilla(dto.toEntity()));
+    public SillaDetailDTO createSilla(SillaDetailDTO dto) throws BusinessLogicException{
+        return new SillaDetailDTO(sillaLogic.createSilla(dto.toEntity()));
     }
     
     /**
@@ -109,7 +109,7 @@ public class SillaResource {
      */
     @DELETE
     @Path("{id: \\d+}")
-    public void deleteSilla(@PathParam("id") Long id){
+    public void deleteSilla(@PathParam("id") Long id) throws BusinessLogicException{
         SillaEntity entity = sillaLogic.getSilla(id);
         if (entity == null){
             throw new WebApplicationException("La silla con id: " + id + " no existe.", 404);
@@ -128,26 +128,6 @@ public class SillaResource {
             list.add(new SillaDTO(entity));
         }
         return list;
-    }
-    
-    /**
-     * Asocia una BoletaEntity a una SillaEntity.
-     * @param sillasid Identificación de la SillaEntity.
-     * @param boletasid Identificación de la BoletaEntity.
-     * @return La BoletaEntity en Representación Detail.
-     */
-    @POST
-    @Path("{sillasid: \\d+}/boletas/{boletasid: \\d+}")
-    public BoletaDetailDTO addBoleta(@PathParam("sillasid") Long sillasid, 
-            @PathParam("boletasid") Long boletasid){
-        BoletaEntity boleta = boletaLogic.getBoleta(boletasid);
-        SillaEntity silla = sillaLogic.getSilla(sillasid);
-        if (silla == null){
-            throw new WebApplicationException("La SillaEntity con id: " + sillasid + " no existe.", 404);
-        } else if (boleta == null){
-            throw new WebApplicationException("La BoletaEntity con id: " + boletasid + " no existe.", 404);
-        }
-        return new BoletaDetailDTO(sillaLogic.addBoletaSilla(sillasid, boletasid));
     }
     
     /**
@@ -236,22 +216,5 @@ public class SillaResource {
             return new SalaDetailDTO();
         }
         return new SalaDetailDTO(sala);
-    }
-    
-    /**
-     * Quita la SalaEntity de una SillaEntity.
-     * @param sillasid Identificación de la SillaEntity.
-     * @throws BusinessLogicException Si la SillaEntity no tiene una SalaEntity 
-     * asociada.
-     */
-    @DELETE
-    @Path("{sillasid: \\d+}/sala")
-    public void deleteSalaSilla(@PathParam("sillasid") Long sillasid) 
-            throws BusinessLogicException{
-        SillaEntity silla = sillaLogic.getSilla(sillasid);    
-        if (silla == null){
-            throw new WebApplicationException("La SillaEntity con id: " + sillasid + " no existe.", 404);
-        } 
-        sillaLogic.deleteSalaSilla(sillasid);
     }
 }

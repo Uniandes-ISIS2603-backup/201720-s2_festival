@@ -36,8 +36,8 @@ public class SillaEntity extends BaseEntity implements Serializable{
     /**
      * Boletas que tienen esta silla.
      */
-//    @OneToMany(mappedBy="silla", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
-    @OneToMany(mappedBy="silla")
+    @OneToMany(mappedBy="silla", cascade = {CascadeType.REMOVE})
+//    @OneToMany(mappedBy="silla")
     @PodamExclude
     private List<BoletaEntity> boletas;
 

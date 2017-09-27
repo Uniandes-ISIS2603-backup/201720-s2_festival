@@ -36,8 +36,12 @@ public class CriticaDetailDTO extends CriticaDTO {
      */
     public CriticaDetailDTO(CriticaEntity entity){
         super(entity);
-        funcion = new FuncionDTO(entity.getFuncion());
-        critico = new CriticoDTO(entity.getCritico());        
+        if (entity.getFuncion() != null){
+            funcion = new FuncionDTO(entity.getFuncion());
+        }
+        if (entity.getCritico() != null){
+            critico = new CriticoDTO(entity.getCritico());  
+        }
     }
     
     /**

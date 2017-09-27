@@ -40,9 +40,11 @@ public class SillaDTO {
      * @param entity La entidad SillaEntity.
      */
     public SillaDTO(SillaEntity entity){
-        id = entity.getId();
-        tarifa = entity.getTarifa();
-        esPreferencial = entity.isEsPreferencial();
+        if (entity != null){
+            id = entity.getId();
+            tarifa = entity.getTarifa();
+            esPreferencial = entity.isEsPreferencial();
+        }
     }
 
     /**

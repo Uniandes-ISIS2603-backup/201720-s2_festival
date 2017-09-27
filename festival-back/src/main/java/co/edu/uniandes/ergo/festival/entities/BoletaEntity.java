@@ -64,8 +64,8 @@ public class BoletaEntity extends BaseEntity implements Serializable
     /**
      * Atributo que contiene la calificación asociada.
      */
-    //@OneToOne
-    //private CalificacionEntity calificacion;
+    @OneToOne
+    private CalificacionEntity calificacion;
     /**
      * Atributo que contiene la información del espectador asociado.
      */
@@ -92,18 +92,18 @@ public class BoletaEntity extends BaseEntity implements Serializable
      * @return CalificacionEntity
      */
 
-    //public CalificacionEntity getCalificacion()
-    //{
-        //return calificacion;
-    //}
+    public CalificacionEntity getCalificacion()
+    {
+        return calificacion;
+    }
     /**
      * Método que establece la calificación asociada.
      * @param calificacion CalificacionEntity
      */
-    //public void setCalificacion(CalificacionEntity calificacion)
-    //{
-        //this.calificacion = calificacion;
-    //}
+    public void setCalificacion(CalificacionEntity calificacion)
+    {
+        this.calificacion = calificacion;
+    }
     /**
      * Método que obtiene el espectador asociado.
      * @return EspectadorEntity
