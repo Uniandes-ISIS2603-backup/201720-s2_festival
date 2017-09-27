@@ -8,7 +8,6 @@ package co.edu.uniandes.ergo.festival.entities;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -32,7 +31,7 @@ public class FuncionEntity extends BaseEntity implements Serializable{
     private Date horaFin;
     
     @PodamExclude
-    @OneToMany(mappedBy = "funcion", cascade = CascadeType.REMOVE)
+    @OneToMany
     private List<BoletaEntity> boletas;
 
     @PodamExclude
@@ -47,10 +46,7 @@ public class FuncionEntity extends BaseEntity implements Serializable{
     @ManyToOne
     private SalaEntity sala;
     
-    @PodamExclude
-    @ManyToOne
-    private FestivalEntity festival;
-
+    
     public Date getHoraInicio() {
         return horaInicio;
     }
@@ -66,47 +62,44 @@ public class FuncionEntity extends BaseEntity implements Serializable{
     public void setHoraFin(Date horaFin) {
         this.horaFin = horaFin;
     }
-
-    public List<BoletaEntity> getBoletas() {
+    
+    public List<BoletaEntity> getBoletas()
+    {
         return boletas;
     }
-
-    public void setBoletas(List<BoletaEntity> boletas) {
+    
+    public void setBoletas(List<BoletaEntity> boletas)
+    {
         this.boletas = boletas;
     }
-
-    public List<CriticaEntity> getCriticas() {
+    
+    public List<CriticaEntity> getCriticas()
+    {
         return criticas;
     }
-
-    public void setCriticas(List<CriticaEntity> criticas) {
+    
+    public void setCriticas(List<CriticaEntity> criticas)
+    {
         this.criticas = criticas;
     }
-
-    public PeliculaEntity getPelicula() {
+    
+    public PeliculaEntity getPelicula()
+    {
         return pelicula;
     }
-
-    public void setPelicula(PeliculaEntity pelicula) {
+    
+    public void setPelicula(PeliculaEntity pelicula)
+    {
         this.pelicula = pelicula;
     }
-
-    public SalaEntity getSala() {
+    
+    public SalaEntity getSala()
+    {
         return sala;
     }
-
-    public void setSala(SalaEntity sala) {
+    
+    public void setSala(SalaEntity sala)
+    {
         this.sala = sala;
     }
-
-    public FestivalEntity getFestival() {
-        return festival;
-    }
-
-    public void setFestival(FestivalEntity festival) {
-        this.festival = festival;
-    }
-    
-    
-    
 }

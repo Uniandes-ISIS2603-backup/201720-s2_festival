@@ -26,11 +26,13 @@ insert into BoletaEntity (id, codigoDeBarras, estado, precio) values(20, 130, 2,
 insert into BoletaEntity (id, codigoDeBarras, estado, precio) values(30, 110, 1, 700.50);
 insert into BoletaEntity (id, codigoDeBarras, estado, precio) values(40, 50, 3, 400.50);
 insert into BoletaEntity (id, codigoDeBarras, estado, precio) values(50, 650, 3, 300.25);
+
+/*Funciones de BoletaEntity*/
 insert into BoletaEntity (id, codigoDeBarras, estado, precio) values(60, 650, 3, 300.25);
+
+
+
 /* CalificacionEntity */
-
-
-
 insert into CalificacionEntity (id,calificacion, comentario,boleta_id) values(1,1.1,'a1',10);
 insert into CalificacionEntity (id,calificacion, comentario,boleta_id) values(2,2.2,'a2',20);
 insert into CalificacionEntity (id,calificacion, comentario,boleta_id) values(3,3.3,'a3',30);
@@ -41,6 +43,8 @@ insert into CalificacionEntity (id,calificacion, comentario,boleta_id) values(5,
 
 /* FuncionEntity */
 delete from FuncionEntity;
+
+
 
 
 /* SillaEntity */

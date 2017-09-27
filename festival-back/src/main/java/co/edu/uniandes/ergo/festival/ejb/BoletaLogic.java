@@ -18,6 +18,7 @@ import co.edu.uniandes.ergo.festival.persistence.EspectadorPersistence;
 import co.edu.uniandes.ergo.festival.persistence.SillaPersistence;
 import co.edu.uniandes.ergo.festival.persistence.CalificacionPersistence;
 import co.edu.uniandes.ergo.festival.persistence.FuncionPersistence;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -52,6 +53,10 @@ public class BoletaLogic
    // private CalificacionLogic calificacionLogic;
     /**
      * Método que crea una boleta nueva.
+     * Restricciones:
+     * La boleta debe tener una silla asignada y válida.
+     * La boleta debe tener una función asignada y válida.
+     * En caso de que el estado de reserva no se especifique, será asignada como DISPONIBLE por defecto.
      * @param entity, BoletaEntity, Boleta a introducir en la Base de datos
      * @return BoletaEntity, boleta creada.
      * @throws BusinessLogicException 
@@ -59,25 +64,92 @@ public class BoletaLogic
     public BoletaEntity createBoleta(BoletaEntity entity)throws BusinessLogicException
     {
         LOGGER.info("Inicia proceso de creación de Boleta");
-        // Verifica la regla de negocio que dice que no puede haber dos cityes con el mismo nombre
+        LOGGER.info("Revisando parámetros básicos de Boleta.");
         if(entity.getCodigoBarras() == null)
         {
-            throw new BusinessLogicException("La boleta no tiene un código asignado: \"" + entity.getCodigoBarras()+"\"");
+            throw new BusinessLogicException("La boleta con ID: \"" + entity.getId()+"\" no tiene un codigo de barras asignado.");
         }
-        if(persistenceBoleta.findByCode(entity.getCodigoBarras()) != null)
+//        LOGGER.info("Si tiene código de barras.");
+//        if(entity.getFuncion() == null)
+//        {
+//            throw new BusinessLogicException("La boleta con id \"" + entity.getId()+"\" no tiene una funcion asignada.");
+//        }
+//        LOGGER.info("Si tiene Funcion.");
+//        if(entity.getSilla() == null)
+//        {
+//            throw new BusinessLogicException("La boleta con id \"" + entity.getId()+"\" no tiene una silla asignada.");
+//        }
+        LOGGER.info("Si tiene silla.");
+        if((entity.getEstado() == null)||!(entity.getEstado().equals(BoletaEntity.COMPRADA))||!(entity.getEstado().equals(BoletaEntity.RESERVADA))||!(entity.getEstado().equals(BoletaEntity.DISPONIBLE)))
         {
-            throw new BusinessLogicException("Ya existe una Boleta con el código de barras: \"" + entity.getCodigoBarras()+"\""); 
+            LOGGER.info("No tiene estado asignado, asignando estado DISPONIBLE");
+            entity.setEstado(BoletaEntity.DISPONIBLE);
         }
-        //if(entity.getEspectador() == null)
-            //throw new BusinessLogicException("La boleta no tiene un Espectador asignado \"" + entity.getEspectador()+"\"");
-        //if (persistenceEspectador.find(entity.getEspectador().getId())== null)
-            //throw new BusinessLogicException("No existe el Espectador \"" + entity.getEspectador()+"\"");
-        //if(persistenceSilla.find(entity.getSilla().getId()) == null)
-            //throw new BusinessLogicException("No existe la Silla\""+entity.getSilla()+"\"");
-        
-        // Invoca la persistencia para crear la boleta
+//        // Verifica la regla de negocio que dice que no puede haber dos boletas con el mismo codigo de barras.
+//        if(persistenceBoleta.findByCode(entity.getCodigoBarras()) != null)
+//        {
+//            throw new BusinessLogicException("Ya existe una Boleta con el código de barras: \"" + entity.getCodigoBarras()+"\""); 
+//        }
+//        LOGGER.info("No existe boleta con el mismo codigo de barras.");
+//        SillaEntity silla = persistenceSilla.find(entity.getSilla().getId());
+//        LOGGER.info("Revisando validez de los parámetros dados.");
+//        if(silla == null)
+//        {
+//            throw new BusinessLogicException("La silla con el ID: \"" + entity.getSilla().getId() +"\" no existe."); 
+//        }
+//        LOGGER.info("La Silla es válida y sí existe.");
+//        FuncionEntity funcion = persistenceFuncion.find(entity.getFuncion().getId());
+//        if(funcion == null)
+//        {
+//            throw new BusinessLogicException("La funcion con el ID: \"" + entity.getFuncion().getId() +"\" no existe."); 
+//        }
+//        LOGGER.info("La Función es válida y sí existe.");
+//        ArrayList <BoletaEntity> boletasSilla = logicSilla.getSilla(entity.getSilla().getId()).getBoletas();
+//        for(int i = 0; i < boletasSilla.size(); i++)
+//        {
+//            if((boletasSilla.get(i).getFuncion().getId().equals(entity.getFuncion().getId())))
+//            {
+//                throw new BusinessLogicException("La silla con id: \"" + entity.getSilla().getId()+"\" ya tiene una boleta asignada a esa función."); 
+//            }
+//        }
+//        LOGGER.info("La Silla asignada no tiene una boleta asignada para la misma función.");
+//        for(int i = 0; i < boletasSilla.size(); i++)
+//        {
+//            if((boletasSilla.get(i).getId().equals(entity.getId())))
+//            {
+//                throw new BusinessLogicException("La silla con id: \"" + entity.getSilla().getId()+"\" ya tiene esta misma boleta asociada."); 
+//            }
+//        }
+//        LOGGER.info("La Silla asignada no una boleta con igual ID asignada.");
+//        List<BoletaEntity> boletasFuncion = funcion.getBoletas();
+//        for(int i = 0; i < boletasFuncion.size(); i++)
+//        {
+//            if(boletasFuncion.get(i).getId().equals(entity.getId()))
+//            {
+//                throw new BusinessLogicException("La Función con id: \"" + entity.getFuncion().getId()+"\" ya tiene una boleta con id: \"" + entity.getFuncion().getId()+"\" asignada a esa función."); 
+//            }
+//        }
+//        LOGGER.info("La Función asignada no una boleta con igual ID asignada.");
+//        LOGGER.info("Verificando si hay espectador asociado.");
+//        if(entity.getEspectador() != null)
+//        {
+//            LOGGER.info("Verificando la validez del espectador.");
+//            EspectadorEntity espectador = persistenceEspectador.find(entity.getEspectador().getId());
+//            if(espectador == null)
+//            {
+//                throw new BusinessLogicException("El espectador con el ID: \"" + entity.getEspectador().getId() +"\" no existe."); 
+//            }
+//        }
+//        LOGGER.info("El espectador es válido.");
+//        LOGGER.info("Reglas de negocio correctamente validadas.");
+//        
+//        // Invoca la persistencia para crear la boleta
+//        LOGGER.info("Creando Boleta.");
         persistenceBoleta.create(entity);
-        LOGGER.info("Termina proceso de actualizacion de Boleta");
+//        boletasSilla.add(entity);
+//        boletasFuncion.add(entity);
+//        silla.setBoletas(boletasSilla);
+        LOGGER.info("Termina proceso de creación de Boleta");
         return entity;
     }
     /**
@@ -295,10 +367,8 @@ public class BoletaLogic
         {
             throw new BusinessLogicException("La Boleta con Id: \"" + boletaId +"\" ya tiene una calificacion asignada, usar el metodo PUT.");
         }
-        Long idCalificacionTemp = boletaEntity.getCalificacion().getId();
         persistenceCalificacion.create(entity);
         boletaEntity.setCalificacion(entity);
-        persistenceCalificacion.delete(idCalificacionTemp);
         LOGGER.info("Termina proceso de actualizacion de Boleta");
         return entity; 
     }
@@ -341,7 +411,9 @@ public class BoletaLogic
             throw new BusinessLogicException("La Boleta con Id: \"" + boletaId +"\" ya tiene una calificacion asignada, usar el metodo POST.");
         }
         persistenceCalificacion.create(entity);
+        CalificacionEntity calificacion = boletaEntity.getCalificacion();
         boletaEntity.setCalificacion(entity);
+        persistenceCalificacion.delete(calificacion.getId());
         LOGGER.info("Termina proceso de actualizacion de Boleta");
         return entity;
     }
