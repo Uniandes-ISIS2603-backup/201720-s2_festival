@@ -27,6 +27,10 @@ public class BoletaDetailDTO extends BoletaDTO {
      */
     private Long idEspectador;
     /**
+     * Atributo que contiene el ID de la calificación asociada.
+     */
+    private Long idCalificacion;
+    /**
      * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
      * la entidad que viene de argumento.
      *
@@ -39,17 +43,13 @@ public class BoletaDetailDTO extends BoletaDTO {
         {
             this.idSilla = boleta.getSilla().getId();
         }
-        else
-        {
-            this.idSilla = Long.parseLong("0");
-        }
         if(boleta.getFuncion() != null)
         {
             this.idFuncion = boleta.getFuncion().getId();
         }
-        else
+        if(boleta.getCalificacion() != null)
         {
-           this.idFuncion = Long.parseLong("0");
+            this.idCalificacion = boleta.getCalificacion().getId();
         }
     }
 
@@ -80,7 +80,14 @@ public class BoletaDetailDTO extends BoletaDTO {
     {
         this.idEspectador= idEspectador;
     }
-    
+    public Long getIdCalificacion()
+    {
+        return this.idCalificacion;
+    }
+    public void setIdCalificacion(Long idCalificacion)
+    {
+        this.idCalificacion = idCalificacion;
+    }
     @Override
     public BoletaEntity toEntity() {
         BoletaEntity entity = super.toEntity();
