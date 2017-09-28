@@ -24,10 +24,13 @@ SOFTWARE.
 package co.edu.uniandes.ergo.festival.entities;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
 /**
@@ -64,8 +67,9 @@ public class BoletaEntity extends BaseEntity implements Serializable
     /**
      * Atributo que contiene la calificación asociada.
      */
-    @OneToOne
+
     @PodamExclude
+    @OneToOne//(orphanRemoval = true,cascade = CascadeType.ALL)
     private CalificacionEntity calificacion;
     /**
      * Atributo que contiene la información del espectador asociado.
@@ -95,6 +99,7 @@ public class BoletaEntity extends BaseEntity implements Serializable
      * Atributo que obtiene la calificación asociada.
      * @return CalificacionEntity
      */
+
 
     public CalificacionEntity getCalificacion()
     {

@@ -58,6 +58,17 @@ public class FestivalEntity extends BaseEntity implements Serializable {
    @PodamExclude
    @OneToMany
    private List<CriticoEntity> criticos;
+   @PodamExclude
+   @OneToMany(mappedBy="festival")
+   private List<FuncionEntity> funciones;
+
+    public List<FuncionEntity> getFunciones() {
+        return funciones;
+    }
+
+    public void setFunciones(List<FuncionEntity> funciones) {
+        this.funciones = funciones;
+    }
    
     /**
      * 

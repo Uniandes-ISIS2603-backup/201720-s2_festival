@@ -18,6 +18,7 @@ import co.edu.uniandes.ergo.festival.persistence.EspectadorPersistence;
 import co.edu.uniandes.ergo.festival.persistence.SillaPersistence;
 import co.edu.uniandes.ergo.festival.persistence.CalificacionPersistence;
 import co.edu.uniandes.ergo.festival.persistence.FuncionPersistence;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -46,12 +47,16 @@ public class BoletaLogic
     private FuncionPersistence persistenceFuncion;
     
     @Inject
-    private CalificacionPersistence persistenceCalificacion;
+    private CalificacionLogic logicCalificacion;
     
    // @Inject
    // private CalificacionLogic calificacionLogic;
     /**
      * Método que crea una boleta nueva.
+     * Restricciones:
+     * La boleta debe tener una silla asignada y válida.
+     * La boleta debe tener una función asignada y válida.
+     * En caso de que el estado de reserva no se especifique, será asignada como DISPONIBLE por defecto.
      * @param entity, BoletaEntity, Boleta a introducir en la Base de datos
      * @return BoletaEntity, boleta creada.
      * @throws BusinessLogicException 
@@ -59,25 +64,92 @@ public class BoletaLogic
     public BoletaEntity createBoleta(BoletaEntity entity)throws BusinessLogicException
     {
         LOGGER.info("Inicia proceso de creación de Boleta");
-        // Verifica la regla de negocio que dice que no puede haber dos cityes con el mismo nombre
+        LOGGER.info("Revisando parámetros básicos de Boleta.");
         if(entity.getCodigoBarras() == null)
         {
-            throw new BusinessLogicException("La boleta no tiene un código asignado: \"" + entity.getCodigoBarras()+"\"");
+            throw new BusinessLogicException("La boleta con ID: \"" + entity.getId()+"\" no tiene un codigo de barras asignado.");
         }
-        if(persistenceBoleta.findByCode(entity.getCodigoBarras()) != null)
+//        LOGGER.info("Si tiene código de barras.");
+//        if(entity.getFuncion() == null)
+//        {
+//            throw new BusinessLogicException("La boleta con id \"" + entity.getId()+"\" no tiene una funcion asignada.");
+//        }
+//        LOGGER.info("Si tiene Funcion.");
+//        if(entity.getSilla() == null)
+//        {
+//            throw new BusinessLogicException("La boleta con id \"" + entity.getId()+"\" no tiene una silla asignada.");
+//        }
+        LOGGER.info("Si tiene silla.");
+        if((entity.getEstado() == null)||!(entity.getEstado().equals(BoletaEntity.COMPRADA))||!(entity.getEstado().equals(BoletaEntity.RESERVADA))||!(entity.getEstado().equals(BoletaEntity.DISPONIBLE)))
         {
-            throw new BusinessLogicException("Ya existe una Boleta con el código de barras: \"" + entity.getCodigoBarras()+"\""); 
+            LOGGER.info("No tiene estado asignado, asignando estado DISPONIBLE");
+            entity.setEstado(BoletaEntity.DISPONIBLE);
         }
-        //if(entity.getEspectador() == null)
-            //throw new BusinessLogicException("La boleta no tiene un Espectador asignado \"" + entity.getEspectador()+"\"");
-        //if (persistenceEspectador.find(entity.getEspectador().getId())== null)
-            //throw new BusinessLogicException("No existe el Espectador \"" + entity.getEspectador()+"\"");
-        //if(persistenceSilla.find(entity.getSilla().getId()) == null)
-            //throw new BusinessLogicException("No existe la Silla\""+entity.getSilla()+"\"");
-        
-        // Invoca la persistencia para crear la boleta
+//        // Verifica la regla de negocio que dice que no puede haber dos boletas con el mismo codigo de barras.
+//        if(persistenceBoleta.findByCode(entity.getCodigoBarras()) != null)
+//        {
+//            throw new BusinessLogicException("Ya existe una Boleta con el código de barras: \"" + entity.getCodigoBarras()+"\""); 
+//        }
+//        LOGGER.info("No existe boleta con el mismo codigo de barras.");
+//        SillaEntity silla = persistenceSilla.find(entity.getSilla().getId());
+//        LOGGER.info("Revisando validez de los parámetros dados.");
+//        if(silla == null)
+//        {
+//            throw new BusinessLogicException("La silla con el ID: \"" + entity.getSilla().getId() +"\" no existe."); 
+//        }
+//        LOGGER.info("La Silla es válida y sí existe.");
+//        FuncionEntity funcion = persistenceFuncion.find(entity.getFuncion().getId());
+//        if(funcion == null)
+//        {
+//            throw new BusinessLogicException("La funcion con el ID: \"" + entity.getFuncion().getId() +"\" no existe."); 
+//        }
+//        LOGGER.info("La Función es válida y sí existe.");
+//        ArrayList <BoletaEntity> boletasSilla = logicSilla.getSilla(entity.getSilla().getId()).getBoletas();
+//        for(int i = 0; i < boletasSilla.size(); i++)
+//        {
+//            if((boletasSilla.get(i).getFuncion().getId().equals(entity.getFuncion().getId())))
+//            {
+//                throw new BusinessLogicException("La silla con id: \"" + entity.getSilla().getId()+"\" ya tiene una boleta asignada a esa función."); 
+//            }
+//        }
+//        LOGGER.info("La Silla asignada no tiene una boleta asignada para la misma función.");
+//        for(int i = 0; i < boletasSilla.size(); i++)
+//        {
+//            if((boletasSilla.get(i).getId().equals(entity.getId())))
+//            {
+//                throw new BusinessLogicException("La silla con id: \"" + entity.getSilla().getId()+"\" ya tiene esta misma boleta asociada."); 
+//            }
+//        }
+//        LOGGER.info("La Silla asignada no una boleta con igual ID asignada.");
+//        List<BoletaEntity> boletasFuncion = funcion.getBoletas();
+//        for(int i = 0; i < boletasFuncion.size(); i++)
+//        {
+//            if(boletasFuncion.get(i).getId().equals(entity.getId()))
+//            {
+//                throw new BusinessLogicException("La Función con id: \"" + entity.getFuncion().getId()+"\" ya tiene una boleta con id: \"" + entity.getFuncion().getId()+"\" asignada a esa función."); 
+//            }
+//        }
+//        LOGGER.info("La Función asignada no una boleta con igual ID asignada.");
+//        LOGGER.info("Verificando si hay espectador asociado.");
+//        if(entity.getEspectador() != null)
+//        {
+//            LOGGER.info("Verificando la validez del espectador.");
+//            EspectadorEntity espectador = persistenceEspectador.find(entity.getEspectador().getId());
+//            if(espectador == null)
+//            {
+//                throw new BusinessLogicException("El espectador con el ID: \"" + entity.getEspectador().getId() +"\" no existe."); 
+//            }
+//        }
+//        LOGGER.info("El espectador es válido.");
+//        LOGGER.info("Reglas de negocio correctamente validadas.");
+//        
+//        // Invoca la persistencia para crear la boleta
+//        LOGGER.info("Creando Boleta.");
         persistenceBoleta.create(entity);
-        LOGGER.info("Termina proceso de actualizacion de Boleta");
+//        boletasSilla.add(entity);
+//        boletasFuncion.add(entity);
+//        silla.setBoletas(boletasSilla);
+        LOGGER.info("Termina proceso de creación de Boleta");
         return entity;
     }
     /**
@@ -99,6 +171,7 @@ public class BoletaLogic
      */
     public BoletaEntity getBoleta(Long pID)
     {
+        LOGGER.severe("Buscando boleta con id m:" +pID);
         return persistenceBoleta.find(pID);
     }
     /**
@@ -294,10 +367,9 @@ public class BoletaLogic
         {
             throw new BusinessLogicException("La Boleta con Id: \"" + boletaId +"\" ya tiene una calificacion asignada, usar el metodo PUT.");
         }
-        Long idCalificacionTemp = boletaEntity.getCalificacion().getId();
-        persistenceCalificacion.create(entity);
-        boletaEntity.setCalificacion(entity);
-        persistenceCalificacion.delete(idCalificacionTemp);
+        CalificacionEntity temp = logicCalificacion.createCalificacion(entity, boletaEntity);
+        boletaEntity.setCalificacion(temp);
+        persistenceBoleta.update(boletaEntity);
         LOGGER.info("Termina proceso de actualizacion de Boleta");
         return entity; 
     }
@@ -308,22 +380,22 @@ public class BoletaLogic
      * @return CalificacionEntity, calificacion que se acaba de asociar.
      * @throws BusinessLogicException 
      */
-    public CalificacionEntity addCalificacionYaExistenteFromBoleta(Long boletaId, Long calificacionId) throws BusinessLogicException
-    {
-        LOGGER.log(Level.INFO, "Inicia proceso de agregar una calificacion ya existente a la Boleta con id = {0}", boletaId);
-        BoletaEntity boletaEntity = getBoleta(boletaId);
-        if(boletaEntity.getCalificacion() != null)
-        {
-            throw new BusinessLogicException("La Boleta con Id: \"" + boletaId +"\" ya tiene una calificacion asignada, usar el metodo PUT.");
-        }
-        if(persistenceCalificacion.find(calificacionId) == null)
-        {
-            throw new BusinessLogicException("La Funcion con Id: \"" + calificacionId +"\" no existe, usar el metodo POST auxiliar y crear una calificacion alli");
-        }
-        boletaEntity.setCalificacion(persistenceCalificacion.find(calificacionId));
-        LOGGER.log(Level.INFO, "Termina proceso de agregar una calificacion a Boleta con id={0}", boletaEntity.getId());
-        return boletaEntity.getCalificacion();
-    }
+//    public CalificacionEntity addCalificacionYaExistenteFromBoleta(Long boletaId, Long calificacionId) throws BusinessLogicException
+//    {
+//        LOGGER.log(Level.INFO, "Inicia proceso de agregar una calificacion ya existente a la Boleta con id = {0}", boletaId);
+//        BoletaEntity boletaEntity = getBoleta(boletaId);
+//        if(boletaEntity.getCalificacion() != null)
+//        {
+//            throw new BusinessLogicException("La Boleta con Id: \"" + boletaId +"\" ya tiene una calificacion asignada, usar el metodo PUT.");
+//        }
+//        if(persistenceCalificacion.find(calificacionId) == null)
+//        {
+//            throw new BusinessLogicException("La Funcion con Id: \"" + calificacionId +"\" no existe, usar el metodo POST auxiliar y crear una calificacion alli");
+//        }
+//        boletaEntity.setCalificacion(persistenceCalificacion.find(calificacionId));
+//        LOGGER.log(Level.INFO, "Termina proceso de agregar una calificacion a Boleta con id={0}", boletaEntity.getId());
+//        return boletaEntity.getCalificacion();
+//    }
     /**
      * Método que reemplaza la calificacion asociada de una boleta con otra NUEVA que previamente NO existe en la base de datos.
      * @param boletaId Long, id de la boleta.
@@ -339,8 +411,10 @@ public class BoletaLogic
         {
             throw new BusinessLogicException("La Boleta con Id: \"" + boletaId +"\" ya tiene una calificacion asignada, usar el metodo POST.");
         }
-        persistenceCalificacion.create(entity);
-        boletaEntity.setCalificacion(entity);
+        CalificacionEntity temp = logicCalificacion.createCalificacion(entity, boletaEntity);
+        CalificacionEntity calificacion = boletaEntity.getCalificacion();
+        boletaEntity.setCalificacion(temp);
+        logicCalificacion.deleteCalificacion(calificacion.getId());
         LOGGER.info("Termina proceso de actualizacion de Boleta");
         return entity;
     }
@@ -351,24 +425,24 @@ public class BoletaLogic
      * @return CalificacionEntity, calificacion que se acaba de asociar.
      * @throws co.edu.uniandes.ergo.festival.exceptions.BusinessLogicException
      */
-    public CalificacionEntity updateCalificacionYaExistenteFromBoleta(Long boletaId, Long calificacionId) throws BusinessLogicException
-    {
-        LOGGER.log(Level.INFO, "Inicia proceso de actualizar una calificacion ya existente a la Boleta con id = {0}", boletaId);
-        BoletaEntity boletaEntity = getBoleta(boletaId);
-        if(boletaEntity.getCalificacion() == null)
-        {
-            throw new BusinessLogicException("La Boleta con Id: \"" + boletaId +"\" no tiene una calificacion asignada, usar el metodo POST.");
-        }
-        if(persistenceCalificacion.find(calificacionId) == null)
-        {
-            throw new BusinessLogicException("La Calificacion con Id: \"" + calificacionId +"\" no existe, usar el metodo POST auxiliar y crear una calificacion alli");
-        }
-        Long idEntityABorrar = boletaEntity.getCalificacion().getId();
-        boletaEntity.setCalificacion(persistenceCalificacion.find(calificacionId));
-        persistenceCalificacion.delete(idEntityABorrar);
-        LOGGER.log(Level.INFO, "Termina proceso de agregar una calificacion a Boleta con id={0}", boletaEntity.getId());
-        return boletaEntity.getCalificacion();
-    }
+//    public CalificacionEntity updateCalificacionYaExistenteFromBoleta(Long boletaId, Long calificacionId) throws BusinessLogicException
+//    {
+//        LOGGER.log(Level.INFO, "Inicia proceso de actualizar una calificacion ya existente a la Boleta con id = {0}", boletaId);
+//        BoletaEntity boletaEntity = getBoleta(boletaId);
+//        if(boletaEntity.getCalificacion() == null)
+//        {
+//            throw new BusinessLogicException("La Boleta con Id: \"" + boletaId +"\" no tiene una calificacion asignada, usar el metodo POST.");
+//        }
+//        if(persistenceCalificacion.find(calificacionId) == null)
+//        {
+//            throw new BusinessLogicException("La Calificacion con Id: \"" + calificacionId +"\" no existe, usar el metodo POST auxiliar y crear una calificacion alli");
+//        }
+//        Long idEntityABorrar = boletaEntity.getCalificacion().getId();
+//        boletaEntity.setCalificacion(persistenceCalificacion.find(calificacionId));
+//        persistenceCalificacion.delete(idEntityABorrar);
+//        LOGGER.log(Level.INFO, "Termina proceso de agregar una calificacion a Boleta con id={0}", boletaEntity.getId());
+//        return boletaEntity.getCalificacion();
+//    }
     /**
      * Método que des asocia una calificaion de una boleta, este método BORRA la calificacion de la base de datos.
      * @param boletaId
@@ -383,8 +457,9 @@ public class BoletaLogic
             throw new BusinessLogicException("La Boleta con Id: \"" + boletaId +"\" no tiene una calificacion asociada.");
         }
         Long idCalificacionABorrar = entity.getCalificacion().getId();
-        persistenceCalificacion.delete(idCalificacionABorrar);
         entity.setCalificacion(null);
+        persistenceBoleta.update(entity);
+        logicCalificacion.deleteCalificacion(idCalificacionABorrar);
     }
     /**
      * Método que obtiene el espectador asociad de una boleta.

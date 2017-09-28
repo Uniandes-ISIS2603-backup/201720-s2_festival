@@ -37,7 +37,7 @@ public class CalificacionPersistence {
     }
     
     public CalificacionEntity find(Long id){
-        LOGGER.log(Level.INFO, "Buscando calificacion con id: {0}", id);
+        LOGGER.log(Level.INFO, "Buscando calificacion con id: ", id);
         
         return em.find(CalificacionEntity.class, id);
     }
@@ -56,7 +56,7 @@ public class CalificacionPersistence {
     }
     
     public CalificacionEntity delete(Long id){
-        LOGGER.log(Level.INFO, "Borrando la calificacion con id: {0}", id);
+        LOGGER.log(Level.INFO, "Borrando la calificacion con id: ", id);
         CalificacionEntity ent =em.find(CalificacionEntity.class, id);
         em.remove(ent);
         return ent;

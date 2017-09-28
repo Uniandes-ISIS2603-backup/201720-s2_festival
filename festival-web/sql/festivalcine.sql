@@ -1,3 +1,4 @@
+delete from CalificacionEntity;
 delete from BoletaEntity;
 delete from SillaEntity;
 delete from SalaEntity;
@@ -18,6 +19,7 @@ delete from FestivalEntity;
     insert into SalaEntity (id) values (8);
     insert into SalaEntity (id) values (9);
     insert into SalaEntity (id) values (10);
+
 
 /* SillaEntity */
 
@@ -46,11 +48,23 @@ delete from FestivalEntity;
     insert into SillaEntity (id, tarifa, esPreferencial, sala_id) values (10,59.54, 1, 3);
 
 /* BoletaEntity*/
-insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id) values(10, 120, 1, 500.50, 1);
-insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id) values(20, 130, 2, 600.50, 2);
-insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id) values(30, 110, 1, 700.50, 2);
-insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id) values(40, 50, 3, 400.50, 2);
-insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id) values(50, 650, 3, 300.25, 2);
+    insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id) values(10, 120, 1, 500.50, 1);
+    insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id) values(20, 130, 2, 600.50, 2);
+    insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id) values(30, 110, 1, 700.50, 2);
+    insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id) values(40, 50, 3, 400.50, 2);
+    insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id) values(50, 650, 3, 300.25, 2);
+
+/*Funciones de BoletaEntity*/
+insert into BoletaEntity (id, codigoDeBarras, estado, precio) values(60, 650, 3, 300.25);
+
+
+
+/* CalificacionEntity */
+insert into CalificacionEntity (id,calificacion, comentario,boleta_id) values(1,1.1,'a1',10);
+insert into CalificacionEntity (id,calificacion, comentario,boleta_id) values(2,2.2,'a2',20);
+insert into CalificacionEntity (id,calificacion, comentario,boleta_id) values(3,3.3,'a3',30);
+insert into CalificacionEntity (id,calificacion, comentario,boleta_id) values(4,4.4,'a4',40);
+insert into CalificacionEntity (id,calificacion, comentario,boleta_id) values(5,5.5,'a5',50);
 
 /* CriticoEntity */
 
