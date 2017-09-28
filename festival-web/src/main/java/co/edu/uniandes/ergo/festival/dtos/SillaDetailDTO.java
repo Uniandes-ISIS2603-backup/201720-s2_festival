@@ -94,7 +94,9 @@ public class SillaDetailDTO extends SillaDTO {
      */
     public SillaEntity toEntity(){
         SillaEntity entity = super.toEntity();
-        entity.setSala(sala.toEntity());
+        if (sala != null) {
+            entity.setSala(sala.toEntity());
+        }
         entity.setBoletas(listDTO2Boletas());
         return entity;
     }

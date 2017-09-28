@@ -7,6 +7,7 @@ package co.edu.uniandes.ergo.festival.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import uk.co.jemos.podam.common.PodamExclude;
 
@@ -22,6 +23,7 @@ public class CriticaEntity extends BaseEntity{
      */
     @PodamExclude
     @ManyToOne()
+    @JoinColumn(nullable = false)
     private FuncionEntity funcion;
     
     /**
@@ -29,12 +31,13 @@ public class CriticaEntity extends BaseEntity{
      */
     @ManyToOne()
     @PodamExclude
+    @JoinColumn(nullable = false)
     private CriticoEntity critico;
     
     /**
      * Comentario hecho por el crítico sobre una función.
      */
-    @Column(length=500)
+    @Column(length=800)
     private String comentario;
 
     /**
@@ -77,8 +80,6 @@ public class CriticaEntity extends BaseEntity{
      */
     public void setCritico(CriticoEntity critico) {
         this.critico = critico;
-    }
-    
-    
+    }   
     
 }

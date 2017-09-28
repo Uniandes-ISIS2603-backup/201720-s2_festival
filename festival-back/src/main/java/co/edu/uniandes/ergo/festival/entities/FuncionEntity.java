@@ -46,6 +46,9 @@ public class FuncionEntity extends BaseEntity implements Serializable{
     @ManyToOne
     private SalaEntity sala;
     
+    @PodamExclude
+    @ManyToOne
+    private FestivalEntity festival;
     
     public Date getHoraInicio() {
         return horaInicio;
@@ -63,4 +66,51 @@ public class FuncionEntity extends BaseEntity implements Serializable{
         this.horaFin = horaFin;
     }
     
+    public List<BoletaEntity> getBoletas()
+    {
+        return boletas;
+    }
+    
+    public void setBoletas(List<BoletaEntity> boletas)
+    {
+        this.boletas = boletas;
+    }
+    
+    public List<CriticaEntity> getCriticas()
+    {
+        return criticas;
+    }
+    
+    public void setCriticas(List<CriticaEntity> criticas)
+    {
+        this.criticas = criticas;
+    }
+    
+    public PeliculaEntity getPelicula()
+    {
+        return pelicula;
+    }
+    
+    public void setPelicula(PeliculaEntity pelicula)
+    {
+        this.pelicula = pelicula;
+    }
+    
+    public SalaEntity getSala()
+    {
+        return sala;
+    }
+    
+    public void setSala(SalaEntity sala)
+    {
+        this.sala = sala;
+    }
+
+    public FestivalEntity getFestival() {
+        return festival;
+    }
+
+    public void setFestival(FestivalEntity festival) {
+        this.festival = festival;
+    }
 }

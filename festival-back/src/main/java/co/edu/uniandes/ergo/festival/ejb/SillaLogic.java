@@ -28,9 +28,6 @@ public class SillaLogic {
     @Inject
     private SillaPersistence persistence;
     
-    @Inject 
-    private SalaLogic salaLogic;
-    
     /**
      * Ordena a la persistencia crear una SillaEntity.
      * @param entity La SillaEntity a ser creada.
