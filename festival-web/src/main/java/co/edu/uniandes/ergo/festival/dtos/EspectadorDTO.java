@@ -22,9 +22,12 @@ public class EspectadorDTO {
     }
     
     public EspectadorDTO(EspectadorEntity espec){
-        this.id = espec.getId();
-        this.nombre = espec.getName();
-        this.direccion = espec.getDireccion();
+        if(id != null)
+            this.id = espec.getId();
+        if(nombre != null)
+            this.nombre = espec.getName();
+        if(direccion != null)
+            this.direccion = espec.getDireccion();
     }
     
     public Long getId(){
@@ -53,10 +56,14 @@ public class EspectadorDTO {
     
     public EspectadorEntity toEntity(){
         EspectadorEntity entEsp = new EspectadorEntity();
-        
-        entEsp.setId(this.id);
-        entEsp.setName(this.nombre);
-        entEsp.setDireccion(this.direccion);
+        if(id != null)
+        {
+            entEsp.setId(this.id);
+        }
+        if(nombre != null)
+            entEsp.setName(this.nombre);
+        if(direccion != null)
+            entEsp.setDireccion(this.direccion);
         
         return entEsp;
     }

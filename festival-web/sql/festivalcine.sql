@@ -1,10 +1,14 @@
 delete from CalificacionEntity;
 delete from BoletaEntity;
+delete from AbonoEntity;
 delete from SillaEntity;
 delete from SalaEntity;
 delete from CriticaEntity;
 delete from FestivalEntity;
 delete from FuncionEntity;
+
+
+
 /* SalaEntity */    
 
     insert into SalaEntity (id) values (1);
@@ -21,11 +25,7 @@ delete from FuncionEntity;
 /* BoletaEntity*/
 
 
-insert into BoletaEntity (id, codigoDeBarras, estado, precio) values(10, 120, 1, 500.50);
-insert into BoletaEntity (id, codigoDeBarras, estado, precio) values(20, 130, 2, 600.50);
-insert into BoletaEntity (id, codigoDeBarras, estado, precio) values(30, 110, 1, 700.50);
-insert into BoletaEntity (id, codigoDeBarras, estado, precio) values(40, 50, 3, 400.50);
-insert into BoletaEntity (id, codigoDeBarras, estado, precio) values(50, 650, 3, 300.25);
+
 
 /*Funciones de BoletaEntity*/
 
@@ -146,4 +146,4 @@ delete from FuncionEntity;
     Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.');
 
 
-    
+

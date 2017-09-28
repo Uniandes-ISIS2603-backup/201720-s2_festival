@@ -214,8 +214,24 @@ public class BoletaLogic
                 boletasTemp.remove(i);
             }
         }
+        if(temp.getAbono() != null)
+        {
+            temp.setAbono(null);
+            persistenceBoleta.update(temp);
+        }
+        silla.setBoletas(boletasTemp);
         logicSilla.updateSilla(silla);
-        deleteCalificacionFromBoleta(id);
+        persistenceBoleta.update(temp);
+        
+        if(temp.getCalificacion() != null)
+        {
+            CalificacionEntity calificacionABorrar = temp.getCalificacion();
+            temp.setCalificacion(null);
+            persistenceBoleta.update(temp);
+            logicCalificacion.deleteCalificacion(calificacionABorrar.getId());
+        }
+                
+        
         persistenceBoleta.delete(id);
         LOGGER.log(Level.INFO, "Termina proceso de borrar boleta con id={0}",id);
     }
@@ -284,6 +300,10 @@ public class BoletaLogic
     {
         LOGGER.log(Level.INFO, "Inicia proceso de reemplazar una Silla de la Boleta con id = {0}", boletaId);
         BoletaEntity boletaEntity = getBoleta(boletaId);
+        if(boletaEntity.getSilla() == null)
+        {
+            throw new BusinessLogicException("La Boleta con Id: \"" + boletaId +"\" ya tiene una silla asignada, usar el metodo PUT.");
+        }
         if(logicSilla.getSilla(sillaId) == null)
         {
             throw new BusinessLogicException("La Silla con Id: \"" + sillaId +"\" no existe.");
@@ -378,14 +398,18 @@ public class BoletaLogic
     {
         LOGGER.log(Level.INFO, "Inicia proceso de agregar una calificacion que previamente no exite a la Boleta con id = {0}", boletaId);
         BoletaEntity boletaEntity = getBoleta(boletaId);
-        if(boletaEntity.getCalificacion() != null)
+        LOGGER.info("CONTROL 1");
+        if(boletaEntity.getCalificacion() != null )
         {
             throw new BusinessLogicException("La Boleta con Id: \"" + boletaId +"\" ya tiene una calificacion asignada, usar el metodo PUT.");
         }
+        LOGGER.info("CONTROL 2");
         CalificacionEntity temp = logicCalificacion.createCalificacion(entity, boletaEntity);
+        LOGGER.info("CONTROL 3");
         boletaEntity.setCalificacion(temp);
+        LOGGER.info("CONTROL 4");
         persistenceBoleta.update(boletaEntity);
-        LOGGER.info("Termina proceso de actualizacion de Boleta");
+        LOGGER.info("Termina proceso de creacion de calificacion en Boleta");
         return entity; 
     }
     /**

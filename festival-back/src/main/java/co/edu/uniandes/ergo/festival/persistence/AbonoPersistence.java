@@ -6,6 +6,7 @@
 package co.edu.uniandes.ergo.festival.persistence;
 
 import co.edu.uniandes.ergo.festival.entities.AbonoEntity;
+import co.edu.uniandes.ergo.festival.entities.BoletaEntity;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -76,5 +77,23 @@ public class AbonoPersistence
         LOGGER.log(Level.INFO, "Borrando el Abono con id: {0}", id);
         
         em.remove(em.find(AbonoEntity.class, id));
+    }
+    /**
+     * Obtener una boleta asociado con algún abono mediante el ID de dicha boleta.
+     * @param id
+     * @return 
+     */
+    public AbonoEntity findBoletaEnAbono(Long id)
+    {
+        TypedQuery query = em.createQuery("Select e From ABONOENTITY e where e.BOLETAS_ID = :idboleta", BoletaEntity.class);
+        // Se remplaza el placeholder ":name" con el valor del argumento 
+        query = query.setParameter("idboleta", id);
+        // Se invoca el query se obtiene la lista resultado
+        List<AbonoEntity> sameName = query.getResultList();
+        if (sameName.isEmpty()) {
+            return null;
+        } else {
+            return sameName.get(0);
+        }
     }
 }
