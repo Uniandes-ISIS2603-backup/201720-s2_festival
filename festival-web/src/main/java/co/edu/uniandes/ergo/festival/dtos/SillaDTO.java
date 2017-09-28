@@ -17,11 +17,6 @@ public class SillaDTO {
      * Identificador de la SillaEntity en la base de datos.
      */
     private Long id;
-    
-    /**
-     * Indica si la silla está reservada.
-     */
-    private boolean reservada;
 
     /**
      * Indica la tarifa pagada por la silla.
@@ -50,20 +45,6 @@ public class SillaDTO {
             tarifa = entity.getTarifa();
             esPreferencial = entity.isEsPreferencial();
         }
-    }
-
-    /**
-     * @return the reservada
-     */
-    public boolean isReservada() {
-        return reservada;
-    }
-
-    /**
-     * @param reservada the reservada to set
-     */
-    public void setReservada(boolean reservada) {
-        this.reservada = reservada;
     }
 
     /**

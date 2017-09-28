@@ -108,7 +108,10 @@
 					"script": {
 						"type": "text/javascript",
 						"exec": [
-							"tests[\"Status code is 500\"] = responseCode.code === 500;"
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Se creó la CriticaEntity\"] = jsonData.hasOwnProperty(\"id\");"
 						]
 					}
 				}

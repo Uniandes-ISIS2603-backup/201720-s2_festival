@@ -31,7 +31,6 @@ public class CriticaEntity extends BaseEntity{
      */
     @ManyToOne()
     @PodamExclude
-    @JoinColumn(nullable = false)
     private CriticoEntity critico;
     
     /**
