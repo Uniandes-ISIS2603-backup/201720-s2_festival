@@ -6,6 +6,10 @@
 package co.edu.uniandes.ergo.festival.dtos;
 
 import co.edu.uniandes.ergo.festival.entities.BoletaEntity;
+import co.edu.uniandes.ergo.festival.entities.SillaEntity;
+import co.edu.uniandes.ergo.festival.entities.FuncionEntity;
+import co.edu.uniandes.ergo.festival.entities.EspectadorEntity;
+import co.edu.uniandes.ergo.festival.entities.CalificacionEntity;
 /**
  *
  * @author jc.corrales
@@ -91,7 +95,19 @@ public class BoletaDetailDTO extends BoletaDTO {
     @Override
     public BoletaEntity toEntity() {
         BoletaEntity entity = super.toEntity();
-
+        SillaEntity tempSilla = new SillaEntity();
+        tempSilla.setId(this.idSilla);
+        FuncionEntity tempFuncion = new FuncionEntity();
+        tempFuncion.setId(this.idFuncion);
+        EspectadorEntity tempEspectador = null;
+        if(idEspectador != null)
+        {
+            tempEspectador = new EspectadorEntity();
+            tempEspectador.setId(this.idEspectador);
+        }
+        entity.setSilla(tempSilla);
+        //entity.setFuncion(tempFuncion);
+        entity.setEspectador(tempEspectador);
         return entity;
 
     }

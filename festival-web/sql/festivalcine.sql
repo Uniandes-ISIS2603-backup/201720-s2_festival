@@ -4,7 +4,7 @@ delete from SillaEntity;
 delete from SalaEntity;
 delete from CriticaEntity;
 delete from FestivalEntity;
-
+delete from FuncionEntity;
 /* SalaEntity */    
 
     insert into SalaEntity (id) values (1);
@@ -28,7 +28,6 @@ insert into BoletaEntity (id, codigoDeBarras, estado, precio) values(40, 50, 3, 
 insert into BoletaEntity (id, codigoDeBarras, estado, precio) values(50, 650, 3, 300.25);
 
 /*Funciones de BoletaEntity*/
-insert into BoletaEntity (id, codigoDeBarras, estado, precio) values(60, 650, 3, 300.25);
 
 
 
@@ -73,12 +72,6 @@ delete from FuncionEntity;
     insert into SillaEntity (id, tarifa, esPreferencial, sala_id) values (9, 39.94, 0, 3);
     insert into SillaEntity (id, tarifa, esPreferencial, sala_id) values (10,59.54, 1, 3);
 
-/* BoletaEntity*/
-insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id) values(10, 120, 1, 500.50, 1);
-insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id) values(20, 130, 2, 600.50, 2);
-insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id) values(30, 110, 1, 700.50, 2);
-insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id) values(40, 50, 3, 400.50, 2);
-insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id) values(50, 650, 3, 300.25, 2);
 
 /* CriticaEntity */
 
