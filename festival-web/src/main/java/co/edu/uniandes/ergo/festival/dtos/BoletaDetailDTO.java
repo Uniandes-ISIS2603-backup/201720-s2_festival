@@ -67,12 +67,12 @@ public class BoletaDetailDTO extends BoletaDTO {
     {
         return this.funcion;
     }
-    public void setIdFuncion(FuncionDTO funcion)
+    public void setFuncion(FuncionDTO funcion)
     {
         this.funcion = funcion;
     }
     
-    public EspectadorDTO geEspectador()
+    public EspectadorDTO getEspectador()
     {
         return this.espectador;
     }

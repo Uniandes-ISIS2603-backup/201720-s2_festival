@@ -6,9 +6,15 @@
 package co.edu.uniandes.ergo.festival.resources;
 
 
+import co.edu.uniandes.ergo.festival.dtos.BoletaDTO;
+import co.edu.uniandes.ergo.festival.dtos.CriticaDTO;
 import co.edu.uniandes.ergo.festival.dtos.FuncionDetailDTO;
+import co.edu.uniandes.ergo.festival.ejb.CriticaLogic;
 import co.edu.uniandes.ergo.festival.ejb.FuncionLogic;
+import co.edu.uniandes.ergo.festival.entities.BoletaEntity;
+import co.edu.uniandes.ergo.festival.entities.CriticaEntity;
 import co.edu.uniandes.ergo.festival.entities.FuncionEntity;
+import co.edu.uniandes.ergo.festival.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
@@ -23,6 +29,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
+import org.hibernate.validator.HibernateValidator;
 
 /**
  *
@@ -132,6 +139,66 @@ public class FuncionResource {
      }
      return list;
  }
-     
+ 
+    @GET
+    @Path("{id:\\d+}/criticas")
+    public List<CriticaDTO> getCriticasFromFuncion(@PathParam("id")Long id) throws BusinessLogicException
+    {
+        FuncionEntity entity = funcionLogic.getFuncion(id);
+        if (entity == null) {
+            throw new WebApplicationException("La funcion con el id:" + id + " no existe.", 404);
+        }
+        List<CriticaEntity> preAns =  funcionLogic.getCriticas(id);
+        ArrayList<CriticaDTO> ans = new ArrayList<>();
+        for(CriticaEntity ent : preAns){
+            ans.add(new CriticaDTO(ent));
+        }
+        return ans;
+    }
+    
+    @GET
+    @Path("{funcionid:\\d+}/criticas/{criticaid:\\d+}")
+    public CriticaDTO getCriticaFromFuncion(@PathParam("funcionid")Long idFuncion,@PathParam("criticaid")Long idCritica) throws BusinessLogicException
+    {
+        FuncionEntity entity = funcionLogic.getFuncion(idFuncion);
+        if (entity == null) {
+            throw new WebApplicationException("La funcion con el id:" + idFuncion + " no existe.", 404);
+        }       
+        CriticaEntity preAns = funcionLogic.getCritica(idFuncion,idCritica);
+        if(preAns==null){
+            throw new WebApplicationException("La critica con el id:" + idCritica + " no existe en la funcion.", 404);
+        }
+        return new CriticaDTO(preAns);
+    }
+    
+    @GET
+    @Path("{id:\\d+}/boletas")
+    public List<BoletaDTO> getBoletasFromFuncion(@PathParam("id")Long id) throws BusinessLogicException
+    {
+        FuncionEntity entity = funcionLogic.getFuncion(id);
+        if (entity == null) {
+            throw new WebApplicationException("La funcion con el id:" + id + " no existe.", 404);
+        }
+        List<BoletaEntity> preAns =  funcionLogic.getBoletas(id);
+        ArrayList<BoletaDTO> ans = new ArrayList<>();
+        for(BoletaEntity bol : preAns){
+            ans.add(new BoletaDTO(bol));
+        }
+        return ans;
+    }
+    @GET
+    @Path("{funcionid:\\d+}/boletas/{boletaid:\\d+}")
+    public BoletaDTO getBoletaFromFuncion(@PathParam("funcionid")Long idFuncion,@PathParam("boletaid")Long idBoleta) throws BusinessLogicException
+    {
+        FuncionEntity entity = funcionLogic.getFuncion(idFuncion);
+        if (entity == null) {
+            throw new WebApplicationException("La funcion con el id:" + idFuncion + " no existe.", 404);
+        }       
+        BoletaEntity preAns = funcionLogic.getBoleta(idFuncion,idBoleta);
+        if(preAns==null){
+            throw new WebApplicationException("La boleta con el id:" + idBoleta + " no existe en la funcion.", 404);
+        }
+        return new BoletaDTO(preAns);
+    }
     
 }

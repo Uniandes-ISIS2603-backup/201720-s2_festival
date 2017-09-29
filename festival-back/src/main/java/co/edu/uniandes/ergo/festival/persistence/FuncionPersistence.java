@@ -6,7 +6,10 @@
 package co.edu.uniandes.ergo.festival.persistence;
 
 
+import co.edu.uniandes.ergo.festival.entities.BoletaEntity;
+import co.edu.uniandes.ergo.festival.entities.CriticaEntity;
 import co.edu.uniandes.ergo.festival.entities.FuncionEntity;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -61,6 +64,37 @@ public class FuncionPersistence {
         em.remove(ent);
         return ent;
     }
+
+    public List<CriticaEntity> getCriticas(FuncionEntity entity) {
+        LOGGER.log(Level.INFO, "Getting all criticas from function");        
+        TypedQuery query = em.createQuery("SELECT c FROM CriticaEntity c WHERE c.funcion= :id",CriticaEntity.class);
+        query.setParameter("id", entity);
+        return query.getResultList();
+    }
+
+    public CriticaEntity getCritica(FuncionEntity entity, Long idCritica) {
+        LOGGER.log(Level.INFO, "Getting a particular critica from function");  
+        TypedQuery query = em.createQuery("SELECT c FROM CriticaEntity c WHERE c.funcion= :idFunc AND c.id = :idCrit",CriticaEntity.class);
+        query.setParameter("idFunc", entity);
+        query.setParameter("idCrit", idCritica);
+        return (CriticaEntity) query.getSingleResult();
+    }
+
+    public List<BoletaEntity> getBoletas(FuncionEntity entity) {
+        LOGGER.log(Level.INFO, "Getting all boletas from function");   
+        TypedQuery query = em.createQuery("SELECT b FROM BoletaEntity b WHERE b.funcion= :id",BoletaEntity.class);
+        query.setParameter("id", entity);
+        return query.getResultList();
+    }
+
+    public BoletaEntity getBoleta(FuncionEntity entity, Long idBoleta) {
+        LOGGER.log(Level.INFO, "Getting a particular boleta from function");  
+        TypedQuery query = em.createQuery("SELECT b FROM BoletaEntity b WHERE b.funcion= :idFunc AND b.id = :idBol",BoletaEntity.class);
+        query.setParameter("idFunc", entity);
+        query.setParameter("idBol", idBoleta);
+        return (BoletaEntity) query.getSingleResult();
+    }
+    
     
     
 }

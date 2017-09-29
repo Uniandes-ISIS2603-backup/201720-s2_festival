@@ -144,6 +144,49 @@ public class BoletaResource
     public BoletaDetailDTO updateBoleta(@PathParam("id") Long id, BoletaDetailDTO boleta) throws BusinessLogicException {
         boleta.setId(id);
         BoletaEntity entity = boletaLogic.getBoleta(id);
+        if(boleta.getSilla() == null)
+        {
+            boleta.setSilla(new SillaDetailDTO(entity.getSilla()));
+        }
+        if(boleta.getFuncion() == null)
+        {
+            boleta.setFuncion(new FuncionDTO(entity.getFuncion()));
+        }
+        if(boleta.getCodigoDeBarras() == null)
+        {
+            boleta.setCodigoDeBarras(entity.getCodigoBarras());
+        }
+        if(boleta.getEspectador() == null)
+        {
+            if(entity.getEspectador() != null)
+            {
+                boleta.setEspectador(new EspectadorDetailDTO(entity.getEspectador()));
+            }
+        }
+        if(boleta.getEstado() == null)
+        {
+            if(entity.getEstado().equals(BoletaEntity.DISPONIBLE))
+            {
+                boleta.setEstado(BoletaDetailDTO.DISPONIBLE);
+            }
+            else if(entity.getEstado().equals(BoletaEntity.RESERVADA))
+            {
+                boleta.setEstado(BoletaDetailDTO.RESERVADA);
+            }
+            else if(entity.getEstado().equals(BoletaEntity.COMPRADA))
+            {
+                boleta.setEstado(BoletaDetailDTO.COMPRADA);
+            }
+        }
+        if(entity.getCalificacion() != null)
+        {
+            boleta.setCalificacion(new CalificacionDTO(entity.getCalificacion()));
+        }
+        if(boleta.getPrecio() == null)
+        {
+            boleta.setPrecio(entity.getPrecio());
+        }
+        
         if (entity == null) {
             throw new WebApplicationException("El recurso /boletas/" + id + " no existe.", 404);
         }
