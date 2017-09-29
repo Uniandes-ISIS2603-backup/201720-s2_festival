@@ -1,0 +1,464 @@
+{
+	"variables": [],
+	"info": {
+		"name": "boletas",
+		"_postman_id": "f5a887b9-e3f5-1a62-3458-04ac1a3f5818",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Agregar Boleta sin Silla asignada",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 412\"] = responseCode.code === 412;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/boletas",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"estado\" : \"RESERVADA\", \"precio\": 775.50, \"codigoDeBarras\" : 445}"
+				},
+				"description": "Debe arrojar error, debido a que una Boleta DEBE tener una silla asignada."
+			},
+			"response": []
+		},
+		{
+			"name": "Actualización de silla de la boleta 40",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/boletas/40",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"silla\":{\"id\" : 3}}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Método PUT para cambiar informacion.",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/boletas/40",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"estado\" : \"genial\", \"precio\" : 555.5, \"codigoDeReserva\" : 5575, \"silla\":{\"id\":4}, \"funcion\" : {\"id\":2}}"
+				},
+				"description": "Este método debería cambiar la informacion de la boleta que se acaba de publicar."
+			},
+			"response": []
+		},
+		{
+			"name": "Metodo para guardar una calificacion asociada a una boleta.",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/boletas/40/calificaciones",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\" : \"terrible\", \"comentario\" : \"prueba\",\"calificacion\" : 2}"
+				},
+				"description": "Este metodo debe guardar una calificacion."
+			},
+			"response": []
+		},
+		{
+			"name": "Metodo para obtener una calificacion asociada a una boleta",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/boletas/40/calificaciones",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\" : \"terrible\", \"comentario\" : \"prueba\",\"calificacion\" : 2}"
+				},
+				"description": "Este metodo debe obtener una calificacion."
+			},
+			"response": []
+		},
+		{
+			"name": "Metodo para actualizar una calificacion asociada a una boleta.",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/boletas/40/calificaciones",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\" : \"Creo que mejor\", \"comentario\" : \"Me encanto la peli.\",\"calificacion\" : 5}"
+				},
+				"description": "Este metodo debe actualizar una calificacion."
+			},
+			"response": []
+		},
+		{
+			"name": "Metodo para borrar una calificacion asociada a una boleta.",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 204\"] = responseCode.code === 204;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/boletas/40/calificaciones",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": "Este metodo debe guardar una calificacion."
+			},
+			"response": []
+		},
+		{
+			"name": "Metodo para obtener una calificacion inexistente asociada  a boleta.",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 404\"] = responseCode.code === 404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/boletas/40/calificaciones",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\" : \"terrible\", \"comentario\" : \"prueba\",\"calificacion\" : 2}"
+				},
+				"description": "Este metodo debe devolver error."
+			},
+			"response": []
+		},
+		{
+			"name": "Metodo para crear un abono.",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/abonos",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"precio\" : 550}"
+				},
+				"description": "Este metodo debe actualizar un Abono."
+			},
+			"response": []
+		},
+		{
+			"name": "Metodo para asociar una boleta a un abono.",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/abonos/10/boletas/20",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": "Este metodo debe asociar una boleta a un abono."
+			},
+			"response": []
+		},
+		{
+			"name": "Metodo para obtener una boleta de un abono.",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 204\"] = responseCode.code === 204;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/abonos/200/boletas",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": "Este metodo debe obtener un arreglo de boletas de un abono. (debería solo haber 1 boleta)."
+			},
+			"response": []
+		},
+		{
+			"name": "Metodo para borrar una boleta de un abono.",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 204\"] = responseCode.code === 204;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/abonos/200/boletas/20",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": "Este metodo debe des asociar una boleta a un abono."
+			},
+			"response": []
+		},
+		{
+			"name": "Metodo para obtener una boleta de un abono. copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/abonos/200/boletas",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": "Este metodo debe obtener un arreglo vacío del abono."
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Abono",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 204\"] = responseCode.code === 204;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/abonos/200",
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": "Metodo debe eliminar un abono."
+			},
+			"response": []
+		},
+		{
+			"name": "Get Abono No existente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"/* CalificacionEntity */tests[\"Status code is 404\"] = responseCode.code === 404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/abonos/200",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": "Metodo no debe recibir un abono."
+			},
+			"response": []
+		}
+	]
+}
