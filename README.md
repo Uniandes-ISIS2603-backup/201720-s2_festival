@@ -785,9 +785,9 @@ Código|Descripción|Cuerpo
 500|Error interno|Mensaje de error
 
 
-#### GET /funciones/{funcionesid}/sillas
+#### GET /funciones/{funcionesid}/boletas
 
-Retorna una colección de objetos Silla en representación Detail.
+Retorna una colección de objetos Boleta en representación Detail.
 
 #### Parámetros
 
@@ -797,100 +797,32 @@ Retorna una colección de objetos Silla en representación Detail.
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Colección de Silla en [representaciones Detail](#recurso-silla)
+200|OK|Colección de Boleta en [representaciones Detail](#recurso-boleta)
 412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 500|Error interno|Mensaje de error
 404|No existe un objeto Funcion con el ID solicitado|Mensaje de error
 
-#### GET /funciones/{funcionesid}/sillas/{sillasid}
+#### GET /funciones/{funcionesid}/boletas/{boletaid}
 
-Retorna un objeto Silla en representación Detail.
+Retorna un objeto Boleta en representación Detail.
 
 #### Parámetros
 
 Nombre|Ubicación|Descripción|Requerido|Esquema
 :--|:--|:--|:--|:--
 funcionesid|Path|ID del objeto Funcion a consultar|Sí|Integer
-sillaid|Path|ID del objeto Silla a consultar|Sí|Integer
+sillaid|Path|ID del objeto Boleta a consultar|Sí|Integer
 
 #### Respuesta
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Objeto Silla en [representaciones Detail](#recurso-calificacion)
+200|OK|Objeto Boleta en [representaciones Detail](#recurso-boleta)
 404|No existe un objeto Funcion con el ID solicitado|Mensaje de error
-404|No existe un objeto Silla con el ID solicitado|Mensaje de error
+404|No existe un objeto Boleta con el ID solicitado|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 500|Error interno|Mensaje de error
-
-#### POST /funciones/{funcionesid}/sillas
-
-Es el encargado de crear objetos Sillas.
-
-#### Parámetros
-
-Nombre|Ubicación|Descripción|Requerido|Esquema
-:--|:--|:--|:--|:--
-body|body|Objeto Silla que será creada|Sí|[Representación Detail](#recurso-calificacion)
-funcionesid|Path|ID del objeto Funcion a consultar|Sí|Integer
-
-
-#### Respuesta
-
-Código|Descripción|Cuerpo
-:--|:--|:--
-201|El objeto Calificacion ha sido creado|[Representación Detail](#recurso-calificacion)
-412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
-405|method not allowed, no existe permiso para el recurso|Mensaje de error
-500|No se pudo crear el objeto Calificacion|Mensaje de error
-404|No existe un objeto Funcion con el ID solicitado|Mensaje de error
-
-#### PUT /funciones/{funcionesid}/sillas/{sillasid}
-
-Es el encargado de actualizar objetos Silla dentro de un objeto Funcion.
-
-#### Parámetros
-
-Nombre|Ubicación|Descripción|Requerido|Esquema
-:--|:--|:--|:--|:--
-id|Path|ID del objeto Calificacion a actualizar|Sí|Integer
-body|body|Objeto Calificacion nuevo|Sí|[Representación Detail](#recurso-calificacion)
-funcionesid|Path|ID del objeto Funcion a consultar|Sí|Integer
-sillaid|Path|ID del objeto Silla a consultar|Sí|Integer
-
-#### Respuesta
-
-Código|Descripción|Cuerpo
-:--|:--|:--
-201|El objeto Calificacion actualizado|[Representación Detail](#recurso-silla)
-412|business exception, no se cumple con las reglas de negocio|Mensaje de error
-405|method not allowed, no existe permiso para el recurso|Mensaje de error
-500|No se pudo actualizar el objeto Calificacion|Mensaje de error
-404|No existe un objeto Funcion con el ID solicitado|Mensaje de error
-404|No existe un objeto Silla con el ID solicitado|Mensaje de error
-
-#### DELETE /funciones/{funcionesid}/sillas/{sillasid}
-
-Elimina un objeto Silla en un objeto Funcion.
-
-#### Parámetros
-
-Nombre|Ubicación|Descripción|Requerido|Esquema
-:--|:--|:--|:--|:--
-funcionesid|Path|ID del objeto Funcion a consultar|Sí|Integer
-sillaid|Path|ID del objeto Silla a consultar|Sí|Integer
-
-#### Respuesta
-
-Código|Descripción|Cuerpo
-:--|:--|:--
-204|Objeto eliminado|N/A
-500|Error interno|Mensaje de error
-405|method not allowed, no existe permiso para el recurso|Mensaje de error
-404|No existe un objeto Funcion con el ID solicitado|Mensaje de error
-404|No existe un objeto Silla con el ID solicitado|Mensaje de error
-
 
 ### Recurso Teatro
 
