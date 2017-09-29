@@ -83,14 +83,14 @@ public class FuncionDetailDTO extends FuncionDTO{
             bols.add(bol.toEntity());
         }
         
-        entity.setBoletas(bols);
+        entity.setBoletas(bols);//cuando no hay boletas, bols.size()==0
         
         ArrayList<CriticaEntity> crits =  new ArrayList<>();
         for(CriticaDTO crit : criticas){
             crits.add(crit.toEntity());
         }
         
-        entity.setCriticas(crits);
+        entity.setCriticas(crits);//cuando no hay criticas, crits.size()==0
         
         entity.setFestival(festival.toEntity());
         entity.setPelicula(pelicula.toEntity());
