@@ -6,6 +6,8 @@
 package co.edu.uniandes.ergo.festival.ejb;
 
 import co.edu.uniandes.ergo.festival.entities.CriticaEntity;
+import co.edu.uniandes.ergo.festival.entities.CriticoEntity;
+import co.edu.uniandes.ergo.festival.entities.FuncionEntity;
 import co.edu.uniandes.ergo.festival.persistence.CriticaPersistence;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -61,6 +63,9 @@ public class CriticaLogic {
      */
     public CriticaEntity updateCritica(CriticaEntity entity){
         LOGGER.log(Level.INFO, "Inicia proceso de actualizar una CriticaEntity.");
+        CriticaEntity oldCritica = getCritica(entity.getId());
+        entity.setCritico(oldCritica.getCritico());
+        entity.setFuncion(oldCritica.getFuncion());
         return persistence.update(entity);
     }
     
@@ -71,5 +76,27 @@ public class CriticaLogic {
     public void deleteCritica(Long id){
         LOGGER.log(Level.INFO, "Inicia proceso de borrar una CriticaEntity.");
         persistence.delete(id);
+    }
+    
+    /**
+     * Retorna la CriticoEntity asociada a la CriticaEntity.
+     * @param criticasid Identificación de la CriticaEntity.
+     * @return La CriticaEntity asociada.
+     */
+    public CriticoEntity getCriticoCritica(Long criticasid){
+        LOGGER.log(Level.INFO, "Inicia proceso de consultar la CriticoEntity "
+                + "de la CriticaEntity con id: {0}.",criticasid);
+        return getCritica(criticasid).getCritico();
+    }
+    
+    /**
+     * Retorna la FuncionEntity asociada a la CriticaEntity.
+     * @param criticasid Identificación de la CriticaEntity.
+     * @return La FuncionEntity asociada a la CriticaEntity.
+     */
+    public FuncionEntity getFuncionCritica(Long criticasid){
+        LOGGER.log(Level.INFO, "Inicia proceso de consultar la FuncionEntity "
+                + "de la CriticaEntity con id: {0}.",criticasid);
+        return getCritica(criticasid).getFuncion();
     }
 }

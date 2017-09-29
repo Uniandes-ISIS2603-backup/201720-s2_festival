@@ -6,6 +6,8 @@
 package co.edu.uniandes.ergo.festival.persistence;
 
 import co.edu.uniandes.ergo.festival.entities.CriticaEntity;
+import co.edu.uniandes.ergo.festival.entities.CriticoEntity;
+import co.edu.uniandes.ergo.festival.entities.FuncionEntity;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -22,7 +24,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 import org.junit.runner.RunWith;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
@@ -115,9 +116,14 @@ public class CriticaPersistenceTest {
 
     private void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
+        CriticoEntity critico = factory.manufacturePojo(CriticoEntity.class);
+        FuncionEntity funcion = factory.manufacturePojo(FuncionEntity.class);
+        em.persist(critico);
+        em.persist(funcion);
         for (int i = 0; i < 3; i++) {
             CriticaEntity entity = factory.manufacturePojo(CriticaEntity.class);
-
+            entity.setCritico(critico);
+            entity.setFuncion(funcion);
             em.persist(entity);
             data.add(entity);
         }
@@ -130,6 +136,14 @@ public class CriticaPersistenceTest {
     public void testCreate() throws Exception {
         PodamFactory factory = new PodamFactoryImpl();
         CriticaEntity newEntity = factory.manufacturePojo(CriticaEntity.class);
+        utx.begin();
+        CriticoEntity critico = factory.manufacturePojo(CriticoEntity.class);
+        FuncionEntity funcion = factory.manufacturePojo(FuncionEntity.class);
+        em.persist(critico);
+        em.persist(funcion);
+        utx.commit();
+        newEntity.setCritico(critico);
+        newEntity.setFuncion(funcion);
         CriticaEntity result = persistence.create(newEntity);
 
         Assert.assertNotNull(result);
@@ -177,6 +191,8 @@ public class CriticaPersistenceTest {
         CriticaEntity newEntity = factory.manufacturePojo(CriticaEntity.class);
 
         newEntity.setId(entity.getId());
+        newEntity.setCritico(entity.getCritico());
+        newEntity.setFuncion(entity.getFuncion());
 
         persistence.update(newEntity);
 

@@ -6,7 +6,6 @@
 package co.edu.uniandes.ergo.festival.resources;
 
 import co.edu.uniandes.ergo.festival.dtos.BoletaDTO;
-import co.edu.uniandes.ergo.festival.dtos.BoletaDetailDTO;
 import co.edu.uniandes.ergo.festival.dtos.SalaDetailDTO;
 import co.edu.uniandes.ergo.festival.dtos.SillaDTO;
 import co.edu.uniandes.ergo.festival.dtos.SillaDetailDTO;
@@ -39,16 +38,11 @@ import javax.ws.rs.core.MediaType;
 @Path("/sillas")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
+@RequestScoped
 public class SillaResource {
     
     @Inject
     private SillaLogic sillaLogic;
-    
-    @Inject
-    private BoletaLogic boletaLogic;
-    
-    @Inject 
-    private SalaLogic salaLogic;
     
     /**
      * Crea una nueva SillaEntity.

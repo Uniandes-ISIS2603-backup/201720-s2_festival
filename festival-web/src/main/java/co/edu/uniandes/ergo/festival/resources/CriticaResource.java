@@ -6,6 +6,8 @@
 package co.edu.uniandes.ergo.festival.resources;
 
 import co.edu.uniandes.ergo.festival.dtos.CriticaDetailDTO;
+import co.edu.uniandes.ergo.festival.dtos.CriticoDetailDTO;
+import co.edu.uniandes.ergo.festival.dtos.FuncionDetailDTO;
 import co.edu.uniandes.ergo.festival.ejb.CriticaLogic;
 import co.edu.uniandes.ergo.festival.entities.CriticaEntity;
 import java.util.ArrayList;
@@ -30,6 +32,7 @@ import javax.ws.rs.core.MediaType;
 @Path("/criticas")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
+@RequestScoped
 public class CriticaResource {
     
     @Inject
@@ -55,7 +58,7 @@ public class CriticaResource {
     public CriticaDetailDTO getCritica(@PathParam("id") Long id){
         CriticaEntity entity = criticaLogic.getCritica(id);
         if (entity == null){
-            throw new WebApplicationException("La crítica con id: " + id + " no existe.", 404);
+            throw new WebApplicationException("La CriticaEntity con id: " + id + " no existe.", 404);
         }
         return new CriticaDetailDTO(criticaLogic.getCritica(id));
     }
@@ -80,7 +83,7 @@ public class CriticaResource {
     public CriticaDetailDTO updateCritica(@PathParam("id") Long id, CriticaDetailDTO dto){
         CriticaEntity oldEntity = criticaLogic.getCritica(id);
         if (oldEntity == null){
-            throw new WebApplicationException("La crítica con id: " + id + " no existe.", 404);
+            throw new WebApplicationException("La CriticaEntity con id: " + id + " no existe.", 404);
         }
         CriticaEntity entity = dto.toEntity();
         entity.setId(id);
@@ -96,7 +99,7 @@ public class CriticaResource {
     public void deleteCritica(@PathParam("id") Long id){
         CriticaEntity entity = criticaLogic.getCritica(id);
         if (entity == null){
-            throw new WebApplicationException("La crítica con id: " + id + " no existe.", 404);
+            throw new WebApplicationException("La CriticaEntity con id: " + id + " no existe.", 404);
         }
         criticaLogic.deleteCritica(id);
     }
@@ -112,5 +115,37 @@ public class CriticaResource {
             list.add(new CriticaDetailDTO(entity));
         }
         return list;
+    }
+    
+    /**
+     * Retorna la CriticoEntity de la CriticaEntity en Representación Detail.
+     * @param criticasid Identificación de la CriticaEntity.
+     * @return La CriticoEntity.
+     */
+    @GET
+    @Path("{criticasid: \\d+}/critico")
+    public CriticoDetailDTO getCriticoCritica(@PathParam("criticasid") Long criticasid){
+        CriticaEntity entity = criticaLogic.getCritica(criticasid);
+        if (entity == null){
+            throw new WebApplicationException("La CriticaEntity con id: "
+                    + criticasid + " no existe.", 404);
+        }
+        return new CriticoDetailDTO(criticaLogic.getCriticoCritica(criticasid));
+    }
+    
+    /**
+     * Retorna la FuncionEntity de la CriticaEntity en Representación Detail.
+     * @param criticasid Identificación de la CriticaEntity.
+     * @return La FuncionEntity.
+     */
+    @GET
+    @Path("{criticasid: \\d+}/funcion")
+    public FuncionDetailDTO getFuncionCritica(@PathParam("criticasid") Long criticasid){
+        CriticaEntity entity = criticaLogic.getCritica(criticasid);
+        if (entity == null){
+            throw new WebApplicationException("La CriticaEntity con id: "
+                    + criticasid + " no existe.", 404);
+        }
+        return new FuncionDetailDTO(criticaLogic.getFuncionCritica(criticasid));
     }
 }
