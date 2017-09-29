@@ -1,13 +1,33 @@
+delete from CriticaEntity;
+delete from FuncionEntity;
+delete from PeliculaEntity_PersonaEntity;
+delete from PersonaEntity_PeliculaEntity;
+delete from PeliculaEntity;
+delete from PersonaEntity;
 delete from CalificacionEntity;
 delete from BoletaEntity;
 delete from SillaEntity;
-delete from SalaEntity;
-delete from CriticaEntity;
-delete from PersonaEntity where dtype = 'CriticoEntity';
 delete from FuncionEntity;
+delete from SalaEntity;
 delete from FestivalEntity;
 
-/* SalaEntity */    
+/*FestivalEntity*/
+insert into FestivalEntity (id) values (1);
+
+/* SalaEntity */   
+
+    insert into SalaEntity (name) values ('a');
+    insert into SalaEntity (name) values ('a');
+    insert into SalaEntity (name) values ('a');
+    insert into SalaEntity (name) values ('a');
+    insert into SalaEntity (name) values ('a');
+    insert into SalaEntity (name) values ('a');
+    insert into SalaEntity (name) values ('a');
+    insert into SalaEntity (name) values ('a');
+    insert into SalaEntity (name) values ('a');
+    insert into SalaEntity (name) values ('a');
+
+    delete from SalaEntity;
 
     insert into SalaEntity (id) values (1);
     insert into SalaEntity (id) values (2);
@@ -19,6 +39,10 @@ delete from FestivalEntity;
     insert into SalaEntity (id) values (8);
     insert into SalaEntity (id) values (9);
     insert into SalaEntity (id) values (10);
+
+/* FuncionEntity */
+delete from FuncionEntity;
+
 
 
 /* SillaEntity */
@@ -48,6 +72,7 @@ delete from FestivalEntity;
     insert into SillaEntity (id, tarifa, esPreferencial, sala_id) values (10,59.54, 1, 3);
 
 /* BoletaEntity*/
+
     insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id) values(10, 120, 1, 500.50, 1);
     insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id) values(20, 130, 2, 600.50, 2);
     insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id) values(30, 110, 1, 700.50, 2);
@@ -60,11 +85,24 @@ insert into BoletaEntity (id, codigoDeBarras, estado, precio) values(60, 650, 3,
 
 
 /* CalificacionEntity */
-insert into CalificacionEntity (id,calificacion, comentario,boleta_id) values(1,1.1,'a1',10);
-insert into CalificacionEntity (id,calificacion, comentario,boleta_id) values(2,2.2,'a2',20);
-insert into CalificacionEntity (id,calificacion, comentario,boleta_id) values(3,3.3,'a3',30);
-insert into CalificacionEntity (id,calificacion, comentario,boleta_id) values(4,4.4,'a4',40);
-insert into CalificacionEntity (id,calificacion, comentario,boleta_id) values(5,5.5,'a5',50);
+
+    /*insert into CalificacionEntity (id,calificacion, comentario,boleta_id) values(1,1.1,'a1',10);
+    insert into CalificacionEntity (id,calificacion, comentario,boleta_id) values(2,2.2,'a2',20);
+    insert into CalificacionEntity (id,calificacion, comentario,boleta_id) values(3,3.3,'a3',30);
+    insert into CalificacionEntity (id,calificacion, comentario,boleta_id) values(4,4.4,'a4',40);*/
+
+    insert into CalificacionEntity (calificacion, comentario) values(1.1,'a1');
+    insert into CalificacionEntity (calificacion, comentario) values(2.2,'a2');
+    insert into CalificacionEntity (calificacion, comentario) values(3.3,'a3');
+    insert into CalificacionEntity (calificacion, comentario) values(4.4,'a4');
+
+    delete from CalificacionEntity;
+
+    insert into CalificacionEntity (id,calificacion, comentario) values(1,1.1,'a1');
+    insert into CalificacionEntity (id,calificacion, comentario) values(2,2.2,'a2');
+    insert into CalificacionEntity (id,calificacion, comentario) values(3,3.3,'a3');
+    insert into CalificacionEntity (id,calificacion, comentario) values(4,4.4,'a4');
+
 
 /* CriticoEntity */
 
@@ -92,31 +130,81 @@ insert into CalificacionEntity (id,calificacion, comentario,boleta_id) values(5,
     insert into PersonaEntity (id, name, dtype) values (9, 'Cash Matiasek', 'CriticoEntity');
     insert into PersonaEntity (id, name, dtype) values (10, 'Carmine Pessel', 'CriticoEntity');
 
+/*PeliculaEntity*/
+    
+    insert into PeliculaEntity (name, director) values ('Chant of Jimmy Blacksmith, The', 'Tucker Gonsalvo');
+    insert into PeliculaEntity (name, director) values ('Aces and Eights', 'Dean Minshull');
+    insert into PeliculaEntity (name, director) values ('Giant Claw, The', 'Hagen Malcher');
+    insert into PeliculaEntity (name, director) values ('Two-Way Stretch', 'Netti Philippeaux');
+    insert into PeliculaEntity (name, director) values ('Dream With the Fishes', 'Rania Baumler');
+    insert into PeliculaEntity (name, director) values ('Katt Williams: The Pimp Chronicles Pt. 1', 'Kipper Corona');
+    insert into PeliculaEntity (name, director) values ('Giver, The', 'Averill Rolse');
+    insert into PeliculaEntity (name, director) values ('My Own Private Idaho', 'Reider Tousey');
+    insert into PeliculaEntity (name, director) values ('Hills Have Eyes, The', 'Hewitt Smullin');
+    insert into PeliculaEntity (name, director) values ('Narrien illat ', 'Kassia Izkovitz');
+
+                delete from PeliculaEntity;
+
+    insert into PeliculaEntity (id, name, director) values (1, 'Presumed Guilty (Presunto culpable)', 'Laughton Dyhouse');
+    insert into PeliculaEntity (id, name, director) values (2, 'Who Are the DeBolts? [And Where Did They Get 19 Kids?]', 'Carolan Hooks');
+    insert into PeliculaEntity (id, name, director) values (3, 'Red', 'Seamus Priter');
+    insert into PeliculaEntity (id, name, director) values (4, 'Apple, The (Sib)', 'Ethelin Losseljong');
+    insert into PeliculaEntity (id, name, director) values (5, 'Copper Mountain', 'Basil Switzer');
+    insert into PeliculaEntity (id, name, director) values (6, 'Lawnmower Man, The', 'Flossy Mack');
+    insert into PeliculaEntity (id, name, director) values (7, 'Lightning Strikes Twice', 'Mureil Churn');
+    insert into PeliculaEntity (id, name, director) values (8, 'Adventures of Prince Achmed, The (Abenteuer des Prinzen Achmed, Die)', 'Esmeralda Gingles');
+    insert into PeliculaEntity (id, name, director) values (9, 'Journey from the Fall', 'Chas Maguire');
+    insert into PeliculaEntity (id, name, director) values (10, 'Accident on Hill Road', 'Kathi Gun');
+
+/*PersonaEntity - PeliculaEntity */
+
+    insert into PersonaEntity_PeliculaEntity (criticoentity_id, peliculas_id) values (1, 1);
+    insert into PersonaEntity_PeliculaEntity (criticoentity_id, peliculas_id) values (2, 2);
+    insert into PersonaEntity_PeliculaEntity (criticoentity_id, peliculas_id) values (3, 3);
+    insert into PersonaEntity_PeliculaEntity (criticoentity_id, peliculas_id) values (4, 4);
+    insert into PersonaEntity_PeliculaEntity (criticoentity_id, peliculas_id) values (5, 5);
+    insert into PersonaEntity_PeliculaEntity (criticoentity_id, peliculas_id) values (6, 6);
+    insert into PersonaEntity_PeliculaEntity (criticoentity_id, peliculas_id) values (7, 7);
+    insert into PersonaEntity_PeliculaEntity (criticoentity_id, peliculas_id) values (8, 8);
+
+/*PeliculaEntity - PersonaEntity */
+
+    insert into PeliculaEntity_PersonaEntity (peliculaentity_id, criticos_id) values (1, 1);
+    insert into PeliculaEntity_PersonaEntity (peliculaentity_id, criticos_id) values (2, 2);
+    insert into PeliculaEntity_PersonaEntity (peliculaentity_id, criticos_id) values (3, 3);
+    insert into PeliculaEntity_PersonaEntity (peliculaentity_id, criticos_id) values (4, 4);
+    insert into PeliculaEntity_PersonaEntity (peliculaentity_id, criticos_id) values (5, 5);
+    insert into PeliculaEntity_PersonaEntity (peliculaentity_id, criticos_id) values (6, 6);
+    insert into PeliculaEntity_PersonaEntity (peliculaentity_id, criticos_id) values (7, 7);
+    insert into PeliculaEntity_PersonaEntity (peliculaentity_id, criticos_id) values (8, 8);
+    insert into PeliculaEntity_PersonaEntity (peliculaentity_id, criticos_id) values (9, 9);
+    insert into PeliculaEntity_PersonaEntity (peliculaentity_id, criticos_id) values (10, 10);
+
 /* FuncionEntity */
 
-    insert into FuncionEntity (name, horaInicio, horaFin) values ('Dead Awake', '4/14/2017', '12/17/2016');
-    insert into FuncionEntity (name, horaInicio, horaFin) values ('Prisoner of Shark Island, The', '2/15/2017', '2/27/2017');
-    insert into FuncionEntity (name, horaInicio, horaFin) values ('Ten Violent Women', '9/14/2017', '12/3/2016');
-    insert into FuncionEntity (name, horaInicio, horaFin) values ('Ararat', '10/29/2016', '11/8/2016');
-    insert into FuncionEntity (name, horaInicio, horaFin) values ('Desperately Seeking Susan', '4/29/2017', '10/3/2016');
-    insert into FuncionEntity (name, horaInicio, horaFin) values ('Dancemaker', '10/21/2016', '7/25/2017');
-    insert into FuncionEntity (name, horaInicio, horaFin) values ('Paul Blart: Mall Cop', '10/19/2016', '7/31/2017');
-    insert into FuncionEntity (name, horaInicio, horaFin) values ('Sleeping Car Murder, The (Compartiment tueurs)', '4/28/2017', '6/16/2017');
-    insert into FuncionEntity (name, horaInicio, horaFin) values ('Open Grave', '9/28/2016', '9/4/2017');
-    insert into FuncionEntity (name, horaInicio, horaFin) values ('Dancing Masters, The', '8/10/2017', '3/25/2017');
+    insert into FuncionEntity (horaInicio, horaFin,sala_id,festival_id,pelicula_id) values ('4/17/2017', '9/23/2016',1,1,1);
+    insert into FuncionEntity (horaInicio, horaFin,sala_id,festival_id,pelicula_id) values ('12/16/2016', '10/12/2016',1,1,1);
+    insert into FuncionEntity (horaInicio, horaFin,sala_id,festival_id,pelicula_id) values ('11/27/2016', '5/4/2017',1,1,1);
+    insert into FuncionEntity (horaInicio, horaFin,sala_id,festival_id,pelicula_id) values ('12/28/2016', '7/27/2017',1,1,1);
+    insert into FuncionEntity (horaInicio, horaFin,sala_id,festival_id,pelicula_id) values ('1/9/2017', '11/21/2016',1,1,1);
+    insert into FuncionEntity (horaInicio, horaFin,sala_id,festival_id,pelicula_id) values ('7/10/2017', '2/25/2017',1,1,1);
+    insert into FuncionEntity (horaInicio, horaFin,sala_id,festival_id,pelicula_id) values ('4/7/2017', '4/17/2017',1,1,1);
+    insert into FuncionEntity (horaInicio, horaFin,sala_id,festival_id,pelicula_id) values ('12/15/2016', '3/23/2017',1,1,1);
+    insert into FuncionEntity (horaInicio, horaFin,sala_id,festival_id,pelicula_id) values ('3/2/2017', '7/13/2017',1,1,1);
+    insert into FuncionEntity (horaInicio, horaFin,sala_id,festival_id,pelicula_id) values ('10/18/2016', '12/28/2016',1,1,1);
 
     delete from FuncionEntity;
 
-    insert into FuncionEntity (id, name, horaInicio, horaFin) values (1, 'Katalin Varga', '4/17/2017', '9/23/2016');
-    insert into FuncionEntity (id, name, horaInicio, horaFin) values (2, 'Double Hour, The (La doppia ora)', '12/16/2016', '10/12/2016');
-    insert into FuncionEntity (id, name, horaInicio, horaFin) values (3, 'Changeling, The', '11/27/2016', '5/4/2017');
-    insert into FuncionEntity (id, name, horaInicio, horaFin) values (4, 'Recollections of the Yellow House (Recordações da Casa Amarela)', '12/28/2016', '7/27/2017');
-    insert into FuncionEntity (id, name, horaInicio, horaFin) values (5, 'Lt. Robin Crusoe, U.S.N.', '1/9/2017', '11/21/2016');
-    insert into FuncionEntity (id, name, horaInicio, horaFin) values (6, 'Zorro', '7/10/2017', '2/25/2017');
-    insert into FuncionEntity (id, name, horaInicio, horaFin) values (7, 'Little Lili (La petite Lili)', '4/7/2017', '4/17/2017');
-    insert into FuncionEntity (id, name, horaInicio, horaFin) values (8, 'Keeping the Promise (Sign of the Beaver, The)', '12/15/2016', '3/23/2017');
-    insert into FuncionEntity (id, name, horaInicio, horaFin) values (9, 'Holokaustin värit', '3/2/2017', '7/13/2017');
-    insert into FuncionEntity (id, name, horaInicio, horaFin) values (10, 'Panic Room', '10/18/2016', '12/28/2016');
+    insert into FuncionEntity (id, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (1, '4/17/2017', '9/23/2016',1,1,1);
+    insert into FuncionEntity (id, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (2, '12/16/2016', '10/12/2016',1,1,1);
+    insert into FuncionEntity (id, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (3, '11/27/2016', '5/4/2017',1,1,1);
+    insert into FuncionEntity (id, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (4, '12/28/2016', '7/27/2017',1,1,1);
+    insert into FuncionEntity (id, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (5, '1/9/2017', '11/21/2016',1,1,1);
+    insert into FuncionEntity (id, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (6, '7/10/2017', '2/25/2017',1,1,1);
+    insert into FuncionEntity (id, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (7, '4/7/2017', '4/17/2017',1,1,1);
+    insert into FuncionEntity (id, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (8, '12/15/2016', '3/23/2017',1,1,1);
+    insert into FuncionEntity (id, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (9, '3/2/2017', '7/13/2017',1,1,1);
+    insert into FuncionEntity (id, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (10, '10/18/2016', '12/28/2016',1,1,1);
 
 /* CriticaEntity */
 

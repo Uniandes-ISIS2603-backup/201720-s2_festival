@@ -8,6 +8,7 @@ package co.edu.uniandes.ergo.festival.entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -25,6 +26,7 @@ public class PeliculaEntity extends BaseEntity implements Serializable {
     private String director;
     private int creditos;
     private String pais;
+    @Column(length = 800)
     private String datos;
     private String corto;
 
