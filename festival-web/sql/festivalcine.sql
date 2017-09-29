@@ -68,23 +68,9 @@ delete from FuncionEntity;
     insert into SillaEntity (id, tarifa, esPreferencial, sala_id) values (10,59.54, 1, 3);
 
 
-/* BoletaEntity*/
-    insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id) values(10, 120, 1, 500.50, 1);
-    insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id) values(20, 130, 2, 600.50, 2);
-    insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id) values(30, 110, 1, 700.50, 2);
-    insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id) values(40, 50, 3, 400.50, 2);
-    insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id) values(50, 500, 3, 400.50, 2);
 
 
-/*Funciones de BoletaEntity*/
-insert into BoletaEntity (id, codigoDeBarras, estado, precio) values(60, 650, 3, 300.25);
 
-
-/* CalificacionEntity */
-insert into CalificacionEntity (id,calificacion, comentario,boleta_id) values(1,1.1,'a1',10);
-insert into CalificacionEntity (id,calificacion, comentario,boleta_id) values(2,2.2,'a2',20);
-insert into CalificacionEntity (id,calificacion, comentario,boleta_id) values(3,3.3,'a3',30);
-insert into CalificacionEntity (id,calificacion, comentario,boleta_id) values(4,4.4,'a4',40);
 
 
 /* CriticoEntity */
@@ -127,6 +113,21 @@ insert into CalificacionEntity (id,calificacion, comentario,boleta_id) values(4,
     insert into FuncionEntity (id, name, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (9, 'Holokaustin värit', '3/2/2017', '7/13/2017',1,1,1);
     insert into FuncionEntity (id, name, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (10, 'Panic Room', '10/18/2016', '12/28/2016',1,1,1);
 
+/* BoletaEntity*/
+    insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id,funcion_id) values(10, 120, 1, 500.50, 1,1);
+    insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id,funcion_id) values(20, 130, 2, 600.50, 2,1);
+    insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id,funcion_id) values(30, 110, 1, 700.50, 2,1);
+    insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id,funcion_id) values(40, 50, 3, 400.50, 2,1);
+    insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id,funcion_id) values(50, 500, 3, 400.50, 2,1);
+
+/* CalificacionEntity */
+insert into CalificacionEntity (id,calificacion, comentario,boleta_id) values(1,1.1,'a1',10);
+insert into CalificacionEntity (id,calificacion, comentario,boleta_id) values(2,2.2,'a2',20);
+insert into CalificacionEntity (id,calificacion, comentario,boleta_id) values(3,3.3,'a3',30);
+insert into CalificacionEntity (id,calificacion, comentario,boleta_id) values(4,4.4,'a4',40);
+
+/*Funciones de BoletaEntity*/
+insert into BoletaEntity (id, codigoDeBarras, estado, precio) values(60, 650, 3, 300.25);
 /* CriticaEntity */
 
     insert into CriticaEntity (comentario, critico_id, funcion_id) values ('Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', 1, 1);
