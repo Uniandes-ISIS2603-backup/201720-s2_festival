@@ -3,12 +3,12 @@
 	"info": {
 		"name": "CriticaResource",
 		"_postman_id": "55ba6803-3617-cdea-d780-c80451882551",
-		"description": "Pruebas de los servicios REST de CriticaResource.",
+		"description": "Pruebas de los servicios REST de SillaResource.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Crear una CriticaEntity",
+			"name": "Crear una CriticoEntity",
 			"event": [
 				{
 					"listen": "test",
@@ -39,7 +39,7 @@
 			"response": []
 		},
 		{
-			"name": "Crear una CriticaEntity con una CriticaEntity que no existe",
+			"name": "Crear una CriticaEntity con una CriticoEntity que no existe",
 			"event": [
 				{
 					"listen": "test",
@@ -277,7 +277,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"comentario\":\"Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.\"}"
+					"raw": "{\"comentario\":\"Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.\\n\\nPraesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.\"}"
 				},
 				"description": ""
 			},
@@ -308,7 +308,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"comentario\":\"Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.\"}"
+					"raw": "{\"comentario\":\"Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.\\n\\nPraesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.\"}"
 				},
 				"description": ""
 			},
@@ -346,7 +346,7 @@
 			"response": []
 		},
 		{
-			"name": "Borrar una CriticaEntity que no existe",
+			"name": "Borrar una SillaEntity que no existe",
 			"event": [
 				{
 					"listen": "test",
@@ -390,7 +390,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/festival-web/api/criticas/11",
+				"url": "http://localhost:8080/festival-web/api/criticas/10",
 				"method": "GET",
 				"header": [],
 				"body": {
