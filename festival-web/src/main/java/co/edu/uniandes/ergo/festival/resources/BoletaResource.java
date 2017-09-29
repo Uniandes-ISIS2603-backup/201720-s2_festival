@@ -316,6 +316,10 @@ public class BoletaResource
     @Path("{boletaid:\\d+}/calificaciones")
     public CalificacionDTO createCalificacionFromBoleta(@PathParam("boletaid")Long boletaId, CalificacionDTO calificacion) throws BusinessLogicException {
         // Convierte el DTO (json) en un objeto Entity para ser manejado por la lógica.
+        BoletaEntity entity = boletaLogic.getBoleta(boletaId);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /boletas/" + boletaId + " no existe.", 404);
+        }
         CalificacionEntity calificacionEntity = calificacion.toEntity();
         // Invoca la lógica para crear la editorial nueva
         CalificacionEntity nuevaCalificacion = boletaLogic.createCalificacionFromBoleta(boletaId, calificacionEntity);
@@ -349,6 +353,10 @@ public class BoletaResource
     @PUT
     @Path("{boletaid:\\d+}/calificaciones")
     public CalificacionDTO createUpdateCalificacionFromBoleta(@PathParam("boletaid")Long boletaId, CalificacionDTO calificacion) throws BusinessLogicException {
+        BoletaEntity entity = boletaLogic.getBoleta(boletaId);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /boletas/" + boletaId + " no existe.", 404);
+        }
         // Convierte el DTO (json) en un objeto Entity para ser manejado por la lógica.
         CalificacionEntity calificacionEntity = calificacion.toEntity();
         // Invoca la lógica para crear la editorial nueva

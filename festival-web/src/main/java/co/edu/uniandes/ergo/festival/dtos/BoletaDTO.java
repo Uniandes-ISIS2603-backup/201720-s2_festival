@@ -55,27 +55,30 @@ public class BoletaDTO
      */
     public BoletaDTO(BoletaEntity boleta)
     {
-        this.id = boleta.getId();
-        this.codigoDeBarras = boleta.getCodigoBarras();
-        Integer estadoBoleta = boleta.getEstado();
-        if(estadoBoleta.equals(BoletaEntity.DISPONIBLE))
+        if(boleta != null)
         {
-            this.estado = DISPONIBLE;
+            this.id = boleta.getId();
+            this.codigoDeBarras = boleta.getCodigoBarras();
+            Integer estadoBoleta = boleta.getEstado();
+            if(estadoBoleta.equals(BoletaEntity.DISPONIBLE))
+            {
+                this.estado = DISPONIBLE;
+            }
+            else if(estadoBoleta.equals(BoletaEntity.RESERVADA))
+            {
+                this.estado = RESERVADA;
+            }
+            else if(estadoBoleta.equals(BoletaEntity.COMPRADA))
+            {
+                this.estado = COMPRADA;
+            }
+            else
+            {
+                //TODO SOLUCIONAR CASO EXCEPCIONAL
+                this.estado = DISPONIBLE;
+            }
+            this.precio = boleta.getPrecio();
         }
-        else if(estadoBoleta.equals(BoletaEntity.RESERVADA))
-        {
-            this.estado = RESERVADA;
-        }
-        else if(estadoBoleta.equals(BoletaEntity.COMPRADA))
-        {
-            this.estado = COMPRADA;
-        }
-        else
-        {
-            //TODO SOLUCIONAR CASO EXCEPCIONAL
-            this.estado = DISPONIBLE;
-        }
-        this.precio = boleta.getPrecio();
     }
     /**
      * Método que obtiene el ID.
