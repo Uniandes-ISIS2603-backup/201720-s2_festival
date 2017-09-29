@@ -27,6 +27,46 @@ public class FuncionDetailDTO extends FuncionDTO{
     public FuncionDetailDTO() {
         
     }
+
+    public List<BoletaDTO> getBoletas() {
+        return boletas;
+    }
+
+    public void setBoletas(List<BoletaDTO> boletas) {
+        this.boletas = boletas;
+    }
+
+    public List<CriticaDTO> getCriticas() {
+        return criticas;
+    }
+
+    public void setCriticas(List<CriticaDTO> criticas) {
+        this.criticas = criticas;
+    }
+
+    public PeliculaDTO getPelicula() {
+        return pelicula;
+    }
+
+    public void setPelicula(PeliculaDTO pelicula) {
+        this.pelicula = pelicula;
+    }
+
+    public SalaDTO getSala() {
+        return sala;
+    }
+
+    public void setSala(SalaDTO sala) {
+        this.sala = sala;
+    }
+
+    public FestivalDTO getFestival() {
+        return festival;
+    }
+
+    public void setFestival(FestivalDTO festival) {
+        this.festival = festival;
+    }
     
 
 
@@ -79,22 +119,44 @@ public class FuncionDetailDTO extends FuncionDTO{
         entity.setName(this.getName());
         
         ArrayList<BoletaEntity> bols =  new ArrayList<>();
-        for(BoletaDTO bol : boletas){
+        if (boletas!=null){
+            for(BoletaDTO bol : boletas){
             bols.add(bol.toEntity());
+            }
         }
+        
         
         entity.setBoletas(bols);//cuando no hay boletas, bols.size()==0
         
         ArrayList<CriticaEntity> crits =  new ArrayList<>();
-        for(CriticaDTO crit : criticas){
+        if(criticas!=null){
+            for(CriticaDTO crit : criticas){
             crits.add(crit.toEntity());
+            }
         }
+        
         
         entity.setCriticas(crits);//cuando no hay criticas, crits.size()==0
         
-        entity.setFestival(festival.toEntity());
-        entity.setPelicula(pelicula.toEntity());
-        entity.setSala(sala.toEntity());
+        if(festival==null){
+            entity.setFestival(null);
+        }
+        else{
+            entity.setFestival(festival.toEntity());    
+        }
+        if(pelicula==null){
+            entity.setPelicula(null);
+        }
+        else{
+            entity.setPelicula(pelicula.toEntity());
+        }
+        if(sala==null){
+            entity.setSala(null);
+        }
+        else{
+            entity.setSala(sala.toEntity());
+        }
+        
         
         return entity;
     }

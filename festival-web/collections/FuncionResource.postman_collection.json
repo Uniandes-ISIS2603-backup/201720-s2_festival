@@ -1,0 +1,521 @@
+{
+	"variables": [],
+	"info": {
+		"name": "FuncionResource",
+		"_postman_id": "1be775f9-b2d4-d0c7-8e00-2d9980927378",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET  todas las funciones",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"tests[\"no genera error en el Post\"] = responseCode.code === 200;",
+							"tests[\"Test count\"] = data.length === 10; ",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/funciones/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get funcion con id 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"tests[\"No genera error en el Post\"] = responseCode.code === 200;",
+							"tests[\"Id de el recurso pedido\"] = data.id === 2;",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/funciones/2",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "DEL funcion 2",
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/funciones/2",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "No existe la funcion 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"tests[\"No genera error en el Post\"] = responseCode.code === 404;",
+							"",
+							"tests[\"Body matches string\"] = responseBody.has(\"La Funcion con id: 2 no existe.\");",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/funciones/2",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Verificar que haya 9 funciones",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"tests[\"no genera error en el Post\"] = responseCode.code === 200;",
+							"tests[\"Test count\"] = data.length === 9; ",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/funciones/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Check for null sala",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"tests[\"no genera error en el Post\"] = responseCode.code === 404;",
+							"",
+							"",
+							"tests[\"Body matches string\"] = responseBody.has(\"La Funcion no tiene una sala como parametro.\");"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/funciones/1",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\n        \"type\": \"funcionDetailDTO\",\n        \"horaFin\": \"2016-09-23T00:00:00-05:00\",\n        \"horaInicio\": \"2017-04-17T00:00:00-05:00\",\n        \"id\": 1,\n        \"name\": \"Guerra de los codigos\"\n    }\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Check for null festival",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"tests[\"no genera error en el Post\"] = responseCode.code === 404;",
+							"",
+							"",
+							"tests[\"Body matches string\"] = responseBody.has(\"La Funcion no tiene un festival como parametro.\");"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/funciones/1",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\n        \"type\": \"funcionDetailDTO\",\n        \"horaFin\": \"2016-09-23T00:00:00-05:00\",\n        \"horaInicio\": \"2017-04-17T00:00:00-05:00\",\n        \"id\": 1,\n        \"name\": \"Guerra de los codigos\",\n        \"sala\": {\"id\":1}\n    }\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Check for null pelicula",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"tests[\"no genera error en el Post\"] = responseCode.code === 404;",
+							"",
+							"",
+							"tests[\"Body matches string\"] = responseBody.has(\"La Funcion no tiene una pelicula como parametro.\");"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/funciones/1",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\n        \"type\": \"funcionDetailDTO\",\n        \"horaFin\": \"2016-09-23T00:00:00-05:00\",\n        \"horaInicio\": \"2017-04-17T00:00:00-05:00\",\n        \"id\": 1,\n        \"name\": \"Guerra de los codigos\",\n        \"sala\": {\"id\":1},\n        \"festival\":{\"id\":1}\n    }\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Actualiza pelicula",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"tests[\"no genera error en el Post\"] = responseCode.code === 200;",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/funciones/1",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\n        \"type\": \"funcionDetailDTO\",\n        \"horaFin\": \"2016-09-23T00:00:00-05:00\",\n        \"horaInicio\": \"2017-04-17T00:00:00-05:00\",\n        \"id\": 1,\n        \"name\": \"Guerra de los codigos\",\n        \"sala\": {\"id\":1},\n        \"festival\":{\"id\":1},\n        \"pelicula\":{\"id\":1}\n    }\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Funcion id 1 actualizada",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"tests[\"no genera error en el Post\"] = responseCode.code === 200;",
+							"tests[\"Test count\"] = data.pelicula.id === 1; ",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/funciones/1",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Check null sala",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"tests[\"no genera error en el Post\"] = responseCode.code === 404;",
+							"",
+							"",
+							"tests[\"Body matches string\"] = responseBody.has(\"La Funcion no tiene una sala como parametro.\");"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/funciones/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\n        \"type\": \"funcionDetailDTO\",\n        \"horaFin\": \"2016-09-23T00:00:00-05:00\",\n        \"horaInicio\": \"2017-04-17T00:00:00-05:00\",\n        \"name\": \"Guerra de los codigos2\"\n    }\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Check null festival",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"tests[\"no genera error en el Post\"] = responseCode.code === 404;",
+							"",
+							"",
+							"tests[\"Body matches string\"] = responseBody.has(\"La Funcion no tiene un festival como parametro.\");"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/funciones/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\n        \"type\": \"funcionDetailDTO\",\n        \"horaFin\": \"2016-09-23T00:00:00-05:00\",\n        \"horaInicio\": \"2017-04-17T00:00:00-05:00\",\n        \"name\": \"Guerra de los codigos2\",\n        \"sala\":{\"id\":1}\n       \n    }\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Check null pelicula",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"tests[\"no genera error en el Post\"] = responseCode.code === 404;",
+							"",
+							"",
+							"tests[\"Body matches string\"] = responseBody.has(\"La Funcion no tiene una pelicula como parametro.\");"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/funciones/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\n        \"type\": \"funcionDetailDTO\",\n        \"horaFin\": \"2016-09-23T00:00:00-05:00\",\n        \"horaInicio\": \"2017-04-17T00:00:00-05:00\",\n        \"name\": \"Guerra de los codigos2\",\n        \"sala\":{\"id\":1},\n        \"festival\":{\"id\":1}\n       \n    }\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Crea una nueva funcion",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"tests[\"no genera error en el Post\"] = responseCode.code === 200;",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/funciones/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\n        \"type\": \"funcionDetailDTO\",\n        \"horaFin\": \"2016-09-23T00:00:00-05:00\",\n        \"horaInicio\": \"2017-04-17T00:00:00-05:00\",\n        \"name\": \"Guerra de los codigos2\",\n        \"sala\":{\"id\":1},\n        \"festival\":{\"id\":1},\n        \"pelicula\":{\"id\":1}\n       \n    }\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET  todas las funciones copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"tests[\"no genera error en el Post\"] = responseCode.code === 200;",
+							"tests[\"Test count\"] = data.length === 10; ",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/funciones/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
