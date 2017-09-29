@@ -29,8 +29,9 @@ insert into PeliculaEntity(id) values(1);
     insert into SalaEntity (id) values (8);
     insert into SalaEntity (id) values (9);
     insert into SalaEntity (id) values (10);
-
-
+/* BoletaEntity */
+/* AbonoEntity */
+    insert into AbonoEntity (id, precio) values (200,7000);
 
 
 
