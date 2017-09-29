@@ -23,8 +23,9 @@ delete from FuncionEntity;
     insert into SalaEntity (id) values (8);
     insert into SalaEntity (id) values (9);
     insert into SalaEntity (id) values (10);
-
-
+/* BoletaEntity */
+/* AbonoEntity */
+    insert into AbonoEntity (id, precio) values (200,7000);
 
 /* CalificacionEntity */
 insert into CalificacionEntity (id,calificacion, comentario,boleta_id) values(1,1.1,'a1',10);
