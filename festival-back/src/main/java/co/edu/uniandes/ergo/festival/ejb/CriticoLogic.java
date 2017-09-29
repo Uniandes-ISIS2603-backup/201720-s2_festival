@@ -6,13 +6,16 @@
 package co.edu.uniandes.ergo.festival.ejb;
 
 import co.edu.uniandes.ergo.festival.entities.CriticoEntity;
+import co.edu.uniandes.ergo.festival.entities.PeliculaEntity;
 import co.edu.uniandes.ergo.festival.exceptions.BusinessLogicException;
 import co.edu.uniandes.ergo.festival.persistence.CriticoPersistence;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.ws.rs.WebApplicationException;
 
 /**
  *
@@ -25,6 +28,9 @@ public class CriticoLogic {
 
     @Inject
     private CriticoPersistence persistence;
+    
+    @Inject
+    private PeliculaLogic peliculaLogic;
 
     public List<CriticoEntity> getCriticos() {
         LOGGER.info("Inicia el proceso de consultar todas los críticos.");
@@ -80,4 +86,39 @@ public class CriticoLogic {
         persistence.delete(id);
         LOGGER.log(Level.INFO, "Termina proceso de borrar el crítico con id={0}", id);
     }
+    
+    /**
+     * Retorna las PeliculaEntity asociadas a un CriticoEntity.
+     * @param criticosid La identificación del CriticoEntity.
+     * @return Una lista de las PeliculaEntity.
+     */
+    public List<PeliculaEntity> getPeliculasCritico(Long criticosid){
+        LOGGER.log(Level.INFO, "Inicia proceso de consultar las PeliculaEntity "
+                + "del CriticoEntity con id={0}", criticosid);
+        CriticoEntity critico = persistence.find(criticosid);
+        return critico.GetPeliculas();
+    }
+    
+    /**
+     * Actualiza las PeliculaEntity de la CriticoEntity.
+     * @param criticosid La identificación de la CriticoEntity.
+     * @param peliculas La lista con las nuevas PeliculaEntity.
+     * @return La CriticoEntity actualizada.
+     */
+    public CriticoEntity updatePeliculasCritico(Long criticosid, List<PeliculaEntity> peliculas){
+        CriticoEntity critico = persistence.find(criticosid);
+        List<PeliculaEntity> nuevasPeliculas = new ArrayList();
+        PeliculaEntity  nuevaPelicula;
+        for (PeliculaEntity pelicula : peliculas) {
+            nuevaPelicula = peliculaLogic.getPelicula(pelicula.getId());
+            if (nuevaPelicula == null){
+                throw new WebApplicationException("La pelicula con id: " 
+                        + pelicula.getId() + " no existe.", 404);
+            }
+            nuevasPeliculas.add(nuevaPelicula);
+        }
+        critico.setPeliculas(nuevasPeliculas);
+        return critico;
+    }
+    
 }
