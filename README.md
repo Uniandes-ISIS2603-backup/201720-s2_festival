@@ -7,14 +7,8 @@
 		- [POST /sillas](#post-sillas)
 		- [PUT /sillas/{id}](#put-sillasid)
 		- [DELETE /sillas/{id}](#delete-sillasid)
-		- [GET sillas/{sillasid}/boleta](#get-sillassillasidboleta)
-		- [POST sillas/{sillasid}/boleta](#post-sillassillasidboleta)
-		- [PUT sillas/{sillasid}/boleta](#put-sillassillasidboleta)
-		- [DELETE sillas/{sillasid}/boleta](#delete-sillassillasidboleta)
+		- [GET sillas/{sillasid}/boletas](#get-sillassillasidboletas)
 		- [GET sillas/{sillasid}/sala](#get-sillassillasidsala)
-		- [POST sillas/{sillasid}/sala](#post-sillassillasidsala)
-		- [PUT sillas/{sillasid}/sala](#put-sillassillasidsala)
-		- [DELETE sillas/{sillasid}/sala](#delete-sillassillasidsala)
 	- [Recurso Crítica](#recurso-crítica)
 		- [GET /críticas](#get-críticas)
 		- [GET /críticas/{id}](#get-críticasid)
@@ -22,13 +16,7 @@
 		- [PUT /críticas/{id}](#put-críticasid)
 		- [DELETE /críticas/{id}](#delete-críticasid)
 		- [GET críticas/{críticasid}/función](#get-críticascríticasidfunción)
-		- [POST críticas/{críticasid}/función](#post-críticascríticasidfunción)
-		- [PUT críticas/{críticasid}/función](#put-críticascríticasidfunción)
-		- [DELETE críticas/{críticasid}/función](#delete-críticascríticasidfunción)
 		- [GET críticas/{críticasid}/crítico](#get-críticascríticasidcrítico)
-		- [POST críticas/{críticasid}/crítico](#post-críticascríticasidcrítico)
-		- [PUT críticas/{críticasid}/crítico](#put-críticascríticasidcrítico)
-		- [DELETE críticas/{críticasid}/crítico](#delete-críticascríticasidcrítico)
 	- [Recurso Calificacion](#recurso-calificacion)
 		- [GET /calificaciones](#get-calificaciones)
 		- [GET /calificaciones/{id}](#get-calificacionesid)
@@ -199,21 +187,23 @@ El objeto Silla tiene 2 representaciones JSON:
 ```javascript
 {
     id: '' /*Tipo Long*/,
-    reservada: '' /*Tipo Boolean*/,
     tarifa: '' /*Tipo Double*/,
-    esPreferencial: '' /*Tipo Boolean*/,
+    esPreferencial: '' /*Tipo Boolean*/
 }
 ```
 
 #### Representación Detail
 ```javascript
 {
-    // todo lo de la representación Minimum más los objetos Minimum con relación simple.
-    boleta: {
-        id: '' /*Tipo Long*/,    
-    },
+    // todo lo de la representación Minimum más los objetos Minimum con relación simple y el tipo de objeto.
+    type : '' /*Tipo String*/,
+    boletas:[ {
+        id: '' /*Tipo Long*/,
+        precio: '' /*Tipo Double*/,
+        estado: '' /*Tipo Integer*/,
+        codigoDeBarras: '' /*Tipo Long*/
+    }, ...],
     sala: {
-        nombre: '' /*Tipo String*/,
         id: '' /*Tipo Long*/
     }
 }
@@ -223,8 +213,7 @@ El objeto Silla tiene 2 representaciones JSON:
 
 #### GET /sillas
 
-Retorna una colección de objetos Silla en representación Detail.
-Cada Silla en la colección tiene embebidos los siguientes objetos: Boleta y Sala.
+Retorna una colección de objetos Silla. Cada Silla en la colección tiene embebidos los siguientes objetos: Boleta y Sala.
 
 #### Parámetros
 
@@ -234,15 +223,12 @@ Cada Silla en la colección tiene embebidos los siguientes objetos: Boleta y Sal
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Colección de Silla en [representaciones Detail](#recurso-silla)
-412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
-405|method not allowed, no existe permiso para el recurso|Mensaje de error
+200|OK|Colección de Silla en [Representación Minimum](#recurso-silla)|Mensaje de error
 500|Error interno|Mensaje de error
 
 #### GET /sillas/{id}
 
-Retorna un objeto Silla en representación Detail.
-Cada Silla en la colección tiene los siguientes objetos: Boleta y Sala.
+Retorna un objeto Silla. Cada Silla en la colección tiene los siguientes objetos: Boleta y Sala.
 
 #### Parámetros
 
@@ -254,9 +240,8 @@ id|Path|ID del objeto Silla a consultar|Sí|Integer
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Objeto Silla en [representaciones Detail](#recurso-silla)
+200|OK|Objeto Silla en [Representación Detail](#recurso-silla)
 404|No existe un objeto Silla con el ID solicitado|Mensaje de error
-405|method not allowed, no existe permiso para el recurso|Mensaje de error
 500|Error interno|Mensaje de error
 
 #### POST /sillas
@@ -273,9 +258,8 @@ body|body|Objeto Silla que será creado|Sí|[Representación Detail](#recurso-si
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-201|El objeto Silla ha sido creado|[Representación Detail](#recurso-silla)
-412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
-405|method not allowed, no existe permiso para el recurso|Mensaje de error
+201|El objeto Silla ha sido creado|Objeto Silla en [Representación Detail](#recurso-silla)
+500|Precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
 500|No se pudo crear el objeto Silla|Mensaje de error
 
 #### PUT /sillas/{id}
@@ -287,16 +271,15 @@ Es el encargado de actualizar objetos Silla.
 Nombre|Ubicación|Descripción|Requerido|Esquema
 :--|:--|:--|:--|:--
 id|Path|ID del objeto Silla a actualizar|Sí|Integer
-body|body|Objeto Silla nuevo|Sí|[Representación Detail](#recurso-silla)
+body|body|Objeto Silla nuevo|Sí|[Representación Minimum](#recurso-silla)
 
 #### Respuesta
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-201|El objeto Silla actualizado|[Representación Detail](#recurso-silla)
-412|business exception, no se cumple con las reglas de negocio|Mensaje de error
-405|method not allowed, no existe permiso para el recurso|Mensaje de error
+201|El objeto Silla ha sido actualizado.|Objeto Silla en [Representación Minimum](#recurso-silla)
 500|No se pudo actualizar el objeto Silla|Mensaje de error
+404|No existe el objeto Silla con el id especificado.|Mensaje de error
 
 #### DELETE /sillas/{id}
 
@@ -314,11 +297,11 @@ Código|Descripción|Cuerpo
 :--|:--|:--
 204|Objeto eliminado|N/A
 500|Error interno|Mensaje de error
-405|method not allowed, no existe permiso para el recurso|Mensaje de error
+404|No existe el objeto Silla con el id especificado.|Mensaje de error
 
-#### GET sillas/{sillasid}/boleta
+#### GET sillas/{sillasid}/boletas
 
-Retorna una Boleta asociada a un objeto Silla en representación Detail.
+Retorna una lista con las Boletas asociadas a un objeto Silla.
 
 #### Parámetros
 
@@ -330,68 +313,13 @@ sillasid|Path|ID del objeto Silla a consultar|Sí|Integer
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Objeto Boleta en [representación Detail](#recurso-boleta)
-500|Error consultando boleta |Mensaje de error
-405|method not allowed, no existe permiso para el recurso|Mensaje de error
-
-#### POST sillas/{sillasid}/boleta
-Asocia un objeto Boleta a un objeto Silla.
-
-#### Parámetros
-
-Nombre|Ubicación|Descripción|Requerido|Esquema
-:--|:--|:--|:--|:--
-sillasid|PathParam|ID del objeto Silla al cual se asociará el objeto Boleta|Sí|Integer
-body|body|Información del objeto Boleta a asociar|Sí|[Representación Detail de Boleta](#recurso-boleta)
-
-#### Respuesta
-
-Código|Descripción|Cuerpo
-:--|:--|:--
-200|Objeto Boleta asociado|[Representación Detail de Boleta](#recurso-boleta)
-500|No se pudo asociar el objeto Boleta|Mensaje de error
-405|method not allowed, no existe permiso para el recurso|Mensaje de error
-
-#### PUT sillas/{sillasid}/boleta
-
-Es el encargado de remplazar la Boleta asociada a un objeto Silla.
-
-#### Parámetros
-
-Nombre|Ubicación|Descripción|Requerido|Esquema
-:--|:--|:--|:--|:--
-sillasid|Path|ID del objeto Silla cuya asociación será remplazada|Sí|Integer
-body|body|Objeto Boleta|Sí|[Representación Detail](#recurso-boleta)
-
-#### Respuesta
-
-Código|Descripción|Cuerpo
-:--|:--|:--
-200|Se remplazó el objeto|Objeto Boleta en [Representación Detail](#recurso-boleta)
-500|No se pudo remplazar el objeto|Mensaje de error
-405|method not allowed, no existe permiso para el recurso|Mensaje de error
-
-#### DELETE sillas/{sillasid}/boleta
-
-Remueve un objeto Boleta de un objeto Silla.
-
-#### Parámetros
-
-Nombre|Ubicación|Descripción|Requerido|Esquema
-:--|:--|:--|:--|:--
-sillasid|Path|ID del objeto Silla asociado al objeto Boleta|Sí|Integer
-
-#### Respuesta
-
-Código|Descripción|Cuerpo
-:--|:--|:--
-204|Objeto removido|N/A
-500|Error interno|Mensaje de error
-405|method not allowed, no existe permiso para el recurso|Mensaje de error
+200|OK|Lista de objetos Boleta en [Representación Minimum](#recurso-boleta)
+500|Error consultando boletas |Mensaje de error
+404|No existe el objeto Silla con el sillasid especificado.|Mensaje de error
 
 #### GET sillas/{sillasid}/sala
 
-Retorna una Sala asociada a un objeto Silla en [representación Detail](#recurso-sala).
+Retorna una Sala asociada a un objeto Silla.
 
 #### Parámetros
 
@@ -405,62 +333,7 @@ Código|Descripción|Cuerpo
 :--|:--|:--
 200|OK|Objeto Sala en [representación Detail](#recurso-sala)
 500|Error consultando función |Mensaje de error
-405|method not allowed, no existe permiso para el recurso|Mensaje de error
-
-#### POST sillas/{sillasid}/sala
-Asocia un objeto Sala a un objeto Silla.
-
-#### Parámetros
-
-Nombre|Ubicación|Descripción|Requerido|Esquema
-:--|:--|:--|:--|:--
-sillasid|PathParam|ID del objeto Silla al cual se asociará el objeto Sala|Sí|Integer
-body|body|Información del objeto Sala que será asociado|Sí|[Representación Detail](#recurso-sala)
-
-#### Respuesta
-
-Código|Descripción|Cuerpo
-:--|:--|:--
-200|Objeto Sala asociado|[Representación Detail de Sala](#recurso-sala)
-500|No se pudo asociar el objeto Sala|Mensaje de error
-405|method not allowed, no existe permiso para el recurso|Mensaje de error
-
-#### PUT sillas/{sillasid}/sala
-
-Es el encargado de remplazar la Sala asociada a un objeto Silla.
-
-#### Parámetros
-
-Nombre|Ubicación|Descripción|Requerido|Esquema
-:--|:--|:--|:--|:--
-sillasid|Path|ID del objeto Silla cuya asociación será remplazada|Sí|Integer
-body|body|Objeto Sala|Sí|[Representación Detail](#recurso-sala)
-
-#### Respuesta
-
-Código|Descripción|Cuerpo
-:--|:--|:--
-200|Se remplazó el objeto|Objeto Sala en [Representación Detail](#recurso-sala)
-500|No se pudo remplazar el objeto|Mensaje de error
-405|method not allowed, no existe permiso para el recurso|Mensaje de error
-
-#### DELETE sillas/{sillasid}/sala
-
-Remueve un objeto Sala de un objeto Silla.
-
-#### Parámetros
-
-Nombre|Ubicación|Descripción|Requerido|Esquema
-:--|:--|:--|:--|:--
-sillasid|Path|ID del objeto Silla asociado al objeto Función|Sí|Integer
-
-#### Respuesta
-
-Código|Descripción|Cuerpo
-:--|:--|:--
-204|Objeto removido|N/A
-500|Error interno|Mensaje de error
-405|method not allowed, no existe permiso para el recurso|Mensaje de error
+404|No existe la SillaEntity con el sillasid especificado.|Mensaje de error
 
 [Volver arriba](#tabla-de-contenidos)
 
@@ -479,9 +352,13 @@ El objeto Crítica tiene 2 representaciones JSON:
 #### Representación Detail
 ```javascript
 {
-    // todo lo de la representación Minimum más los objetos Minimum con relación simple.
-    crítico: {},
-    función: {
+    // todo lo de la representación Minimum más los objetos Minimum con relación simple y el tipo de objeto.
+    type : '' /*Tipo String*/,
+    critico: {
+        id: '' /*Tipo Long*/,
+        nombre: '' /*Tipo String*/
+    },
+    funcion: {
         horaInicio: '' /*Tipo Date*/,
         horaFin: ''/*Tipo Date*/,
         id: '' /*Tipo Long*/
@@ -493,8 +370,7 @@ El objeto Crítica tiene 2 representaciones JSON:
 
 #### GET /críticas
 
-Retorna una colección de objetos Crítica en representación Detail.
-Cada Crítica en la colección tiene embebidos los siguientes objetos: Crítico y Función.
+Retorna una colección de objetos Crítica. Cada Crítica en la colección tiene embebidos los siguientes objetos: Crítico y Función.
 
 #### Parámetros
 
@@ -504,15 +380,12 @@ Cada Crítica en la colección tiene embebidos los siguientes objetos: Crítico 
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Colección de Crítica en [representaciones Detail](#recurso-crítica)
-412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
-405|method not allowed, no existe permiso para el recurso|Mensaje de error
+200|OK|Colección de Crítica en [Representación Minimum](#recurso-crítica)
 500|Error interno|Mensaje de error
 
 #### GET /críticas/{id}
 
-Retorna un objeto Crítica en representación Detail.
-Cada Crítica en la colección tiene los siguientes objetos: Crítico y Función.
+Retorna un objeto Crítica. Cada Crítica en la colección tiene los siguientes objetos: Crítico y Función.
 
 #### Parámetros
 
@@ -524,9 +397,8 @@ id|Path|ID del objeto Crítica a consultar|Sí|Integer
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Objeto Crítica en [representaciones Detail](#recurso-crítica)
+200|OK|Objeto Crítica en [Representación Detail](#recurso-crítica)
 404|No existe un objeto Crítica con el ID solicitado|Mensaje de error
-405|method not allowed, no existe permiso para el recurso|Mensaje de error
 500|Error interno|Mensaje de error
 
 #### POST /críticas
@@ -543,9 +415,8 @@ body|body|Objeto Crítica que será creado|Sí|[Representación Detail](#recurso
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-201|El objeto Crítica ha sido creado|[Representación Detail](#recurso-crítica)
-412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
-405|method not allowed, no existe permiso para el recurso|Mensaje de error
+201|El objeto Crítica ha sido creado|Objeto Crítica en[Representación Detail](#recurso-crítica)
+500|Precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
 500|No se pudo crear el objeto Crítica|Mensaje de error
 
 #### PUT /críticas/{id}
@@ -557,15 +428,14 @@ Es el encargado de actualizar objetos Crítica.
 Nombre|Ubicación|Descripción|Requerido|Esquema
 :--|:--|:--|:--|:--
 id|Path|ID del objeto Crítica a actualizar|Sí|Integer
-body|body|Objeto Crítica nuevo|Sí|[Representación Detail](#recurso-crítica)
+body|body|Objeto Crítica nuevo|Sí|[Representación Minimum](#recurso-crítica)
 
 #### Respuesta
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-201|El objeto Crítica actualizado|[Representación Detail](#recurso-crítica)
-412|business exception, no se cumple con las reglas de negocio|Mensaje de error
-405|method not allowed, no existe permiso para el recurso|Mensaje de error
+201|El objeto Crítica actualizado|Objeto Crítica en[Representación Minimum](#recurso-crítica)
+404|No existe un objeto Crítica con el ID solicitado|Mensaje de error
 500|No se pudo actualizar el objeto Crítica|Mensaje de error
 
 #### DELETE /críticas/{id}
@@ -584,11 +454,11 @@ Código|Descripción|Cuerpo
 :--|:--|:--
 204|Objeto eliminado|N/A
 500|Error interno|Mensaje de error
-405|method not allowed, no existe permiso para el recurso|Mensaje de error
+404|No existe un objeto Crítica con el ID solicitado|Mensaje de error
 
 #### GET críticas/{críticasid}/función
 
-Retorna una Función asociada a un objeto Crítica en representación Detail.
+Retorna una Función asociada a un objeto Crítica.
 
 #### Parámetros
 
@@ -600,67 +470,13 @@ críticasid|Path|ID del objeto Crítica a consultar|Sí|Integer
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Objeto Función en [representación Detail](#recurso-función)
+200|OK|Objeto Función en [representación Detail](#recurso-funcion)
 500|Error consultando función |Mensaje de error
-405|method not allowed, no existe permiso para el recurso|Mensaje de error
-
-#### POST críticas/{críticasid}/función
-Asocia un objeto Función a un objeto Crítica.
-
-#### Parámetros
-
-Nombre|Ubicación|Descripción|Requerido|Esquema
-:--|:--|:--|:--|:--
-críticasid|PathParam|ID del objeto Crítica al cual se asociará el objeto Función|Sí|Integer
-
-#### Respuesta
-
-Código|Descripción|Cuerpo
-:--|:--|:--
-200|Objeto Función asociado|[Representación Detail de Función](#recurso-función)
-500|No se pudo asociar el objeto Función|Mensaje de error
-405|method not allowed, no existe permiso para el recurso|Mensaje de error
-
-#### PUT críticas/{críticasid}/función
-
-Es el encargado de remplazar la Función asociada a un objeto Crítica.
-
-#### Parámetros
-
-Nombre|Ubicación|Descripción|Requerido|Esquema
-:--|:--|:--|:--|:--
-críticasid|Path|ID del objeto Crítica cuya asociación será remplazada|Sí|Integer
-body|body|Objeto Función|Sí|[Representación Detail](#recurso-función)
-
-#### Respuesta
-
-Código|Descripción|Cuerpo
-:--|:--|:--
-200|Se remplazó el objeto|Objeto Función en [Representación Detail](#recurso-función)
-500|No se pudo remplazar el objeto|Mensaje de error
-405|method not allowed, no existe permiso para el recurso|Mensaje de error
-
-#### DELETE críticas/{críticasid}/función
-
-Remueve un objeto Función de un objeto Crítica.
-
-#### Parámetros
-
-Nombre|Ubicación|Descripción|Requerido|Esquema
-:--|:--|:--|:--|:--
-críticasid|Path|ID del objeto Crítica asociado al objeto Función|Sí|Integer
-
-#### Respuesta
-
-Código|Descripción|Cuerpo
-:--|:--|:--
-204|Objeto removido|N/A
-500|Error interno|Mensaje de error
-405|method not allowed, no existe permiso para el recurso|Mensaje de error
+404|No existe un objeto Crítica con el críticasid solicitado|Mensaje de error
 
 #### GET críticas/{críticasid}/crítico
 
-Retorna una Crítico asociada a un objeto Crítica en representación Detail.
+Retorna un Crítico asociado a un objeto Crítica.
 
 #### Parámetros
 
@@ -672,63 +488,11 @@ críticasid|Path|ID del objeto Crítica a consultar|Sí|Integer
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Objeto Crítico en [representación Detail](#recurso-crítico)
+200|OK|Objeto Crítico en [representación Detail](#recurso-critico)
 500|Error consultando crítico |Mensaje de error
-405|method not allowed, no existe permiso para el recurso|Mensaje de error
+404|No existe un objeto Crítica con el críticasid solicitado|Mensaje de error
 
-#### POST críticas/{críticasid}/crítico
-Asocia un objeto Crítico a un objeto Crítica.
-
-#### Parámetros
-
-Nombre|Ubicación|Descripción|Requerido|Esquema
-:--|:--|:--|:--|:--
-críticasid|PathParam|ID del objeto Crítica al cual se asociará el objeto Crítico|Sí|Integer
-
-#### Respuesta
-
-Código|Descripción|Cuerpo
-:--|:--|:--
-200|Objeto Crítico asociado|[Representación Detail de Crítico](#recurso-crítico)
-500|No se pudo asociar el objeto Crítico|Mensaje de error
-405|method not allowed, no existe permiso para el recurso|Mensaje de error
-
-#### PUT críticas/{críticasid}/crítico
-
-Es el encargado de remplazar la Crítico asociada a un objeto Crítica.
-
-#### Parámetros
-
-Nombre|Ubicación|Descripción|Requerido|Esquema
-:--|:--|:--|:--|:--
-críticasid|Path|ID del objeto Crítica cuya asociación será remplazada|Sí|Integer
-body|body|Objeto Crítico|Sí|[Representación Detail](#recurso-crítico)
-
-#### Respuesta
-
-Código|Descripción|Cuerpo
-:--|:--|:--
-200|Se remplazó el objeto|Objeto Crítico en [Representación Detail](#recurso-crítico)
-500|No se pudo remplazar el objeto|Mensaje de error
-405|method not allowed, no existe permiso para el recurso|Mensaje de error
-
-#### DELETE críticas/{críticasid}/crítico
-
-Remueve un objeto Crítico de un objeto Crítica.
-
-#### Parámetros
-
-Nombre|Ubicación|Descripción|Requerido|Esquema
-:--|:--|:--|:--|:--
-críticasid|Path|ID del objeto Crítica asociado al objeto Crítico|Sí|Integer
-
-#### Respuesta
-
-Código|Descripción|Cuerpo
-:--|:--|:--
-204|Objeto removido|N/A
-500|Error interno|Mensaje de error
-405|method not allowed, no existe permiso para el recurso|Mensaje de error
+[Volver arriba](#tabla-de-contenidos)
 
 ### Recurso Calificacion
 

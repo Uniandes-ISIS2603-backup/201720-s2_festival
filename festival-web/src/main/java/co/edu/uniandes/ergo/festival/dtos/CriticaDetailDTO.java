@@ -49,7 +49,14 @@ public class CriticaDetailDTO extends CriticaDTO {
      * @return La CriticaEntity.
      */
     public CriticaEntity toEntity(){
-        return super.toEntity();
+        CriticaEntity critica = super.toEntity();
+        if (critico != null){
+            critica.setCritico(critico.toEntity()); 
+        }
+        if (funcion != null) {
+            critica.setFuncion(funcion.toEntity());
+        }
+        return critica;
     }
 
     /**

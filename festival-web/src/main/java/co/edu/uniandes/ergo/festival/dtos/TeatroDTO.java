@@ -17,6 +17,13 @@ public class TeatroDTO
     private Long id;
     private String nombre;
     
+    /**
+     * Constructor vacío para JAX-RS.
+     */
+    public TeatroDTO(){
+        
+    }
+    
     public TeatroDTO(TeatroEntity teatro)
     {
         this.id = teatro.getId();

@@ -3,6 +3,8 @@ delete from BoletaEntity;
 delete from SillaEntity;
 delete from SalaEntity;
 delete from CriticaEntity;
+delete from PersonaEntity where dtype = 'CriticoEntity';
+delete from FuncionEntity;
 delete from FestivalEntity;
 
 /* SalaEntity */    
@@ -17,34 +19,6 @@ delete from FestivalEntity;
     insert into SalaEntity (id) values (8);
     insert into SalaEntity (id) values (9);
     insert into SalaEntity (id) values (10);
-
-/* BoletaEntity*/
-
-
-insert into BoletaEntity (id, codigoDeBarras, estado, precio) values(10, 120, 1, 500.50);
-insert into BoletaEntity (id, codigoDeBarras, estado, precio) values(20, 130, 2, 600.50);
-insert into BoletaEntity (id, codigoDeBarras, estado, precio) values(30, 110, 1, 700.50);
-insert into BoletaEntity (id, codigoDeBarras, estado, precio) values(40, 50, 3, 400.50);
-insert into BoletaEntity (id, codigoDeBarras, estado, precio) values(50, 650, 3, 300.25);
-
-/*Funciones de BoletaEntity*/
-insert into BoletaEntity (id, codigoDeBarras, estado, precio) values(60, 650, 3, 300.25);
-
-
-
-/* CalificacionEntity */
-insert into CalificacionEntity (id,calificacion, comentario,boleta_id) values(1,1.1,'a1',10);
-insert into CalificacionEntity (id,calificacion, comentario,boleta_id) values(2,2.2,'a2',20);
-insert into CalificacionEntity (id,calificacion, comentario,boleta_id) values(3,3.3,'a3',30);
-insert into CalificacionEntity (id,calificacion, comentario,boleta_id) values(4,4.4,'a4',40);
-insert into CalificacionEntity (id,calificacion, comentario,boleta_id) values(5,5.5,'a5',50);
-
-
-
-/* FuncionEntity */
-delete from FuncionEntity;
-
-
 
 
 /* SillaEntity */
@@ -74,83 +48,143 @@ delete from FuncionEntity;
     insert into SillaEntity (id, tarifa, esPreferencial, sala_id) values (10,59.54, 1, 3);
 
 /* BoletaEntity*/
-insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id) values(10, 120, 1, 500.50, 1);
-insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id) values(20, 130, 2, 600.50, 2);
-insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id) values(30, 110, 1, 700.50, 2);
-insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id) values(40, 50, 3, 400.50, 2);
-insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id) values(50, 650, 3, 300.25, 2);
+    insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id) values(10, 120, 1, 500.50, 1);
+    insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id) values(20, 130, 2, 600.50, 2);
+    insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id) values(30, 110, 1, 700.50, 2);
+    insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id) values(40, 50, 3, 400.50, 2);
+    insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id) values(50, 650, 3, 300.25, 2);
+
+/*Funciones de BoletaEntity*/
+insert into BoletaEntity (id, codigoDeBarras, estado, precio) values(60, 650, 3, 300.25);
+
+
+
+/* CalificacionEntity */
+insert into CalificacionEntity (id,calificacion, comentario,boleta_id) values(1,1.1,'a1',10);
+insert into CalificacionEntity (id,calificacion, comentario,boleta_id) values(2,2.2,'a2',20);
+insert into CalificacionEntity (id,calificacion, comentario,boleta_id) values(3,3.3,'a3',30);
+insert into CalificacionEntity (id,calificacion, comentario,boleta_id) values(4,4.4,'a4',40);
+insert into CalificacionEntity (id,calificacion, comentario,boleta_id) values(5,5.5,'a5',50);
+
+/* CriticoEntity */
+
+    insert into PersonaEntity (name, dtype) values ('Brodie Gobel', 'CriticoEntity');
+    insert into PersonaEntity (name, dtype) values ('Hakim Woolforde', 'CriticoEntity');
+    insert into PersonaEntity (name, dtype) values ('Annecorinne Copcott', 'CriticoEntity');
+    insert into PersonaEntity (name, dtype) values ('Cesaro Sirette', 'CriticoEntity');
+    insert into PersonaEntity (name, dtype) values ('Sarine Brownbill', 'CriticoEntity');
+    insert into PersonaEntity (name, dtype) values ('Myca Lafontaine', 'CriticoEntity');
+    insert into PersonaEntity (name, dtype) values ('Dudley Carefull', 'CriticoEntity');
+    insert into PersonaEntity (name, dtype) values ('Uriah Harrie', 'CriticoEntity');
+    insert into PersonaEntity (name, dtype) values ('Dilan Maggorini', 'CriticoEntity');
+    insert into PersonaEntity (name, dtype) values ('Abram Spennock', 'CriticoEntity');
+
+    delete from PersonaEntity where dtype = 'CriticoEntity';
+
+    insert into PersonaEntity (id, name, dtype) values (1, 'Inger Danielou', 'CriticoEntity');
+    insert into PersonaEntity (id, name, dtype) values (2, 'Muhammad Kerby', 'CriticoEntity');
+    insert into PersonaEntity (id, name, dtype) values (3, 'Poul Joselevitch', 'CriticoEntity');
+    insert into PersonaEntity (id, name, dtype) values (4, 'Chiarra Golland', 'CriticoEntity');
+    insert into PersonaEntity (id, name, dtype) values (5, 'Neile Beckhouse', 'CriticoEntity');
+    insert into PersonaEntity (id, name, dtype) values (6, 'Theresita Pickin', 'CriticoEntity');
+    insert into PersonaEntity (id, name, dtype) values (7, 'Flory Duggen', 'CriticoEntity');
+    insert into PersonaEntity (id, name, dtype) values (8, 'Rudie Aronsohn', 'CriticoEntity');
+    insert into PersonaEntity (id, name, dtype) values (9, 'Cash Matiasek', 'CriticoEntity');
+    insert into PersonaEntity (id, name, dtype) values (10, 'Carmine Pessel', 'CriticoEntity');
+
+/* FuncionEntity */
+
+    insert into FuncionEntity (name, horaInicio, horaFin) values ('Dead Awake', '4/14/2017', '12/17/2016');
+    insert into FuncionEntity (name, horaInicio, horaFin) values ('Prisoner of Shark Island, The', '2/15/2017', '2/27/2017');
+    insert into FuncionEntity (name, horaInicio, horaFin) values ('Ten Violent Women', '9/14/2017', '12/3/2016');
+    insert into FuncionEntity (name, horaInicio, horaFin) values ('Ararat', '10/29/2016', '11/8/2016');
+    insert into FuncionEntity (name, horaInicio, horaFin) values ('Desperately Seeking Susan', '4/29/2017', '10/3/2016');
+    insert into FuncionEntity (name, horaInicio, horaFin) values ('Dancemaker', '10/21/2016', '7/25/2017');
+    insert into FuncionEntity (name, horaInicio, horaFin) values ('Paul Blart: Mall Cop', '10/19/2016', '7/31/2017');
+    insert into FuncionEntity (name, horaInicio, horaFin) values ('Sleeping Car Murder, The (Compartiment tueurs)', '4/28/2017', '6/16/2017');
+    insert into FuncionEntity (name, horaInicio, horaFin) values ('Open Grave', '9/28/2016', '9/4/2017');
+    insert into FuncionEntity (name, horaInicio, horaFin) values ('Dancing Masters, The', '8/10/2017', '3/25/2017');
+
+    delete from FuncionEntity;
+
+    insert into FuncionEntity (id, name, horaInicio, horaFin) values (1, 'Katalin Varga', '4/17/2017', '9/23/2016');
+    insert into FuncionEntity (id, name, horaInicio, horaFin) values (2, 'Double Hour, The (La doppia ora)', '12/16/2016', '10/12/2016');
+    insert into FuncionEntity (id, name, horaInicio, horaFin) values (3, 'Changeling, The', '11/27/2016', '5/4/2017');
+    insert into FuncionEntity (id, name, horaInicio, horaFin) values (4, 'Recollections of the Yellow House (Recordações da Casa Amarela)', '12/28/2016', '7/27/2017');
+    insert into FuncionEntity (id, name, horaInicio, horaFin) values (5, 'Lt. Robin Crusoe, U.S.N.', '1/9/2017', '11/21/2016');
+    insert into FuncionEntity (id, name, horaInicio, horaFin) values (6, 'Zorro', '7/10/2017', '2/25/2017');
+    insert into FuncionEntity (id, name, horaInicio, horaFin) values (7, 'Little Lili (La petite Lili)', '4/7/2017', '4/17/2017');
+    insert into FuncionEntity (id, name, horaInicio, horaFin) values (8, 'Keeping the Promise (Sign of the Beaver, The)', '12/15/2016', '3/23/2017');
+    insert into FuncionEntity (id, name, horaInicio, horaFin) values (9, 'Holokaustin värit', '3/2/2017', '7/13/2017');
+    insert into FuncionEntity (id, name, horaInicio, horaFin) values (10, 'Panic Room', '10/18/2016', '12/28/2016');
 
 /* CriticaEntity */
 
-    insert into CriticaEntity (comentario) values ('Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.');
-    insert into CriticaEntity (comentario) values ('In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.
+    insert into CriticaEntity (comentario, critico_id, funcion_id) values ('Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', 1, 1);
+    insert into CriticaEntity (comentario, critico_id, funcion_id) values ('Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.', 1, 1);
+    insert into CriticaEntity (comentario, critico_id, funcion_id) values ('Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.
 
-    Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.
+    Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.
 
-    Sed ante. Vivamus tortor. Duis mattis egestas metus.');
-    insert into CriticaEntity (comentario) values ('Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.
+    Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.', 1, 1);
+    insert into CriticaEntity (comentario, critico_id, funcion_id) values ('Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.', 1, 1);
+    insert into CriticaEntity (comentario, critico_id, funcion_id) values ('Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.
 
-    Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.');
-    insert into CriticaEntity (comentario) values ('Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.
+    In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.', 1, 1);
+    insert into CriticaEntity (comentario, critico_id, funcion_id) values ('Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.', 1, 1);
+    insert into CriticaEntity (comentario, critico_id, funcion_id) values ('Fusce consequat. Nulla nisl. Nunc nisl.
 
-    Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.
+    Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.', 1, 1);
+    insert into CriticaEntity (comentario, critico_id, funcion_id) values ('Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.
 
-    In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.');
-    insert into CriticaEntity (comentario) values ('In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.
+    Sed ante. Vivamus tortor. Duis mattis egestas metus.
 
-    Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.');
-    insert into CriticaEntity (comentario) values ('Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.
+    Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.', 1, 1);
+    insert into CriticaEntity (comentario, critico_id, funcion_id) values ('Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.', 1, 1);
+    insert into CriticaEntity (comentario, critico_id, funcion_id) values ('Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.', 1, 1);
 
-    Phasellus in felis. Donec semper sapien a libero. Nam dui.
+            delete from CriticaEntity;
 
-    Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.');
-    insert into CriticaEntity (comentario) values ('Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.
+    insert into CriticaEntity (id, comentario, critico_id, funcion_id) values (1, 'In sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.
 
-    Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.');
-    insert into CriticaEntity (comentario) values ('Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.
+    Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.
 
-    Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.
+    Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.', 1, 1);
+    insert into CriticaEntity (id, comentario, critico_id, funcion_id) values (2, 'Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat.
 
-    Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.');
-    insert into CriticaEntity (comentario) values ('Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.');
-    insert into CriticaEntity (comentario) values ('Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.
+    In congue. Etiam justo. Etiam pretium iaculis justo.
 
-    Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.');
+    In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.', 1, 1);
+    insert into CriticaEntity (id, comentario, critico_id, funcion_id) values (3, 'Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.
 
-    insert into CriticaEntity (comentario) values ('Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.');
-    insert into CriticaEntity (comentario) values ('In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.
+    Fusce consequat. Nulla nisl. Nunc nisl.', 1, 1);
+    insert into CriticaEntity (id, comentario, critico_id, funcion_id) values (4, 'Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.
 
-    Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.
+    Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
 
-    Sed ante. Vivamus tortor. Duis mattis egestas metus.');
-    insert into CriticaEntity (comentario) values ('Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.
-
-    Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.');
-    insert into CriticaEntity (comentario) values ('Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.
-
-    Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.
-
-    In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.');
-    insert into CriticaEntity (comentario) values ('In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.
-
-    Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.');
-    insert into CriticaEntity (comentario) values ('Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.
-
-    Phasellus in felis. Donec semper sapien a libero. Nam dui.
-
-    Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.');
-    insert into CriticaEntity (comentario) values ('Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.
-
-    Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.');
-    insert into CriticaEntity (comentario) values ('Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.
+    Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.', 1, 1);
+    insert into CriticaEntity (id, comentario, critico_id, funcion_id) values (5, 'Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.
 
     Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.
 
-    Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.');
-    insert into CriticaEntity (comentario) values ('Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.');
-    insert into CriticaEntity (comentario) values ('Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.
+    Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.', 1, 1);
+    insert into CriticaEntity (id, comentario, critico_id, funcion_id) values (6, 'Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.
 
-    Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.');
+    Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.
 
+    Fusce consequat. Nulla nisl. Nunc nisl.', 1, 1);
+    insert into CriticaEntity (id, comentario, critico_id, funcion_id) values (7, 'Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.
 
+    Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.', 1, 1);
+    insert into CriticaEntity (id, comentario, critico_id, funcion_id) values (8, 'Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.
+
+    Fusce consequat. Nulla nisl. Nunc nisl.
+
+    Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.', 1, 1);
+    insert into CriticaEntity (id, comentario, critico_id, funcion_id) values (9, 'Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.
+
+    Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.
+
+    Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.', 1, 1);
+    insert into CriticaEntity (id, comentario, critico_id, funcion_id) values (10, 'Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.', 1, 1);
     
