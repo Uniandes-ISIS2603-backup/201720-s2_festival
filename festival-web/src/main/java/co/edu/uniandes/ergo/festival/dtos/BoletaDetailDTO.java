@@ -6,6 +6,10 @@
 package co.edu.uniandes.ergo.festival.dtos;
 
 import co.edu.uniandes.ergo.festival.entities.BoletaEntity;
+import co.edu.uniandes.ergo.festival.entities.SillaEntity;
+import co.edu.uniandes.ergo.festival.entities.FuncionEntity;
+import co.edu.uniandes.ergo.festival.entities.EspectadorEntity;
+import co.edu.uniandes.ergo.festival.entities.CalificacionEntity;
 /**
  *
  * @author jc.corrales
@@ -17,19 +21,23 @@ public class BoletaDetailDTO extends BoletaDTO {
     /**
      * Atributo que contiene el ID de la silla asociada;
      */
-    private Long idSilla;
+    private SillaDTO silla;
     /**
      * Atributo que contiene el ID de la función asociada.
      */
-    private Long idFuncion;
+    private FuncionDTO funcion;
     /**
      * Atributo que contiene el ID del espectador asociado.
      */
-    private Long idEspectador;
+    private EspectadorDTO espectador;
     /**
      * Atributo que contiene el ID de la calificación asociada.
      */
-    private Long idCalificacion;
+    private CalificacionDTO calificacion;
+    /**
+     * Atributos que contienen
+     */
+    private AbonoDTO abono;
     /**
      * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
      * la entidad que viene de argumento.
@@ -39,59 +47,72 @@ public class BoletaDetailDTO extends BoletaDTO {
     public BoletaDetailDTO(BoletaEntity boleta)
     {
         super(boleta);
-        if (boleta.getSilla() != null)
-        {
-            this.idSilla = boleta.getSilla().getId();
-        }
-        if(boleta.getFuncion() != null)
-        {
-            this.idFuncion = boleta.getFuncion().getId();
-        }
-        if(boleta.getCalificacion() != null)
-        {
-            this.idCalificacion = boleta.getCalificacion().getId();
-        }
+        this.silla = new SillaDTO(boleta.getSilla());
+        this.funcion = new FuncionDTO(boleta.getFuncion());
+        this.calificacion = new CalificacionDTO(boleta.getCalificacion());
+        this.espectador = new EspectadorDTO(boleta.getEspectador());
+        this.abono = new AbonoDTO(boleta.getAbono());        
     }
 
-    public Long getIdSilla()
+    public SillaDTO getSilla()
     {
-        return this.idSilla;
+        return this.silla;
     }
     
-    public void setIdSilla(Long idSilla)
+    public void setSilla(SillaDTO silla)
     {
-        this.idSilla = idSilla;
+        this.silla = silla;
     }
-    public Long getIdFuncion()
+    public FuncionDTO getFuncion()
     {
-        return this.idFuncion;
+        return this.funcion;
     }
-    public void setIdFuncion(Long idFuncion)
+    public void setIdFuncion(FuncionDTO funcion)
     {
-        this.idFuncion = idFuncion;
-    }
-    
-    public Long getIDEspectador()
-    {
-        return this.idEspectador;
+        this.funcion = funcion;
     }
     
-    public void setIdEspectador(Long idEspectador)
+    public EspectadorDTO geEspectador()
     {
-        this.idEspectador= idEspectador;
+        return this.espectador;
     }
-    public Long getIdCalificacion()
+    
+    public void setEspectador(EspectadorDTO espectador)
     {
-        return this.idCalificacion;
+        this.espectador= espectador;
     }
-    public void setIdCalificacion(Long idCalificacion)
+    public CalificacionDTO getCalificacion()
     {
-        this.idCalificacion = idCalificacion;
+        return this.calificacion;
+    }
+    public void setCalificacion(CalificacionDTO calificacion)
+    {
+        this.calificacion = calificacion;
     }
     @Override
     public BoletaEntity toEntity() {
         BoletaEntity entity = super.toEntity();
-
+        if(abono != null)
+        {
+            entity.setAbono(abono.toEntity());
+        }
+        if(calificacion != null)
+        {
+            entity.setCalificacion(calificacion.toEntity());
+        }
+        if(espectador != null)
+        {
+            entity.setEspectador(espectador.toEntity());
+        }
+        if(funcion != null)
+        {
+            entity.setFuncion(funcion.toEntity());
+        }
+        if(silla != null)
+        {
+            entity.setSilla(silla.toEntity());
+        }
+        //entity.setFuncion(tempFuncion);
         return entity;
 
     }

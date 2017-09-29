@@ -35,8 +35,11 @@ public class AbonoDTO
      */
     public AbonoDTO(AbonoEntity abono)
     {
-        this.id = abono.getId();
-        this.precio = abono.getPrecio();
+        if(abono != null)
+        {
+            this.id = abono.getId();
+            this.precio = abono.getPrecio();
+        }
     }
     /**
      * Método que obtiene el ID.

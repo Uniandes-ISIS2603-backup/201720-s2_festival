@@ -12,7 +12,7 @@ import co.edu.uniandes.ergo.festival.entities.CalificacionEntity;
  * @author m.neira10
  */
 public class CalificacionDTO {
-    private double calificacion;
+    private Double calificacion;
     private String comentario;
 
     private Long id;
@@ -24,17 +24,20 @@ public class CalificacionDTO {
 
     }
     public CalificacionDTO(CalificacionEntity entity){
-        this.calificacion = entity.getCalificacion();
-        this.comentario = entity.getComentario();
-        this.id = entity.getId();
-        this.name = entity.getName();
+        if(entity != null)
+        {
+            this.calificacion = entity.getCalificacion();
+            this.comentario = entity.getComentario();
+            this.id = entity.getId();
+            this.name = entity.getName();
+        }
     }
 
-    public double getCalificacion() {
+    public Double getCalificacion() {
         return calificacion;
     }
 
-    public void setCalificacion(double calificacion) {
+    public void setCalificacion(Double calificacion) {
         this.calificacion = calificacion;
     }
 
@@ -64,10 +67,14 @@ public class CalificacionDTO {
          
     public CalificacionEntity toEntity(){
         CalificacionEntity entity = new CalificacionEntity();
-        entity.setCalificacion(calificacion);
-        entity.setComentario(comentario);
-        entity.setId(id);
-        entity.setName(name);
+        if(calificacion != null)
+            entity.setCalificacion(calificacion);
+        if(comentario != null)
+            entity.setComentario(comentario);
+        if(id != null)
+            entity.setId(id);
+        if(name != null)
+            entity.setName(name);
         return entity;
     }
 }

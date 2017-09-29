@@ -179,15 +179,21 @@ public class AbonoLogic
         {
             throw new BusinessLogicException("La Boleta con Id: \"" + boletaId +"\" no existe.");
         }
-        List<BoletaEntity> boletas = abonoEntity.getBoletas();
-        for(int i = 0; i < boletas.size(); i++)
+        BoletaEntity boleta = persistenceBoleta.find(boletaId);
+        if(boleta.getAbono() != null)
         {
-            if(boletas.get(i).getId().equals(boletaId))
-            {
-                throw new BusinessLogicException("La boleta con Id: \"" + boletaId +"\" ya está asociada a este Abono.");
-            }
+            throw new BusinessLogicException("La Boleta con Id: \"" + boletaId +"\" ya tiene un abono asignado.");
         }
-        boletas.add(persistenceBoleta.find(boletaId));
+        boleta.setAbono(abonoEntity);
+//        List<BoletaEntity> boletas = abonoEntity.getBoletas();
+//        for(int i = 0; i < boletas.size(); i++)
+//        {
+//            if(boletas.get(i).getId().equals(boletaId))
+//            {
+//                throw new BusinessLogicException("La boleta con Id: \"" + boletaId +"\" ya está asociada a este Abono.");
+//            }
+//        }
+//        boletas.add(persistenceBoleta.find(boletaId));
         LOGGER.log(Level.INFO, "Termina proceso de agregar Espectador de Abono con id={0}", abonoId);
         return persistenceBoleta.find(boletaId);
     }

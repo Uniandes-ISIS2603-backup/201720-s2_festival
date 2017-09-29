@@ -52,6 +52,7 @@ public class BoletaEntity extends BaseEntity implements Serializable
      * Constate que representa que esta boleta está comprada.
      */
     public final static Integer COMPRADA=3;
+    
     /**
      * Atributo que contiene el código de barras de a boleta.
      */
@@ -69,7 +70,7 @@ public class BoletaEntity extends BaseEntity implements Serializable
      */
 
     @PodamExclude
-    @OneToOne//(orphanRemoval = true,cascade = CascadeType.ALL)
+    @OneToOne(orphanRemoval = true,cascade = CascadeType.REMOVE)
     private CalificacionEntity calificacion;
     /**
      * Atributo que contiene la información del espectador asociado.

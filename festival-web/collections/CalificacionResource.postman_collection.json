@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "CalificacionResource",
-		"_postman_id": "99d60675-1ed9-77ad-00c7-b5dc18de11bb",
+		"_postman_id": "5ce4ec7e-4584-0710-8174-2183c1b0383a",
 		"description": "Pruebas iniciales del proyecto para el recurso calificacion. ",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -17,7 +17,7 @@
 						"exec": [
 							"var data = JSON.parse(responseBody);",
 							"tests[\"no genera error en el Post\"] = responseCode.code === 200;",
-							"tests[\"Test count\"] = data.length === 5; ",
+							"tests[\"Test count\"] = data.length === 4; ",
 							"",
 							""
 						]
@@ -133,7 +133,7 @@
 			"response": []
 		},
 		{
-			"name": "Verificar que hayan 4",
+			"name": "Verificar que hayan 3",
 			"event": [
 				{
 					"listen": "test",
@@ -142,7 +142,7 @@
 						"exec": [
 							"var data = JSON.parse(responseBody);",
 							"tests[\"No genera error en el Post\"] = responseCode.code === 200;",
-							"tests[\"Num respuestas correcto\"] = data.length === 4; ",
+							"tests[\"Num respuestas correcto\"] = data.length === 3; ",
 							""
 						]
 					}
