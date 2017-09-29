@@ -22,10 +22,13 @@ public class FuncionDTO {
     private String name;
 
     public FuncionDTO(FuncionEntity entity) {
-        this.horaInicio = entity.getHoraInicio();
-        this.horaFin = entity.getHoraFin();
-        this.id = entity.getId();
-        this.name = entity.getName();
+        if(entity != null)
+        {
+            this.horaInicio = entity.getHoraInicio();
+            this.horaFin = entity.getHoraFin();
+            this.id = entity.getId();
+            this.name = entity.getName();
+        }
     }
     
     public FuncionDTO(){
@@ -67,10 +70,15 @@ public class FuncionDTO {
     
     public FuncionEntity toEntity(){
         FuncionEntity entity = new FuncionEntity();
-        entity.setHoraInicio(horaInicio);
-        entity.setHoraFin(horaFin);
-        entity.setId(id);
-        entity.setName(name);
+        if(horaInicio != null)
+            entity.setHoraInicio(horaInicio);
+        if(horaFin != null)
+            entity.setHoraFin(horaFin);
+        if(id != null)
+            entity.setId(id);
+        if(name != null)
+            entity.setName(name);
+        
         return entity;
     
     

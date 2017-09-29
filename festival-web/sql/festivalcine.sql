@@ -6,6 +6,7 @@ delete from PeliculaEntity;
 delete from PersonaEntity;
 delete from CalificacionEntity;
 delete from BoletaEntity;
+delete from AbonoEntity;
 delete from SillaEntity;
 delete from FuncionEntity;
 delete from SalaEntity;
@@ -71,38 +72,25 @@ delete from FuncionEntity;
     insert into SillaEntity (id, tarifa, esPreferencial, sala_id) values (9, 39.94, 0, 3);
     insert into SillaEntity (id, tarifa, esPreferencial, sala_id) values (10,59.54, 1, 3);
 
+
 /* BoletaEntity*/
 
     insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id) values(10, 120, 1, 500.50, 1);
     insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id) values(20, 130, 2, 600.50, 2);
     insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id) values(30, 110, 1, 700.50, 2);
     insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id) values(40, 50, 3, 400.50, 2);
-    insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id) values(50, 650, 3, 300.25, 2);
+    insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id) values(50, 500, 3, 400.50, 2);
+
 
 /*Funciones de BoletaEntity*/
 insert into BoletaEntity (id, codigoDeBarras, estado, precio) values(60, 650, 3, 300.25);
 
 
-
 /* CalificacionEntity */
-
-    /*insert into CalificacionEntity (id,calificacion, comentario,boleta_id) values(1,1.1,'a1',10);
-    insert into CalificacionEntity (id,calificacion, comentario,boleta_id) values(2,2.2,'a2',20);
-    insert into CalificacionEntity (id,calificacion, comentario,boleta_id) values(3,3.3,'a3',30);
-    insert into CalificacionEntity (id,calificacion, comentario,boleta_id) values(4,4.4,'a4',40);*/
-
-    insert into CalificacionEntity (calificacion, comentario) values(1.1,'a1');
-    insert into CalificacionEntity (calificacion, comentario) values(2.2,'a2');
-    insert into CalificacionEntity (calificacion, comentario) values(3.3,'a3');
-    insert into CalificacionEntity (calificacion, comentario) values(4.4,'a4');
-
-    delete from CalificacionEntity;
-
-    insert into CalificacionEntity (id,calificacion, comentario) values(1,1.1,'a1');
-    insert into CalificacionEntity (id,calificacion, comentario) values(2,2.2,'a2');
-    insert into CalificacionEntity (id,calificacion, comentario) values(3,3.3,'a3');
-    insert into CalificacionEntity (id,calificacion, comentario) values(4,4.4,'a4');
-
+insert into CalificacionEntity (id,calificacion, comentario) values(1,1.1,'a1');
+insert into CalificacionEntity (id,calificacion, comentario) values(2,2.2,'a2');
+insert into CalificacionEntity (id,calificacion, comentario) values(3,3.3,'a3');
+insert into CalificacionEntity (id,calificacion, comentario) values(4,4.4,'a4');
 
 /* CriticoEntity */
 
@@ -181,6 +169,7 @@ insert into BoletaEntity (id, codigoDeBarras, estado, precio) values(60, 650, 3,
     insert into PeliculaEntity_PersonaEntity (peliculaentity_id, criticos_id) values (10, 10);
 
 /* FuncionEntity */
+  
 
     insert into FuncionEntity (horaInicio, horaFin,sala_id,festival_id,pelicula_id) values ('4/17/2017', '9/23/2016',1,1,1);
     insert into FuncionEntity (horaInicio, horaFin,sala_id,festival_id,pelicula_id) values ('12/16/2016', '10/12/2016',1,1,1);
@@ -273,6 +262,7 @@ insert into BoletaEntity (id, codigoDeBarras, estado, precio) values(60, 650, 3,
 
     Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.
 
-    Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.', 1, 1);
+
+    Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus ', 1, 1);
     insert into CriticaEntity (id, comentario, critico_id, funcion_id) values (10, 'Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.', 1, 1);
-    
+
