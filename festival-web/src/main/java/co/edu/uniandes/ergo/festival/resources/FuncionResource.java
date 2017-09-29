@@ -43,6 +43,15 @@ public class FuncionResource {
   */
  @POST
  public FuncionDetailDTO createFuncion(FuncionDetailDTO dto){
+     if(dto.getSala()==null){
+         throw new WebApplicationException("La Funcion no tiene una sala como parametro.", 404);
+     }
+     if(dto.getFestival()==null){
+         throw new WebApplicationException("La Funcion no tiene un festival como parametro.", 404);
+     }
+     if(dto.getPelicula()==null){
+         throw new WebApplicationException("La Funcion no tiene una pelicula como parametro.", 404);
+     }
      return new FuncionDetailDTO(funcionLogic.createFuncion(dto.toEntity()));
  }
  
@@ -82,6 +91,15 @@ public class FuncionResource {
      FuncionEntity oldEntity = funcionLogic.getFuncion(id);
      if (oldEntity == null){
          throw new WebApplicationException("La Funcion con id: " + id + " no existe.", 404);
+     }
+     if(dto.getSala()==null){
+         throw new WebApplicationException("La Funcion no tiene una sala como parametro.", 404);
+     }
+     if(dto.getFestival()==null){
+         throw new WebApplicationException("La Funcion no tiene un festival como parametro.", 404);
+     }
+     if(dto.getPelicula()==null){
+         throw new WebApplicationException("La Funcion no tiene una pelicula como parametro.", 404);
      }
      FuncionEntity entity = dto.toEntity();
      entity.setId(id);

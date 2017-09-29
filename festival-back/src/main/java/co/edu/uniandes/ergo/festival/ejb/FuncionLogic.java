@@ -41,6 +41,7 @@ public class FuncionLogic {
    
    public FuncionEntity updateFuncion(FuncionEntity entity){
        LOGGER.log(Level.INFO, "Inicia proceso de actualizar una FuncionEntity.");
+       
        return persistence.update(entity);
    }
    
