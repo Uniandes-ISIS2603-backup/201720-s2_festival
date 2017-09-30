@@ -1,0 +1,111 @@
+{
+	"variables": [],
+	"info": {
+		"name": "PatrocinadorResource",
+		"_postman_id": "72a3dd23-9082-b19b-2cc1-345507cf6ec1",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST",
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/patrocinadores",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"Sra. Patrocinadora\",\n\t\"NIT\":1234,\n\t\"patrocinio\":50000.00\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "PUT",
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/patrocinadores/1",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"Sr. Patrocinador\",\n\t\"NIT\":1234556,\n\t\"patrocinio\":250000.00\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET todos",
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/patrocinadores/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"Sr. Patrocinador\",\n\t\"NIT\":1234556,\n\t\"patrocinio\":250000.00\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET uno",
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/patrocinadores/1",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"Sr. Patrocinador\",\n\t\"NIT\":1234556,\n\t\"patrocinio\":250000.00\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE",
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/patrocinadores/1",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"Sr. Patrocinador\",\n\t\"NIT\":1234556,\n\t\"patrocinio\":250000.00\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
