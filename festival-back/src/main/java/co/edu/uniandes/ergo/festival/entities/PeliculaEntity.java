@@ -9,6 +9,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
@@ -20,7 +22,7 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class PeliculaEntity extends BaseEntity implements Serializable {
 
-    private List<String> generos;
+    private String genero;
     private int duracionMinutos;
     private String director;
     private int creditos;
@@ -29,19 +31,19 @@ public class PeliculaEntity extends BaseEntity implements Serializable {
     private String corto;
 
     @PodamExclude
-    @OneToMany
+    @OneToMany(mappedBy = "pelicula")
     private List<FuncionEntity> funciones;
-    @PodamExclude
 
-    @OneToMany
+    @PodamExclude
+    @ManyToMany
     private List<CriticoEntity> criticos;
 
     public List<FuncionEntity> getFunciones() {
         return funciones;
     }
 
-    public List<String> getGeneros() {
-        return generos;
+    public String getGenero() {
+        return genero;
     }
 
     public int getDuracionMinutos() {
@@ -73,15 +75,7 @@ public class PeliculaEntity extends BaseEntity implements Serializable {
     }
 
     public void setGenero(String genero) {
-        generos.add(genero);
-    }
-
-    public void deleteGenero(int position) {
-        generos.remove(position);
-    }
-
-    public void modifyGenero(int position, String genero) {
-        generos.set(position, genero);
+        this.genero = genero;
     }
 
     public void setDuracionMinutos(int duracionMinutos) {
@@ -108,14 +102,6 @@ public class PeliculaEntity extends BaseEntity implements Serializable {
         this.datos = datos;
     }
 
-    public void setGeneros(List<String> generos) {
-        this.generos = generos;
-    }
-
-    public void addGeneros(String genero) {
-        generos.add(genero);
-    }
-
     public void setFunciones(List<FuncionEntity> funciones) {
         this.funciones = funciones;
     }
@@ -130,5 +116,9 @@ public class PeliculaEntity extends BaseEntity implements Serializable {
 
     public void addCritico(CriticoEntity critico) {
         criticos.add(critico);
+    }
+
+    public void removeCritico(CriticoEntity critico) {
+        criticos.remove(critico);
     }
 }

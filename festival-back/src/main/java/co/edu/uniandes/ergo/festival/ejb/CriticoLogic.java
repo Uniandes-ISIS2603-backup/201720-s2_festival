@@ -6,6 +6,7 @@
 package co.edu.uniandes.ergo.festival.ejb;
 
 import co.edu.uniandes.ergo.festival.entities.CriticoEntity;
+import co.edu.uniandes.ergo.festival.entities.PeliculaEntity;
 import co.edu.uniandes.ergo.festival.exceptions.BusinessLogicException;
 import co.edu.uniandes.ergo.festival.persistence.CriticoPersistence;
 import java.util.List;
@@ -22,6 +23,9 @@ import javax.inject.Inject;
 public class CriticoLogic {
 
     private static final Logger LOGGER = java.util.logging.Logger.getLogger(CriticoLogic.class.getName());
+
+    @Inject
+    private PeliculaLogic peliLogic;
 
     @Inject
     private CriticoPersistence persistence;
@@ -59,7 +63,7 @@ public class CriticoLogic {
 
             throw new BusinessLogicException(excepcion);
         }
-        
+
         CriticoEntity conId = persistence.create(nueva);
         LOGGER.info("Termina proceso de creación de el crítico.");
         return conId;
@@ -80,4 +84,42 @@ public class CriticoLogic {
         persistence.delete(id);
         LOGGER.log(Level.INFO, "Termina proceso de borrar el crítico con id={0}", id);
     }
+
+    public List<PeliculaEntity> getPeliculas(Long id) throws BusinessLogicException {
+        CriticoEntity elCri = getCritico(id);
+        List<PeliculaEntity> pelis = elCri.GetPeliculas();
+        if (pelis == null) {
+            throw new BusinessLogicException("EL crítico no tiene una lista de películas");
+        }
+        return pelis;
+    }
+
+    public PeliculaEntity getPelicula(Long criticoId, Long pelId) throws BusinessLogicException {
+
+        CriticoEntity elCri = getCritico(criticoId);
+        List<PeliculaEntity> pelis = getPeliculas(criticoId);
+        PeliculaEntity borrador = new PeliculaEntity();
+        borrador.setId(criticoId);
+        int index = pelis.indexOf(borrador);
+        if (index >= 0) {
+            return pelis.get(index);
+        }
+        throw new BusinessLogicException("no existe la película con id " + pelId + " asignada al critico con id " + criticoId);
+    }
+
+    public PeliculaEntity addPelicula(Long crId, Long pelId) throws BusinessLogicException {
+        CriticoEntity critico = getCritico(crId);
+        LOGGER.log(Level.INFO, "Inicia proceso de asociar la película con id ={0}", pelId);
+        PeliculaEntity peli = peliLogic.addCritico(pelId, critico);
+        critico.addPelicula(peli);
+        persistence.update(critico); // NO ESTOY SEGURO SI SE DEBE PONER ESE UPDATE
+        return peli;
+    }
+
+    public void removePelicula(Long crId, Long pelId) throws BusinessLogicException {
+        CriticoEntity critico = getCritico(crId);
+        LOGGER.log(Level.INFO, "Inicia proceso de desaosociar la película con id ={0}", pelId);
+        peliLogic.removeCritico(pelId, crId);
+    }
+
 }

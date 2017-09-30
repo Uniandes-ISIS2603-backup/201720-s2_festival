@@ -288,7 +288,7 @@
 			"response": []
 		},
 		{
-			"name": "Existe el recurso con id 6",
+			"name": "Verificar que la CalificacionEntity haya sido creada",
 			"event": [
 				{
 					"listen": "test",
@@ -297,7 +297,7 @@
 						"exec": [
 							"var data = JSON.parse(responseBody);",
 							"tests[\"No genera error en el Post\"] = responseCode.code === 200;",
-							"tests[\"Id de el recurso pedido\"] = data.id === 2;",
+							"tests[\"Hay 4 CalificacionEntity\"] = data.length === 4;",
 							"",
 							""
 						]
@@ -305,7 +305,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/festival-web/api/calificaciones/2",
+				"url": "http://localhost:8080/festival-web/api/calificaciones/",
 				"method": "GET",
 				"header": [
 					{

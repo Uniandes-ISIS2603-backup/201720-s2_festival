@@ -16,7 +16,7 @@ public class PeliculaDTO {
 
     private long id;
     private String nombre;
-    private List<String> generos;
+    private String genero;
     private int duracionMinutos;
     private String director;
     private int creditos;
@@ -32,7 +32,7 @@ public class PeliculaDTO {
         if (pelicula != null) {
             this.id = pelicula.getId();
             this.nombre = pelicula.getName();
-            this.generos = pelicula.getGeneros();
+            this.genero = pelicula.getGenero();
             this.duracionMinutos = pelicula.getDuracionMinutos();
             this.director = pelicula.getDirector();
             this.creditos = pelicula.getCreditos();
@@ -50,8 +50,8 @@ public class PeliculaDTO {
         return nombre;
     }
 
-    public List<String> getGeneros() {
-        return generos;
+    public String getGenero() {
+        return genero;
     }
 
     public int getDuracionMinutos() {
@@ -86,18 +86,6 @@ public class PeliculaDTO {
         this.id = id;
     }
 
-    public void setGenero(String genero) {
-        generos.add(genero);
-    }
-
-    public void deleteGenero(int position) {
-        generos.remove(position);
-    }
-
-    public void modifyGenero(int position, String genero) {
-        generos.set(position, genero);
-    }
-
     public void setDuracionMinutos(int duracionMinutos) {
         this.duracionMinutos = duracionMinutos;
     }
@@ -121,13 +109,17 @@ public class PeliculaDTO {
     public void setDatos(String datos) {
         this.datos = datos;
     }
+    
+    public void setGenero(String genero){
+        this.genero = genero;
+    }
 
     public PeliculaEntity toEntity() {
 
         PeliculaEntity pelicula = new PeliculaEntity();
         pelicula.setId(this.id);
         pelicula.setName(this.nombre);
-        pelicula.setGeneros(this.generos);
+        pelicula.setGenero(this.genero);
         pelicula.setDuracionMinutos(this.duracionMinutos);
         pelicula.setDirector(this.director);
         pelicula.setCreditos(this.creditos);

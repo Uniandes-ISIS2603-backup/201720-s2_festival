@@ -7,8 +7,11 @@ package co.edu.uniandes.ergo.festival.resources;
 
 import co.edu.uniandes.ergo.festival.dtos.CriticoDTO;
 import co.edu.uniandes.ergo.festival.dtos.CriticoDetailDTO;
+import co.edu.uniandes.ergo.festival.dtos.PeliculaDTO;
 import co.edu.uniandes.ergo.festival.ejb.CriticoLogic;
+import co.edu.uniandes.ergo.festival.ejb.PeliculaLogic;
 import co.edu.uniandes.ergo.festival.entities.CriticoEntity;
+import co.edu.uniandes.ergo.festival.entities.PeliculaEntity;
 import co.edu.uniandes.ergo.festival.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +37,8 @@ import javax.ws.rs.core.MediaType;
 
 public class CriticoResource {
 
+    @Inject
+    PeliculaLogic peliLogic;
     @Inject
     private CriticoLogic logic;
 
@@ -82,5 +87,22 @@ public class CriticoResource {
             list.add(new CriticoDetailDTO(entity));
         }
         return list;
+    }
+
+    private List<PeliculaDTO> listPeliEntity2DTO(List<PeliculaEntity> pelis) {
+        List<PeliculaDTO> rta = new ArrayList<>();
+        for (PeliculaEntity peli : pelis) {
+            rta.add(new PeliculaDTO(peli));
+        }
+        return rta;
+    }
+
+    @Path("{CriticoId: \\d+}/peliculas")
+    public Class<CriticoPeliculaResource> getCriticoPeliculaResource(@PathParam("CriticoId") Long id) throws WebApplicationException{
+        CriticoEntity critico = logic.getCritico(id);
+        if(critico == null){
+            throw new WebApplicationException("El crítico no existe", 404);
+        }
+        return CriticoPeliculaResource.class;
     }
 }

@@ -9,12 +9,14 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import uk.co.jemos.podam.common.PodamExclude;
 
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
 
 
 /**
@@ -35,7 +37,7 @@ public class FuncionEntity extends BaseEntity implements Serializable{
     private List<BoletaEntity> boletas;
 
     @PodamExclude
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     private List<CriticaEntity> criticas;
     
     @PodamExclude

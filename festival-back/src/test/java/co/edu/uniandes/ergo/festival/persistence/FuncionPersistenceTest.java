@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.ergo.festival.persistence;
 
+import co.edu.uniandes.ergo.festival.entities.CriticaEntity;
 import co.edu.uniandes.ergo.festival.entities.FuncionEntity;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,6 +42,7 @@ public class FuncionPersistenceTest {
     UserTransaction utx;
     
     private List<FuncionEntity> data = new ArrayList<>();
+    
     
     @Deployment
     public static JavaArchive createDeployment() {
@@ -89,9 +91,13 @@ public class FuncionPersistenceTest {
         PodamFactory factory = new PodamFactoryImpl();
         for (int i = 0; i < 3; i++) {
             FuncionEntity entity = factory.manufacturePojo(FuncionEntity.class);
-
+            
+            
+            
+            
             em.persist(entity);
             data.add(entity);
+            
         }
     }
     @After
@@ -117,6 +123,8 @@ public class FuncionPersistenceTest {
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getName(), newEntity.getName());
     }
+    
+    
 
      @Test
     public void testFindAll() throws Exception {
