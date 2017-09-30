@@ -635,7 +635,7 @@
 			"response": []
 		},
 		{
-			"name": "Borrar Boleta",
+			"name": "Borrar Boleta 20",
 			"event": [
 				{
 					"listen": "test",
@@ -655,12 +655,12 @@
 					"mode": "raw",
 					"raw": ""
 				},
-				"description": "Método debe borrar una boleta."
+				"description": "Método debe borrar una boleta.\nEsta boleta contiene Silla, Funcion y Calificacion."
 			},
 			"response": []
 		},
 		{
-			"name": "Get Boleta no Existente.",
+			"name": "Get Boleta 20 no Existente.",
 			"event": [
 				{
 					"listen": "test",
