@@ -139,7 +139,7 @@
 					"script": {
 						"type": "text/javascript",
 						"exec": [
-							"/* CalificacionEntity */tests[\"Status code is 404\"] = responseCode.code === 404;"
+							"/* CalificacionEntity */tests[\"Status code is 200\"] = responseCode.code === 200;"
 						]
 					}
 				}
@@ -164,7 +164,7 @@
 					"script": {
 						"type": "text/javascript",
 						"exec": [
-							"/* CalificacionEntity */tests[\"Status code is 404\"] = responseCode.code === 404;"
+							"/* CalificacionEntity */tests[\"Status code is 200\"] = responseCode.code === 200;"
 						]
 					}
 				}
@@ -178,37 +178,6 @@
 					"raw": ""
 				},
 				"description": "Debe obtener un arreglo de boletas."
-			},
-			"response": []
-		},
-		{
-			"name": "Actualización de silla de la boleta 40",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"type": "text/javascript",
-						"exec": [
-							"tests[\"Status code is 200\"] = responseCode.code === 200;"
-						]
-					}
-				}
-			],
-			"request": {
-				"url": "http://localhost:8080/festival-web/api/boletas/40",
-				"method": "PUT",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\"silla\":{\"id\" : 3}, \"funcion\": {\"id\" : 2}}"
-				},
-				"description": "Este método solo actualiza la silla y la boleta."
 			},
 			"response": []
 		},
@@ -240,6 +209,37 @@
 					"raw": "{\"estado\" : \"genial\", \"precio\" : 555.5, \"codigoDeReserva\" : 5575, \"silla\":{\"id\":4}, \"funcion\" : {\"id\":2}}"
 				},
 				"description": "Este método debería cambiar la informacion de la boleta que se acaba de publicar."
+			},
+			"response": []
+		},
+		{
+			"name": "Actualización de silla de la boleta 40 copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/boletas/40",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"silla\":{\"id\" : 3}, \"funcion\": {\"id\" : 2}}"
+				},
+				"description": "Este método solo actualiza la silla y la boleta."
 			},
 			"response": []
 		},
