@@ -12,10 +12,11 @@ import co.edu.uniandes.ergo.festival.entities.TeatroEntity;
  * @author de.gutierrez
  */
 public class TeatroDTO
-{
- 
+{    
     private Long id;
     private String nombre;
+    private Double tarifaBasica;
+    
     
     /**
      * Constructor vacío para JAX-RS.
@@ -27,6 +28,8 @@ public class TeatroDTO
     public TeatroDTO(TeatroEntity teatro)
     {
         this.id = teatro.getId();
+        this.nombre = teatro.getName();
+        this.tarifaBasica = teatro.getTarifaBasica();
     }
     public Long getId() {
         return id;
@@ -43,12 +46,21 @@ public class TeatroDTO
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+    public Double getTarifaBasica() {
+        return tarifaBasica;
+    }
+
+    public void setTarifaBasica(Double tarifaBasica) {
+        this.tarifaBasica = tarifaBasica;
+    }
     
     public TeatroEntity toEntity()
     {
         TeatroEntity entity = new TeatroEntity();
         entity.setId(this.id);
-        entity.setNombre(this.nombre);
+        entity.setName(this.nombre);
+        entity.setTarifaBasica(tarifaBasica);
         return entity;
     }
 }

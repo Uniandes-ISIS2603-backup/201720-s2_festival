@@ -136,7 +136,7 @@ public class FestivalPersistenceTest
         Assert.assertNotNull(result);
         FestivalEntity entity = em.find(FestivalEntity.class, result.getId());
         Assert.assertNotNull(entity);
-        Assert.assertEquals(newEntity.getNombre(), entity.getNombre());
+        Assert.assertEquals(newEntity.getName(), entity.getName());
     }
 
    
@@ -155,7 +155,7 @@ public class FestivalPersistenceTest
      persistence.update(newEntity);
      
      FestivalEntity res = em.find(FestivalEntity.class, entity.getId());
-     Assert.assertEquals(newEntity.getNombre(), res.getNombre());
+     Assert.assertEquals(newEntity.getName(), res.getName());
     } 
 
     /**
@@ -179,7 +179,7 @@ public class FestivalPersistenceTest
         FestivalEntity entity = data.get(0);
         FestivalEntity newEntity = persistence.find(entity.getId());
         Assert.assertNotNull(entity);
-        Assert.assertEquals(entity.getNombre(), newEntity.getNombre());
+        Assert.assertEquals(entity.getName(), newEntity.getName());
     }
 
     /**
