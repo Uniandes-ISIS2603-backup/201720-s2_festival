@@ -9,6 +9,7 @@ import co.edu.uniandes.ergo.festival.dtos.*;
 import co.edu.uniandes.ergo.festival.ejb.FestivalLogic;
 import co.edu.uniandes.ergo.festival.entities.FestivalEntity;
 import co.edu.uniandes.ergo.festival.entities.*;
+import co.edu.uniandes.ergo.festival.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ws.rs.DELETE;
@@ -58,7 +59,7 @@ public class FestivalPeliculaResource
     
     @POST
     @Path("{festivalesId:\\d+ }/peliculas")
-    public PeliculaDTO addTeatroFestival(@PathParam("festivalesId") Long festivalId, @PathParam("teatrosId") Long peliculasId)    
+    public PeliculaDTO addTeatroFestival(@PathParam("festivalesId") Long festivalId, @PathParam("teatrosId") Long peliculasId) throws BusinessLogicException    
     {
         return new PeliculaDTO(festivalLogic.addPelicula(festivalId, peliculasId));
     }
@@ -75,7 +76,7 @@ public class FestivalPeliculaResource
      */
     @DELETE
   @Path("{festivalesId:\\d+ }/peliculas")
-    public void removeTeatro(@PathParam("festivalesId") Long festivalId, @PathParam("teatrosId") Long peliculasId)
+    public void removeTeatro(@PathParam("festivalesId") Long festivalId, @PathParam("teatrosId") Long peliculasId) throws BusinessLogicException
     {
         festivalLogic.removePelicula(festivalId, peliculasId);
     }

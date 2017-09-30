@@ -416,7 +416,7 @@ public class FestivalLogic {
 
    ///////////OPERACIONES SOBRE PELICULAS///////////////////
     
-    public PeliculaEntity addPelicula (Long idFestival, Long idPelicula)
+    public PeliculaEntity addPelicula (Long idFestival, Long idPelicula) throws BusinessLogicException
     {
         FestivalEntity festival = getFestival(idFestival);
         PeliculaEntity pelicula = peliculaLogic.getPelicula(idPelicula);
@@ -470,7 +470,7 @@ public class FestivalLogic {
      * @param idEspectador
      * @param idFuncion
      */
-    public void removePelicula(Long idFestival, Long idPelicula)
+    public void removePelicula(Long idFestival, Long idPelicula) throws BusinessLogicException
     {
         FestivalEntity festival = getFestival(idFestival);
         PeliculaEntity pelicula = peliculaLogic.getPelicula(idPelicula);
