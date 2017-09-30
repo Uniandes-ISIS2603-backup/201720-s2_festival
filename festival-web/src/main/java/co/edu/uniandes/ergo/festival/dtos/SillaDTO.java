@@ -17,7 +17,8 @@ public class SillaDTO {
      * Identificador de la SillaEntity en la base de datos.
      */
     private Long id;
-
+    
+    private String name;
     /**
      * Indica la tarifa pagada por la silla.
      */
@@ -44,6 +45,7 @@ public class SillaDTO {
             id = entity.getId();
             tarifa = entity.getTarifa();
             esPreferencial = entity.isEsPreferencial();
+            name = entity.getName();
         }
     }
 
@@ -98,6 +100,21 @@ public class SillaDTO {
         entity.setId(id);
         entity.setTarifa(tarifa);
         entity.setEsPreferencial(esPreferencial);
+        entity.setName(name);
         return entity;
+    }
+
+    /**
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * @param name the name to set
+     */
+    public void setName(String name) {
+        this.name = name;
     }
 }

@@ -6,6 +6,7 @@
 package co.edu.uniandes.ergo.festival.ejb;
 
 
+import co.edu.uniandes.ergo.festival.entities.AbonoEntity;
 import co.edu.uniandes.ergo.festival.entities.BoletaEntity;
 import co.edu.uniandes.ergo.festival.entities.EspectadorEntity;
 import co.edu.uniandes.ergo.festival.entities.EspectadorEntity;
@@ -24,6 +25,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.ws.rs.WebApplicationException;
 /**
  *
  * @author jc.corrales
@@ -50,8 +52,13 @@ public class BoletaLogic
     private FuncionPersistence persistenceFuncion;
     
     @Inject
+    private EspectadorLogic logicEspectador;
+    
+    @Inject
     private CalificacionLogic logicCalificacion;
     
+    @Inject
+    private AbonoLogic logicAbono;
    // @Inject
    // private CalificacionLogic calificacionLogic;
     /**
@@ -73,10 +80,10 @@ public class BoletaLogic
             throw new BusinessLogicException("La boleta con ID: \"" + entity.getId()+"\" no tiene un codigo de barras asignado.");
         }
         LOGGER.info("Si tiene código de barras.");
-//        if(entity.getFuncion() == null)
-//        {
-//            throw new BusinessLogicException("La boleta con id \"" + entity.getId()+"\" no tiene una funcion asignada.");
-//        }
+        if(entity.getFuncion() == null)
+        {
+            throw new BusinessLogicException("La boleta con id \"" + entity.getId()+"\" no tiene una funcion asignada.");
+        }
         LOGGER.info("Si tiene Funcion.");
         if(entity.getSilla() == null)
         {
@@ -102,13 +109,13 @@ public class BoletaLogic
         }
         LOGGER.info("La Silla es válida y sí existe.");
         entity.setSilla(silla);
-//        FuncionEntity funcion = persistenceFuncion.find(entity.getFuncion().getId());
-//        if(funcion == null)
-//        {
-//            throw new BusinessLogicException("La funcion con el ID: \"" + entity.getFuncion().getId() +"\" no existe."); 
-//        }
+        FuncionEntity funcion = persistenceFuncion.find(entity.getFuncion().getId());
+        if(funcion == null)
+        {
+            throw new BusinessLogicException("La funcion con el ID: \"" + entity.getFuncion().getId() +"\" no existe."); 
+        }
         LOGGER.info("La Función es válida y sí existe.");
-//        entity.setFuncion(funcion);
+        entity.setFuncion(funcion);
         List <BoletaEntity> boletasSilla = logicSilla.getSilla(entity.getSilla().getId()).getBoletas();
         for(int i = 0; i < boletasSilla.size(); i++)
         {
@@ -126,14 +133,14 @@ public class BoletaLogic
             }
         }
         LOGGER.info("La Silla asignada no una boleta con igual ID asignada.");
-//        List<BoletaEntity> boletasFuncion = funcion.getBoletas();
-//        for(int i = 0; i < boletasFuncion.size(); i++)
-//        {
-//            if(boletasFuncion.get(i).getId().equals(entity.getId()))
-//            {
-//                throw new BusinessLogicException("La Función con id: \"" + entity.getFuncion().getId()+"\" ya tiene una boleta con id: \"" + entity.getFuncion().getId()+"\" asignada a esa función."); 
-//            }
-//        }
+        List<BoletaEntity> boletasFuncion = funcion.getBoletas();
+        for(int i = 0; i < boletasFuncion.size(); i++)
+        {
+            if(boletasFuncion.get(i).getCodigoBarras().equals(entity.getCodigoBarras()))
+            {
+                throw new BusinessLogicException("La Función con id: \"" + entity.getFuncion().getId()+"\" ya tiene una boleta con codigoDeBarras: \"" + entity.getCodigoBarras()+"\" asignada a esa función."); 
+            }
+        }
         LOGGER.info("La Función asignada no una boleta con igual ID asignada.");
         LOGGER.info("Verificando si hay espectador asociado.");
         if(entity.getEspectador() != null)
@@ -152,7 +159,7 @@ public class BoletaLogic
         LOGGER.info("Creando Boleta.");
         persistenceBoleta.create(entity);
         boletasSilla.add(entity);
-//        boletasFuncion.add(entity);
+        boletasFuncion.add(entity);
         silla.setBoletas(boletasSilla);
         logicSilla.updateSilla(silla);
         LOGGER.info("Termina proceso de creación de Boleta");
@@ -203,10 +210,10 @@ public class BoletaLogic
             throw new BusinessLogicException("La boleta con ID: \"" + entity.getId()+"\" no tiene un codigo de barras asignado.");
         }
         LOGGER.info("Si tiene código de barras.");
-//        if(entity.getFuncion() == null)
-//        {
-//            throw new BusinessLogicException("La boleta con id \"" + entity.getId()+"\" no tiene una funcion asignada.");
-//        }
+        if(entity.getFuncion() == null)
+        {
+            throw new BusinessLogicException("La boleta con id \"" + entity.getId()+"\" no tiene una funcion asignada.");
+        }
         LOGGER.info("Si tiene Funcion.");
         if(entity.getSilla() == null)
         {
@@ -217,6 +224,10 @@ public class BoletaLogic
         {
             LOGGER.info("No tiene estado asignado, asignando estado DISPONIBLE");
             entity.setEstado(BoletaEntity.DISPONIBLE);
+        }
+        if(entity.getCalificacion() != null)
+        {
+            throw new BusinessLogicException("La calificacion de la boleta con id \"" + entity.getId() + "\" no se modifica desde aquí, usar la extension: (boletasId/calificaciones)");
         }
         // Verifica la regla de negocio que dice que no puede haber dos boletas con el mismo codigo de barras.
         
@@ -273,16 +284,51 @@ public class BoletaLogic
             sillaVieja.setBoletas(boletasSillaVieja);
             logicSilla.updateSilla(sillaVieja);
         }
-        
-        
-        
+        LOGGER.info("Se ha procesado correctamente el cambio de Silla.");
+        List<BoletaEntity> boletasFuncion;
+        List<BoletaEntity> boletasFuncionVieja;
+        FuncionEntity funcionAAsignar;
+        boolean hayCambioDeFuncion = false;
+        if(entity.getFuncion().getId().equals(getBoleta(id).getFuncion().getId()))
+        {
+            hayCambioDeFuncion= false;
+            funcionAAsignar = logicFuncion.getFuncion(getBoleta(id).getFuncion().getId());
+            boletasFuncion = funcionAAsignar.getBoletas();
+            for(int i = 0; i < boletasFuncion.size(); i++)
+            {
+                if(boletasFuncion.get(i).getId().equals(id))
+                {
+                    boletasFuncion.set(i, entity);
+                }
+            }
+        }
+        else
+        {
+            hayCambioDeFuncion = true;
+            funcionAAsignar = logicFuncion.getFuncion(entity.getFuncion().getId());
+            boletasFuncion = funcionAAsignar.getBoletas();
+            FuncionEntity funcionVieja = getBoleta(id).getFuncion();
+            boletasFuncionVieja = funcionVieja.getBoletas();
+            for(int i = 0; i < boletasFuncionVieja.size(); i++)
+            {
+                if(boletasFuncionVieja.get(i).getId().equals(id))
+                {
+                    boletasFuncionVieja.remove(i);
+                }
+            }
+            boletasFuncion.add(entity);
+            funcionVieja.setBoletas(boletasFuncionVieja);
+            logicFuncion.updateFuncion(funcionVieja);
+        }
+        LOGGER.info("Se ha procesado correctamente el cambio de Funcion.");
         
         LOGGER.info("Reglas de negocio correctamente validadas.");
         
         // Invoca la persistencia para crear la boleta
         LOGGER.info("actializando Boleta.");
-        persistenceBoleta.update(entity);
         BoletaEntity newEntity = persistenceBoleta.update(entity);
+        funcionAAsignar.setBoletas(boletasFuncion);
+        logicFuncion.updateFuncion(funcionAAsignar);
 //      boletasFuncion.set(posBoletaEnBoletasFuncion, entity);
 //      funcion.setBoletas(boletasFuncion);
         sillaAAsignar.setBoletas(boletasSilla);
@@ -303,47 +349,81 @@ public class BoletaLogic
     {
         LOGGER.log(Level.INFO, "Inicia proceso de borrar boleta con id={0}",id);
         BoletaEntity temp = getBoleta(id);
+        LOGGER.info("Procesando silla asociada.");
         SillaEntity silla = logicSilla.getSilla(temp.getSilla().getId());
-        List<BoletaEntity> boletasTemp = silla.getBoletas();
-        for(int i = 0; i < boletasTemp.size(); i++)
+        List<BoletaEntity> boletasSilla = silla.getBoletas();
+        for(int i = 0; i < boletasSilla.size(); i++)
         {
-            if(boletasTemp.get(i).getId().equals(id))
+            if(boletasSilla.get(i).getId().equals(id))
             {
-                boletasTemp.remove(i);
+                LOGGER.info("Eliminando boleta de la silla.");
+                boletasSilla.remove(i);
             }
         }
+        silla.setBoletas(boletasSilla);
+        logicSilla.updateSilla(silla);
+        LOGGER.info("Boleta exitosamente removida de Silla.");
         if(temp.getEspectador()!= null)
         {
-            ;//BORRAR LA BOLETA DEL ESPECTADOR.
+            LOGGER.info("Procesando Espectador asociado.");
+            EspectadorEntity espectadorTemp = logicEspectador.getEspectador(temp.getEspectador().getId());
+            List<BoletaEntity> boletasEspectador = espectadorTemp.getBoletas();
+            for(int i = 0; i < boletasEspectador.size(); i++)
+            {
+                if(boletasEspectador.get(i).getId().equals(id))
+                {
+                    LOGGER.info("Eliminando Boleta del espectador.");
+                    boletasEspectador.remove(i);
+                }
+            }
+            espectadorTemp.setBoletas(boletasEspectador);
+            logicEspectador.updateEspectador(temp.getEspectador().getId(), espectadorTemp);//BORRAR LA BOLETA DEL ESPECTADOR.
+            LOGGER.info("Boleta exitosamente removida de Espectador.");
         }
         if(temp.getAbono() != null)
         {
+            LOGGER.info("Procesando Abono asociado.");
+            AbonoEntity abonoTemp = logicAbono.getAbono(temp.getAbono().getId());
+            List<BoletaEntity> boletasAbono = abonoTemp.getBoletas();
+            for(int i = 0; i < boletasAbono.size(); i++)
+            {
+                if(boletasAbono.get(i).getId().equals(id))
+                {
+                    LOGGER.info("Removiendo Boleta del Abono.");
+                    boletasAbono.remove(i);
+                }
+            }
+            abonoTemp.setBoletas(boletasAbono);
+            logicAbono.updateAbono(abonoTemp.getId(), abonoTemp);
             temp.setAbono(null);
-            persistenceBoleta.update(temp);
+            //persistenceBoleta.update(temp);
+            LOGGER.info("Boleta exitosamente removida del Abono.");
         }
-        silla.setBoletas(boletasTemp);
-        logicSilla.updateSilla(silla);
-        persistenceBoleta.update(temp);
-//        FuncionEntity funcion = temp.getFuncion();
-//        List<BoletaEntity> boletasFuncion = funcion.getBoletas();
-//        for(int i = 0; i < boletasFuncion.size(); i++)
-//        {
-//            if(boletasFuncion.get(i).getId().equals(id))
-//            {
-//                boletasFuncion.remove(i);
-//            }
-//        }
-//        funcion.setBoletas(boletasFuncion);
-//        logicFuncion.updateFuncion(funcion);
+        
+        //persistenceBoleta.update(temp);
+        LOGGER.info("Procesando Funcion asociada.");
+        FuncionEntity funcion = temp.getFuncion();
+        List<BoletaEntity> boletasFuncion = funcion.getBoletas();
+        for(int i = 0; i < boletasFuncion.size(); i++)
+        {
+            if(boletasFuncion.get(i).getId().equals(id))
+            {
+                LOGGER.info("Removiendo Boleta de la funcion asociada.");
+                boletasFuncion.remove(i);
+            }
+        }
+        funcion.setBoletas(boletasFuncion);
+        logicFuncion.updateFuncion(funcion);
+        LOGGER.info("Boleta exitosamente removida de la Funcion");
         if(temp.getCalificacion() != null)
         {
-            CalificacionEntity calificacionABorrar = temp.getCalificacion();
+            LOGGER.info("Procesando Calificacion de la boleta..");
+            Long idCalificacionABorrar = temp.getCalificacion().getId();
             temp.setCalificacion(null);
             persistenceBoleta.update(temp);
-            logicCalificacion.deleteCalificacion(calificacionABorrar.getId());
+            logicCalificacion.deleteCalificacion(idCalificacionABorrar);
+            LOGGER.info("Calificacion exitosamente eliminada de la base de datos y de la boleta.");
         }
-                
-        
         persistenceBoleta.delete(id);
         LOGGER.log(Level.INFO, "Termina proceso de borrar boleta con id={0}",id);
     }
@@ -365,6 +445,10 @@ public class BoletaLogic
     {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar una silla de la boleta con id = {0}", boletaId);
         SillaEntity respuesta = new SillaEntity();
+        if(getBoleta(boletaId).getSilla() == null)
+        {
+            throw new WebApplicationException("La Boleta con Id: \"" + boletaId +"\" no tiene una silla asociado.",404);
+        }
         if(getBoleta(boletaId).getSilla() != null)
         {
             respuesta.setId(getBoleta(boletaId).getSilla().getId());
@@ -429,10 +513,14 @@ public class BoletaLogic
      * @param boletaId Long, ID de la boleta.
      * @return FuncionEntity, la Funcion asociada.
      */
-    public FuncionEntity getFuncionFromBoleta(Long boletaId)
+    public FuncionEntity getFuncionFromBoleta(Long boletaId)throws WebApplicationException
     {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar una funcion de la boleta con id = {0}", boletaId);
         FuncionEntity respuesta = new FuncionEntity();
+        if(getBoleta(boletaId).getFuncion() == null)
+        {
+            throw new WebApplicationException("La Boleta con Id: \"" + boletaId +"\" no tiene una funcion asociada.",404);
+        }
         if(getBoleta(boletaId).getFuncion() != null)
         {
             respuesta.setId(getBoleta(boletaId).getFuncion().getId());
@@ -492,10 +580,14 @@ public class BoletaLogic
      * @param boletaId Long, ID de la boleta.
      * @return CalificaionEntity, Calificacion asociada a una boleta.
      */
-    public CalificacionEntity getCalificacionFromBoleta(Long boletaId)
+    public CalificacionEntity getCalificacionFromBoleta(Long boletaId)throws WebApplicationException
     {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar una calificacion de la boleta con id = {0}", boletaId);
         CalificacionEntity respuesta = new CalificacionEntity();
+        if(getBoleta(boletaId).getCalificacion() == null)
+        {
+            throw new WebApplicationException("La Boleta con Id: \"" + boletaId +"\" no una calificacion asociada.",404);
+        }
         respuesta.setId(getBoleta(boletaId).getCalificacion().getId());
         return respuesta;
     }
@@ -560,10 +652,11 @@ public class BoletaLogic
         BoletaEntity boletaEntity = getBoleta(boletaId);
         if(boletaEntity.getCalificacion() == null)
         {
-            throw new BusinessLogicException("La Boleta con Id: \"" + boletaId +"\" ya tiene una calificacion asignada, usar el metodo POST.");
+            throw new BusinessLogicException("La Boleta con Id: \"" + boletaId +"\" no tiene una calificacion asignada, usar el metodo POST.");
         }
         boletaEntity.setCalificacion(entity);
         logicCalificacion.updateCalificacion(entity);
+        persistenceBoleta.update(boletaEntity);
         LOGGER.info("Termina proceso de actualizacion de Calificacion de Boleta");
         return entity;
     }
@@ -618,6 +711,10 @@ public class BoletaLogic
     public EspectadorEntity getEspectadorFromBoleta(Long boletaId)
     {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar una calificacion de la boleta con id = {0}", boletaId);
+        if(getBoleta(boletaId).getEspectador() == null)
+        {
+            throw new WebApplicationException("La Boleta con Id: \"" + boletaId +"\" no tiene un espectador asociado.",404);
+        }
         EspectadorEntity respuesta = new EspectadorEntity();
         respuesta.setId(getBoleta(boletaId).getCalificacion().getId());
         return respuesta;

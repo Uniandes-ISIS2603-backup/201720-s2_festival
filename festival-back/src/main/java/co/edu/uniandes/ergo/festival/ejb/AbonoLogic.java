@@ -255,4 +255,10 @@ public class AbonoLogic
         LOGGER.info("BOLETAS DE ABONO ENTITY DESPUES DE UPDATE: " + getAbono(abonoId).getBoletas().size());
         LOGGER.log(Level.INFO, "Termina proceso de des asociar una boleta de Abono con id={0}", abonoId);
     }
+
+    AbonoEntity addEspectador(Long abonoId, EspectadorEntity espectador) {
+        AbonoEntity abono = getAbono(abonoId);
+        abono.setEspectador(espectador);
+        return abono;
+    }
 }

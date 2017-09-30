@@ -6,8 +6,6 @@
 package co.edu.uniandes.ergo.festival.dtos;
 
 import co.edu.uniandes.ergo.festival.entities.SalaEntity;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -17,6 +15,8 @@ public class SalaDTO {
 
     private Long id;
     private String name;
+    private int numSillas;
+    private int numSillasPreferenciales;
     
     public SalaDTO() {
     }
@@ -24,6 +24,8 @@ public class SalaDTO {
     public SalaDTO(SalaEntity entity) {
         this.id = entity.getId();
         this.name = entity.getName();
+        this.numSillas = entity.getNumSillas();
+        this.numSillasPreferenciales = entity.getNumSillasPreferenciales();
     }
 
     /**
@@ -58,6 +60,36 @@ public class SalaDTO {
         SalaEntity retornar = new SalaEntity();
         retornar.setId(this.id);
         retornar.setName(this.name);
+        retornar.setNumSillas(this.getNumSillas());
+        retornar.setNumSillasPreferenciales(this.getNumSillasPreferenciales());
         return retornar;
+    }
+
+    /**
+     * @return the numSillas
+     */
+    public int getNumSillas() {
+        return numSillas;
+    }
+
+    /**
+     * @param numSillas the numSillas to set
+     */
+    public void setNumSillas(int numSillas) {
+        this.numSillas = numSillas;
+    }
+
+    /**
+     * @return the numSillasPreferenciales
+     */
+    public int getNumSillasPreferenciales() {
+        return numSillasPreferenciales;
+    }
+
+    /**
+     * @param numSillasPreferenciales the numSillasPreferenciales to set
+     */
+    public void setNumSillasPreferenciales(int numSillasPreferenciales) {
+        this.numSillasPreferenciales = numSillasPreferenciales;
     }
 }

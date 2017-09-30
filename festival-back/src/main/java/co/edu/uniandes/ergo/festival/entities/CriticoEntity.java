@@ -7,6 +7,7 @@ package co.edu.uniandes.ergo.festival.entities;
 
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import uk.co.jemos.podam.common.PodamExclude;
 
@@ -21,7 +22,7 @@ public class CriticoEntity extends PersonaEntity{
     @OneToMany
     private List<CriticaEntity> criticas;
     @PodamExclude
-    @OneToMany
+    @ManyToMany(mappedBy = "criticos")
     private List<PeliculaEntity> peliculas;
     
 
@@ -42,5 +43,9 @@ public class CriticoEntity extends PersonaEntity{
     
     public void addCritica(CriticaEntity critica){
         criticas.add(critica);
+    }
+
+    public void addPelicula(PeliculaEntity pelicula) {
+        peliculas.add(pelicula);
     }
 }

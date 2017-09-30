@@ -1,0 +1,131 @@
+{
+	"variables": [],
+	"info": {
+		"name": "SalaResource",
+		"_postman_id": "eb6397e5-0213-8872-281c-216d1ff820b2",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST",
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/salas/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"Salaaa\",\n\t\"numSillas\":25,\n\t\"numSillasPreferenciales\":4\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "PUT",
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/salas/3",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"Sala2\",\n\t\"numSillas\":25,\n\t\"numSillasPreferenciales\":7\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET todas",
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/salas",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"Sala2\",\n\t\"numSillas\":25,\n\t\"numSillasPreferenciales\":7\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET una",
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/salas/3",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"Sala2\",\n\t\"numSillas\":25,\n\t\"numSillasPreferenciales\":7\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "POST error",
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/salas/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"Salaaa\",\n\t\"numSillas\":25,\n\t\"numSillasPreferenciales\":30\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE",
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/salas/3",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
