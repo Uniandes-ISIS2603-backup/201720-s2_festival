@@ -89,6 +89,14 @@ public class BoletaDetailDTO extends BoletaDTO {
     {
         this.calificacion = calificacion;
     }
+    public AbonoDTO getAbono()
+    {
+        return this.abono;
+    }
+    public void setAbono(AbonoDTO abono)
+    {
+        this.abono = abono;
+    }
     @Override
     public BoletaEntity toEntity() {
         BoletaEntity entity = super.toEntity();

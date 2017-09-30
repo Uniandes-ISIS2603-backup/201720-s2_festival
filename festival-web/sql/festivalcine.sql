@@ -8,6 +8,19 @@ delete from PeliculaEntity;
 delete from PersonaEntity;
 delete from CalificacionEntity;
 delete from SillaEntity;
+delete from CriticaEntity;
+delete from PersonaEntity where dtype = 'CriticoEntity';
+delete from FuncionEntity;
+delete from SalaEntity;
+delete from PeliculaEntity;
+delete from FestivalEntity;
+
+/*FestivalEntity*/
+insert into FestivalEntity (id) values (1);
+
+/*PeliculaEntity*/
+insert into PeliculaEntity(id) values(1);
+
 delete from FuncionEntity;
 delete from SalaEntity;
 delete from FestivalEntity;
@@ -42,6 +55,14 @@ insert into FestivalEntity (id) values (1);
     insert into SalaEntity (id) values (8);
     insert into SalaEntity (id) values (9);
     insert into SalaEntity (id) values (10);
+/* BoletaEntity */
+/* AbonoEntity */
+    insert into AbonoEntity (id, precio) values (200,7000);
+
+
+
+
+
 
 /* FuncionEntity */
 delete from FuncionEntity;
@@ -74,11 +95,40 @@ delete from FuncionEntity;
     insert into SillaEntity (id, tarifa, esPreferencial, sala_id) values (9, 39.94, 0, 3);
     insert into SillaEntity (id, tarifa, esPreferencial, sala_id) values (10,59.54, 1, 3);
 
+
+/* FuncionEntity */
+  
+
+    insert into FuncionEntity (id, name, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (1, 'Katalin Varga', '4/17/2017', '9/23/2016',1,1,1);
+    insert into FuncionEntity (id, name, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (2, 'Double Hour, The (La doppia ora)', '12/16/2016', '10/12/2016',1,1,1);
+    insert into FuncionEntity (id, name, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (3, 'Changeling, The', '11/27/2016', '5/4/2017',1,1,1);
+    insert into FuncionEntity (id, name, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (4, 'Recollections of the Yellow House (Recordações da Casa Amarela)', '12/28/2016', '7/27/2017',1,1,1);
+    insert into FuncionEntity (id, name, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (5, 'Lt. Robin Crusoe, U.S.N.', '1/9/2017', '11/21/2016',1,1,1);
+    insert into FuncionEntity (id, name, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (6, 'Zorro', '7/10/2017', '2/25/2017',1,1,1);
+    insert into FuncionEntity (id, name, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (7, 'Little Lili (La petite Lili)', '4/7/2017', '4/17/2017',1,1,1);
+    insert into FuncionEntity (id, name, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (8, 'Keeping the Promise (Sign of the Beaver, The)', '12/15/2016', '3/23/2017',1,1,1);
+    insert into FuncionEntity (id, name, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (9, 'Holokaustin värit', '3/2/2017', '7/13/2017',1,1,1);
+    insert into FuncionEntity (id, name, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (10, 'Panic Room', '10/18/2016', '12/28/2016',1,1,1);
+
+/* BoletaEntity*/
+    insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id, funcion_id) values(10, 120, 1, 500.50, 1, 1);
+    insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id, funcion_id) values(20, 130, 2, 600.50, 2, 1);
+    insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id, funcion_id) values(30, 110, 1, 700.50, 3, 1);
+    insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id, funcion_id) values(40, 50, 3, 400.50, 4, 2);
+    insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id, funcion_id) values(50, 500, 3, 400.50, 5, 2);
+
+
+/*Funciones de BoletaEntity*/
+insert into BoletaEntity (id, codigoDeBarras, estado, precio) values(60, 650, 3, 300.25);
+
+
 /* CalificacionEntity */
-insert into CalificacionEntity (id,calificacion, comentario) values(1,1.1,'a1');
-insert into CalificacionEntity (id,calificacion, comentario) values(2,2.2,'a2');
-insert into CalificacionEntity (id,calificacion, comentario) values(3,3.3,'a3');
-insert into CalificacionEntity (id,calificacion, comentario) values(4,4.4,'a4');
+insert into CalificacionEntity (id,calificacion, comentario,boleta_id) values(1,1.1,'a1',10);
+insert into CalificacionEntity (id,calificacion, comentario,boleta_id) values(2,2.2,'a2',20);
+insert into CalificacionEntity (id,calificacion, comentario,boleta_id) values(3,3.3,'a3',30);
+insert into CalificacionEntity (id,calificacion, comentario,boleta_id) values(4,4.4,'a4',40);
+
+
 
 /* CriticoEntity */
 
@@ -106,7 +156,7 @@ insert into CalificacionEntity (id,calificacion, comentario) values(4,4.4,'a4');
     insert into PersonaEntity (id, name, dtype) values (9, 'Cash Matiasek', 'CriticoEntity');
     insert into PersonaEntity (id, name, dtype) values (10, 'Carmine Pessel', 'CriticoEntity');
 
-//* Pelicula Entity */
+
 
     delete from PeliculaEntity;
     insert into PeliculaEntity (id, name, creditos, duracionMinutos, genero, pais, corto, director) values (1, 'South, The (Lomalla)', 54, 33656, 'Drama|Thriller', 'Russia', 'https://goo.gl/ztJJlm', 'Hillie Whyman');
@@ -188,6 +238,7 @@ insert into BoletaEntity (id, codigoDeBarras, estado, precio) values(60, 650, 3,
     
 /* AbonoEntity */
     insert into AbonoEntity (id, precio) values (200,7000);
+
 
 /* CriticaEntity */
 

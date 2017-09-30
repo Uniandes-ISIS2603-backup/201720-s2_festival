@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "CalificacionResource",
-		"_postman_id": "dc800944-2e17-cd9e-150e-8a516e3a9ac5",
+		"_postman_id": "5ce4ec7e-4584-0710-8174-2183c1b0383a",
 		"description": "Pruebas iniciales del proyecto para el recurso calificacion. ",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
