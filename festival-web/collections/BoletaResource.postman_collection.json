@@ -32,9 +32,102 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"estado\" : \"RESERVADA\", \"precio\": 775.50, \"codigoDeBarras\" : 445}"
+					"raw": "{\"estado\" : \"RESERVADA\", \"precio\": 775.50, \"codigoDeBarras\" : 4245, \"funcion\" : {\"id\" : 1}}"
 				},
 				"description": "Debe arrojar error, debido a que una Boleta DEBE tener una silla asignada."
+			},
+			"response": []
+		},
+		{
+			"name": "Agregar Boleta sin Funcion asignada",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 412\"] = responseCode.code === 412;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/boletas",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"estado\" : \"RESERVADA\", \"precio\": 775.50, \"codigoDeBarras\" : 4445, \"silla\":{\"id\":4}}"
+				},
+				"description": "Debe arrojar error, debido a que una Boleta DEBE tener una Funcion asignada."
+			},
+			"response": []
+		},
+		{
+			"name": "Agregar Boleta correcta",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/boletas",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"estado\" : \"RESERVADA\", \"precio\": 775.50, \"codigoDeBarras\" : 445, \"silla\":{\"id\":4}, \"funcion\":{\"id\" : 5}}"
+				},
+				"description": "Debe funcionar correctamente."
+			},
+			"response": []
+		},
+		{
+			"name": "Agregar Boleta con misma silla y funcion",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 412\"] = responseCode.code === 412;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/boletas",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"estado\" : \"RESERVADA\", \"precio\": 775.50, \"codigoDeBarras\" : 4455, \"silla\":{\"id\":4}, \"funcion\":{\"id\" : 5}}"
+				},
+				"description": "Este método debe arrojar error."
 			},
 			"response": []
 		},
@@ -63,7 +156,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"silla\":{\"id\" : 3}}"
+					"raw": "{\"silla\":{\"id\" : 3}, \"funcion\": {\"id\" : 2}}"
 				},
 				"description": ""
 			},
@@ -300,7 +393,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/festival-web/api/abonos/10/boletas/20",
+				"url": "http://localhost:8080/festival-web/api/abonos/200/boletas/20",
 				"method": "POST",
 				"header": [
 					{
@@ -325,7 +418,7 @@
 					"script": {
 						"type": "text/javascript",
 						"exec": [
-							"tests[\"Status code is 204\"] = responseCode.code === 204;"
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
 						]
 					}
 				}
@@ -380,7 +473,7 @@
 			"response": []
 		},
 		{
-			"name": "Metodo para obtener una boleta de un abono. copy",
+			"name": "Metodo para obtener las boletas de un abono, el arreglo debe estar vacío.",
 			"event": [
 				{
 					"listen": "test",
