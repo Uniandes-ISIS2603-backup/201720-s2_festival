@@ -11,6 +11,8 @@ delete from SillaEntity;
 delete from FuncionEntity;
 delete from SalaEntity;
 delete from FestivalEntity;
+delete from PeliculaEntity_FuncionEntity;
+delete from PeliculaEntity;
 
 /*FestivalEntity*/
 insert into FestivalEntity (id) values (1);
@@ -104,31 +106,24 @@ insert into CalificacionEntity (id,calificacion, comentario) values(4,4.4,'a4');
     insert into PersonaEntity (id, name, dtype) values (9, 'Cash Matiasek', 'CriticoEntity');
     insert into PersonaEntity (id, name, dtype) values (10, 'Carmine Pessel', 'CriticoEntity');
 
-/*PeliculaEntity*/
-    
-    insert into PeliculaEntity (name, director) values ('Chant of Jimmy Blacksmith, The', 'Tucker Gonsalvo');
-    insert into PeliculaEntity (name, director) values ('Aces and Eights', 'Dean Minshull');
-    insert into PeliculaEntity (name, director) values ('Giant Claw, The', 'Hagen Malcher');
-    insert into PeliculaEntity (name, director) values ('Two-Way Stretch', 'Netti Philippeaux');
-    insert into PeliculaEntity (name, director) values ('Dream With the Fishes', 'Rania Baumler');
-    insert into PeliculaEntity (name, director) values ('Katt Williams: The Pimp Chronicles Pt. 1', 'Kipper Corona');
-    insert into PeliculaEntity (name, director) values ('Giver, The', 'Averill Rolse');
-    insert into PeliculaEntity (name, director) values ('My Own Private Idaho', 'Reider Tousey');
-    insert into PeliculaEntity (name, director) values ('Hills Have Eyes, The', 'Hewitt Smullin');
-    insert into PeliculaEntity (name, director) values ('Narrien illat ', 'Kassia Izkovitz');
+//* Pelicula Entity */
 
-                delete from PeliculaEntity;
+    delete from PeliculaEntity;
+    insert into PeliculaEntity (id, name, creditos, duracionMinutos, genero, pais, corto, director) values (1, 'South, The (Lomalla)', 54, 33656, 'Drama|Thriller', 'Russia', 'https://goo.gl/ztJJlm', 'Hillie Whyman');
+    insert into PeliculaEntity (id, name, creditos, duracionMinutos, genero, pais, corto, director) values (2, 'Ricochet', 32, 3769, 'Action|Crime|Thriller', 'Hungary', 'https://goo.gl/of7uuS', 'Rodrique Kaines');
+    insert into PeliculaEntity (id, name, creditos, duracionMinutos, genero, pais, corto, director) values (3, 'Art of the Steal, The', 62, 749, 'Crime', 'Indonesia', 'https://goo.gl/oXrmyX', 'Liana Illsley');
+    insert into PeliculaEntity (id, name, creditos, duracionMinutos, genero, pais, corto, director) values (4, 'Joint Security Area (Gongdong gyeongbi guyeok JSA)', 70, 2589, 'Crime|Drama|Mystery|Thriller|War', 'Canada', 'https://goo.gl/WFzElk', 'Devonne Beeston');
+    insert into PeliculaEntity (id, name, creditos, duracionMinutos, genero, pais, corto, director) values (5, 'Month in the Country, A', 89, 2880, 'Drama', 'Indonesia', 'https://goo.gl/95GlK2', 'Maudie Brandreth');
+    insert into PeliculaEntity (id, name, creditos, duracionMinutos, genero, pais, corto, director) values (6, 'Denise Calls Up', 77, 10272, 'Comedy', 'France', 'https://goo.gl/LMieu0', 'Donia Pound');
+    insert into PeliculaEntity (id, name, creditos, duracionMinutos, genero, pais, corto, director) values (7, 'Les Invisibles', 21, 8752, 'Documentary', 'Iran', 'https://goo.gl/zlj0Pc', 'Robbie Friedank');
+    insert into PeliculaEntity (id, name, creditos, duracionMinutos, genero, pais, corto, director) values (8, 'For Love of Ivy', 97, 2160, 'Comedy|Drama|Romance', 'Malawi', 'https://goo.gl/graS0a', 'Astrix Boyington');
+    insert into PeliculaEntity (id, name, creditos, duracionMinutos, genero, pais, corto, director) values (9, 'Victor and the Secret of Crocodile Mansion', 26, 632, 'Adventure|Children|Mystery', 'China', 'https://goo.gl/pLVwrc', 'Berk Loch');
+    insert into PeliculaEntity (id, name, creditos, duracionMinutos, genero, pais, corto, director) values (10, 'Outrage', 3, 25400, 'Crime|Drama|Thriller', 'South Korea', 'https://goo.gl/9ZqCWL', 'Alden Dilworth');
+    insert into PeliculaEntity (id, name, creditos, duracionMinutos, genero, pais, corto, director) values (11, 'Blonde and Blonder', 59, 28024, 'Comedy|Crime', 'Japan', 'https://goo.gl/PDcsK7', 'Cele Di Bernardo');
+    insert into PeliculaEntity (id, name, creditos, duracionMinutos, genero, pais, corto, director) values (12, 'Little Witches', 53, 10272, 'Horror|Thriller', 'Ukraine', 'https://goo.gl/4lNwT7', 'Murvyn Duval');
+    insert into PeliculaEntity (id, name, creditos, duracionMinutos, genero, pais, corto, director) values (13, 'EXPO: Magic of the White City', 97, 27552, 'Documentary', 'China', 'https://goo.gl/GFQukr', 'Zorine Duddy');
+    insert into PeliculaEntity (id, name, creditos, duracionMinutos, genero, pais, corto, director) values (14, 'Whore', 30, 889, 'Drama', 'Philippines', 'https://goo.gl/aTvMQM', 'Ealasaid Kauffman');
 
-    insert into PeliculaEntity (id, name, director) values (1, 'Presumed Guilty (Presunto culpable)', 'Laughton Dyhouse');
-    insert into PeliculaEntity (id, name, director) values (2, 'Who Are the DeBolts? [And Where Did They Get 19 Kids?]', 'Carolan Hooks');
-    insert into PeliculaEntity (id, name, director) values (3, 'Red', 'Seamus Priter');
-    insert into PeliculaEntity (id, name, director) values (4, 'Apple, The (Sib)', 'Ethelin Losseljong');
-    insert into PeliculaEntity (id, name, director) values (5, 'Copper Mountain', 'Basil Switzer');
-    insert into PeliculaEntity (id, name, director) values (6, 'Lawnmower Man, The', 'Flossy Mack');
-    insert into PeliculaEntity (id, name, director) values (7, 'Lightning Strikes Twice', 'Mureil Churn');
-    insert into PeliculaEntity (id, name, director) values (8, 'Adventures of Prince Achmed, The (Abenteuer des Prinzen Achmed, Die)', 'Esmeralda Gingles');
-    insert into PeliculaEntity (id, name, director) values (9, 'Journey from the Fall', 'Chas Maguire');
-    insert into PeliculaEntity (id, name, director) values (10, 'Accident on Hill Road', 'Kathi Gun');
 
 /*PersonaEntity - PeliculaEntity */
 
@@ -143,21 +138,21 @@ insert into CalificacionEntity (id,calificacion, comentario) values(4,4.4,'a4');
 
 /*PeliculaEntity - PersonaEntity */
 
-    insert into PeliculaEntity_PersonaEntity (peliculaentity_id, criticos_id) values (1, 1);
-    insert into PeliculaEntity_PersonaEntity (peliculaentity_id, criticos_id) values (2, 2);
-    insert into PeliculaEntity_PersonaEntity (peliculaentity_id, criticos_id) values (3, 3);
-    insert into PeliculaEntity_PersonaEntity (peliculaentity_id, criticos_id) values (4, 4);
-    insert into PeliculaEntity_PersonaEntity (peliculaentity_id, criticos_id) values (5, 5);
-    insert into PeliculaEntity_PersonaEntity (peliculaentity_id, criticos_id) values (6, 6);
-    insert into PeliculaEntity_PersonaEntity (peliculaentity_id, criticos_id) values (7, 7);
-    insert into PeliculaEntity_PersonaEntity (peliculaentity_id, criticos_id) values (8, 8);
-    insert into PeliculaEntity_PersonaEntity (peliculaentity_id, criticos_id) values (9, 9);
-    insert into PeliculaEntity_PersonaEntity (peliculaentity_id, criticos_id) values (10, 10);
+    insert into PeliculaEntity_PersonaEntity (peliculas_id, criticos_id) values (1, 1);
+    insert into PeliculaEntity_PersonaEntity (peliculas_id, criticos_id) values (2, 2);
+    insert into PeliculaEntity_PersonaEntity (peliculas_id, criticos_id) values (3, 3);
+    insert into PeliculaEntity_PersonaEntity (peliculas_id, criticos_id) values (4, 4);
+    insert into PeliculaEntity_PersonaEntity (peliculas_id, criticos_id) values (5, 5);
+    insert into PeliculaEntity_PersonaEntity (peliculas_id, criticos_id) values (6, 6);
+    insert into PeliculaEntity_PersonaEntity (peliculas_id, criticos_id) values (7, 7);
+    insert into PeliculaEntity_PersonaEntity (peliculas_id, criticos_id) values (8, 8);
+    insert into PeliculaEntity_PersonaEntity (peliculas_id, criticos_id) values (9, 9);
+    insert into PeliculaEntity_PersonaEntity (peliculas_id, criticos_id) values (10, 10);
 
 /* FuncionEntity */
   
 
-    insert into FuncionEntity (horaInicio, horaFin,sala_id,festival_id,pelicula_id) values ('4/17/2017', '9/23/2016',1,1,1);
+    insert into FuncionEntity (horaInicio, horaFin,sala_id,festival_id) values ('4/17/2017', '9/23/2016',1,1);
     insert into FuncionEntity (horaInicio, horaFin,sala_id,festival_id,pelicula_id) values ('12/16/2016', '10/12/2016',1,1,1);
     insert into FuncionEntity (horaInicio, horaFin,sala_id,festival_id,pelicula_id) values ('11/27/2016', '5/4/2017',1,1,1);
     insert into FuncionEntity (horaInicio, horaFin,sala_id,festival_id,pelicula_id) values ('12/28/2016', '7/27/2017',1,1,1);
@@ -170,7 +165,7 @@ insert into CalificacionEntity (id,calificacion, comentario) values(4,4.4,'a4');
 
     delete from FuncionEntity;
 
-    insert into FuncionEntity (id, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (1, '4/17/2017', '9/23/2016',1,1,1);
+    insert into FuncionEntity (id, horaInicio, horaFin,sala_id,festival_id) values (1, '4/17/2017', '9/23/2016',1,1);
     insert into FuncionEntity (id, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (2, '12/16/2016', '10/12/2016',1,1,1);
     insert into FuncionEntity (id, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (3, '11/27/2016', '5/4/2017',1,1,1);
     insert into FuncionEntity (id, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (4, '12/28/2016', '7/27/2017',1,1,1);
@@ -265,3 +260,4 @@ insert into BoletaEntity (id, codigoDeBarras, estado, precio) values(60, 650, 3,
     Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus ', 1, 1);
     insert into CriticaEntity (id, comentario, critico_id, funcion_id) values (10, 'Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.', 1, 1);
 
+ 

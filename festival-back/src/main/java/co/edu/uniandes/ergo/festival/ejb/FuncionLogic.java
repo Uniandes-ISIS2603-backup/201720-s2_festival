@@ -9,6 +9,7 @@ package co.edu.uniandes.ergo.festival.ejb;
 import co.edu.uniandes.ergo.festival.entities.BoletaEntity;
 import co.edu.uniandes.ergo.festival.entities.CriticaEntity;
 import co.edu.uniandes.ergo.festival.entities.FuncionEntity;
+import co.edu.uniandes.ergo.festival.entities.PeliculaEntity;
 import co.edu.uniandes.ergo.festival.persistence.FuncionPersistence;
 import java.util.List;
 import java.util.logging.Level;
@@ -75,6 +76,12 @@ public class FuncionLogic {
          LOGGER.log(Level.INFO, "Inicia proceso de encontrar una boleta de una funcion."); 
         FuncionEntity entity = persistence.find(idFuncion);
         return persistence.getBoleta(entity,idBoleta);
+    }
+
+    public FuncionEntity addPelicula(Long funId, PeliculaEntity pelicula) {
+        FuncionEntity funcion = getFuncion(funId);
+        funcion.setPelicula(pelicula);
+        return funcion;
     }
    
     

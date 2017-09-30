@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.ergo.festival.ejb;
 
+import co.edu.uniandes.ergo.festival.entities.AbonoEntity;
 import co.edu.uniandes.ergo.festival.entities.EspectadorEntity;
 import co.edu.uniandes.ergo.festival.exceptions.BusinessLogicException;
 import co.edu.uniandes.ergo.festival.persistence.EspectadorPersistence;
@@ -25,6 +26,8 @@ public class EspectadorLogic {
 
     @Inject
     private EspectadorPersistence persistence;
+    
+    @Inject AbonoLogic aLogic;
 
     public List<EspectadorEntity> getEspectadores() {
         LOGGER.info("Inicia el proceso de consultar todas los críticos.");
@@ -79,5 +82,14 @@ public class EspectadorLogic {
         LOGGER.log(Level.INFO, "Inicia proceso de borrar el crítico con id={0}", id);
         persistence.delete(id);
         LOGGER.log(Level.INFO, "Termina proceso de borrar el crítico con id={0}", id);
+    }
+
+public EspectadorEntity addAbono(Long espectadorId, Long abonoId) throws BusinessLogicException{
+        EspectadorEntity espectador = getEspectador(espectadorId);
+        LOGGER.log(Level.INFO, "Inicia proceso de asociar la función con id ={0}", abonoId);
+        AbonoEntity abono = aLogic.addEspectador(abonoId, espectador);
+        espectador.addAbono(abono);
+        persistence.update(espectador); // NO ESTOY SEGURO SI SE DEBE PONER ESE UPDATE
+        return espectador;
     }
 }

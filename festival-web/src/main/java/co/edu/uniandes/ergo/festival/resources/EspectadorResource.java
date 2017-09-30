@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.ergo.festival.resources;
 
+import co.edu.uniandes.ergo.festival.dtos.AbonoDetailDTO;
 import co.edu.uniandes.ergo.festival.dtos.EspectadorDTO;
 import co.edu.uniandes.ergo.festival.dtos.EspectadorDetailDTO;
 import co.edu.uniandes.ergo.festival.ejb.EspectadorLogic;
@@ -82,5 +83,15 @@ public class EspectadorResource {
             list.add(new EspectadorDetailDTO(entity));
         }
         return list;
+    }
+
+    @POST
+    @Path("{id: \\d+}/abonos/{aId: \\d+}")
+    public EspectadorDetailDTO relAbono(@PathParam("id") Long id, @PathParam("aId") Long aId) throws BusinessLogicException {
+        EspectadorEntity espectador = logic.getEspectador(id);
+        if (espectador == null) {
+            throw new WebApplicationException("El espectador con id: " + id + " no existe.", 404);
+        }
+        return new EspectadorDetailDTO(logic.addAbono(id, aId));
     }
 }
