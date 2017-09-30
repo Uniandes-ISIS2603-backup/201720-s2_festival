@@ -182,6 +182,50 @@
 			"response": []
 		},
 		{
+			"name": "Get Silla de la boleta 30",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/boletas/30/sillas",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Metodo que obtiene la silla de la boleta 30."
+			},
+			"response": []
+		},
+		{
+			"name": "Get Funcion de la boleta 40",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/boletas/40/funciones",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Metodo que obtiene la funcion de la boleta 40."
+			},
+			"response": []
+		},
+		{
 			"name": "Método PUT para cambiar informacion.",
 			"event": [
 				{
