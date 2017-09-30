@@ -5,25 +5,22 @@
  */
 package co.edu.uniandes.ergo.festival.dtos;
 
-import co.edu.uniandes.ergo.festival.ejb.CriticoLogic;
 import co.edu.uniandes.ergo.festival.entities.FuncionEntity;
 import co.edu.uniandes.ergo.festival.entities.SalaEntity;
 import co.edu.uniandes.ergo.festival.entities.SillaEntity;
 import co.edu.uniandes.ergo.festival.entities.TeatroEntity;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
  * @author f.mayenberger10
  */
 public class SalaDetailDTO extends SalaDTO {
-
-    private List<FuncionDTO> funcionesDTO;
+    
+    //private List<FuncionDTO> funcionesDTO;
     private List<SillaDTO> sillasDTO;
-    private TeatroDTO teatroDTO;
+    //private TeatroDTO teatroDTO;
     
     public SalaDetailDTO() {
         super();
@@ -31,23 +28,25 @@ public class SalaDetailDTO extends SalaDTO {
 
     public SalaDetailDTO(SalaEntity entity) {
         super(entity);
-
-        TeatroEntity teatro = entity.getTeatro();
+        System.out.println("1");
+        /*TeatroEntity teatro = entity.getTeatro();
         if (teatro != null) {
             teatroDTO = new TeatroDTO(teatro);
         }
-
+        
+        System.out.println("2");
         List<FuncionEntity> funciones = entity.getFunciones();
-        funcionesDTO = new ArrayList<>();
-        if (funciones != null) {
+        if (funciones !=  null) {
+            funcionesDTO = new ArrayList<>();
             for (FuncionEntity funcion : funciones) {
                 funcionesDTO.add(new FuncionDTO(funcion));
             }
         }
-
+        */
+        System.out.println("3");
         List<SillaEntity> sillas = entity.getSillas();
-        sillasDTO = new ArrayList<>();
         if (sillas != null) {
+            sillasDTO = new ArrayList<>();
             for (SillaEntity silla : sillas) {
                 sillasDTO.add(new SillaDTO(silla));
             }
@@ -58,35 +57,38 @@ public class SalaDetailDTO extends SalaDTO {
     public SalaEntity toEntity() {
         SalaEntity retornar = super.toEntity();
         
+        /*System.out.println("4");
         if (getTeatroDTO() != null) {
             retornar.setTeatro(getTeatroDTO().toEntity());
         }
-
-        List<FuncionEntity> funciones = new ArrayList<>();
+        
+        System.out.println("5");
         if (getFuncionesDTO() != null) {
+            List<FuncionEntity> funciones = new ArrayList<>();
             for (FuncionDTO dto : getFuncionesDTO()) {
                 funciones.add(dto.toEntity());
             }
             retornar.setFunciones(funciones);
         }
-
-        List<SillaEntity> sillas = new ArrayList<>();
+        */
+        System.out.println("6");
         if (getSillasDTO() != null) {
+            List<SillaEntity> sillas = new ArrayList<>();
             for (SillaDTO dto : getSillasDTO()) {
                 sillas.add(dto.toEntity());
             }
             retornar.setSillas(sillas);
         }
-
+        
         return retornar;
     }
 
     /**
      * @return the funcionesDTO
      */
-    public List<FuncionDTO> getFuncionesDTO() {
+    /*public List<FuncionDTO> getFuncionesDTO() {
         return funcionesDTO;
-    }
+    }*/
 
     /**
      * @return the sillasDTO
@@ -98,17 +100,16 @@ public class SalaDetailDTO extends SalaDTO {
     /**
      * @return the teatroDTO
      */
-    public TeatroDTO getTeatroDTO() {
+    /*public TeatroDTO getTeatroDTO() {
         return teatroDTO;
-    }
-    
+    }*/
     
     /**
      * @param funcionesDTO the funcionesDTO to set
      */
-    public void setFuncionesDTO(List<FuncionDTO> funcionesDTO) {
+    /*public void setFuncionesDTO(List<FuncionDTO> funcionesDTO) {
         this.funcionesDTO = funcionesDTO;
-    }
+    }*/
 
     /**
      * @param sillasDTO the sillasDTO to set
@@ -120,7 +121,7 @@ public class SalaDetailDTO extends SalaDTO {
     /**
      * @param teatroDTO the teatroDTO to set
      */
-    public void setTeatroDTO(TeatroDTO teatroDTO) {
+    /*public void setTeatroDTO(TeatroDTO teatroDTO) {
         this.teatroDTO = teatroDTO;
-    }
+    }*/
 }
