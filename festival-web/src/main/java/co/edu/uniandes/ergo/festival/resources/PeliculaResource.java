@@ -5,6 +5,8 @@
  */
 package co.edu.uniandes.ergo.festival.resources;
 
+import co.edu.uniandes.ergo.festival.dtos.FuncionDTO;
+import co.edu.uniandes.ergo.festival.dtos.FuncionDetailDTO;
 import co.edu.uniandes.ergo.festival.dtos.PeliculaDTO;
 import co.edu.uniandes.ergo.festival.dtos.PeliculaDetailDTO;
 import co.edu.uniandes.ergo.festival.ejb.FuncionLogic;
@@ -89,12 +91,41 @@ public class PeliculaResource {
         return new PeliculaDetailDTO(logic.addFuncion(pelId, funId));
     }
 
+    @GET
+    @Path("{peliculaId: \\d+}/funciones/")
+    public List<FuncionDTO> getFuncionespelicula(@PathParam("peliculaId") Long idpelicula) throws BusinessLogicException {
+        PeliculaEntity pelicula = logic.getPelicula(idpelicula);
+        if (pelicula == null) {
+            throw new WebApplicationException("La película con id: " + idpelicula + " no existe.", 404);
+        }
+        return listFuncionEntity2listFuncionDTO(logic.getFunciones(idpelicula));
+    }
+    
+    @GET
+    @Path("{id: \\d+}/funciones/{FuncionId: \\d+}")
+    public FuncionDetailDTO getFuncion(@PathParam("id") Long peliculaId, @PathParam("FuncionId") Long pelId) throws BusinessLogicException {
+        PeliculaEntity pelicula = logic.getPelicula(peliculaId);
+        if (pelicula == null) {
+            throw new WebApplicationException("El crítico con id: " + peliculaId + " no existe.", 404);
+        }
+        return new FuncionDetailDTO(logic.getFuncion(peliculaId, pelId));
+    }
+    
     private List<PeliculaDetailDTO> listEntity2DTO(List<PeliculaEntity> entityList) {
         List<PeliculaDetailDTO> list = new ArrayList<>();
         for (PeliculaEntity entity : entityList) {
             list.add(new PeliculaDetailDTO(entity));
         }
         return list;
+    }
+
+    private List<FuncionDTO> listFuncionEntity2listFuncionDTO(List<FuncionEntity> funciones) {
+        List<FuncionDTO> funcionesDTO = new ArrayList<>();
+
+        for (FuncionEntity funcion : funciones) {
+            funcionesDTO.add(new FuncionDTO(funcion));
+        }
+        return funcionesDTO;
     }
 
 }

@@ -126,4 +126,26 @@ public class PeliculaLogic {
         persistence.update(pelicula); // NO ESTOY SEGURO SI SE DEBE PONER ESE UPDATE
         return pelicula;
     }
+    
+    public List<FuncionEntity> getFunciones(Long id) throws BusinessLogicException {
+        PeliculaEntity pelicula = getPelicula(id);
+        List<FuncionEntity> pelis = pelicula.getFunciones();
+        if (pelis == null) {
+            throw new BusinessLogicException("La película no tiene una lista de funciones");
+        }
+        return pelis;
+    }
+    
+    public FuncionEntity getFuncion(Long peliculaId, Long funcionId) throws BusinessLogicException {
+
+        PeliculaEntity pelicula = getPelicula(peliculaId);
+        List<FuncionEntity> funciones = getFunciones(peliculaId);
+        FuncionEntity borrador = new FuncionEntity();
+        borrador.setId(funcionId);
+        int index = funciones.indexOf(borrador);
+        if (index >= 0) {
+            return funciones.get(index);
+        }
+        throw new BusinessLogicException("no existe la función con id " + funcionId + " asignada al pelicula con id " + peliculaId);
+    }
 }
