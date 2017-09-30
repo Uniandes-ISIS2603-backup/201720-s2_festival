@@ -5,6 +5,8 @@
  */
 package co.edu.uniandes.ergo.festival.ejb;
 
+import co.edu.uniandes.ergo.festival.entities.CriticoEntity;
+import co.edu.uniandes.ergo.festival.entities.FuncionEntity;
 import co.edu.uniandes.ergo.festival.entities.PeliculaEntity;
 import co.edu.uniandes.ergo.festival.exceptions.BusinessLogicException;
 import co.edu.uniandes.ergo.festival.persistence.PeliculaPersistence;
@@ -25,6 +27,9 @@ public class PeliculaLogic {
 
     @Inject
     private PeliculaPersistence persistence;
+  
+    @Inject
+    private FuncionLogic funLogic;
 
     public List<PeliculaEntity> getPeliculas() {
         LOGGER.info("Inicia el proceso de consultar todas las películas.");
@@ -33,13 +38,14 @@ public class PeliculaLogic {
         return peliculas;
     }
 
-    public PeliculaEntity getPelicula(Long id) {
+    public PeliculaEntity getPelicula(Long id) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar la película con id={0}", id);
 
         PeliculaEntity pelicula = persistence.find(id);
 
         if (pelicula == null) {
             LOGGER.log(Level.SEVERE, "La película con el id {0} no existe", id);
+            throw new BusinessLogicException("La película con el id " + id + " no existe"); //ESTO TAL VEZ PUEDE DAÑAR LAS PRUEBAS DE POSTMAN //
         }
 
         LOGGER.log(Level.INFO, "Termina proceso de consultar la película con id={0}", id);
@@ -96,4 +102,28 @@ public class PeliculaLogic {
 //                : 0;
 //
 //    }
+
+    public PeliculaEntity addCritico(Long pelId, CriticoEntity critico) throws BusinessLogicException {
+        PeliculaEntity peli = getPelicula(pelId);
+        peli.addCritico(critico);
+        persistence.update(peli);
+        return peli;
+    }
+    
+    public void removeCritico(Long pelId, Long crId) throws BusinessLogicException{
+        PeliculaEntity pelicula = getPelicula(pelId);
+        CriticoEntity borrar = new CriticoEntity();
+        borrar.setId(crId);
+        pelicula.removeCritico(borrar);
+        persistence.update(pelicula);
+    }
+    
+    public PeliculaEntity addFuncion(Long pelId, Long funId) throws BusinessLogicException{
+        PeliculaEntity pelicula = getPelicula(pelId);
+        LOGGER.log(Level.INFO, "Inicia proceso de asociar la función con id ={0}", funId);
+        FuncionEntity funcion = funLogic.addPelicula(funId, pelicula);
+        pelicula.addFuncion(funcion);
+        persistence.update(pelicula); // NO ESTOY SEGURO SI SE DEBE PONER ESE UPDATE
+        return pelicula;
+    }
 }

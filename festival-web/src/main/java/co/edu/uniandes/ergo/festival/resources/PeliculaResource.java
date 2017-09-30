@@ -7,7 +7,9 @@ package co.edu.uniandes.ergo.festival.resources;
 
 import co.edu.uniandes.ergo.festival.dtos.PeliculaDTO;
 import co.edu.uniandes.ergo.festival.dtos.PeliculaDetailDTO;
+import co.edu.uniandes.ergo.festival.ejb.FuncionLogic;
 import co.edu.uniandes.ergo.festival.ejb.PeliculaLogic;
+import co.edu.uniandes.ergo.festival.entities.FuncionEntity;
 import co.edu.uniandes.ergo.festival.entities.PeliculaEntity;
 import co.edu.uniandes.ergo.festival.exceptions.BusinessLogicException;
 import java.util.ArrayList;
@@ -37,6 +39,7 @@ public class PeliculaResource {
     @Inject
     private PeliculaLogic logic;
 
+
     @GET
     public List<PeliculaDetailDTO> getPeliculas() {
         return listEntity2DTO(logic.getPeliculas());
@@ -44,7 +47,7 @@ public class PeliculaResource {
 
     @GET
     @Path("{id: \\d+}")
-    public PeliculaDetailDTO getPeliculaById(@PathParam("id") Long id) {
+    public PeliculaDetailDTO getPeliculaById(@PathParam("id") Long id) throws BusinessLogicException {
         PeliculaEntity peli = logic.getPelicula(id);
         if (peli == null) {
             throw new WebApplicationException("La pelicula con id: " + id + " no existe.", 404);
@@ -68,12 +71,22 @@ public class PeliculaResource {
 
     @DELETE
     @Path("{id: \\d+}")
-    public void deletePelicula(@PathParam("id") Long id) {
+    public void deletePelicula(@PathParam("id") Long id) throws BusinessLogicException {
         PeliculaEntity entity = logic.getPelicula(id);
         if (entity == null) {
             throw new WebApplicationException("La silla con id: " + id + " no existe.", 404);
         }
         logic.deletePelicula(id);
+    }
+
+    @POST
+    @Path("{id: \\d+}/funciones/{Fid: \\d+}")
+    public PeliculaDetailDTO addFuncion(@PathParam("id") Long pelId, @PathParam("Fid") Long funId) throws BusinessLogicException {
+        PeliculaEntity pelicula = logic.getPelicula(pelId);
+        if (pelicula == null) {
+            throw new WebApplicationException("La película con id: " + pelId + " no existe.", 404);
+        }
+        return new PeliculaDetailDTO(logic.addFuncion(pelId, funId));
     }
 
     private List<PeliculaDetailDTO> listEntity2DTO(List<PeliculaEntity> entityList) {
@@ -83,4 +96,5 @@ public class PeliculaResource {
         }
         return list;
     }
+
 }

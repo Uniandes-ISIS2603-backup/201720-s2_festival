@@ -73,6 +73,6 @@ public class CriticoDetailDTO extends CriticoDTO {
 //            }
 //            entCritico.setCriticas(eCriticas);
 //        }
-    return entCritico;
+        return entCritico;
     }
 }
