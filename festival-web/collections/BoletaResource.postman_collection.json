@@ -94,7 +94,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"estado\" : \"RESERVADA\", \"precio\": 775.50, \"codigoDeBarras\" : 445, \"silla\":{\"id\":4}, \"funcion\":{\"id\" : 5}}"
+					"raw": "{\"estado\" : \"RESERVADA\", \"precio\": 775.50, \"codigoDeBarras\" : 4465, \"silla\":{\"id\":4}, \"funcion\":{\"id\" : 5}}"
 				},
 				"description": "Debe funcionar correctamente."
 			},
@@ -132,6 +132,56 @@
 			"response": []
 		},
 		{
+			"name": "Get Boletas",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"/* CalificacionEntity */tests[\"Status code is 404\"] = responseCode.code === 404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/boletas",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": "Debe obtener un arreglo de boletas."
+			},
+			"response": []
+		},
+		{
+			"name": "Get Boleta 20",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"/* CalificacionEntity */tests[\"Status code is 404\"] = responseCode.code === 404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/boletas/20",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": "Debe obtener un arreglo de boletas."
+			},
+			"response": []
+		},
+		{
 			"name": "Actualización de silla de la boleta 40",
 			"event": [
 				{
@@ -158,7 +208,7 @@
 					"mode": "raw",
 					"raw": "{\"silla\":{\"id\" : 3}, \"funcion\": {\"id\" : 2}}"
 				},
-				"description": ""
+				"description": "Este método solo actualiza la silla y la boleta."
 			},
 			"response": []
 		},
@@ -208,6 +258,37 @@
 			],
 			"request": {
 				"url": "http://localhost:8080/festival-web/api/boletas/40/calificaciones",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\" : \"terrible\", \"comentario\" : \"prueba\",\"calificacion\" : 2}"
+				},
+				"description": "Este metodo debe guardar una calificacion."
+			},
+			"response": []
+		},
+		{
+			"name": "Metodo para guardar una calificacion asociada a una boleta 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/boletas/20/calificaciones",
 				"method": "POST",
 				"header": [
 					{
@@ -550,6 +631,56 @@
 					"raw": ""
 				},
 				"description": "Metodo no debe recibir un abono."
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar Boleta",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"/* CalificacionEntity */tests[\"Status code is 204\"] = responseCode.code === 204;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/boletas/20",
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": "Método debe borrar una boleta."
+			},
+			"response": []
+		},
+		{
+			"name": "Get Boleta no Existente.",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"/* CalificacionEntity */tests[\"Status code is 404\"] = responseCode.code === 404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/boletas/20",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": "Metodo no debe recibir una boleta."
 			},
 			"response": []
 		}

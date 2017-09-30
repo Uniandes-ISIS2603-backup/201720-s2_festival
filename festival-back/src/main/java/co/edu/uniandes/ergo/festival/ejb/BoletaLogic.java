@@ -225,6 +225,10 @@ public class BoletaLogic
             LOGGER.info("No tiene estado asignado, asignando estado DISPONIBLE");
             entity.setEstado(BoletaEntity.DISPONIBLE);
         }
+        if(entity.getCalificacion() != null)
+        {
+            throw new BusinessLogicException("La calificacion de la boleta con id \"" + entity.getId() + "\" no se modifica desde aquí, usar la extension: (boletasId/calificaciones)");
+        }
         // Verifica la regla de negocio que dice que no puede haber dos boletas con el mismo codigo de barras.
         
         SillaEntity silla = persistenceSilla.find(entity.getSilla().getId());
@@ -345,39 +349,47 @@ public class BoletaLogic
     {
         LOGGER.log(Level.INFO, "Inicia proceso de borrar boleta con id={0}",id);
         BoletaEntity temp = getBoleta(id);
+        LOGGER.info("Procesando silla asociada.");
         SillaEntity silla = logicSilla.getSilla(temp.getSilla().getId());
         List<BoletaEntity> boletasSilla = silla.getBoletas();
         for(int i = 0; i < boletasSilla.size(); i++)
         {
             if(boletasSilla.get(i).getId().equals(id))
             {
+                LOGGER.info("Eliminando boleta de la silla.");
                 boletasSilla.remove(i);
             }
         }
         silla.setBoletas(boletasSilla);
         logicSilla.updateSilla(silla);
+        LOGGER.info("Boleta exitosamente removida de Silla.");
         if(temp.getEspectador()!= null)
         {
+            LOGGER.info("Procesando Espectador asociado.");
             EspectadorEntity espectadorTemp = logicEspectador.getEspectador(temp.getEspectador().getId());
             List<BoletaEntity> boletasEspectador = espectadorTemp.getBoletas();
             for(int i = 0; i < boletasEspectador.size(); i++)
             {
                 if(boletasEspectador.get(i).getId().equals(id))
                 {
+                    LOGGER.info("Eliminando Boleta del espectador.");
                     boletasEspectador.remove(i);
                 }
             }
             espectadorTemp.setBoletas(boletasEspectador);
             logicEspectador.updateEspectador(temp.getEspectador().getId(), espectadorTemp);//BORRAR LA BOLETA DEL ESPECTADOR.
+            LOGGER.info("Boleta exitosamente removida de Espectador.");
         }
         if(temp.getAbono() != null)
         {
+            LOGGER.info("Procesando Abono asociado.");
             AbonoEntity abonoTemp = logicAbono.getAbono(temp.getAbono().getId());
             List<BoletaEntity> boletasAbono = abonoTemp.getBoletas();
             for(int i = 0; i < boletasAbono.size(); i++)
             {
                 if(boletasAbono.get(i).getId().equals(id))
                 {
+                    LOGGER.info("Removiendo Boleta del Abono.");
                     boletasAbono.remove(i);
                 }
             }
@@ -385,28 +397,33 @@ public class BoletaLogic
             logicAbono.updateAbono(abonoTemp.getId(), abonoTemp);
             temp.setAbono(null);
             //persistenceBoleta.update(temp);
+            LOGGER.info("Boleta exitosamente removida del Abono.");
         }
         
         //persistenceBoleta.update(temp);
+        LOGGER.info("Procesando Funcion asociada.");
         FuncionEntity funcion = temp.getFuncion();
         List<BoletaEntity> boletasFuncion = funcion.getBoletas();
         for(int i = 0; i < boletasFuncion.size(); i++)
         {
             if(boletasFuncion.get(i).getId().equals(id))
             {
+                LOGGER.info("Removiendo Boleta de la funcion asociada.");
                 boletasFuncion.remove(i);
             }
         }
         funcion.setBoletas(boletasFuncion);
         logicFuncion.updateFuncion(funcion);
+        LOGGER.info("Boleta exitosamente removida de la Funcion");
         if(temp.getCalificacion() != null)
         {
-            LOGGER.log(Level.INFO, "Inicia proceso de borrar una calificacion de la boleta con id = {0}", id);
+            LOGGER.info("Procesando Calificacion de la boleta..");
             Long idCalificacionABorrar = temp.getCalificacion().getId();
             temp.setCalificacion(null);
             persistenceBoleta.update(temp);
             logicCalificacion.deleteCalificacion(idCalificacionABorrar);
-        }        
+            LOGGER.info("Calificacion exitosamente eliminada de la base de datos y de la boleta.");
+        }
         persistenceBoleta.delete(id);
         LOGGER.log(Level.INFO, "Termina proceso de borrar boleta con id={0}",id);
     }
@@ -635,10 +652,11 @@ public class BoletaLogic
         BoletaEntity boletaEntity = getBoleta(boletaId);
         if(boletaEntity.getCalificacion() == null)
         {
-            throw new BusinessLogicException("La Boleta con Id: \"" + boletaId +"\" ya tiene una calificacion asignada, usar el metodo POST.");
+            throw new BusinessLogicException("La Boleta con Id: \"" + boletaId +"\" no tiene una calificacion asignada, usar el metodo POST.");
         }
         boletaEntity.setCalificacion(entity);
         logicCalificacion.updateCalificacion(entity);
+        persistenceBoleta.update(boletaEntity);
         LOGGER.info("Termina proceso de actualizacion de Calificacion de Boleta");
         return entity;
     }
