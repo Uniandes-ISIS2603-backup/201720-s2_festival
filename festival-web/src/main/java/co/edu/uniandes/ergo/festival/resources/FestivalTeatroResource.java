@@ -32,7 +32,6 @@ import javax.ws.rs.WebApplicationException;
 @Path("festivales")
 @Produces("application/json")
 @Consumes("application/json")
-@Stateless
 public class FestivalTeatroResource 
 {
     ///////teatros///////
@@ -40,7 +39,7 @@ public class FestivalTeatroResource
     
     
     @GET
-    @Path("{festivalesId:\\d+ }/teatros")
+    @Path("{festivalesId: \\d+}/teatros")
     public  List<TeatroDTO> getListTeatros(@PathParam("festivalesId") Long festivalId)
     {
         FestivalEntity festival = festivalLogic.getFestival(festivalId);
@@ -55,26 +54,26 @@ public class FestivalTeatroResource
      * 
      */
     @GET
-    @Path("{festivalesId:\\d+ }/teatros")
-    public TeatroDTO getTeatro(@PathParam("festivalesId") Long festivalId, @PathParam("teatrosId") Long teatrosId)
+    @Path("{festivalesId: \\d+}/teatros/{teatroId: \\d+}")
+    public TeatroDTO getTeatro(@PathParam("festivalesId") Long festivalId, @PathParam("teatroId") Long teatroId)
     {
         FestivalEntity festival =festivalLogic.getFestival(festivalId);
         if (festival == null)
         {
             throw new WebApplicationException("El festival con id: " + festivalId + " no existe.", 404);
         }
-        return new TeatroDTO(festivalLogic.getTeatro(festivalId, teatrosId));
+        return new TeatroDTO(festivalLogic.getTeatro(festivalId, teatroId));
     }
     
     @POST
-    @Path("{festivalesId:\\d+ }/teatros")
-    public TeatroDTO addTeatroFestival(@PathParam("festivalesId") Long festivalId, @PathParam("teatrosId") Long teatrosId)    
+    @Path("{festivalesId: \\d+}/teatros/{teatroId: \\d+}")
+    public TeatroDTO addTeatroFestival(@PathParam("festivalesId") Long festivalId, @PathParam("teatroId") Long teatroId)    
     {
-        return new TeatroDTO(festivalLogic.addTeatro(festivalId, teatrosId));
+        return new TeatroDTO(festivalLogic.addTeatro(festivalId, teatroId));
     }
     
     @PUT
-   @Path("{festivalesId:\\d+ }/teatros")
+   @Path("{festivalesId: \\d+}/teatros")
     public List<TeatroDTO> replaceTeatros(@PathParam("festivalesId") Long festivalId, List<TeatroEntity> teatros)
     {
         return teatrosListEntity2DTO(festivalLogic.replaceTeatros(festivalId, teatros));
@@ -84,10 +83,10 @@ public class FestivalTeatroResource
      * 
      */
     @DELETE
-   @Path("{festivalesId:\\d+ }/teatros")
-    public void removeTeatro(@PathParam("festivalesId") Long festivalId, @PathParam("teatrosId") Long teatrosId)
+   @Path("{festivalesId: \\d+}/teatros/{teatroId: \\d+}")
+    public void removeTeatro(@PathParam("festivalesId") Long festivalId, @PathParam("teatroId") Long teatroId)
     {
-        festivalLogic.removeTeatro(festivalId, teatrosId);
+        festivalLogic.removeTeatro(festivalId, teatroId);
     }
 
     /**

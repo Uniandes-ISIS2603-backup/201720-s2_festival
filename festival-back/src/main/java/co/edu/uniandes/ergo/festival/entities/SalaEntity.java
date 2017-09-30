@@ -20,31 +20,31 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class SalaEntity extends BaseEntity implements Serializable {
 
-    //@PodamExclude
-    //@OneToMany
-    //private List<FuncionEntity> funciones;
+    @PodamExclude
+    @OneToMany
+    private List<FuncionEntity> funciones;
     @PodamExclude
     @OneToMany(mappedBy="sala", cascade = {CascadeType.REMOVE})
     private List<SillaEntity> sillas;
-    //@PodamExclude
-    //@ManyToOne
-    //private TeatroEntity teatro;
+    @PodamExclude
+    @ManyToOne
+    private TeatroEntity teatro;
     private int numSillas;
     private int numSillasPreferenciales;
     
     /**
      * @return the funciones
      */
-    /*public List<FuncionEntity> getFunciones() {
+    public List<FuncionEntity> getFunciones() {
         return funciones;
-    }*/
+    }
 
     /**
      * @param funciones the funciones to set
      */
-    /*public void setFunciones(List<FuncionEntity> funciones) {
+    public void setFunciones(List<FuncionEntity> funciones) {
         this.funciones = funciones;
-    }*/
+    }
 
     /**
      * @return the sillas
@@ -63,16 +63,16 @@ public class SalaEntity extends BaseEntity implements Serializable {
     /**
      * @return the teatro
      */
-    /*public TeatroEntity getTeatro() {
+    public TeatroEntity getTeatro() {
         return teatro;
-    }*/
+    }
 
     /**
      * @param teatro the teatro to set
      */
-    /*public void setTeatro(TeatroEntity teatro) {
+    public void setTeatro(TeatroEntity teatro) {
         this.teatro = teatro;
-    }*/
+    }
 
     /**
      * @return the numSillas

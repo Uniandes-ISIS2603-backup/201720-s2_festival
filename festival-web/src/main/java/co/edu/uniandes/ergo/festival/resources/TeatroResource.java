@@ -66,7 +66,7 @@ public class TeatroResource
      */
     @GET
     @Path("{id: \\d+}")
-    public TeatroDetailDTO getTeatro(@PathParam ("id")Long id)
+    public TeatroDetailDTO getTeatro(@PathParam ("id") Long id)
     {
         TeatroEntity entity = teatroLogic.getTeatro(id);
         if(entity == null)
@@ -134,8 +134,8 @@ public class TeatroResource
      * @return 
      */
     @GET
-    @Path("{teatrosId:\\d+ }/salas")
-    public  List<SalaDTO> getListSalas(@PathParam("teatrosId") Long teatroId)
+    @Path("{teatroId: \\d+ }/salas")
+    public  List<SalaDTO> getListSalas(@PathParam("teatroId") Long teatroId)
     {
         TeatroEntity teatro = teatroLogic.getTeatro(teatroId);
         if (teatro == null)
@@ -149,8 +149,8 @@ public class TeatroResource
      * 
      */
     @GET
-    @Path("{teatrosId:\\d+ }/salas")
-    public SalaDTO getSala(@PathParam("teatrosId") Long teatroId, @PathParam("salasId") Long salasId)
+    @Path("{TeatroId: \\d+ }/salas/{salasId: \\d+ }")
+    public SalaDTO getSala(@PathParam("TeatroId") Long teatroId, @PathParam("salasId") Long salasId)
     {
         TeatroEntity teatro = teatroLogic.getTeatro(teatroId);
         if (teatro == null)
@@ -161,27 +161,27 @@ public class TeatroResource
     }
     
     @POST
-    @Path("{teatrosId:\\d+ }/salas")
-    public SalaDTO addSalaTeatro(@PathParam("teatrosId") Long teatroId, @PathParam("salasId") Long salasId)    
+    @Path("{TeatroId: \\d+ }/salas/{salasId: \\d+ }")
+    public SalaDTO addSalaTeatro(@PathParam("TeatroId") Long teatroId, @PathParam("salasId") Long salasId)    
     {
         return new SalaDTO(teatroLogic.addSala(teatroId, salasId));
     }
     
     @PUT
-    @Path("{teatrosId:\\d+ }/salas")
-    public List<SalaDTO> replaceSalas(@PathParam("teatrosId") Long teatrosId, List<SalaEntity> salas)
+    @Path("{TeatroId: \\d+ }/salas")
+    public List<SalaDTO> replaceSalas(@PathParam("TeatroId") Long TeatroId, List<SalaEntity> salas)
     {
-        return salasListEntity2DTO(teatroLogic.replaceSalas(teatrosId, salas));
+        return salasListEntity2DTO(teatroLogic.replaceSalas(TeatroId, salas));
     }
     
     /**
      * 
      */
     @DELETE
-    @Path("{teatrosId:\\d+ }/salas")
-    public void removeSalas(@PathParam("teatrosId") Long teatrosId, @PathParam("salasId") Long salasId)
+    @Path("{TeatroId: \\d+ }/salas/{salasId: \\d+ }")
+    public void removeSalas(@PathParam("TeatroId") Long TeatroId, @PathParam("salasId") Long salasId)
     {
-        teatroLogic.removeSala(teatrosId, salasId);
+        teatroLogic.removeSala(TeatroId, salasId);
     }
 
     /**
