@@ -5,7 +5,9 @@
  */
 package co.edu.uniandes.ergo.festival.dtos;
 
+import co.edu.uniandes.ergo.festival.entities.SalaEntity;
 import co.edu.uniandes.ergo.festival.entities.TeatroEntity;
+import java.util.*;
 
 /**
  *
@@ -13,7 +15,12 @@ import co.edu.uniandes.ergo.festival.entities.TeatroEntity;
  */
 public class TeatroDetailDTO extends TeatroDTO
 {
-      
+       private List<SalaDTO> salas;
+    
+   public TeatroDetailDTO()
+   {
+       
+   }
     /**
      * Constructor para transformar un Entity a un DTO
      *
@@ -22,8 +29,16 @@ public class TeatroDetailDTO extends TeatroDTO
     public TeatroDetailDTO(TeatroEntity entity)
     {
        super(entity);
+       if(entity != null)
+       {
+        salas = new ArrayList<>();
+        for(SalaEntity entitySala: entity.getSalas())
+        {
+            salas.add(new SalaDTO(entitySala));           
+        }
+       }
     }
-    
+ 
      /**
      * Transformar un DTO a un Entity
      *
@@ -32,8 +47,24 @@ public class TeatroDetailDTO extends TeatroDTO
     @Override
     public TeatroEntity toEntity()
     {
-        TeatroEntity entity = new TeatroEntity();
-        
-        return entity;
+        TeatroEntity entity = super.toEntity();
+        if(salas != null)
+         {
+           List<SalaEntity> salasEntity = new ArrayList<>();
+           for(SalaDTO slas: salas)
+           {
+               salasEntity.add(slas.toEntity());
+           }
+         entity.setSalas(salasEntity);
+         }        
+         return entity;
     }
+
+   public List<SalaDTO> getSalas() {
+       return salas;
+   }
+
+   public void setSalas(List<SalaDTO> salas) {
+        this.salas = salas;
+   }
 }

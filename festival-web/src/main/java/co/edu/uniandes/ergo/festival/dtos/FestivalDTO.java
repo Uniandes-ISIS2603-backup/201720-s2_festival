@@ -35,12 +35,10 @@ import java.util.Date;
  */
 public class FestivalDTO {
 
-    private Long id;
-
+       private Long id;
     private String nombre;
     private Date fechaInicio;
     private Date fechaFin;
-    private String patrocinador;
     /**
      * Constructor por defecto
      */
@@ -55,6 +53,9 @@ public class FestivalDTO {
      */
     public FestivalDTO(FestivalEntity Festival) {
         this.id = Festival.getId();
+        this.nombre = Festival.getName();
+        this.fechaInicio = Festival.getFechaInicio();
+        this.fechaFin = Festival.getFechaFin();
     }
 
     /**
@@ -95,14 +96,6 @@ public class FestivalDTO {
         this.fechaFin = fechaDin;
     }
 
-    public String getPatrocinador() {
-        return patrocinador;
-    }
-
-    public void setPatrocinador(String patrocinador) {
-        this.patrocinador = patrocinador;
-    }
-
     /**
      * Convertir DTO a Entity
      *
@@ -111,11 +104,11 @@ public class FestivalDTO {
     public FestivalEntity toEntity() {
         FestivalEntity entity = new FestivalEntity();
         entity.setId(this.id);
-        entity.setNombre(this.nombre);
+        entity.setName(this.nombre);
         entity.setFechaInicio(this.fechaInicio);
         entity.setFechaFin(this.fechaFin);
-        entity.setPatrocinador(this.patrocinador);
         return entity;
-    }
-    
+    }  
+
 }
+    

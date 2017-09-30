@@ -131,7 +131,7 @@ public class TeatroPersistenceTest {
         Assert.assertNotNull(result);
         TeatroEntity entity = em.find(TeatroEntity.class, result.getId());
         Assert.assertNotNull(entity);
-        Assert.assertEquals(newEntity.getNombre(), entity.getNombre());
+        Assert.assertEquals(newEntity.getName(), entity.getName());
     }
     
     /**

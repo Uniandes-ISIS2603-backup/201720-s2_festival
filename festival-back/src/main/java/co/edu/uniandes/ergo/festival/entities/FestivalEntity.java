@@ -40,53 +40,32 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class FestivalEntity extends BaseEntity implements Serializable {
    
-   private String nombre;
-   @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.DATE)
    private Date fechaInicio;
    @Temporal(TemporalType.DATE)
    private Date fechaFin;
-   private String patrocinador;
+   
    @PodamExclude
    @OneToMany
-   private List<TeatroEntity> teatro;
+   private List<PatrocinadorEntity>patrocinadores;
+   @PodamExclude
+   @OneToMany
+   private List<TeatroEntity> teatros;
    @PodamExclude
    @OneToMany
    private List<PeliculaEntity> peliculas;
    @PodamExclude
-   @OneToMany 
+   @OneToMany
    private List<EspectadorEntity> espectadores;
    @PodamExclude
    @OneToMany
    private List<CriticoEntity> criticos;
    @PodamExclude
-   @OneToMany(mappedBy="festival")
+   @OneToMany
    private List<FuncionEntity> funciones;
-
-    public List<FuncionEntity> getFunciones() {
-        return funciones;
-    }
-
-    public void setFunciones(List<FuncionEntity> funciones) {
-        this.funciones = funciones;
-    }
    
-    /**
-     * 
-     * @return the nombre of festival
-     */
-    public String getNombre() {
-        return nombre;
-    }
-
-    /**
-     * 
-     * @param nombre the nombre to set
-     */
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    /**
+   
+     /**
      * 
      * @return the fechaInicio of festival
      */
@@ -118,12 +97,12 @@ public class FestivalEntity extends BaseEntity implements Serializable {
         this.fechaFin = fechaFin;
     }
 
-    public List<TeatroEntity> getTeatro() {
-        return teatro;
+    public List<TeatroEntity> getTeatros() {
+        return teatros;
     }
 
-    public void setTeatro(List<TeatroEntity> teatro) {
-        this.teatro = teatro;
+    public void setTeatros(List<TeatroEntity> teatro) {
+        this.teatros = teatro;
     }
 
     public List<PeliculaEntity> getPeliculas() {
@@ -150,20 +129,28 @@ public class FestivalEntity extends BaseEntity implements Serializable {
         this.criticos = criticos;
     }
 
-    /**
-     * 
-     * @return the patrocinador of festival
-     */
-    public String getPatrocinador() {
-        return patrocinador;
+    public List<PatrocinadorEntity> getPatrocinadores() {
+        return patrocinadores;
     }
 
-    /**
-     * 
-     * @param patrocinador the patrocinador to set
-     */
-    public void setPatrocinador(String patrocinador) {
-        this.patrocinador = patrocinador;
+    public void setPatrocinadores(List<PatrocinadorEntity> patrocinador) {
+        this.patrocinadores = patrocinador;
+    }
+
+    public List<TeatroEntity> getTeatro() {
+        return teatros;
+    }
+
+    public void setTeatro(List<TeatroEntity> teatro) {
+        this.teatros = teatro;
+    }
+
+    public List<FuncionEntity> getFunciones() {
+        return funciones;
+    }
+
+    public void setFunciones(List<FuncionEntity> funcion) {
+        this.funciones = funcion;
     }
    
 }

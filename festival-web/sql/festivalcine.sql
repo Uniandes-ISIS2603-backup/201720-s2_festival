@@ -11,7 +11,7 @@ delete from SillaEntity;
 delete from FuncionEntity;
 delete from SalaEntity;
 delete from FestivalEntity;
-
+delete from TeatroEntity;
 /*FestivalEntity*/
 insert into FestivalEntity (id) values (1);
 
@@ -43,8 +43,6 @@ insert into FestivalEntity (id) values (1);
 
 /* FuncionEntity */
 delete from FuncionEntity;
-
-
 
 /* SillaEntity */
 
@@ -265,3 +263,20 @@ insert into BoletaEntity (id, codigoDeBarras, estado, precio) values(60, 650, 3,
     Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus ', 1, 1);
     insert into CriticaEntity (id, comentario, critico_id, funcion_id) values (10, 'Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.', 1, 1);
 
+    /* TeatroEntity */
+    insert into TeatroEntity(id, nombre, tarifaBasica) values (1, 'colombia', 8000);
+    insert into TeatroEntity(id, nombre, tarifaBasica) values (2, 'chapinero', 7000);
+    insert into TeatroEntity(id, nombre, tarifaBasica) values (3, 'colon', 7500);
+    insert into TeatroEntity(id, nombre, tarifaBasica) values (4, 'catellana', 8500);
+    insert into TeatroEntity(id, nombre, tarifaBasica) values (5, 'country', 9000);
+    insert into TeatroEntity(id, nombre, tarifaBasica) values (6, 'occidental' 8500);
+    insert into TeatroEntity(id, nombre, tarifaBasica) values (7, 'central' 7500);
+    insert into TeatroEntity(id, nombre, tarifaBasica) values (8, 'oriental' 7500);
+    insert into TeatroEntity(id, nombre, tarifaBasica) values (9, 'norte'9000);
+    insert into TeatroEntity(id, nombre, tarifaBasica) values (10, 'sur' 8600);
+
+   /* FestivalEnity*/
+    insert into FestivalEntity(id, nombre, fechaInicio, fechaFin) values (1, 'verano', '8/20/2017','8/23/2017' );
+    insert into FestivalEntity(id, nombre, fechaInicio, fechaFin) values (2, 'invierno', '8/24/2017','9/7/2017' );
+    insert into FestivalEntity(id, nombre, fechaInicio, fechaFin) values (3, 'primavera', '9/8/2017','9/23/2017' );
+    insert into FestivalEntity(id, nombre, fechaInicio, fechaFin) values (4, 'otonio', '9/24/2017','10/7/2017' );
