@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "CalificacionResource",
-		"_postman_id": "5ce4ec7e-4584-0710-8174-2183c1b0383a",
+		"_postman_id": "dc800944-2e17-cd9e-150e-8a516e3a9ac5",
 		"description": "Pruebas iniciales del proyecto para el recurso calificacion. ",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -288,7 +288,7 @@
 			"response": []
 		},
 		{
-			"name": "Existe el recurso con id 6",
+			"name": "Verificar que la CalificacionEntity haya sido creada",
 			"event": [
 				{
 					"listen": "test",
@@ -297,7 +297,7 @@
 						"exec": [
 							"var data = JSON.parse(responseBody);",
 							"tests[\"No genera error en el Post\"] = responseCode.code === 200;",
-							"tests[\"Id de el recurso pedido\"] = data.id === 2;",
+							"tests[\"Hay 4 CalificacionEntity\"] = data.length === 4;",
 							"",
 							""
 						]
@@ -305,7 +305,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/festival-web/api/calificaciones/2",
+				"url": "http://localhost:8080/festival-web/api/calificaciones/",
 				"method": "GET",
 				"header": [
 					{
