@@ -504,7 +504,37 @@ public class BoletaLogic
         {
             throw new BusinessLogicException("La Silla con Id: \"" + sillaId +"\" no existe.");
         }
+        //PROCESANDO REMOCIÓN DE BOLETA EN SILLA ANTIGUA.
+        SillaEntity sillaVieja = logicSilla.getSilla(boletaEntity.getSilla().getId());
+        List<BoletaEntity> boletasSillaVieja = sillaVieja.getBoletas();
+        for(int i = 0; i < boletasSillaVieja.size(); i++)
+        {
+            if(boletasSillaVieja.get(i).getId().equals(boletaId))
+            {
+                boletasSillaVieja.remove(i);
+            }
+        }
+        sillaVieja.setBoletas(boletasSillaVieja);
+        
+        //Agregando silla nueva a Boleta.
         boletaEntity.setSilla(logicSilla.getSilla(sillaId));
+        //PROCESANDO AGREGR BOLETA EN SILLA NUEVA.
+        SillaEntity sillaNueva = logicSilla.getSilla(sillaId);
+        List<BoletaEntity> boletasSillaNueva = sillaNueva.getBoletas();
+        for(int i = 0; i < boletasSillaNueva.size(); i++)
+        {
+            if(boletasSillaNueva.get(i).getFuncion().getId().equals(boletaEntity.getFuncion().getId()))
+            {
+                throw new BusinessLogicException("Ya existe una boleta asignada la silla con ID : \""+ sillaId+"\" y una función con Id: \"" + boletaEntity.getFuncion().getId() +"\".");
+            }
+        }
+        boletasSillaNueva.add(boletaEntity);
+        sillaNueva.setBoletas(boletasSillaNueva);
+        //Consolidar cambios.
+        logicSilla.updateSilla(sillaVieja);
+        logicSilla.updateSilla(sillaNueva);
+        persistenceBoleta.update(boletaEntity);
+        
         LOGGER.log(Level.INFO, "Termina proceso de actualizar silla de Boleta con id={0}", boletaEntity.getId());
         return boletaEntity.getSilla();
     }
@@ -569,7 +599,29 @@ public class BoletaLogic
         {
             throw new BusinessLogicException("La Funcion con Id: \"" + funcionId +"\" no existe.");
         }
+        //Remover Boleta de la Función
+        FuncionEntity funcionVieja = logicFuncion.getFuncion(boletaEntity.getFuncion().getId());
+        List<BoletaEntity> boletasFuncionAntigua = funcionVieja.getBoletas();
+        for(int i = 0; i < boletasFuncionAntigua.size(); i++)
+        {
+            if(boletasFuncionAntigua.get(i).getId().equals(boletaId))
+            {
+                boletasFuncionAntigua.remove(i);
+            }
+        }
+        funcionVieja.setBoletas(boletasFuncionAntigua);
+        
+        //Actualizar Función de esta boleta
         boletaEntity.setFuncion(persistenceFuncion.find(funcionId));
+        //Actualizar boletas de Función nueva.
+        FuncionEntity funcionNueva = logicFuncion.getFuncion(funcionId);
+        List<BoletaEntity> boletasFuncionNueva = funcionNueva.getBoletas();
+        boletasFuncionNueva.add(boletaEntity);
+        //Actualizando información.
+        logicFuncion.updateFuncion(funcionVieja);
+        persistenceBoleta.update(boletaEntity);
+        logicFuncion.updateFuncion(funcionNueva);
+        
         LOGGER.log(Level.INFO, "Termina proceso de agregar funcion de Boleta con id={0}", boletaEntity.getId());
         return boletaEntity.getFuncion();
     }

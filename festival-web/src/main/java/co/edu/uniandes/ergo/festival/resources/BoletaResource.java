@@ -30,6 +30,7 @@ import co.edu.uniandes.ergo.festival.dtos.BoletaDetailDTO;
 import co.edu.uniandes.ergo.festival.dtos.CalificacionDTO;
 import co.edu.uniandes.ergo.festival.dtos.EspectadorDetailDTO;
 import co.edu.uniandes.ergo.festival.dtos.FuncionDTO;
+import co.edu.uniandes.ergo.festival.dtos.FuncionDetailDTO;
 import co.edu.uniandes.ergo.festival.dtos.SillaDetailDTO;
 import co.edu.uniandes.ergo.festival.entities.FestivalEntity;
 import co.edu.uniandes.ergo.festival.entities.BoletaEntity;
@@ -308,8 +309,23 @@ public class BoletaResource
         }
         return new FuncionDTO(boletaLogic.addFuncionFromBoleta(boletaId, funcionId));
     }
-    
-    
+    /**
+     * Método que actualiza la Función de una Boleta al reemplazarla con otra.
+     * @param boletaId Long, ID de la Boleta.
+     * @param funcionId Long, ID de la Función.
+     * @return FunctionDetailDTO, nueva Función asociada a la Boleta.
+     * @throws BusinessLogicException 
+     */
+    @PUT
+    @Path("{boletaid:\\d+}/funciones/{funcionid:\\d+}")
+    public FuncionDetailDTO updateFuncionFromBoleta(@PathParam("boletaid")Long boletaId, @PathParam("funcionid")Long funcionId ) throws BusinessLogicException
+    {
+        BoletaEntity entity = boletaLogic.getBoleta(boletaId);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /boletas/" + boletaId + " no existe.", 404);
+        }
+        return new FuncionDetailDTO(boletaLogic.updateFuncionFromBoleta(boletaId, funcionId));
+    }
     /**
      * Método que obtiene la calificación asociada a una boleta.
      * @param id Long, ID de la boleta.
