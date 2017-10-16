@@ -1,4 +1,5 @@
 delete from CriticaEntity;
+delete from CalificacionEntity;
 delete from AbonoEntity;
 delete from BoletaEntity;
 delete from FuncionEntity;
@@ -6,7 +7,6 @@ delete from PeliculaEntity_PersonaEntity;
 delete from PersonaEntity_PeliculaEntity;
 delete from PeliculaEntity;
 delete from PersonaEntity;
-delete from CalificacionEntity;
 delete from SillaEntity;
 delete from CriticaEntity;
 delete from PersonaEntity where dtype = 'CriticoEntity';
