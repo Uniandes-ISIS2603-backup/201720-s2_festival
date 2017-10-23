@@ -4,6 +4,7 @@
         'ui.router',
         'ui.bootstrap',
         // Internal modules dependencies
+        'usersModule'
     ]);
     
     // Resuelve problemas de las promesas
