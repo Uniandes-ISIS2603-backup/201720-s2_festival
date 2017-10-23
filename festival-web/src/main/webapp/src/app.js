@@ -4,7 +4,16 @@
         'ui.router',
         'ui.bootstrap',
         // Internal modules dependencies
-        'usersModule'
+        'usersModule',
+        'calificacionesModule',
+        'funcionesModule',
+        'boletasModule',
+        'abonosModule',
+        'teatrosModule',
+        'festivalesModule',
+        'espectadoresModule',
+        'criticosModule',
+        'peliculasModule'
     ]);
     
     // Resuelve problemas de las promesas
