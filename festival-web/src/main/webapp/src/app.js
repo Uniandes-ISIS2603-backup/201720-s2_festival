@@ -4,7 +4,9 @@
         'ui.router',
         'ui.bootstrap',
         // Internal modules dependencies
-        'usersModule'
+        'usersModule',
+        'boletasModulo',
+        'abonosModulo'
     ]);
     
     // Resuelve problemas de las promesas
