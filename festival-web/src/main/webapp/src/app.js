@@ -13,7 +13,11 @@
         'festivalesModule',
         'espectadoresModule',
         'criticosModule',
-        'peliculasModule'
+        'peliculasModule',
+        'salasModule',
+        'patrocinadoresModule',
+        'sillasModule',
+        'criticasModule'
     ]);
     
     // Resuelve problemas de las promesas
