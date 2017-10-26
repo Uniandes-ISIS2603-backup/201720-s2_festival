@@ -9,7 +9,6 @@ package co.edu.uniandes.ergo.festival.ejb;
 import co.edu.uniandes.ergo.festival.entities.AbonoEntity;
 import co.edu.uniandes.ergo.festival.entities.BoletaEntity;
 import co.edu.uniandes.ergo.festival.entities.EspectadorEntity;
-import co.edu.uniandes.ergo.festival.entities.EspectadorEntity;
 import co.edu.uniandes.ergo.festival.entities.SillaEntity;
 import co.edu.uniandes.ergo.festival.entities.CalificacionEntity;
 import co.edu.uniandes.ergo.festival.entities.FuncionEntity;
@@ -51,8 +50,8 @@ public class BoletaLogic
     @Inject
     private FuncionPersistence persistenceFuncion;
     
-    @Inject
-    private EspectadorLogic logicEspectador;
+//    @Inject
+//    private EspectadorLogic logicEspectador;
     
     @Inject
     private CalificacionLogic logicCalificacion;
@@ -366,7 +365,8 @@ public class BoletaLogic
         if(temp.getEspectador()!= null)
         {
             LOGGER.info("Procesando Espectador asociado.");
-            EspectadorEntity espectadorTemp = logicEspectador.getEspectador(temp.getEspectador().getId());
+            EspectadorEntity espectadorTemp = persistenceEspectador.find(temp.getEspectador().getId());
+            
             List<BoletaEntity> boletasEspectador = espectadorTemp.getBoletas();
             for(int i = 0; i < boletasEspectador.size(); i++)
             {
@@ -377,7 +377,8 @@ public class BoletaLogic
                 }
             }
             espectadorTemp.setBoletas(boletasEspectador);
-            logicEspectador.updateEspectador(temp.getEspectador().getId(), espectadorTemp);//BORRAR LA BOLETA DEL ESPECTADOR.
+//            logicEspectador.updateEspectador(temp.getEspectador().getId(), espectadorTemp);//BORRAR LA BOLETA DEL ESPECTADOR.
+            persistenceEspectador.update(espectadorTemp);
             LOGGER.info("Boleta exitosamente removida de Espectador.");
         }
         if(temp.getAbono() != null)
@@ -791,6 +792,12 @@ public class BoletaLogic
             throw new BusinessLogicException("El espectador con Id: \"" + espectadorId +"\" no existe.");
         }
         boletaEntity.setEspectador(persistenceEspectador.find(espectadorId));
+        EspectadorEntity espectadorNuevo = persistenceEspectador.find(espectadorId);
+        persistenceBoleta.update(boletaEntity);
+        List<BoletaEntity> boletasNuevas = espectadorNuevo.getBoletas();
+        boletasNuevas.add(boletaEntity);
+        espectadorNuevo.setBoletas(boletasNuevas);
+        persistenceEspectador.update(espectadorNuevo);
         LOGGER.log(Level.INFO, "Termina proceso de agregar espectador de Boleta con id={0}", boletaId);
         return boletaEntity.getEspectador();
     }
@@ -809,7 +816,30 @@ public class BoletaLogic
         {
             throw new BusinessLogicException("El espectador con Id: \"" + espectadorId +"\" no existe.");
         }
-        boletaEntity.setEspectador(persistenceEspectador.find(espectadorId));
+        EspectadorEntity viejoEspectador = persistenceEspectador.find(boletaEntity.getEspectador().getId());
+        List<BoletaEntity> boletasViejoEspectador = viejoEspectador.getBoletas();
+        
+        for(int i = 0; i < boletasViejoEspectador.size(); i++)
+        {
+            if(boletasViejoEspectador.get(i).getId().equals(boletaId))
+            {
+                boletasViejoEspectador.remove(i);
+            }
+        }
+        viejoEspectador.setBoletas(boletasViejoEspectador);
+        persistenceEspectador.update(viejoEspectador);
+        
+        EspectadorEntity nuevoEspectador = persistenceEspectador.find(espectadorId);
+        List<BoletaEntity> boletasNuevoEspectador = nuevoEspectador.getBoletas();
+        boletasNuevoEspectador.add(boletaEntity);
+        nuevoEspectador.setBoletas(boletasNuevoEspectador);
+        
+        
+        boletaEntity.setEspectador(nuevoEspectador);
+        persistenceEspectador.update(nuevoEspectador);
+        
+        
+        persistenceBoleta.update(boletaEntity);
         LOGGER.log(Level.INFO, "Termina proceso de agregar espectador de Boleta con id={0}", boletaEntity.getId());
         return boletaEntity.getEspectador();
     }
@@ -827,5 +857,17 @@ public class BoletaLogic
             throw new BusinessLogicException("La Boleta con Id: \"" + boletaId +"\" no tiene un espectador asociado.");
         }
         entity.setEspectador(null);
+        EspectadorEntity espectador = persistenceEspectador.find(entity.getEspectador().getId());
+        List<BoletaEntity> boletas = espectador.getBoletas();
+        for(int i = 0; i < boletas.size(); i++)
+        {
+            if(boletas.get(i).getId().equals(boletaId))
+            {
+                boletas.remove(i);
+            }
+        }
+        espectador.setBoletas(boletas);
+        persistenceEspectador.update(espectador);
+        persistenceBoleta.update(entity);
     }
 }
