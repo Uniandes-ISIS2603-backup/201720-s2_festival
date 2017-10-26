@@ -5,8 +5,19 @@
         'ui.bootstrap',
         // Internal modules dependencies
         'usersModule',
-        'boletasModulo',
-        'abonosModulo'
+        'calificacionesModule',
+        'funcionesModule',
+        'boletasModule',
+        'abonosModule',
+        'teatrosModule',
+        'festivalesModule',
+        'espectadoresModule',
+        'criticosModule',
+        'peliculasModule',
+        'salasModule',
+        'patrocinadoresModule',
+        'sillasModule',
+        'criticasModule'
     ]);
     
     // Resuelve problemas de las promesas

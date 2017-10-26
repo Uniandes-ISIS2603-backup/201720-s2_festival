@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-(function (ng) {
+  (function (ng) {
     // Definición del módulo
     var mod = ng.module("boletasModulo", ['ui.router']);
 //    mod.constante("boletasContext", "api/boletas");
@@ -35,5 +35,6 @@
     ]);
     
 })(window.angular);
+
 
 

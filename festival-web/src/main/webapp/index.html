@@ -33,17 +33,31 @@
         <script src="src/modules/users/boletas/detail/users.boletas.detail.ctrl.js" type="text/javascript"></script>
         <script src="src/modules/users/boletas/detail/calificacion/users.boletas.detail.calificacion.st.js" type="text/javascript"></script>
         <script src="src/modules/users/boletas/detail/calificacion/users.boletas.detail.calificacion.ctrl.js" type="text/javascript"></script>
-        <!-- Boletas -->
+       <!-- Boletas -->
         <script src="src/modules/boletas/boletas.mod.js" type="text/javascript"></script>
         <script src="src/modules/boletas/boletas.ctrl.js" type="text/javascript"></script>
         <!-- Abonos -->
         <script src="src/modules/abonos/abonos.mod.js" type="text/javascript"></script>
         <script src="src/modules/abonos/abonos.ctrl.js" type="text/javascript"></script>
+       <script src="src/modules/calificaciones/calificaciones.mod.js" type="text/javascript"></script>
+        <script src="src/modules/funciones/funciones.mod.js" type="text/javascript"></script>
+        <script src="src/modules/boletas/boletas.mod.js" type="text/javascript"></script>
+        <script src="src/modules/abonos/abonos.mod.js" type="text/javascript"></script>
+        <script src="src/modules/teatros/teatros.mod.js" type="text/javascript"></script>
+        <script src="src/modules/festivales/festivales.mod.js" type="text/javascript"></script>
+        <script src="src/modules/espectadores/espectadores.mod.js" type="text/javascript"></script>
+        <script src="src/modules/criticos/criticos.mod.js" type="text/javascript"></script>
+        <script src="src/modules/peliculas/peliculas.mod.js" type="text/javascript"></script>
+        <script src="src/modules/salas/salas.mod.js" type="text/javascript"></script>
+        <script src="src/modules/sillas/sillas.mod.js" type="text/javascript"></script>
+        <script src="src/modules/criticas/criticas.mod.js" type="text/javascript"></script>
+        <script src="src/modules/patrocinadores/patrocinadores.mod.js" type="text/javascript"></script>
     </head>
     <body>
         <h1>Festival</h1>
         <span>By Ergo</span>
         <ul class="list-group">
+             <!-- info 1 -->
             <li class="list-group-item-success"> <a ui-sref="users.login">Login usuario (cuando no ha iniciado sesión)</a></li>
             <li class="list-group-item-danger"> <a ui-sref="users.detail">Detalle usuario (temporal)</a></li>
             <li class="list-group-item-info"> <a ui-sref="users.create">Crear usuario (temporal)</a></li>
@@ -57,6 +71,27 @@
             <li class="list-group-item-alert"> <a ui-sref="espectador">Ver los espectadores</a></li>
             <li class="list-group-item-alert"> <a ui-sref="critico">Ver los criticos</a></li>
             <li class="list-group-item-alert"> <a ui-sref="pelicula">Ver las peliculas</a></li>
+=======
+          
+          
+          <!-- info 2 -->
+      <li> <a ui-sref="users.login">Login usuario (cuando no ha iniciado sesión)</a></li>
+            <li> <a ui-sref="users.detail">Detalle usuario (temporal)</a></li>
+            <li> <a ui-sref="users.create">Crear usuario (temporal)</a></li>
+            <li> <a ui-sref="users.boletas.list">Ver las boletas de un usuario (temporal)</a></li>
+            <li> <a ui-sref="calificaciones">Ver las calificaciones</a></li>
+            <li> <a ui-sref="funciones">Ver las funciones</a></li>
+            <li> <a ui-sref="boletas">Ver las boletas</a></li>            
+            <li> <a ui-sref="abonos">Ver los abonos</a></li>
+            <li> <a ui-sref="teatros">Ver los teatros</a></li>
+            <li> <a ui-sref="festivales">Ver los festivales</a></li>
+            <li> <a ui-sref="espectadores">Ver los espectadores</a></li>
+            <li> <a ui-sref="criticos">Ver los criticos</a></li>
+            <li> <a ui-sref="peliculas">Ver las peliculas</a></li>
+            <li> <a ui-sref="salas">Ver las salas</a></li>
+            <li> <a ui-sref="patrocinadores">Ver los patrocinadores</a></li>
+            <li> <a ui-sref="sillas">Ver las sillas</a></li>
+            <li> <a ui-sref="criticas">Ver las criticas</a></li>
         </ul>
         <div ui-view="mainView"></div>
     </body>
