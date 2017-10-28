@@ -1,0 +1,6 @@
+[
+  {"id": 1, "estado" : "RESERVADA", "precio": 775.50, "codigoDeBarras" : 1, "silla":{"id":5}, "funcion":{"id" : 1}},
+  {"id": 2, "estado" : "RESERVADA", "precio": 775.50, "codigoDeBarras" : 2, "silla":{"id":6}, "funcion":{"id" : 1}},
+  {"id": 3, "estado" : "RESERVADA", "precio": 775.50, "codigoDeBarras" : 3, "silla":{"id":7}, "funcion":{"id" : 2}},
+  {"id": 4, "estado" : "RESERVADA", "precio": 775.50, "codigoDeBarras" : 4, "silla":{"id":8}, "funcion":{"id" : 2}}
+]
