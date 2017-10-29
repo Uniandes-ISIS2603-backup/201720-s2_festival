@@ -5,7 +5,7 @@
  */
   (function (ng) {
     // Definición del módulo
-    var mod = ng.module("boletasModulo", ['ui.router']);
+    var mod = ng.module("boletasModule", ['ui.router']);
 //    mod.constante("boletasContext", "api/boletas");
         
     // Configuración de los estados del módulo

@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 (function (ng) {
-    var mod = ng.module("boletasModulo");
+    var mod = ng.module("boletasModule");
     mod.constant("boletasContext", "api/boletas");
     mod.controller('boletasCtrl', ['$scope', '$http', 'boletasContext',
         function ($scope, $http, boletasContext) {
