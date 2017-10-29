@@ -1,0 +1,43 @@
+<h2>Detalles de la silla {{ silla.id }}</h2>
+<table class="table table-striped">
+  <tr>
+    <th>id</th>
+    <th>tarifa</th>
+    <th>¿Es preferencial?</th>
+  </tr>
+  <tr>
+    <td>{{ silla.id }}</td>
+    <td>{{ silla.tarifa }}</td>
+    <td>{{ silla.esPreferencial }}</td>
+  </tr>
+</table>
+<h3>Boletas</h3>
+<table class="table table-striped">
+  <tr>
+    <th>id</th>
+    <th>Precio</th>
+    <th>Estado</th>
+    <th>Código de barras</th>
+  </tr>
+  <tr ng-repeat="boleta in silla.boletas">
+    <td>{{ boleta.id }}</td>
+    <td>{{ boleta.precio }}</td>
+    <td>{{ boleta.estado }}</td>
+    <td>{{ boleta.codigoDeBarras }}</td>
+  </tr>
+</table>
+<h3>Sala</h3>
+<table class="table table-striped">
+  <tr>
+    <th>id</th>
+    <th>Nombre</th>
+    <th>Número de sillas</th>
+    <th>Número de sillas preferenciales</th>
+  </tr>
+  <tr>
+    <td>{{ silla.sala.id }}</td>
+    <td>{{ silla.sala.name }}</td>
+    <td>{{ silla.sala.numSillas }}</td>
+    <td>{{ silla.sala.numSillasPreferenciales }}</td>
+  </tr>
+</table>

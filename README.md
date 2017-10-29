@@ -201,7 +201,10 @@ El objeto Silla tiene 2 representaciones JSON:
         codigoDeBarras: '' /*Tipo Long*/
     }, ...],
     sala: {
-        id: '' /*Tipo Long*/
+        id: '' /*Tipo Long*/,
+        name: '' /*Tipo String*/,
+        numSillas: '' /*Tipo Integer*/,
+        numSillasPreferenciales: '' /*Tipo Integer*/
     }
 }
 ```

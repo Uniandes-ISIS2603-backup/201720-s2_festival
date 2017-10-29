@@ -1,0 +1,17 @@
+<table class="table table-striped">
+  <tr>
+    <th>id</th>
+    <th>Nombre</th>
+    <th>¿Es preferencial?</th>
+    <th>Acciones</th>
+  </tr>
+  <tr ng-repeat="silla in sillas">
+      <td><a ui-sref="sillas.detail ({ sillasId: silla.id })">{{ silla.id }}</a></td>
+    <td>{{ silla.tarifa }}</td>
+    <td>{{ silla.esPreferencial }}</td>
+    <td>
+        <a ui-sref="sillas.update ({ sillasId: silla.id })"><span class="glyphicon glyphicon-leaf"></span></a>
+        <a ui-sref="sillas.delete ({ sillasId: silla.id })"><span class="glyphicon glyphicon-fire"></span></a>
+    </td>
+  </tr>
+</table>
