@@ -52,26 +52,39 @@
         
         <!-- Criticas -->
         <script src="src/modules/criticas/criticas.mod.js" type="text/javascript"></script>
+        <script src="src/modules/criticas/criticas.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/criticas/list/list.st.js" type="text/javascript"></script>
+        <script src="src/modules/criticas/list/list.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/criticas/detail/detail.st.js" type="text/javascript"></script>
+        <script src="src/modules/criticas/detail/detail.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/criticas/create/create.st.js" type="text/javascript"></script>
+        <script src="src/modules/criticas/create/create.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/criticas/update/update.st.js" type="text/javascript"></script>
+        <script src="src/modules/criticas/update/update.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/criticas/delete/delete.st.js" type="text/javascript"></script>
+        <script src="src/modules/criticas/delete/delete.ctrl.js" type="text/javascript"></script>
         
         <script src="src/modules/patrocinadores/patrocinadores.mod.js" type="text/javascript"></script>
     </head>
     <body>
-        <h1>Festival</h1>
-        <span>By Ergo</span>
-        <ul class="list-group">
-            <li> <a ui-sref="calificaciones">Ver las calificaciones</a></li>
-            <li> <a ui-sref="funciones">Ver las funciones</a></li>
-            <li> <a ui-sref="boletasList">Ver las boletas</a></li>     
-            <li> <a ui-sref="teatros">Ver los teatros</a></li>
-            <li> <a ui-sref="festivales">Ver los festivales</a></li>
-            <li> <a ui-sref="espectadores">Ver los espectadores</a></li>
-            <li> <a ui-sref="criticos">Ver los criticos</a></li>
-            <li> <a ui-sref="peliculas">Ver las peliculas</a></li>
-            <li> <a ui-sref="salas">Ver las salas</a></li>
-            <li> <a ui-sref="patrocinadores">Ver los patrocinadores</a></li>
-            <li> <a ui-sref="sillas.list">Ver las sillas</a></li>
-            <li> <a ui-sref="criticas">Ver las criticas</a></li>
-        </ul>
-        <div ui-view="mainView"></div>
+        <div class="container container-fluid">
+            <h1>Festival</h1>
+            <span>By Ergo</span>
+            <ul class="list-group">
+                <li> <a ui-sref="calificaciones">Ver las calificaciones</a></li>
+                <li> <a ui-sref="funciones">Ver las funciones</a></li>
+                <li> <a ui-sref="boletasList">Ver las boletas</a></li>     
+                <li> <a ui-sref="teatros">Ver los teatros</a></li>
+                <li> <a ui-sref="festivales">Ver los festivales</a></li>
+                <li> <a ui-sref="espectadores">Ver los espectadores</a></li>
+                <li> <a ui-sref="criticos">Ver los criticos</a></li>
+                <li> <a ui-sref="peliculas">Ver las peliculas</a></li>
+                <li> <a ui-sref="salas">Ver las salas</a></li>
+                <li> <a ui-sref="patrocinadores">Ver los patrocinadores</a></li>
+                <li> <a ui-sref="sillas.list">Ver las sillas</a></li>
+                <li> <a ui-sref="criticas.list">Ver las criticas</a></li>
+            </ul>
+            <div ui-view="mainView"></div>
+        </div>
     </body>
 </html>

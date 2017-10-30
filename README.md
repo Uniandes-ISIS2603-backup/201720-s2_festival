@@ -356,12 +356,13 @@ El objeto Crítica tiene 2 representaciones JSON:
     type : '' /*Tipo String*/,
     critico: {
         id: '' /*Tipo Long*/,
-        nombre: '' /*Tipo String*/
+        name: '' /*Tipo String*/
     },
     funcion: {
         horaInicio: '' /*Tipo Date*/,
         horaFin: ''/*Tipo Date*/,
-        id: '' /*Tipo Long*/
+        id: '' /*Tipo Long*/,
+        name: '' /*Tipo String*/
     }
 }
 ```
@@ -3227,5 +3228,3 @@ Código|Descripción|Cuerpo
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 
 [Volver arriba](#tabla-de-contenidos)
-
-

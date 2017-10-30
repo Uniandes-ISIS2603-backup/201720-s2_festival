@@ -15,8 +15,8 @@
 //        'peliculasModule',
 //        'salasModule',
 //        'patrocinadoresModule',
-        'sillasModule'
-//        'criticasModule'
+        'sillasModule',
+        'criticasModule'
     ]);
     
     // Resuelve problemas de las promesas

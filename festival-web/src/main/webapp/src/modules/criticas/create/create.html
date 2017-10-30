@@ -1,0 +1,5 @@
+<h2>Crear una critica</h2>
+<form ng-submit="createCritica()" name="criticaForm">
+    Comentario: <textarea id="criticaComentario" rows="10" cols="50" required ng-model="criticaComentario"></textarea>
+    <input ng-show="criticaForm.$valid" type="submit" value="Guardar"/>
+</form>

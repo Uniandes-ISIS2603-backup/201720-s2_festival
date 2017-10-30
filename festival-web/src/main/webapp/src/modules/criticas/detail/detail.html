@@ -1,0 +1,37 @@
+<h2>Detalles de la critica {{ critica.id }}</h2>
+<table class="table table-striped">
+  <tr>
+    <th>id</th>
+    <th>Comentario</th>
+  </tr>
+  <tr>
+    <td>{{ critica.id }}</td>
+    <td>{{ critica.comentario }}</td>
+  </tr>
+</table>
+<h3>Crítico</h3>
+<table class="table table-striped">
+  <tr>
+    <th>id</th>
+    <th>Nombre</th>
+  </tr>
+  <tr>
+    <td>{{ critica.critico.id }}</td>
+    <td>{{ critica.critico.name }}</td>
+  </tr>
+</table>
+<h3>Función</h3>
+<table class="table table-striped">
+  <tr>
+    <th>id</th>
+    <th>Hora inicio</th>
+    <th>Hora fin</th>
+    <th>Nombre</th>
+  </tr>
+  <tr>
+    <td>{{ critica.funcion.id }}</td>
+    <td>{{ critica.funcion.horaInicio }}</td>
+    <td>{{ critica.funcion.horaFin }}</td>
+    <td>{{ critica.funcion.name }}</td>
+  </tr>
+</table>

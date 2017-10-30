@@ -1,0 +1,5 @@
+<h2>Actualizar la crítica {{ critica.id }}</h2>
+<form ng-submit="updateCritica()" name="criticaForm">
+    Tarifa: <textarea id="criticaComentario" rows="10" cols="50" required ng-model="criticaComentario">{{ critica.comentario }}</textarea>
+    <input ng-show="criticaForm.$valid" type="submit" value="Actualizar"/>
+</form>

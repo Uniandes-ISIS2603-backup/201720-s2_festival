@@ -1,0 +1,13 @@
+<table class="table table-striped">
+  <tr>
+    <th>id</th>
+    <th>Acciones</th>
+  </tr>
+  <tr ng-repeat="critica in criticas">
+      <td><a ui-sref="criticas.detail ({ criticasId: critica.id })">{{ critica.id }}</a></td>
+    <td>
+        <a ui-sref="criticas.update ({ criticasId: critica.id })"><span class="glyphicon glyphicon-leaf"></span></a>
+        <a ui-sref="criticas.delete ({ criticasId: critica.id })"><span class="glyphicon glyphicon-fire"></span></a>
+    </td>
+  </tr>
+</table>
