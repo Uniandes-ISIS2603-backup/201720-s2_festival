@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+<div class="container-fluid">
+    <div class="col-md-4">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Abonos</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th>ID</th>
+                    <th>Precio</th>
+                    <th>Número de Boletas</th>
+                    <th>Opciones</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="i in abonos">
+                    <td id="{{$index}}-id">{{i.id}}</td>                                  
+                    <td id="{{$index}}-estado">{{i.precio}}</td> 
+                    <td id="{{$index}}-precio">{{i.boletas.length}}</td> 
+                    <td><button type = "button" ng-click = "toAbonosGet(i.id)">Detalles</button></td>
+                    <td><button type = "button" ng-click = "deleteAbono(i.id)">Borrar</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+    </body>
+</html>

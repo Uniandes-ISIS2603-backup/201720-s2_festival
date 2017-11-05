@@ -6,8 +6,8 @@
         // Internal modules dependencies
 //        'calificacionesModule',
 //        'funcionesModule',
-//        'boletasModule',
-//        'abonosModule',
+        'boletasModule',
+        'abonosModule',
 //        'teatrosModule',
 //        'festivalesModule',
 //        'espectadoresModule',

@@ -1,0 +1,54 @@
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+<div class="container-fluid">
+    <div class="col-md-4">
+        <div class="row">
+            <dt>Boleta: </dt>
+        </div>
+        <div class="row">
+            <dt>Identificador:</dt><dd><li id="{{$index}}-id">{{boleta.id}}</li></dd>   
+        </div>
+        <div class="row">
+            <dt>Código De Barras: </dt><dd><li id="{{$index}}-id">{{boleta.codigoDeBarras}}</li></dd>   
+        </div>
+        <div class="row">
+            <dt>Estado:</dt><dd><li id="{{$index}}-id">{{boleta.estado}}</li></dd>   
+        </div>
+        <div class="row">
+            <dt>Precio:</dt><dd><li id="{{$index}}-id">{{boleta.precio}}</li></dd>   
+        </div>
+        <div class="row">
+            <dt>Información de la Función: </dt>
+            <dd>Nombre: <ul id="{{$index}}-funcion">{{boleta.funcion.name}}</ul></dd>
+            <dd>Hora Inicio: <ul id="{{$index}}-funcion">{{boleta.funcion.horaInicio}}</ul></dd>
+            <dd>Hora Fin: <ul id="{{$index}}-funcion">{{boleta.funcion.horaFin}}</ul></dd>
+        </div>
+        <div class="row">
+            <dt>Información de la Silla: </dt>
+            <dd>Identificación Silla: <ul id="{{$index}}-silla">{{boleta.silla.id}}</ul></dd>
+            <dd>Es Preferencial: <ul id="{{$index}}-silla">{{boleta.silla.id}}</ul></dd>
+            <dd>Tarifa de Silla: <ul id="{{$index}}-silla">{{boleta.funcion.horaFin}}</ul></dd>
+        </div>
+        <div class="row">
+            <dt>Información del Espectador: </dt>
+            <dd>Identificación Espectador: <ul id="{{$index}}-espectador">{{boleta.espectador.id}}</ul></dd>
+            <dd>Nombre Espectador: <ul id="{{$index}}-espectador">{{boleta.espectador.nombre}}</ul></dd>
+            <dd>Dirección Espectador: <ul id="{{$index}}-espectador">{{boleta.espectador.direccion}}</ul></dd>
+        </div>
+        <div class="row">
+            <dt>Información de la Calificación: </dt>
+            <dd>Identificación Calificación: <ul id="{{$index}}-calificacion">{{boleta.calificacion.id}}</ul></dd>
+            <dd>Calificación: <ul id="{{$index}}-calificacion">{{boleta.calificacion.calificacion}}</ul></dd>
+            <dd>Título: <ul id="{{$index}}-calificacion">{{boleta.calificacion.name}}</ul></dd>
+            <dd>Comentario: <ul id="{{$index}}-calificacion">{{boleta.calificacion.comentario}}</ul></dd>
+            <button type = "button" ng-click = "deleteCalificacionFromBoleta(boleta.id)">Borrar Calificación</button>
+            
+        </div>
+        <button type = "button" ng-click = "updateBoleta(boleta.id)">Modificar</button>
+    </div>
+</div>
+
