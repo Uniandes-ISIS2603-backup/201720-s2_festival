@@ -120,7 +120,7 @@ delete from FuncionEntity;
 
 
 /*Funciones de BoletaEntity*/
-insert into BoletaEntity (id, codigoDeBarras, estado, precio) values(60, 650, 3, 300.25);
+
 
 
 /* CalificacionEntity */
@@ -202,7 +202,16 @@ insert into CalificacionEntity (id,calificacion, comentario,boleta_id) values(4,
 
 /* FuncionEntity */
   
-
+    insert into FuncionEntity (id, name, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (1, 'Katalin Varga', '4/17/2017', '9/23/2016',1,1,1);
+    insert into FuncionEntity (id, name, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (2, 'Double Hour, The (La doppia ora)', '12/16/2016', '10/12/2016',1,1,1);
+    insert into FuncionEntity (id, name, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (3, 'Changeling, The', '11/27/2016', '5/4/2017',1,1,1);
+    insert into FuncionEntity (id, name, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (4, 'Recollections of the Yellow House (Recordações da Casa Amarela)', '12/28/2016', '7/27/2017',1,1,1);
+    insert into FuncionEntity (id, name, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (5, 'Lt. Robin Crusoe, U.S.N.', '1/9/2017', '11/21/2016',1,1,1);
+    insert into FuncionEntity (id, name, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (6, 'Zorro', '7/10/2017', '2/25/2017',1,1,1);
+    insert into FuncionEntity (id, name, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (7, 'Little Lili (La petite Lili)', '4/7/2017', '4/17/2017',1,1,1);
+    insert into FuncionEntity (id, name, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (8, 'Keeping the Promise (Sign of the Beaver, The)', '12/15/2016', '3/23/2017',1,1,1);
+    insert into FuncionEntity (id, name, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (9, 'Holokaustin värit', '3/2/2017', '7/13/2017',1,1,1);
+    insert into FuncionEntity (id, name, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (10, 'Panic Room', '10/18/2016', '12/28/2016',1,1,1);
     insert into FuncionEntity (horaInicio, horaFin,sala_id,festival_id) values ('4/17/2017', '9/23/2016',1,1);
     insert into FuncionEntity (horaInicio, horaFin,sala_id,festival_id,pelicula_id) values ('12/16/2016', '10/12/2016',1,1,1);
     insert into FuncionEntity (horaInicio, horaFin,sala_id,festival_id,pelicula_id) values ('11/27/2016', '5/4/2017',1,1,1);
@@ -216,26 +225,26 @@ insert into CalificacionEntity (id,calificacion, comentario,boleta_id) values(4,
 
     delete from FuncionEntity;
 
-    insert into FuncionEntity (id, horaInicio, horaFin,sala_id,festival_id) values (1, '4/17/2017', '9/23/2016',1,1);
-    insert into FuncionEntity (id, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (2, '12/16/2016', '10/12/2016',1,1,1);
-    insert into FuncionEntity (id, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (3, '11/27/2016', '5/4/2017',1,1,1);
-    insert into FuncionEntity (id, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (4, '12/28/2016', '7/27/2017',1,1,1);
-    insert into FuncionEntity (id, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (5, '1/9/2017', '11/21/2016',1,1,1);
-    insert into FuncionEntity (id, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (6, '7/10/2017', '2/25/2017',1,1,1);
-    insert into FuncionEntity (id, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (7, '4/7/2017', '4/17/2017',1,1,1);
-    insert into FuncionEntity (id, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (8, '12/15/2016', '3/23/2017',1,1,1);
-    insert into FuncionEntity (id, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (9, '3/2/2017', '7/13/2017',1,1,1);
-    insert into FuncionEntity (id, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (10, '10/18/2016', '12/28/2016',1,1,1);
+    insert into FuncionEntity (id, name, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (1, 'Katalin Varga', '4/17/2017', '9/23/2016',1,1,1);
+    insert into FuncionEntity (id, name, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (2, 'Double Hour, The (La doppia ora)', '12/16/2016', '10/12/2016',1,1,1);
+    insert into FuncionEntity (id, name, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (3, 'Changeling, The', '11/27/2016', '5/4/2017',1,1,1);
+    insert into FuncionEntity (id, name, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (4, 'Recollections of the Yellow House (Recordações da Casa Amarela)', '12/28/2016', '7/27/2017',1,1,1);
+    insert into FuncionEntity (id, name, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (5, 'Lt. Robin Crusoe, U.S.N.', '1/9/2017', '11/21/2016',1,1,1);
+    insert into FuncionEntity (id, name, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (6, 'Zorro', '7/10/2017', '2/25/2017',1,1,1);
+    insert into FuncionEntity (id, name, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (7, 'Little Lili (La petite Lili)', '4/7/2017', '4/17/2017',1,1,1);
+    insert into FuncionEntity (id, name, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (8, 'Keeping the Promise (Sign of the Beaver, The)', '12/15/2016', '3/23/2017',1,1,1);
+    insert into FuncionEntity (id, name, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (9, 'Holokaustin värit', '3/2/2017', '7/13/2017',1,1,1);
+    insert into FuncionEntity (id, name, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (10, 'Panic Room', '10/18/2016', '12/28/2016',1,1,1);
 
 /* BoletaEntity*/
     insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id,funcion_id) values(10, 120, 1, 500.50, 1,1);
     insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id,funcion_id) values(20, 130, 2, 600.50, 2,1);
-    insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id,funcion_id) values(30, 110, 1, 700.50, 2,1);
-    insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id,funcion_id) values(40, 50, 3, 400.50, 2,1);
-    insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id,funcion_id) values(50, 500, 3, 400.50, 2,1);
+    insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id,funcion_id) values(30, 110, 1, 700.50, 3,2);
+    insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id,funcion_id) values(40, 50, 3, 400.50, 4,3);
+    insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id,funcion_id) values(50, 500, 3, 400.50, 5,3);
 
 /*Funciones de BoletaEntity*/
-insert into BoletaEntity (id, codigoDeBarras, estado, precio) values(60, 650, 3, 300.25);
+insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id, funcion_id) values(60, 650, 3, 300.25, );
     
 /* AbonoEntity */
     insert into AbonoEntity (id, precio) values (200,7000);

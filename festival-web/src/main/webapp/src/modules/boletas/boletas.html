@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+<div class="container-fluid">
+    <div class="col-md-4">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Boletas</th>
+                </tr>
+            </thead>
+            <tbody>
+                    <th>Opciones:</th>
+                    <th><button type = "button" ng-click = "toBoletasCreate()">Agregar Boleta</button></th>
+                    <th><button type = "button" ng-click="toBoletasList()" >Consultar Boletas</button></th>
+                    <th>Buscar Boleta mediante ID: </th>
+                    <th><input id = "IDBoleta" type="text" name="IDBoleta" placeHolder = "1" required ng-model="boletaId"></th>                    
+                    <th><button type = "button" ng-click = "toBoletasGetFromList(boletaId)">Obtener Boleta</button></th>
+            </tbody>
+        </table>
+        
+    </div>
+    <div class ="row">
+        <br>         
+        
+        <div class ="row">
+            
+        </div>
+        <div class = "span4" ui-view="boletasView"></div>
+    </div>
+    
+    
+</div>

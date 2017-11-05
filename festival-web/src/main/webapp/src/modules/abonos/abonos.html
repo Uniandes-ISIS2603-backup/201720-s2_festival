@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+<div class="container-fluid">
+    <div class="col-md-4">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Abonos</th>
+                </tr>
+            </thead>
+            <tbody>
+                    <th>Opciones:</th>
+                    <th><button type = "button" ng-click = "toAbonosCreate()">Agregar Abono</button></th>
+                    <th><button type = "button" ng-click="toAbonosList()" >Consultar Abonos</button></th>
+                    <th>Buscar Abono mediante ID: </th>
+                    <th><input id = "IDAbono" type="text" name="IDAbono" placeHolder = "1" required ng-model="abonoId"></th>                    
+                    <th><button type = "button" ng-click = "toAbonosGet(abonoId)">Obtener Abono</button></th>
+            </tbody>
+        </table>
+        
+    </div>
+    <div class ="row">
+        <br>         
+        
+        <div class ="row">
+            
+        </div>
+        <div class = "span4" ui-view="abonosView"></div>
+    </div>
+</div>
