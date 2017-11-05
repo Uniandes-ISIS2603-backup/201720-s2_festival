@@ -1,0 +1,14 @@
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+<div class="container.fluid">
+	<div class="row">
+		 <div class="peliculasCol col-md-8">
+		 	<div class="thumbnail" ui-view="listView"></div>
+		 </div>
+        <div class="detalleCol col-md-4">
+        	<div id="createPeliculaDiv" ui-view="createPeliculaView"></div>
+        	<div ui-view="detailView"></div>
+        </div>
+	</div>
+</div>
+
+	

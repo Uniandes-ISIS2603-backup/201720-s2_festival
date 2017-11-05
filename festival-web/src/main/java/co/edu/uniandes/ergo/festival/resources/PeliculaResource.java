@@ -60,6 +60,7 @@ public class PeliculaResource {
 
     @POST
     public PeliculaDetailDTO createPelicula(PeliculaDetailDTO peli) throws BusinessLogicException {
+        System.out.println(peli.getname());
         return new PeliculaDetailDTO(logic.createPelicula(peli.toEntity()));
     }
 

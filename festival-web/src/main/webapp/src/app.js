@@ -12,7 +12,7 @@
 //        'festivalesModule',
 //        'espectadoresModule',
 //        'criticosModule',
-//        'peliculasModule',
+        'peliculasModule',
 //        'salasModule',
 //        'patrocinadoresModule',
         'sillasModule',

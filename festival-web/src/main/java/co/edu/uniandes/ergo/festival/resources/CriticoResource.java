@@ -37,8 +37,7 @@ import javax.ws.rs.core.MediaType;
 
 public class CriticoResource {
 
-    @Inject
-    PeliculaLogic peliLogic;
+  
     @Inject
     private CriticoLogic logic;
 

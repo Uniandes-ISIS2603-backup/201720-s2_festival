@@ -12,59 +12,62 @@ import co.edu.uniandes.ergo.festival.entities.EspectadorEntity;
  * @author dj.bautista10
  */
 public class EspectadorDTO {
-    
+
     private Long id;
     private String nombre;
     private String direccion;
-    
-    public EspectadorDTO(){
-        
+
+    public EspectadorDTO() {
+
     }
-    
-    public EspectadorDTO(EspectadorEntity espec){
-        if(id != null)
+
+    public EspectadorDTO(EspectadorEntity espec) {
+        if (espec != null) {
+
+            System.out.println("-------------------------------------------------------> " + espec.getName());
             this.id = espec.getId();
-        if(nombre != null)
             this.nombre = espec.getName();
-        if(direccion != null)
+            System.out.println("direccion -------------------------------------------------------> " + espec.getDireccion());
             this.direccion = espec.getDireccion();
+        }
     }
-    
-    public Long getId(){
+
+    public Long getId() {
         return id;
     }
-    
-    public String getNombre(){
+
+    public String getNombre() {
         return nombre;
     }
-    
-    public String direccion(){
+
+    public String getDireccion() {
         return direccion;
     }
-    
-    public void setId(Long id){
+
+    public void setId(Long id) {
         this.id = id;
     }
-    
-    public void setNombre(String nombre){
+
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
-    public void setDireccion(String direccion){
+
+    public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
-    
-    public EspectadorEntity toEntity(){
+
+    public EspectadorEntity toEntity() {
         EspectadorEntity entEsp = new EspectadorEntity();
-        if(id != null)
-        {
+        if (id != null) {
             entEsp.setId(this.id);
         }
-        if(nombre != null)
+        if (nombre != null) {
             entEsp.setName(this.nombre);
-        if(direccion != null)
+        }
+        if (direccion != null) {
             entEsp.setDireccion(this.direccion);
-        
+        }
+
         return entEsp;
     }
 }
