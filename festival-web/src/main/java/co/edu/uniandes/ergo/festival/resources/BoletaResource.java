@@ -86,6 +86,12 @@ public class BoletaResource
     @POST
     public BoletaDetailDTO createBoleta(BoletaDetailDTO boleta) throws BusinessLogicException {
         // Convierte el DTO (json) en un objeto Entity para ser manejado por la lógica.
+        LOGGER.info("ENTRO A MÉTODO POST.");
+        LOGGER.info("codigo de barras: " + boleta.getCodigoDeBarras());
+        LOGGER.info("estado: " +boleta.getEstado());
+        LOGGER.info("precio: " +boleta.getPrecio());
+        LOGGER.info("idFuncion: " + boleta.getFuncion().getId());
+        LOGGER.info("idSilla: " + boleta.getSilla().getId());
         BoletaEntity boletaEntity = boleta.toEntity();
         // Invoca la lógica para crear la editorial nueva
         BoletaEntity nuevoBoleta = boletaLogic.createBoleta(boletaEntity);
