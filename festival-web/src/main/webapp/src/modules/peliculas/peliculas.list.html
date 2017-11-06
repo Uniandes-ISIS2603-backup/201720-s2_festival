@@ -1,0 +1,22 @@
+<div class="container-fluid">
+	
+	<table>
+		<tr>
+			<button type="button" ui-sref="createPelicula" class="btn btn-primary btn-block">Crear Película</button>
+		</tr>
+	</table>
+	<br>
+	<div class="row">
+		<div class="col-md-4" ng-repeat="pelicula in peliculasRecords">
+			
+			<a  ui-sref="peliculaDetail({peliculaId : pelicula.id})" href="#" class="thumbnail">
+				<div class="caption">
+					<div  style="width: 14em; display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{pelicula.name}}</div>
+				</div>
+				<img class="img-responsive" src="https://78.media.tumblr.com/avatar_1ef5f8fb43ea_128.png"/><br>		
+			</a>
+			
+			
+		</div>
+	</div>
+</div>				
