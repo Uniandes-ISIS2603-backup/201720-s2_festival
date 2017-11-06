@@ -4,8 +4,8 @@
         'ui.router',
         'ui.bootstrap',
         // Internal modules dependencies
-//        'calificacionesModule',
-//        'funcionesModule',
+        //'calificacionesModule',
+        'funcionesModule',
 //        'boletasModule',
 //        'abonosModule',
 //        'teatrosModule',

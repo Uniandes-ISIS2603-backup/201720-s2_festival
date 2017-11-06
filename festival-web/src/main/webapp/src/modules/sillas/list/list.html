@@ -1,13 +1,13 @@
 <table class="table table-striped">
   <tr>
     <th>id</th>
-    <th>Nombre</th>
-    <th>¿Es preferencial?</th>
-    <th>Acciones</th>
+    <th>Tarifa</th>
+    <th>Hora Inicio</th>
+    <th>Hora Fin</th>
   </tr>
-  <tr ng-repeat="silla in sillas">
-      <td><a ui-sref="sillas.detail ({ sillasId: silla.id })">{{ silla.id }}</a></td>
-    <td>{{ silla.tarifa }}</td>
+  <tr ng-repeat="funcion in funcionesRecords">
+      <td><a ui-sref="funcion.detail ({ sillasId: silla.id })">{{ funcion.id }}</a></td>
+    <td>{{ funcion.tarifa }}</td>
     <td>{{ silla.esPreferencial }}</td>
     <td>
         <a ui-sref="sillas.update ({ sillasId: silla.id })"><span class="glyphicon glyphicon-leaf"></span></a>
