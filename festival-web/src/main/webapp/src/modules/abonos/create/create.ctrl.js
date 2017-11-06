@@ -11,7 +11,8 @@
             $scope.createAbono = function () {
                 console.log($scope);
                 $http.post(abonosContext, {
-                    precio: $scope.abonoPrecio
+                    precio: $scope.abonoPrecio,
+                    espectador : { id : $scope.abonoIDEspectador}
                 }).then(function (response) {
                     //Author created successfully
                     $state.go('abonosList', {abonoId: response.data.id}, {reload: true});

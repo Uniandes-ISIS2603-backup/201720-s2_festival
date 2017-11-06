@@ -143,10 +143,7 @@ insert into CalificacionEntity (id,calificacion, comentario,boleta_id) values(4,
     insert into PersonaEntity (id, name, dtype) values (1007, 'Flory Duggen', 'CriticoEntity');
     insert into PersonaEntity (id, name, dtype) values (1008, 'Rudie Aronsohn', 'CriticoEntity');
     insert into PersonaEntity (id, name, dtype) values (1009, 'Cash Matiasek', 'CriticoEntity');
-    insert into PersonaEntity (id, name, dtype) values (1010, 'Carmine Pessel', 'CriticoEntity');
-
-    /*  EspectadorEntity */
-
+    insert into PersonaEntity (id, name, dtype) values (1010, 'Carmine Pessel', 'CriticoEntity' 
     delete from PersonaEntity where dtype = 'EspectadorEntity';
 
     insert into PERSONAENTITY (ID, NAME, DTYPE) values (1011, 'Patsy Poytres', 'EspectadorEntity');
@@ -254,7 +251,7 @@ insert into CalificacionEntity (id,calificacion, comentario,boleta_id) values(4,
     insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id,funcion_id) values(50, 500, 3, 400.50, 5,3);
 
 /*Funciones de BoletaEntity*/
-insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id, funcion_id) values(60, 650, 3, 300.25, );
+insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id, funcion_id) values(60, 650, 3, 300.25, 5, 4);
     
 /* AbonoEntity */
     insert into AbonoEntity (id, precio) values (200,7000);

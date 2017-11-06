@@ -25,15 +25,26 @@
     <script src="src/modules/boletas/boletas.mod.js" type="text/javascript"></script>
     <script src="src/modules/boletas/boletas.ctrl.js" type="text/javascript"></script>
 
+    <script src="src/modules/boletas/list/list.ctrl.js" type="text/javascript"></script>
+    <script src="src/modules/boletas/get/getOne.ctrl.js" type="text/javascript"></script>
+    <script src="src/modules/boletas/delete/delete.ctrl.js" type="text/javascript"></script>
+    <script src="src/modules/boletas/update/update.ctrl.js" type="text/javascript"></script>
+    <script src="src/modules/boletas/create/create.ctrl.js" type="text/javascript"></script>
+
     <!-- Abonos -->
     <script src="src/modules/abonos/abonos.mod.js" type="text/javascript"></script>
-    <script src="src/modules/abonos/abonos.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/abonos/abonos.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/abonos/list/list.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/abonos/get/get.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/abonos/delete/delete.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/abonos/update/update.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/abonos/create/create.ctrl.js" type="text/javascript"></script>
 
     <script src="src/modules/teatros/teatros.mod.js" type="text/javascript"></script>
     <script src="src/modules/festivales/festivales.mod.js" type="text/javascript"></script>
     <script src="src/modules/espectadores/espectadores.mod.js" type="text/javascript"></script>
     <script src="src/modules/criticos/criticos.mod.js" type="text/javascript"></script>
-
+    <script src="src/modules/peliculas/peliculas.mod.js" type="text/javascript"></script>
     <script src="src/modules/salas/salas.mod.js" type="text/javascript"></script>
 
     <!-- PELIS -->
@@ -71,24 +82,25 @@
     <script src="src/modules/patrocinadores/patrocinadores.mod.js" type="text/javascript"></script>
 </head>
 <body>
-    <div class="container container-fluid">
-        <h1>Festival</h1>
-        <span>By Ergo</span>
-        <ul class="list-group">
-            <li> <a ui-sref="calificaciones">Ver las calificaciones</a></li>
-            <li> <a ui-sref="funciones">Ver las funciones</a></li>
-            <li> <a ui-sref="boletasList">Ver las boletas</a></li>     
-            <li> <a ui-sref="teatros">Ver los teatros</a></li>
-            <li> <a ui-sref="festivales">Ver los festivales</a></li>
-            <li> <a ui-sref="espectadores">Ver los espectadores</a></li>
-            <li> <a ui-sref="criticos">Ver los criticos</a></li>
-            <li> <a ui-sref="peliculasList">Ver las peliculas</a></li>
-            <li> <a ui-sref="salas">Ver las salas</a></li>
-            <li> <a ui-sref="patrocinadores">Ver los patrocinadores</a></li>
-            <li> <a ui-sref="sillas.list">Ver las sillas</a></li>
-            <li> <a ui-sref="criticas.list">Ver las criticas</a></li>
-        </ul>
-        <div ui-view="mainView"></div>
-    </div>
-</body>
+        <div class="container container-fluid">
+            <h1>Festival</h1>
+            <span>By Ergo</span>
+            <ul class="list-group">
+                <li> <a ui-sref="calificaciones">Ver las calificaciones</a></li>
+                <li> <a ui-sref="funciones">Ver las funciones</a></li>
+                <li> <a ui-sref="boletas">Ver las boletas</a></li>
+                <li> <a ui-sref="abonos">Ver los abonos</a></li>
+                <li> <a ui-sref="teatros">Ver los teatros</a></li>
+                <li> <a ui-sref="festivales">Ver los festivales</a></li>
+                <li> <a ui-sref="espectadores">Ver los espectadores</a></li>
+                <li> <a ui-sref="criticos">Ver los criticos</a></li>
+                <li> <a ui-sref="peliculas">Ver las peliculas</a></li>
+                <li> <a ui-sref="salas">Ver las salas</a></li>
+                <li> <a ui-sref="patrocinadores">Ver los patrocinadores</a></li>
+                <li> <a ui-sref="sillas.list">Ver las sillas</a></li>
+                <li> <a ui-sref="criticas.list">Ver las criticas</a></li>
+            </ul>
+            <div ui-view="mainView"></div>
+        </div>
+    </body>
 </html>

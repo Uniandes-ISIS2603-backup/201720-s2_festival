@@ -21,6 +21,12 @@ and open the template in the editor.
             <dt>Precio: </dt><dd><li id="{{$index}}-id">{{abono.precio}}</li></dd>   
         </div>
         <div class="row">
+            <dt>Información espectador</dt>
+            <dt>Id: </dt><dd><li id="{{$index}}-id">{{abono.espectador.id}}</li></dd>
+            <dt>Nombre: </dt><dd><li id="{{$index}}-id">{{abono.espectador.nombre}}</li></dd>
+            <dt>Dirección: </dt><dd><li id="{{$index}}-id">{{abono.espectador.Direccion}}</li></dd>
+        </div>
+        <div class="row">
             <dt>Boletas: </dt>   
         </div>
         <table class="table table-striped">
@@ -54,12 +60,12 @@ and open the template in the editor.
             </tbody>
         </table>
         <div class="row">
-            <button type = "button" >Modificar Abono</button>
+            <button type = "button" ng-click = "addBoletaToAbono(abono.id, boletaId)">Agregar Boleta</button>
+            <input type = "text" id="{{$index}}-id" ng-model = "boletaId" placeHolder = "10"></input>
         </div>
         
         <div class="row">
-            <button type = "button" ng-click = "addBoletaToAbono(abono.id, boletaId)">Agregar Boleta</button>
-            <input type = "text" id="{{$index}}-id" ng-model = "boletaId" ></input>
+            <button type = "button" ng-click = "toAbonos()">Regresar</button><button type = "button" ng-click = "toUpdateAbono(abono.id)">Modificar</button>
         </div>
     </div>
 </div>
