@@ -1,0 +1,48 @@
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+<div class="container-fluid">
+    <div class="col-md-4">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Boletas</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th>ID</th>
+                    <th>Estado</th>
+                    <th>Precio</th>
+                    <th>CodigoDeBarras</th>
+                    <th>Silla</th>
+                    <th>Funcion</th>
+                    <th>Opciones</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="i in boletas">
+                    <td id="{{$index}}-id">{{i.id}}</td>                                  
+                    <td id="{{$index}}-estado">{{i.estado}}</td> 
+                    <td id="{{$index}}-precio">{{i.precio}}</td> 
+                    <td id="{{$index}}-codigoDeBarras">{{i.codigoDeBarras}}}</td> 
+                    <td id="{{$index}}-silla">{{i.silla.id}}</td> 
+                    <td id="{{$index}}-funcion">{{i.funcion.name}}</td>
+                    <td><button type = "button" ng-click = "toBoletasGetFromList(i.id)">Detalles</button></td>
+                    <td><button type = "button" ng-click = "deleteBoleta(i.id)">Borrar</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

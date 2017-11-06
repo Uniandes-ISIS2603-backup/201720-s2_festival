@@ -5,12 +5,40 @@
  */
 (function (ng) {
     var mod = ng.module("boletasModule");
-    mod.constant("boletasContext", "api/boletas");
-    mod.controller('boletasCtrl', ['$scope', '$http', 'boletasContext',
-        function ($scope, $http, boletasContext) {
-            $http.get('data/boletas.json').then(function (response) {
-                $scope.boletasRecords = response.data;
-            });
+    mod.constant("boletasContext", "api/boletas/");
+    mod.controller('boletasCtrl', ['$scope', '$http', 'boletasContext', '$state',
+        function ($scope, $http, boletasContext, $state) {
+            
+            $scope.toBoletasList = function () {
+            $state.go('boletasList',{reload : true});
+            };
+            $scope.toBoletasGet = function(){;
+                $state.go('boletasGet');
+            };
+            $scope.toBoletasGetFromList = function(param){;
+                $state.go('boletasGet', {boletaId:param});
+            };
+            $scope.deleteBoleta = function(param){;
+                $state.go('boletasDelete', {boletaId:param});
+            };
+            $scope.toUpdateBoleta = function(param){;
+                $state.go('boletasUpdate', {boletaId:param});
+            };
+            $scope.deleteCalificacionFromBoleta = function(param){;
+                $http.delete(boletasContext+param + '/calificaciones').then(function()
+               {
+                   $state.reload();
+               });
+            };
+            $scope.toBoletasCreate = function(){;
+                $state.go('boletasCreate');
+            };
+            $scope.toBoletas = function(){;
+                $state.go('boletas');
+            };
+//            $http.get('data/boletas.json').then(function (response) {
+//                $scope.boletasRecords = response.data;
+//            });
         }
     ]);
 }

@@ -86,6 +86,12 @@ public class BoletaResource
     @POST
     public BoletaDetailDTO createBoleta(BoletaDetailDTO boleta) throws BusinessLogicException {
         // Convierte el DTO (json) en un objeto Entity para ser manejado por la lógica.
+        LOGGER.info("ENTRO A MÉTODO POST.");
+        LOGGER.info("codigo de barras: " + boleta.getCodigoDeBarras());
+        LOGGER.info("estado: " +boleta.getEstado());
+        LOGGER.info("precio: " +boleta.getPrecio());
+        LOGGER.info("idFuncion: " + boleta.getFuncion().getId());
+        LOGGER.info("idSilla: " + boleta.getSilla().getId());
         BoletaEntity boletaEntity = boleta.toEntity();
         // Invoca la lógica para crear la editorial nueva
         BoletaEntity nuevoBoleta = boletaLogic.createBoleta(boletaEntity);
@@ -149,7 +155,15 @@ public class BoletaResource
         {
             boleta.setSilla(new SillaDetailDTO(entity.getSilla()));
         }
+        else if(boleta.getSilla().getId() == null)
+        {
+             boleta.setSilla(new SillaDetailDTO(entity.getSilla()));
+        }
         if(boleta.getFuncion() == null)
+        {
+            boleta.setFuncion(new FuncionDTO(entity.getFuncion()));
+        }
+        else if(boleta.getFuncion().getId() == null)
         {
             boleta.setFuncion(new FuncionDTO(entity.getFuncion()));
         }
@@ -162,6 +176,17 @@ public class BoletaResource
             if(entity.getEspectador() != null)
             {
                 boleta.setEspectador(new EspectadorDetailDTO(entity.getEspectador()));
+            }
+        }
+        else if(boleta.getEspectador().getId() == null)
+        {
+            if(entity.getEspectador() != null)
+            {
+                boleta.setEspectador(new EspectadorDetailDTO(entity.getEspectador()));
+            }
+            else
+            {
+                boleta.setEspectador(null);
             }
         }
         if(boleta.getEstado() == null)

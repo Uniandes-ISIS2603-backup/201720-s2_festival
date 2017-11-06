@@ -6,6 +6,7 @@
 package co.edu.uniandes.ergo.festival.ejb;
 
 import co.edu.uniandes.ergo.festival.entities.AbonoEntity;
+import co.edu.uniandes.ergo.festival.entities.BoletaEntity;
 import co.edu.uniandes.ergo.festival.entities.EspectadorEntity;
 import co.edu.uniandes.ergo.festival.exceptions.BusinessLogicException;
 import co.edu.uniandes.ergo.festival.persistence.EspectadorPersistence;
@@ -26,8 +27,9 @@ public class EspectadorLogic {
 
     @Inject
     private EspectadorPersistence persistence;
-    
-    @Inject AbonoLogic aLogic;
+
+    @Inject
+    private AbonoLogic aLogic;
 
     public List<EspectadorEntity> getEspectadores() {
         LOGGER.info("Inicia el proceso de consultar todas los críticos.");
@@ -51,7 +53,7 @@ public class EspectadorLogic {
 
     public EspectadorEntity createEspectador(EspectadorEntity nueva) throws BusinessLogicException {
         LOGGER.info("Inicia proceso de creación de el crítico.");
-
+        System.out.println("nombre: " + nueva.getName());
         //int val = ValidarCreate(nueva);
         int val = 0;
         if (val != 0) {
@@ -62,7 +64,7 @@ public class EspectadorLogic {
 
             throw new BusinessLogicException(excepcion);
         }
-        
+
         EspectadorEntity conId = persistence.create(nueva);
         LOGGER.info("Termina proceso de creación de el crítico.");
         return conId;
@@ -84,12 +86,41 @@ public class EspectadorLogic {
         LOGGER.log(Level.INFO, "Termina proceso de borrar el crítico con id={0}", id);
     }
 
-public EspectadorEntity addAbono(Long espectadorId, Long abonoId) throws BusinessLogicException{
+    public EspectadorEntity addAbono(Long espectadorId, AbonoEntity abono) throws BusinessLogicException {
         EspectadorEntity espectador = getEspectador(espectadorId);
-        LOGGER.log(Level.INFO, "Inicia proceso de asociar la función con id ={0}", abonoId);
-        AbonoEntity abono = aLogic.addEspectador(abonoId, espectador);
-        espectador.addAbono(abono);
+        LOGGER.log(Level.INFO, "Inicia proceso de crear el abono para el cliente con id ={0}", espectadorId);
+        abono.setEspectador(espectador);
+
+        AbonoEntity abonoRes = aLogic.createAbono(abono);
+
+        espectador.addAbono(abonoRes);
         persistence.update(espectador); // NO ESTOY SEGURO SI SE DEBE PONER ESE UPDATE
         return espectador;
+    }
+
+    public List<AbonoEntity> darMisAbonos(Long id) {
+        EspectadorEntity espectador = getEspectador(id);
+        return espectador.getAbonos();
+    }
+
+    /*  public EspectadorEntity updateAbono(Long id, AbonoEntity abono) throws BusinessLogicException {
+       EspectadorEntity espectador = getEspectador(id);
+       abono = aLogic.updateAbono(abono.getId(), abono);
+       for (AbonoEntity ab : espectador.getAbonos()){
+           if (ab.getId() == abono.getId())
+              espectador.getAbonos().set(espectador.getAbonos().indexOf(ab.getId()), abono);
+       }
+       return updateEspectador(id, espectador);
+    }
+     */
+    public EspectadorEntity asociarBoleta(Long idEspec, BoletaEntity boleta) {
+        EspectadorEntity espectador = getEspectador(idEspec);
+        espectador.addBoleta(boleta);
+        return persistence.update(espectador);
+    }
+
+    public List<BoletaEntity> darBoletasEspec(Long id) {
+        EspectadorEntity espec = getEspectador(id);
+        return espec.getBoletas();
     }
 }

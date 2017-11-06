@@ -66,4 +66,8 @@ public class EspectadorEntity extends PersonaEntity {
     public List<BoletaEntity> getBoletas() {
         return boletas;
     }
+
+    public void addBoleta(BoletaEntity boleta) {
+        this.boletas.add(boleta);
+    }
 }
