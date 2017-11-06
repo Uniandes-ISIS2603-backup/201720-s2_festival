@@ -18,35 +18,36 @@ and open the template in the editor.
                     <dt>Identificador:</dt><dd><li id="{{$index}}-id" >{{boleta.id}}</li></dd>   
                 </div>
                 <div class="row">
-                    <dt>Código De Barras: </dt><dd><input type =" text" id="nuevoCodigoDeBarras" required ng-model = "nuevoCodigoDeBarras" value = "{{boleta.codigoDeBarras}}"></input></dd>   
+                    <dt>Código De Barras: </dt><dd><input type =" text" id="nuevoCodigoDeBarras" required ng-model="boletaCodigoBarras" value = "{{boleta.codigoDeBarras}}" ></input></dd>   
                 </div>
                 <div class="row">
-                    <dt>Estado:</dt><dd><input type ="text" id="{{$index}}-id"value = "{{boleta.estado}}"></input></dd>   
+                    <dt>Estado:</dt><dd><input type ="text" id="{{$index}}-id" required ng-model="boletaEstado" value = "{{boleta.estado}}"></input></dd>   
                 </div>
                 <div class="row">
-                    <dt>Precio:</dt><dd><input type = "text" id="{{$index}}-id" value = "{{boleta.precio}}"></input></dd>   
+                    <dt>Precio:</dt><dd><input type = "text" id="{{$index}}-id" required ng-model="boletaPrecio" value = "{{boleta.precio}}"></input></dd>   
                 </div>
                 <div class="row">
                     <dt>Información de la Función: </dt>
-                    <dd>Identificacion Función: <input type = "text" id="{{$index}}-id" value = "{{boleta.funcion.id}}"></input></dd>
+                    <dd>Identificacion Función: <input type = "text" id="{{$index}}-id" required ng-model="idFuncion" value = "{{boleta.funcion.id}}"></input></dd>
                 </div>
                 <div class="row">
                     <dt>Información de la Silla: </dt>
-                    <dd>Identificación Silla: <input type = "text" id="{{$index}}-id" value = "{{boleta.silla.id}}"></input></dd>
+                    <dd>Identificación Silla: <input type = "text" id="{{$index}}-id" required ng-model="idSilla" value = "{{boleta.silla.id}}"></input></dd>
                 </div>
                 <div class="row">
                     <dt>Información del Espectador: </dt>
-                    <dd>Identificación Espectador: <input type = "text" id="{{$index}}-id" value = "{{boleta.espectador.id}}"></input></dd>
+                    <dd>Identificación Espectador: <input type = "text" id="{{$index}}-id" required ng-model="idEspectador" value = "{{boleta.espectador.id}}"></input></dd>
                 </div>
                 <div class="row">
                     <dt>Información de la Calificación: </dt>
                     <dd>Identificación Calificación: <ul id="{{$index}}-calificacion">{{boleta.calificacion.id}}</ul></dd>
                     <dd>Calificación: <ul id="{{$index}}-calificacion">{{boleta.calificacion.calificacion}}</ul></dd>
                     <dd>Título: <ul id="{{$index}}-calificacion">{{boleta.calificacion.name}}</ul></dd>
-                    <dd>Comentario: <ul id="{{$index}}-calificacion">{{boleta.calificacion.comentario}}</ul></dd>
-                    
+                    <dd>Comentario: <ul id="{{$index}}-calificacion">{{boleta.calificacion.comentario}}</ul></dd>          
                 </div>
-                  <td><button type = "button" ng-click = "toGetBoletasFromList(boleta.id)">Cancelar</button></td><td><button type = "button" >Guardar Cambios</button></td>
+                <div class ="row">
+                    <td><button type = "button" ng-click = "toBoletasGetFromList(boleta.id)">Cancelar</button></td><td><button type = "button" ng-click = "updateBoleta()" >Guardar Cambios</button></td>
+                </div>
             </div>
         </div>
     </body>

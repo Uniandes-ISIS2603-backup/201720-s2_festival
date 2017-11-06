@@ -28,6 +28,7 @@ import co.edu.uniandes.ergo.festival.dtos.AbonoDetailDTO;
 import co.edu.uniandes.ergo.festival.dtos.BoletaDetailDTO;
 import co.edu.uniandes.ergo.festival.dtos.EspectadorDetailDTO;
 import co.edu.uniandes.ergo.festival.ejb.BoletaLogic;
+import co.edu.uniandes.ergo.festival.ejb.EspectadorLogic;
 import co.edu.uniandes.ergo.festival.entities.AbonoEntity;
 import co.edu.uniandes.ergo.festival.entities.BoletaEntity;
 import co.edu.uniandes.ergo.festival.exceptions.BusinessLogicException;
@@ -142,6 +143,10 @@ public class AbonoResource
         AbonoEntity entity = abonoLogic.getAbono(id);
         if (entity == null) {
             throw new WebApplicationException("El recurso /abonos/" + id + " no existe.", 404);
+        }
+        if(abono.getEspectador().getId() == null)
+        {
+            abono.setEspectador(null);
         }
         return new AbonoDetailDTO(abonoLogic.updateAbono(id, abono.toEntity()));
     }

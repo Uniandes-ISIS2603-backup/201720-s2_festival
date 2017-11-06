@@ -34,8 +34,14 @@
                 $state.reload();
             });
             };
+            $scope.toUpdateAbono = function(param){;
+                $state.go('abonosUpdate', {abonoId:param});
+            };
             $scope.toAbonosCreate = function(){;
                 $state.go('abonosCreate');
+            };
+            $scope.toAbonos = function(){;
+                $state.go('abonos');
             };
         }
     ]);
