@@ -1,0 +1,32 @@
+<h4>Cambiar una sala</h4>
+<form ng-submit="updateSala(salaSeleccionada.id)" name="updateSalaForm">
+    <select class="form-control" style="width:100%; margin-right: 10px; margin-bottom: 5px" ng-model="salaSeleccionada" 
+            ng-options="sala as sala.name for sala in salas"></select>
+    <table class="table table-hover">
+      <tr>
+        <th>Campo</th>
+        <th>Seleccionada</th>
+        <th>Nuevos valores</th>
+      </tr>
+      <tr>
+        <td>Nombre</td>
+        <td>{{salaSeleccionada.name}}</td>
+        <td><input id="nuevoNombre" type="text" required ng-model="name"/></td>
+      </tr>
+      <tr>
+        <td>Sillas</td>
+        <td>{{salaSeleccionada.numSillas}}</td>
+        <td><input id="nuevasSillas" type="number" required ng-model="numSillas"/></td>
+      </tr>
+      <tr>
+        <td>Preferenciales</td>
+        <td>{{salaSeleccionada.numSillasPreferenciales}}</td>
+        <td><input id="nuevasSillasPreferenciales" type="number" required ng-model="numSillasPreferenciales"/></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td><input type="submit"/></td>
+      </tr>
+    </table>
+</form>

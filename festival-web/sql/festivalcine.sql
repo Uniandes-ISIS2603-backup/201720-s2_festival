@@ -14,22 +14,16 @@ delete from FuncionEntity;
 delete from SalaEntity;
 delete from PeliculaEntity;
 delete from FestivalEntity;
-
-/*FestivalEntity*/
-insert into FestivalEntity (id) values (1);
-
+delete from teatroEntity_salaEntity;
 
 delete from FuncionEntity;
 delete from SalaEntity;
-delete from FestivalEntity;
 
 delete from TeatroEntity;
 
 delete from PeliculaEntity_FuncionEntity;
 delete from PeliculaEntity;
-
-/*FestivalEntity*/
-insert into FestivalEntity (id) values (1);
+;
 
 /* SalaEntity */   
 
@@ -276,22 +270,25 @@ insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id, funcion_
 
 
     /* TeatroEntity */
-    insert into TeatroEntity(id, nombre, tarifaBasica) values (1, 'colombia', 8000);
-    insert into TeatroEntity(id, nombre, tarifaBasica) values (2, 'chapinero', 7000);
-    insert into TeatroEntity(id, nombre, tarifaBasica) values (3, 'colon', 7500);
-    insert into TeatroEntity(id, nombre, tarifaBasica) values (4, 'catellana', 8500);
-    insert into TeatroEntity(id, nombre, tarifaBasica) values (5, 'country', 9000);
-    insert into TeatroEntity(id, nombre, tarifaBasica) values (6, 'occidental' 8500);
-    insert into TeatroEntity(id, nombre, tarifaBasica) values (7, 'central' 7500);
-    insert into TeatroEntity(id, nombre, tarifaBasica) values (8, 'oriental' 7500);
-    insert into TeatroEntity(id, nombre, tarifaBasica) values (9, 'norte'9000);
-    insert into TeatroEntity(id, nombre, tarifaBasica) values (10, 'sur' 8600);
+    insert into TeatroEntity(id, name, tarifaBasica) values (1, 'colombia', 8000);
+    insert into TeatroEntity(id, name, tarifaBasica)  values (2, 'chapinero', 7000);
+    insert into TeatroEntity(id, name, tarifaBasica)  values (3, 'colon', 7500);
+    insert into TeatroEntity(id, name, tarifaBasica)  values (4, 'catellana', 8500);
+    insert into TeatroEntity(id, name, tarifaBasica)  values (5, 'country', 9000);
+    insert into TeatroEntity(id, name, tarifaBasica)  values (6, 'occidental', 8500);
+    insert into TeatroEntity(id, name, tarifaBasica)  values (7, 'central', 7500);
+    insert into TeatroEntity(id, name, tarifaBasica)  values (8, 'oriental', 7500);
+    insert into TeatroEntity(id, name, tarifaBasica)  values (9, 'norte', 9000);
+    insert into TeatroEntity(id, name, tarifaBasica)  values (10, 'sur',  8600);
 
+    insert into teatroEntity_salaEntity(teatroEntity_id, salas_id) values(1,1);
+    insert into teatroEntity_salaEntity(teatroEntity_id, salas_id) values(2,2);
+    insert into teatroEntity_salaEntity(teatroEntity_id, salas_id) values(3,3);
    /* FestivalEnity*/
-    insert into FestivalEntity(id, nombre, fechaInicio, fechaFin) values (1, 'verano', '8/20/2017','8/23/2017' );
-    insert into FestivalEntity(id, nombre, fechaInicio, fechaFin) values (2, 'invierno', '8/24/2017','9/7/2017' );
-    insert into FestivalEntity(id, nombre, fechaInicio, fechaFin) values (3, 'primavera', '9/8/2017','9/23/2017' );
-    insert into FestivalEntity(id, nombre, fechaInicio, fechaFin) values (4, 'otonio', '9/24/2017','10/7/2017' );
+    insert into FestivalEntity(id, name, fechaInicio, fechaFin) values (1, 'verano', '8/20/2017','8/23/2017' );
+    insert into FestivalEntity(id, name, fechaInicio, fechaFin) values (2, 'invierno', '8/24/2017','9/7/2017' );
+    insert into FestivalEntity(id, name, fechaInicio, fechaFin) values (3, 'primavera', '9/8/2017','9/23/2017' );
+    insert into FestivalEntity(id, name, fechaInicio, fechaFin) values (4, 'otonio', '9/24/2017','10/7/2017' );
 
     /* boletas de Espectador*/
     insert into PERSONAENTITY_BOLETAENTITY (ESPECTADORENTITY_ID, BOLETAS_ID) values (1011, 10);

@@ -1,0 +1,26 @@
+<a ui-sref="salas.controles">Volver</a>
+<h4>Detalle: {{sala.name}}</h4>
+<div class="col-sm-6">
+    <table class="table table-hover">
+      <tr>
+        <td>Nombre</td>
+        <td>{{sala.name}}</td>
+      </tr>
+      <tr>
+          <td>Número sillas</td>
+          <td>{{sala.numSillas}}</td>
+      </tr>
+      <tr>
+          <td>Preferenciales</td>
+          <td>{{sala.numSillasPreferenciales}}</td>
+      </tr>
+    </table>
+</div>
+
+<div class="col-sm-2"></div>
+<div class="col-sm-4">
+    <h4>Sillas:</h4>
+    <ul class="list-group">
+        <li class="list-group-item" ng-repeat="silla in sala.sillasDTO">{{silla.name}}</li>
+    </ul>
+</div>

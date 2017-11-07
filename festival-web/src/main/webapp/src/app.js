@@ -12,13 +12,13 @@
         'funcionesModule',
 //        'boletasModule',
 //        'abonosModule',
-//        'teatrosModule',
-//        'festivalesModule',
+        'teatrosModule',
+        'festivalesModule',
 //        'espectadoresModule',
 //        'criticosModule',
         'peliculasModule',
-//        'salasModule',
-//        'patrocinadoresModule',
+        'salasModule',
+        'patrocinadoresModule',
         'sillasModule',
         'criticasModule'
     ]);

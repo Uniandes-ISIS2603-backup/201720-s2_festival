@@ -22,7 +22,7 @@ public class TeatroEntity extends BaseEntity implements Serializable
 {
    private Double tarifaBasica;
     @PodamExclude
-    @OneToMany
+    @OneToMany(mappedBy="teatro")
     private List<SalaEntity> salas;
 
     @PodamExclude

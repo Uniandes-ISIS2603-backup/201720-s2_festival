@@ -15,7 +15,7 @@ import java.util.*;
  */
 public class TeatroDetailDTO extends TeatroDTO
 {
-       private List<SalaDTO> salas;
+    private List<SalaDTO> salas;
     
    public TeatroDetailDTO()
    {
@@ -29,14 +29,7 @@ public class TeatroDetailDTO extends TeatroDTO
     public TeatroDetailDTO(TeatroEntity entity)
     {
        super(entity);
-       if(entity != null)
-       {
-        salas = new ArrayList<>();
-        for(SalaEntity entitySala: entity.getSalas())
-        {
-            salas.add(new SalaDTO(entitySala));           
-        }
-       }
+      salas = listSalas2DTO(entity);
     }
  
      /**
@@ -48,15 +41,7 @@ public class TeatroDetailDTO extends TeatroDTO
     public TeatroEntity toEntity()
     {
         TeatroEntity entity = super.toEntity();
-        if(salas != null)
-         {
-           List<SalaEntity> salasEntity = new ArrayList<>();
-           for(SalaDTO slas: salas)
-           {
-               salasEntity.add(slas.toEntity());
-           }
-         entity.setSalas(salasEntity);
-         }        
+        entity.setSalas(listDTO2Salas());
          return entity;
     }
 
@@ -67,4 +52,21 @@ public class TeatroDetailDTO extends TeatroDTO
    public void setSalas(List<SalaDTO> salas) {
         this.salas = salas;
    }
+   
+   private List<SalaDTO> listSalas2DTO(TeatroEntity entity){
+        List<SalaDTO> lista = new ArrayList();
+        for (SalaEntity sala : entity.getSalas()){
+            lista.add(new SalaDTO(sala));
+        }
+        return lista;
+    }
+   private List<SalaEntity> listDTO2Salas(){
+        List<SalaEntity> resp = new ArrayList();
+        if (salas != null){
+            for (SalaDTO sala : salas){
+                resp.add(sala.toEntity());
+            }
+        }
+        return resp;
+    }
 }

@@ -55,8 +55,7 @@ public class FestivalLogic {
     @Inject
     private PeliculaLogic peliculaLogic;
     @Inject 
-    private CriticoLogic criticoLogic;
-    
+    private CriticoLogic criticoLogic;   
     @Inject
     private PatrocinadorLogic patrocinadorLogic;
     
@@ -69,6 +68,11 @@ public class FestivalLogic {
     public FestivalEntity createFestival(FestivalEntity entity) throws BusinessLogicException {
         LOGGER.info("Inicia proceso de creación de Festival");
         // Invoca la persistencia para creare el Festival
+        FestivalEntity festival = persistence.find(entity.getId());
+        if(festival != null)
+        {
+            throw new BusinessLogicException("Ya existe un festival con ese nombre");
+        }
         persistence.create(entity);
         LOGGER.info("Termina proceso de creación de Festival");
         return entity;
@@ -81,11 +85,11 @@ public class FestivalLogic {
      * @return una lista de Festivales.
      */
     public List<FestivalEntity> getfestivales() {
-        LOGGER.info("Inicia proceso de consultar todas losfestivales");
+        LOGGER.info("Inicia proceso de consultar todas los festivales");
         // Note que, por medio de la inyección de dependencias se llama al método "findAll()" que se encuentra en la persistencia.
-        List<FestivalEntity> festivales = persistence.findAll();
+       
         LOGGER.info("Termina proceso de consultar todas losfestivales");
-        return festivales;
+        return  persistence.findAll();
     }
 
     /**
@@ -95,12 +99,8 @@ public class FestivalLogic {
      */
     public FestivalEntity getFestival(Long id)
     {
-        FestivalEntity festival = persistence.find(id);
-        if(festival == null)
-        {
-            LOGGER.log(Level.SEVERE,"El festival con el id no existe",id);
-        }
-        return festival;
+        LOGGER.log(Level.INFO,"Inicia el proceso de buscar un festival con el id dado", id);
+        return persistence.find(id);
     }
     
     /**
@@ -122,13 +122,9 @@ public class FestivalLogic {
     /**
      * @param idFestival
      */
-    public void removeFestival(Long idFestival)
+    public void deleteFestival(Long idFestival)
     {
-        FestivalEntity festival = persistence.find(idFestival);
-        if(festival == null)
-        {
-            LOGGER.log(Level.SEVERE,"El festival con el id no existe",idFestival);
-        }
+         LOGGER.log(Level.INFO, "Inicia el proceso de eliminar un festival");
         persistence.delete(idFestival);
     }
     
