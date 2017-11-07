@@ -17,8 +17,8 @@
 //        'espectadoresModule',
 //        'criticosModule',
         'peliculasModule',
-//        'salasModule',
-//        'patrocinadoresModule',
+        'salasModule',
+        'patrocinadoresModule',
         'sillasModule',
         'criticasModule'
     ]);

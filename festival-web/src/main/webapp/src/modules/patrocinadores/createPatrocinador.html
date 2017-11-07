@@ -1,0 +1,22 @@
+<h4>Nuevo</h4>
+
+<form ng-submit="createPatrocinador()" name="nuevoPatrocinador">
+    <table class="table table-hover">
+      <tr>
+        <td>Nombre</td>
+        <td><input id="patNombre" type="text" required ng-model="name"/></td>
+      </tr>
+      <tr>
+          <td>Patrocinio</td>
+          <td><input id="patPatrocinio" type="number" required ng-model="patrocinio"/></td>
+      </tr>
+      <tr>
+          <td>NIT</td>
+          <td><input id="patNIT" type="number" required ng-model="NIT"/></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><input type="submit"/></td>
+      </tr>
+    </table>
+</form>

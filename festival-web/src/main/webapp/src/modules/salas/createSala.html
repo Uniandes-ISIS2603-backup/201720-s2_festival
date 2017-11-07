@@ -1,0 +1,22 @@
+<h4>Nueva</h4>
+
+<form ng-submit="createSala()" name="nuevaSala">
+    <table class="table table-hover">
+      <tr>
+        <td>Nombre</td>
+        <td><input id="salaNombre" type="text" required ng-model="name"/></td>
+      </tr>
+      <tr>
+          <td>Número sillas</td>
+          <td><input id="salaSillas" type="number" required ng-model="numSillas"/></td>
+      </tr>
+      <tr>
+          <td>Preferenciales</td>
+          <td><input id="salaPreferenciales" type="number" required ng-model="numSillasPreferenciales"/></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><input type="submit"/></td>
+      </tr>
+    </table>
+</form>
