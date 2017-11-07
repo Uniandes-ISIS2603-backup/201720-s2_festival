@@ -9,7 +9,7 @@
         var basePath = "src/modules/teatros/update/";
         
         $stateProvider.state("teatros.update", {
-            url: "/sillas/{sillasId:int}/update",
+            url: "/teatros/{teatrosId:int}/update",
             param: {
               sillasId : null  
             },
