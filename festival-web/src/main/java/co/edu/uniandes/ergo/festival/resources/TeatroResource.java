@@ -134,15 +134,15 @@ public class TeatroResource
      * @return 
      */
     @GET
-    @Path("{teatroId: \\d+ }/salas")
-    public  List<SalaDTO> getListSalas(@PathParam("teatroId") Long teatroId)
+    @Path("{id: \\d+ }/salas")
+    public  List<SalaDTO> getListSalas(@PathParam("id") Long id)
     {
-        TeatroEntity teatro = teatroLogic.getTeatro(teatroId);
+        TeatroEntity teatro = teatroLogic.getTeatro(id);
         if (teatro == null)
         {
-            throw new WebApplicationException("El teatro con id: " + teatroId + " no existe.", 404);
+            throw new WebApplicationException("El teatro con id: " + id + " no existe.", 404);
         }
-        return salasListEntity2DTO(teatroLogic.getSalas(teatroId));
+        return salasListEntity2DTO(teatroLogic.getSalas(id));
     }
     
     /**
@@ -194,7 +194,7 @@ public class TeatroResource
         List<SalaDTO> list = new ArrayList<>();
         for(SalaEntity entity : entityList)
         {
-            list.add(new SalaDetailDTO( entity));
+            list.add(new SalaDTO( entity));
         }
         return list;
     }

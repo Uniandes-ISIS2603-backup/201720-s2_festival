@@ -11,12 +11,14 @@ import co.edu.uniandes.ergo.festival.persistence.*;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 /**
  *
  * @author de.gutierrez
  */
+@Stateless
 public class TeatroLogic 
 {
     private static final Logger LOGGER = Logger.getLogger(TeatroLogic.class.getName());
@@ -64,12 +66,8 @@ public class TeatroLogic
     public TeatroEntity getTeatro(Long id)
     {
         LOGGER.log(Level.INFO,"Inicia el proceso de buscar un teatro con el id dado", id);
-        TeatroEntity teatro = persistence.find(id);
-        if(teatro == null)
-        {
-            LOGGER.log(Level.SEVERE,"El teatro con el id no existe",id);
-        }
-        return teatro;
+      
+        return persistence.find(id);
     }
        
     /**
@@ -96,11 +94,7 @@ public class TeatroLogic
     public void deleteTeatro(Long idTeatro)
     {
         LOGGER.log(Level.INFO, "Inicia el proceso de eliminar un teatro");
-        TeatroEntity teatro = persistence.find(idTeatro);
-        if(teatro == null)
-        {
-            LOGGER.log(Level.SEVERE,"El teatro con el id no existe",idTeatro);
-        }
+        
         persistence.delete(idTeatro);
     }
     ///////Operaciones sobre las salas/////////
@@ -130,7 +124,7 @@ public class TeatroLogic
         {
             LOGGER.log(Level.SEVERE,"No se ha encontrado un teatro con el id",idTeatro);
         }
-        return getTeatro(idTeatro).getSalas();
+        return persistence.find(idTeatro).getSalas();
     }
    /**
      *  Asocia una sala al teatro
@@ -145,11 +139,7 @@ public class TeatroLogic
         SalaEntity sala = new SalaEntity();
         sala.setId(idSala);
         int index = salas.indexOf(sala);
-        if(index >= 0)
-        {
-            return salas.get(index);
-        }
-        return null;
+        return salas.get(index);
     }
     
     /**

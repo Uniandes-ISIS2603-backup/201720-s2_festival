@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<h2>Actualizar teatro{{teatro.id}}</h2>
+<form ng-submit="updateTeatro()" name="teatroForm">
+    Nombre:<input id="teatroNombre" type="text" required ng-model="teatroNombre" value="{{teatro.nombre}}"/>
+    Tarifa:<input id="tarifaBasica" type="number" required ng-model="tarifaBasica" value="{{teatro.tarifaBasica}}"/>
+    <input ng-show="teatroForm.$valid" type="submit" value="Actualizar"/>
+</form>

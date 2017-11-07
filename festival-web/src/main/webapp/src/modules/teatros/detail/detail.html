@@ -1,0 +1,28 @@
+<h2>Informacion del teatro {{teatro.id}}</h2>
+<table class="table table-striped">
+    <tr>
+        <th>id</th>
+        <th>Nombre</th>
+        <th>Tarifa basica</th>
+    </tr>
+    <tr>
+        <td>{{teatro.id}}</td>
+        <td>{{teatro.name}}</td>
+        <td>{{teatro.tarifaBasica}}</td>
+    </tr>
+</table>
+<h3>Salas</h3>
+<table class="table table-striped">
+  <tr>
+    <th>id</th>
+    <th>Nombre</th>
+    <th>Número de sillas</th>
+    <th>Número de sillas preferenciales</th>
+  </tr>
+  <tr ng-repeat="sala in teatro.salas">
+    <td>{{ sala.id }}</td>
+    <td>{{ sala.name }}</td>
+    <td>{{ sala.numSillas }}</td>
+    <td>{{ sala.numSillasPreferenciales }}</td>
+  </tr>
+</table>

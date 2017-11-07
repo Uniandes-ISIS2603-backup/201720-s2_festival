@@ -1,0 +1,19 @@
+<table class="table table-striped">
+    <tr>
+        <th>id</th>
+        <th>Nombre</th>
+        <th>Fecha inicio</th>
+        <th>Fecha fin</th>
+        <th>Acciones</th>
+    </tr>
+    <tr ng-repeat="festival in festivales">
+        <td><a ui-sret="festivales.detail({festivalesId:festivales.id})">{{festival.id}}</a></td>
+        <td>{{festival.nombre }}</td>
+        <td>{{festival.fechaInicio}}</td>
+        <td>{{festival.fechaFin}}</td>
+        <td>
+            <a ui-sret="festivales.delete({festivalesId: festivales.id})"><span class="glyphicon glyphicon-remove"></span></a>Delete
+            <a ui-sref="festivales.update({festivalesId: festivales.id})"><span class="glyphicon glyphicon-refresh"></span></a>Update
+        </td>
+    </tr>
+</table>

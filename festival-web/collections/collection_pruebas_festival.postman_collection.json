@@ -1,0 +1,198 @@
+{
+	"id": "ed13dc58-3f90-3e07-e429-ccd386c1e8a6",
+	"name": "collection_pruebas_festival",
+	"description": "",
+	"order": [
+		"9a89358c-2c9a-2b47-b5c9-637769f0051f",
+		"42ced8c7-cfd1-0eaa-a684-0d7191571f88",
+		"07d53b7e-44bc-316d-a727-27fd1ac0da30",
+		"b2a79f30-79ee-e9a9-b039-6ddf7be869cb",
+		"28c24c04-77b8-0ad2-7e0d-70cf4f211154",
+		"9c1f73ac-ab8e-1c52-23c3-02ea78b0ceab"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1510025478395,
+	"owner": "2582394",
+	"public": false,
+	"requests": [
+		{
+			"id": "07d53b7e-44bc-316d-a727-27fd1ac0da30",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/festival-web/api/festivales/5",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "PUT",
+			"collectionId": "ed13dc58-3f90-3e07-e429-ccd386c1e8a6",
+			"data": [],
+			"dataMode": "raw",
+			"name": "http://localhost:8080/festival-web/api/festivales/5",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1510025589266,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\n        \"type\": \"festivalDetailDTO\",\n        \"fechaFin\": \"2017-08-23T00:00:00-05:00\",\n        \"fechaInicio\": \"2017-08-20T00:00:00-05:00\",\n        \"id\": 5,\n        \"nombre\": \"navidad\",\n        \"funciones\": [],\n        \"teatros\": []\n    }"
+		},
+		{
+			"id": "28c24c04-77b8-0ad2-7e0d-70cf4f211154",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:8080/festival-web/api/festivales/2",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "DELETE",
+			"collectionId": "ed13dc58-3f90-3e07-e429-ccd386c1e8a6",
+			"data": null,
+			"dataMode": "params",
+			"name": "http://localhost:8080/festival-web/api/festivales/2",
+			"description": "eliminar un festival",
+			"descriptionFormat": "html",
+			"time": 1510025770807,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "42ced8c7-cfd1-0eaa-a684-0d7191571f88",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/festival-web/api/festivales",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "ed13dc58-3f90-3e07-e429-ccd386c1e8a6",
+			"data": [],
+			"dataMode": "raw",
+			"name": "http://localhost:8080/festival-web/api/festivales",
+			"description": "obtener los festivales",
+			"descriptionFormat": "html",
+			"time": 1510025502638,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\n        \"type\": \"festivalDetailDTO\",\n        \"fechaFin\": \"2017-08-23T00:00:00-05:00\",\n        \"fechaInicio\": \"2017-08-20T00:00:00-05:00\",\n        \"id\": 5,\n        \"nombre\": \"HALLOWEN\",\n        \"funciones\": [],\n        \"teatros\": []\n    }"
+		},
+		{
+			"id": "9a89358c-2c9a-2b47-b5c9-637769f0051f",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/festival-web/api/festivales",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "ed13dc58-3f90-3e07-e429-ccd386c1e8a6",
+			"data": [],
+			"dataMode": "raw",
+			"name": "http://localhost:8080/festival-web/api/festivales",
+			"description": "Agregar un nuevo festival",
+			"descriptionFormat": "html",
+			"time": 1510025480689,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\n        \"type\": \"festivalDetailDTO\",\n        \"fechaFin\": \"2017-08-23T00:00:00-05:00\",\n        \"fechaInicio\": \"2017-08-20T00:00:00-05:00\",\n        \"id\": 5,\n        \"nombre\": \"HALLOWEN\",\n        \"funciones\": [],\n        \"teatros\": []\n    }"
+		},
+		{
+			"id": "9c1f73ac-ab8e-1c52-23c3-02ea78b0ceab",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/festival-web/api/festivales/1",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "ed13dc58-3f90-3e07-e429-ccd386c1e8a6",
+			"data": [],
+			"dataMode": "raw",
+			"name": "http://localhost:8080/festival-web/api/festivales/1",
+			"description": "obtener un festival especifico",
+			"descriptionFormat": "html",
+			"time": 1510025837170,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\n        \"type\": \"festivalDetailDTO\",\n        \"fechaFin\": \"2017-08-23T00:00:00-05:00\",\n        \"fechaInicio\": \"2017-08-20T00:00:00-05:00\",\n        \"id\": 5,\n        \"nombre\": \"HALLOWEN\",\n        \"funciones\": [],\n        \"teatros\": []\n    }"
+		},
+		{
+			"id": "b2a79f30-79ee-e9a9-b039-6ddf7be869cb",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/festival-web/api/festivales/8",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "ed13dc58-3f90-3e07-e429-ccd386c1e8a6",
+			"data": [],
+			"dataMode": "raw",
+			"name": "http://localhost:8080/festival-web/api/festivales/8",
+			"description": "obtener un festival que no existe",
+			"descriptionFormat": "html",
+			"time": 1510025638283,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\n        \"type\": \"festivalDetailDTO\",\n        \"fechaFin\": \"2017-08-23T00:00:00-05:00\",\n        \"fechaInicio\": \"2017-08-20T00:00:00-05:00\",\n        \"id\": 5,\n        \"nombre\": \"navidad\",\n        \"funciones\": [],\n        \"teatros\": []\n    }"
+		}
+	]
+}
