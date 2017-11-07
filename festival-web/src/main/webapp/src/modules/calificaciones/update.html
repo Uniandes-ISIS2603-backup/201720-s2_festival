@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<h1>Actualizar calificacion</h1>
+<form ng-submit="updateCalificacion()" name="calificacionForm">
+    Calificacion:<br>
+    <input id="calificacion" type="number" required ng-model="calificacion"/><br>
+    Comentario: <br>
+    <textarea id="comentario" rows="1" cols="20" required ng-model="comentario"></textarea><br>
+    <input ng-show="calificacionForm.$valid" type="submit" value="Guardar"/>
+</form>

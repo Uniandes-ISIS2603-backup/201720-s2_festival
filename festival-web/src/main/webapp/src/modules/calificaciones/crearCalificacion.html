@@ -1,0 +1,19 @@
+<h1>Crear calificacion</h1>
+
+<form ng-submit="createCalificacion()" name="calificacionForm">
+    Calificacion:<br>
+    <input id="calificacion" type="number" required ng-model="calificacion"/><br>
+    Comentario: <br>
+    <textarea id="comentario" rows="1" cols="20" required ng-model="comentario"></textarea><br>
+    Boleta: <br><input id="boleta" type="number" required ng-model="boleta"/>
+    <br>
+    <input ng-show="calificacionForm.$valid" type="submit" value="Guardar"/>
+</form>
+
+
+<!--id
+calificacion
+comentario
+boleta-->
+
+>

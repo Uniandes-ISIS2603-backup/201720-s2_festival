@@ -1,0 +1,20 @@
+<h1>Calificaciones</h1>
+<button ng-click = "crearCalificacion()">Crear Calificacion</button>
+
+<table class="table table-striped">
+  <tr>
+    <!--<th>id</th>-->
+    <th>ID</th>
+    <th>Calificacion (/5)</th>
+    <th>Comentario</th>
+  </tr>
+  <tr ng-repeat="calificacion in calificacionesRecords">
+      <!--<td><a ui-sref="calificacionesDetail ({ calificacionId: calificacion.id })">{{ calificacion.id }}</a></td>-->
+    <!--<td>{{ funcion.name }}</td>-->
+    <td>{{ calificacion.id }}</td>
+    <td>{{ calificacion.calificacion }}</td>
+    <td>{{ calificacion.comentario }}</td>
+    <td><button type = "button" ng-click = "actualizarCalificacion(calificacion.id)">Actualizar</button></td>
+    <td><button type = "button" ng-click = "deleteCalificacion(calificacion.id)">Borrar</button></td>
+   </tr>
+</table>

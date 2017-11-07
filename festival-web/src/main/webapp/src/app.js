@@ -8,7 +8,7 @@
 //        'funcionesModule',
         'boletasModule',
         'abonosModule',
-        //'calificacionesModule',
+        'calificacionesModule',
         'funcionesModule',
 //        'boletasModule',
 //        'abonosModule',

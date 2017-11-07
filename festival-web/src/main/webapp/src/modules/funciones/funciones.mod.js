@@ -40,7 +40,44 @@
                     }
 
                 }
+            }).state('funcionDelete', {
+                url: '/{funcionId:int}/delete',
+                parent: 'funciones',
+                param: {
+                    funcionId: null
+                },
+                views: {
+                    'listView': {
+                        templateUrl: basePath + 'funciones.list.html',
+                        controller : "funciones.deleteCtrl",
+                        controllerAs : "ctrl"
+                    }
 
+                }
+             }).state('funcionCreate', {
+                url: '/funcion/create',
+                parent: 'funciones',
+                
+                views: {
+                    'listView': {
+                        templateUrl: basePath + 'create.html',
+                        controller : "funciones.createCtrl",
+                        controllerAs : "ctrl"
+                    }
+
+                }
+                }).state('funcionUpdate', {
+                url: '/{funcionId:int}/update',
+                parent: 'funciones',
+                
+                views: {
+                    'listView': {
+                        templateUrl: basePath + 'update.html',
+                        controller : "funciones.updateCtrl",
+                        controllerAs : "ctrl"
+                    }
+
+                }
             });
         }]);
 })(window.angular);

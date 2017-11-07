@@ -1,19 +1,5 @@
 <h1>Detalle de una funcion</h1>
-<table class="table table-striped">
-  <tr>
-    <th>id</th>
-    <th>Nombre</th>
-    <th>Hora de Inicio</th>
-    <th>Hora de Finalizacion</th>
-  </tr>
-  <tr>
-    <td>{{ currentFuncion.id }}</td>
-    <td>{{ currentFuncion.name }}</td>
-    <td>{{ currentFuncion.horaInicio|  date:'medium' }}</td>
-    <td>{{ currentFuncion.horaFin |   date:'medium' }}</td>
-  </tr>
-</table>
-<h3>Pelicula</h3>
+<h3>Pelicula (Recurso no esta bien implementado en el back, no se puede llamar servicio GET de REST)</h3>
 <table class="table table-striped">
   <tr>
     <th>id</th>
@@ -31,11 +17,9 @@
     <th>id</th>
     <th>Numero de sillas</th>
     <th>Numero de sillas preferenciales</th>
-    <th>sillasDTO length</th>
   </tr>
     <td>{{ currentSala.id }}</td>
     <td>{{ currentSala.numSillas }}</td>
     <td>{{ currentSala.numSillasPreferenciales }}</td>
-    <td>{{ currentSala.sillasDTO.length }}</td>
   </tr>
 </table>
