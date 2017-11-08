@@ -1,0 +1,18 @@
+<h1>Funciones</h1>
+<button ng-click = "createFuncion()">Crear Funcion</button>
+<table class="table table-striped">
+  <tr>
+    <!--<th>id</th>-->
+    <th>Nombre</th>
+    <th>Hora de Inicio</th>
+    <th>Hora de Finalizacion</th>
+  </tr>
+  <tr ng-repeat="funcion in funcionesRecords">
+      <td><a ui-sref="funcionDetail ({ funcionId: funcion.id })">{{ funcion.name }}</a></td>
+    <!--<td>{{ funcion.name }}</td>-->
+    <td>{{ funcion.horaInicio|  date:'medium' }}</td>
+    <td>{{ funcion.horaFin |   date:'medium' }}</td>
+    <td><button ng-click = "updateFuncion(funcion.id)">Actualizar</button></td>
+    <td><button ng-click = "deleteFuncion(funcion.id)">Borrar</button></td>
+   </tr>
+</table>

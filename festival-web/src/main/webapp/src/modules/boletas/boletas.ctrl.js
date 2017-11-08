@@ -21,7 +21,7 @@
             $scope.deleteBoleta = function(param){;
                 $state.go('boletasDelete', {boletaId:param});
             };
-            $scope.updateBoleta = function(param){;
+            $scope.toUpdateBoleta = function(param){;
                 $state.go('boletasUpdate', {boletaId:param});
             };
             $scope.deleteCalificacionFromBoleta = function(param){;
@@ -32,6 +32,9 @@
             };
             $scope.toBoletasCreate = function(){;
                 $state.go('boletasCreate');
+            };
+            $scope.toBoletas = function(){;
+                $state.go('boletas');
             };
 //            $http.get('data/boletas.json').then(function (response) {
 //                $scope.boletasRecords = response.data;

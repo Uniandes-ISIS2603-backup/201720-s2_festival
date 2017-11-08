@@ -1,0 +1,16 @@
+<h1>Crear Funcion</h1>
+
+<form ng-submit="create()" name="calificacionForm">
+    Fecha de Inicio:<br>
+    <input id="fechaInicio" type="datetime-local" required ng-model="fechaInicio"/><br>
+     Fecha de Fin:<br>
+    <input id="fechaFin" type="datetime-local" required ng-model="fechaFin"/><br>
+    Nombre: <br>
+    <textarea id="nombre" rows="1" cols="20" required ng-model="nombre"></textarea><br>
+    Sala: <br><input id="sala" type="number" required ng-model="sala"/><br>
+    Pelicula: <br><input id="pelicula" type="number" required ng-model="pelicula"/><br>
+    Festival: <br><input id="festival" type="number" required ng-model="festival"/>
+    <br>
+    <input ng-show="calificacionForm.$valid" type="submit" value="Guardar"/>
+</form>
+

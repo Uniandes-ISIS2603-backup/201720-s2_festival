@@ -46,6 +46,14 @@ public class AbonoLogic
         LOGGER.info("Inicia proceso de creación de Abono");
         // Verifica la regla de negocio que dice que no puede haber dos cityes con el mismo nombre        
         // Invoca la persistencia para crear el Abono.
+        if(entity.getEspectador() == null)
+        {
+            throw new BusinessLogicException("El Abono con ID: \"" + entity.getId()+"\" no tiene un Espectador asinado.");
+        }
+        if(persistenceEspectador.find(entity.getEspectador().getId()) == null)
+        {
+            throw new BusinessLogicException("El Espectador con ID: \"" + entity.getEspectador().getId()+"\" no existe en la base de Datos.");
+        }
         persistenceAbono.create(entity);
         LOGGER.info("Termina proceso de creación de Abono");
         return entity;
@@ -82,6 +90,14 @@ public class AbonoLogic
     {
         LOGGER.log(Level.INFO, "Inicia proceso de actualizar abono con id={0}", id);
         // Note que, por medio de la inyección de dependencias se llama al método "update(entity)" que se encuentra en la persistencia.
+        if(entity.getEspectador() != null)
+        {
+             if(persistenceEspectador.find(entity.getEspectador().getId()) == null)
+                {
+                    throw new BusinessLogicException("El Espectador con ID: \"" + entity.getEspectador().getId()+"\" no existe en la base de Datos.");
+                }  
+        }
+       
         AbonoEntity newEntity = persistenceAbono.update(entity);
         LOGGER.log(Level.INFO, "Termina proceso de actualizar abono con id={0}", entity.getId());
         return newEntity;
@@ -94,6 +110,7 @@ public class AbonoLogic
     public void deleteAbono(Long id)throws BusinessLogicException
     {
         LOGGER.log(Level.INFO, "Inicia proceso de borrar abono con id={0}",id);
+        LOGGER.info("Iniciando proceso de borrar boletas.");
         if(getAbono(id).getBoletas().size() > 0)
         {
             List<BoletaEntity> boletas = getAbono(id).getBoletas();
@@ -102,6 +119,9 @@ public class AbonoLogic
                 deleteBoletaFromABono(id, boletas.get(i).getId());
             }
         }
+        LOGGER.info("Finalizando proceso de borrar boletas.");
+        LOGGER.info("Iniciando proceso de des asociar espectador.");
+        LOGGER.info("Finalizando proceso de des asociar espectador proceso de des asociar espectdor.");
         persistenceAbono.delete(id);
         LOGGER.log(Level.INFO, "Termina proceso de borrar abono con id={0}",id);
     }

@@ -46,10 +46,10 @@ public class FestivalEntity extends BaseEntity implements Serializable {
    private Date fechaFin;
    
    @PodamExclude
-   @OneToMany
+   @OneToMany(mappedBy="festival")
    private List<PatrocinadorEntity>patrocinadores;
    @PodamExclude
-   @OneToMany
+   @OneToMany(mappedBy="festival")
    private List<TeatroEntity> teatros;
    @PodamExclude
    @OneToMany
@@ -61,7 +61,7 @@ public class FestivalEntity extends BaseEntity implements Serializable {
    @OneToMany
    private List<CriticoEntity> criticos;
    @PodamExclude
-   @OneToMany
+   @OneToMany(mappedBy="festival")
    private List<FuncionEntity> funciones;
    
    

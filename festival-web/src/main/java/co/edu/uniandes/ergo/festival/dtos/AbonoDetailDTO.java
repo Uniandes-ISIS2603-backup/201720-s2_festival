@@ -15,8 +15,17 @@ import java.util.List;
  */
 public class AbonoDetailDTO extends AbonoDTO
 {
-    
+    /**
+     * Atributo que contiene la lista de Boletas.
+     */
     private List<BoletaDTO> boletas;
+    /**
+     * Atributo que contiene el espectador dueño del Abono.
+     */
+    private EspectadorDTO espectador;
+    /**
+     * Método constructor vacío de AbonoDetailDTO, es necesario dejarlo vacío por razones de funcionalidad.
+     */
     public AbonoDetailDTO() {
     }
         
@@ -28,27 +37,69 @@ public class AbonoDetailDTO extends AbonoDTO
      */
     public AbonoDetailDTO(AbonoEntity abono) {
         super(abono);
-        List<BoletaEntity> boletas = abono.getBoletas();
-        this.boletas = listEntity2DetailDTO(boletas);
+        List<BoletaEntity> boletasTemp = abono.getBoletas();
+        this.boletas = listEntity2DetailDTO(boletasTemp);
+        if(abono.getEspectador() != null)
+        {
+            this.espectador = new EspectadorDTO(abono.getEspectador());
+        }
     }
-
+    /**
+     * Método que convierte a Entity.
+     * @return 
+     */
     @Override
     public AbonoEntity toEntity() {
         AbonoEntity entity = super.toEntity();
-        
+        if(espectador != null)
+        {
+            entity.setEspectador(espectador.toEntity());
+        }
+        if(boletas != null)
+        {
+            List <BoletaEntity> boletasEntity = new ArrayList<BoletaEntity>();
+            for(int i = 0; i < boletas.size(); i++)
+            {
+                boletasEntity.add(boletas.get(i).toEntity());
+            }
+            entity.setBoletas(boletasEntity);
+        }
         return entity;
-
     }
+    /**
+     * Método que entrega las Boletas que pertenecen a este Abono.
+     * @return List<BoletaDTO>, Boletas de este Abono.
+     */
     public List<BoletaDTO> getBoletas()
     {
         return this.boletas;
     }
+    /**
+     * Método que establece las boletas de este Abono.
+     * @param boletas List<BoletaDTO>, nuevas Boletas de este Abono.
+     */
     public void setBoletas(List<BoletaDTO> boletas)
     {
         this.boletas = boletas;
     }
+    /**
+     * Método que devuelve el Espectador dueño de esta Boleta.
+     * @return  EspectadorDTO, espectador dueño de este Abono.
+     */
+    public EspectadorDTO getEspectador()
+    {
+        return this.espectador;
+    }
+    /**
+     * Método que establece el Espectador dueño de este Abono.
+     * @param espectador EspectadorDTO
+     */
+    public void setEspectador(EspectadorDTO espectador)
+    {
+        this.espectador = espectador;
+    }
     
-         /**
+    /**
      *
      * lista de entidades a DTO.
      *
@@ -64,6 +115,7 @@ public class AbonoDetailDTO extends AbonoDTO
         for (BoletaEntity entity : entityList) {
             list.add(new BoletaDetailDTO(entity));
         }
+        
         return list;
     }
 }

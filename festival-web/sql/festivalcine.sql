@@ -27,7 +27,6 @@ delete from FestivalEntity;
 
 delete from FuncionEntity;
 delete from SalaEntity;
-delete from FestivalEntity;
 
 delete from TeatroEntity;
 
@@ -148,10 +147,8 @@ delete from PeliculaEntity;
     insert into PersonaEntity (id, name, dtype) values (1008, 'Rudie Aronsohn', 'CriticoEntity');
     insert into PersonaEntity (id, name, dtype) values (1009, 'Cash Matiasek', 'CriticoEntity');
     insert into PersonaEntity (id, name, dtype) values (1010, 'Carmine Pessel', 'CriticoEntity');
+ 
 
-    /*  EspectadorEntity */
-
-    delete from PersonaEntity where dtype = 'EspectadorEntity';
 
     insert into PERSONAENTITY (ID, NAME, DTYPE) values (1011, 'Patsy Poytres', 'EspectadorEntity');
     insert into PERSONAENTITY (ID, NAME, DTYPE) values (1012, 'Muire Cassius', 'EspectadorEntity');

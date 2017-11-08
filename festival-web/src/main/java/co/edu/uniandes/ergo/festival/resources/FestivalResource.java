@@ -98,6 +98,20 @@ public class FestivalResource {
         return listEntity2DetailDTO(festivalLogic.getfestivales());
     }
 
+    /**
+     * 
+     */
+    @GET
+    @Path("{id: \\d+}") 
+    public FestivalDetailDTO getFestival(@PathParam ("id") Long id)
+    {
+        FestivalEntity entity = festivalLogic.getFestival(id);
+        if(entity == null)
+        {
+            throw new WebApplicationException("El festival con id: " + id + " no existe.", 404);
+        }
+        return new FestivalDetailDTO(festivalLogic.getFestival(id));
+    }
    
     /**
      * PUT http://localhost:8080/festival-web/api/festivales/1 Ejemplo
@@ -114,9 +128,15 @@ public class FestivalResource {
      */
     @PUT
     @Path("{id: \\d+}")
-    public FestivalDetailDTO updateFestival(@PathParam("id") Long id, FestivalDetailDTO festival) throws BusinessLogicException, UnsupportedOperationException {
-          throw new UnsupportedOperationException("Este servicio  no está implementado");
-      
+    public FestivalDetailDTO updateFestival(@PathParam("id") Long id, FestivalDetailDTO festival) 
+    {
+        FestivalEntity entity = festivalLogic.getFestival(id);
+        if(entity == null)
+        {
+            throw new WebApplicationException("El festival con id: " + id + " no existe.", 404);
+        }
+        festival.setId(id);
+        return new FestivalDetailDTO(festivalLogic.updateFestival(id, festival.toEntity()));
     }
 
     /**
@@ -132,7 +152,12 @@ public class FestivalResource {
     @DELETE
     @Path("{id: \\d+}")
     public void deleteFestival(@PathParam("id") Long id) throws BusinessLogicException {
-         throw new UnsupportedOperationException("Este servicio no está implementado");
+        FestivalEntity entity = festivalLogic.getFestival(id);
+        if(entity == null)
+        {
+            throw new WebApplicationException("El festival con id: " + id + " no existe.", 404);
+        }
+        festivalLogic.deleteFestival(id);
     }
 
     /**

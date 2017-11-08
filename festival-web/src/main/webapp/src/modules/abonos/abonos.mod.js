@@ -67,6 +67,20 @@
                 }
             }
         })
+        .state("abonosUpdate", {
+            url: "/update/{abonoId:int}",
+            parent:'abonos',
+            param: {
+              abonoId : null  
+            },
+            views: {
+                abonosView: {
+                    templateUrl: basePath + 'update/update.html',
+                    controller: 'abonos.updateCtrl',
+                    controllerAs: "ctrl"
+                }
+            }
+        })
         .state("abonosCreate", {
             url: "/create",
             parent:'abonos',

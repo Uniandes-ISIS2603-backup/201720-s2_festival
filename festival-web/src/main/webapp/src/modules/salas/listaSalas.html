@@ -1,0 +1,18 @@
+<table class="table table-striped">
+  <tr>
+    <th>id</th>
+    <th>Nombre</th>
+    <th>Sillas</th>
+    <th>Preferenciales</th>
+    <th>Borrar</th>
+  </tr>
+  <tr ng-repeat="sala in salas">
+      <td>{{ sala.id }}</td>
+      <td><a ui-sref="salas.detalleSala ({ idSala: sala.id })">{{ sala.name }}</a></td>
+    <td>{{ sala.numSillas }}</td>
+    <td>{{ sala.numSillasPreferenciales }}</td>
+    <td>
+        <a href="" ng-click="deleteSala(sala.id)"><span class="glyphicon glyphicon-trash"></span></a>
+    </td>
+  </tr>
+</table>

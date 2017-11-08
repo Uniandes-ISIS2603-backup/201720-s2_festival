@@ -1,0 +1,25 @@
+<h1>Detalle de una funcion</h1>
+<h3>Pelicula (Recurso no esta bien implementado en el back, no se puede llamar servicio GET de REST)</h3>
+<table class="table table-striped">
+  <tr>
+    <th>id</th>
+    <th>Duracion</th>
+    <th>Creditos</th>
+  </tr>
+    <td>{{ currentFuncion.pelicula.id }}</td>
+    <td>{{ currentFuncion.pelicula.duracionMinutos }}</td>
+    <td>{{ currentFuncion.pelicula.creditos }}</td>
+  </tr>
+</table>
+<h3>Sala</h3>
+<table class="table table-striped">
+  <tr>
+    <th>id</th>
+    <th>Numero de sillas</th>
+    <th>Numero de sillas preferenciales</th>
+  </tr>
+    <td>{{ currentSala.id }}</td>
+    <td>{{ currentSala.numSillas }}</td>
+    <td>{{ currentSala.numSillasPreferenciales }}</td>
+  </tr>
+</table>

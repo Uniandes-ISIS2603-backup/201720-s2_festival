@@ -31,7 +31,7 @@ import java.util.*;
  *
  * @author ISIS2603
  */
-public class FestivalDetailDTO extends FestivalDTO {
+public final class FestivalDetailDTO extends FestivalDTO {
     private List<TeatroDTO> teatros;
     
     private List<PeliculaDTO> peliculas;
@@ -59,44 +59,8 @@ public class FestivalDetailDTO extends FestivalDTO {
      */
     public FestivalDetailDTO(FestivalEntity entity) {
         super(entity);
-        if(entity != null)
-        {
-            teatros = new ArrayList<>();
-            for(TeatroEntity entityTeatro : entity.getTeatros())
-            {
-                teatros.add(new TeatroDTO(entityTeatro));
-            }
-            
-            peliculas = new ArrayList<>();
-            for(PeliculaEntity entityPelicula : entity.getPeliculas())
-            {
-                peliculas.add(new PeliculaDTO(entityPelicula));
-            }
-            
-            espectadores = new ArrayList<>();
-            for(EspectadorEntity entityEspectador : entity.getEspectadores())
-            {
-                espectadores.add(new EspectadorDTO(entityEspectador));
-            }
-            
-            criticos = new ArrayList<>();
-            for(CriticoEntity entityCritico : entity.getCriticos())
-            {
-                criticos.add(new CriticoDTO(entityCritico));
-            }
-            
-            patrocinadores = new ArrayList<>();
-            for(PatrocinadorEntity entityPatrtociandor : entity.getPatrocinadores())
-            {
-                patrocinadores.add(new PatrocinadorDTO(entityPatrtociandor));
-            }
-            
-            funciones = new ArrayList<>();
-            for(FuncionEntity entityFuncion : entity.getFunciones())
-            {
-                funciones.add(new FuncionDTO(entityFuncion));
-            }
-        }
+         teatros = listTeatros2DTO(entity);
+         funciones = listFunciones2DTO(entity);
     }
 
     public List<TeatroDTO> getTeatros() {
@@ -155,67 +119,53 @@ public class FestivalDetailDTO extends FestivalDTO {
     @Override
     public FestivalEntity toEntity() {
         FestivalEntity festivalE = super.toEntity();
+        festivalE.setTeatros(listDTO2Teatros());
+        festivalE.setFunciones(listDTO2Funciones());
+         return festivalE;
         
-        if(getTeatros() != null)
-        {
-            List<TeatroEntity> teatrosEntity = new ArrayList<>();
-            for(TeatroDTO dtoTeatro : getTeatros())
-            {
-                teatrosEntity.add(dtoTeatro.toEntity());
-            }
-            festivalE.setTeatros(teatrosEntity);
-        }
-        
-        if(getPeliculas() != null)
-        {
-            List<PeliculaEntity> peliculasEntity = new ArrayList<>();
-            for(PeliculaDTO dtoPelicula : getPeliculas())
-            {
-               peliculasEntity.add(dtoPelicula.toEntity());
-            }
-            festivalE.setPeliculas(peliculasEntity);
-        }
-        
-        if(getEspectadores() != null)
-        {
-            List<EspectadorEntity> espectadoresEntity = new ArrayList<>();
-            for(EspectadorDTO dtoEspectador : getEspectadores())
-            {
-                espectadoresEntity.add(dtoEspectador.toEntity());
-            }
-            festivalE.setEspectadores(espectadoresEntity);           
-        }
-        
-        if(getCriticos() != null)
-        {
-            List<CriticoEntity> criticosEntity = new ArrayList<>();
-            for(CriticoDTO dtoCritico : getCriticos())
-            {
-                criticosEntity.add(dtoCritico.toEntity());
-            }
-            festivalE.setCriticos(criticosEntity);
-        }
-        
-         if(getFunciones() != null)
-        {
-            List<FuncionEntity> funcionesEntity = new ArrayList<>();
-            for(FuncionDTO dtoFuncion : getFunciones())
-            {
-                funcionesEntity.add(dtoFuncion.toEntity());
-            }
-            festivalE.setFunciones(funcionesEntity);
-        }
-         
-         if(getPatrocinadores()!= null)
-        {
-            List<PatrocinadorEntity> patrocinadoresEntity = new ArrayList<>();
-            for(PatrocinadorDTO dtoPatrocinador : getPatrocinadores())
-            {
-                patrocinadoresEntity.add(dtoPatrocinador.toEntity());
-            }
-            festivalE.setPatrocinadores(patrocinadoresEntity);
-        }
-      return festivalE;
     }
 
+    public List<TeatroDTO> listTeatros2DTO(FestivalEntity entity) {
+        List<TeatroDTO> lista = new ArrayList();
+        for(TeatroEntity teatro: entity.getTeatros())
+        {
+            lista.add(new TeatroDTO(teatro));
+        }
+        return lista;
+    }
+    
+    public List<TeatroEntity> listDTO2Teatros()
+    {
+        List<TeatroEntity> lista = new ArrayList();
+        if(teatros != null)
+        {
+            for(TeatroDTO teatro : teatros)
+            {
+                lista.add(teatro.toEntity());
+            }
+        }
+        return lista;
+    }
+
+    public List<FuncionDTO> listFunciones2DTO(FestivalEntity entity) {
+        List<FuncionDTO> lista = new ArrayList();
+        for(FuncionEntity funcion: entity.getFunciones())
+        {
+            lista.add(new FuncionDTO(funcion));
+        }
+        return lista;
+    }
+    
+    public List<FuncionEntity> listDTO2Funciones()
+    {
+        List<FuncionEntity> lista = new ArrayList();
+        if(funciones != null)
+        {
+            for(FuncionDTO funcion : funciones)
+            {
+                lista.add(funcion.toEntity());
+            }
+        }
+        return lista;
+    }
 }

@@ -1,0 +1,6 @@
+<h2>Actualizar el  festival {{ festival.id }}</h2>
+<form ng-submit="updateFestival()" name="festivalForm">
+    Nombre: <input id="festivalName" type="number" required ng-model="festivalName" value="{{ festival.nombre }}"/>
+    
+    <input ng-show="festivalForm.$valid" type="submit" value="Actualizar"/>
+</form>
