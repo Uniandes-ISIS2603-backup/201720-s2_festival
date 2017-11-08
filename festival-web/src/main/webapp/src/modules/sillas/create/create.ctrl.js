@@ -12,7 +12,7 @@
                     tarifa: $scope.sillaTarifa,
                     esPreferencial: $scope.sillaEsPreferencial,
                     sala: {
-                        id: 1
+                        id: $scope.sala
                     }
                 }).then(function (response) {
                     //Silla created successfully.

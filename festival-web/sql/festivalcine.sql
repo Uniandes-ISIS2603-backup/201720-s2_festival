@@ -21,18 +21,8 @@ delete from PersonaEntity;
 delete from FuncionEntity;
 delete from SalaEntity;
 delete from PeliculaEntity;
-delete from FestivalEntity;
-
-
-
-delete from FuncionEntity;
-delete from SalaEntity;
-
 delete from TeatroEntity;
-
-delete from PeliculaEntity;
-
-
+delete from FestivalEntity;
 
    /* FestivalEnity*/
     insert into FestivalEntity(id, name, fechaInicio, fechaFin) values (1, 'verano', '8/20/2017','8/23/2017' );
@@ -99,7 +89,6 @@ delete from PeliculaEntity;
     insert into SillaEntity (id, tarifa, esPreferencial, sala_id) values (10,59.54, 1, 3);
 
 
-delete from PeliculaEntity;
     insert into PeliculaEntity (id, name, creditos, duracionMinutos, genero, pais, corto, director) values (1001, 'South, The (Lomalla)', 54, 33656, 'Drama|Thriller', 'Russia', 'https://goo.gl/ztJJlm', 'Hillie Whyman');
     insert into PeliculaEntity (id, name, creditos, duracionMinutos, genero, pais, corto, director) values (1002, 'Ricochet', 32, 3769, 'Action|Crime|Thriller', 'Hungary', 'https://goo.gl/of7uuS', 'Rodrique Kaines');
     insert into PeliculaEntity (id, name, creditos, duracionMinutos, genero, pais, corto, director) values (1003, 'Art of the Steal, The', 62, 749, 'Crime', 'Indonesia', 'https://goo.gl/oXrmyX', 'Liana Illsley');
@@ -133,10 +122,6 @@ delete from PeliculaEntity;
     insert into FuncionEntity (id, name, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (10, 'Panic Room', '10/18/2016', '12/28/2016',1,1,1001);
 
 /* CriticoEntity */
-
-
-    delete from PersonaEntity where dtype = 'CriticoEntity';
-
     insert into PersonaEntity (id, name, dtype) values (1001, 'Inger Danielou', 'CriticoEntity');
     insert into PersonaEntity (id, name, dtype) values (1002, 'Muhammad Kerby', 'CriticoEntity');
     insert into PersonaEntity (id, name, dtype) values (1003, 'Poul Joselevitch', 'CriticoEntity');
@@ -186,6 +171,19 @@ delete from PeliculaEntity;
     insert into PeliculaEntity_PersonaEntity (peliculas_id, criticos_id) values (1007, 1008);
 
 /* CriticaEntity */
+
+    insert into CriticaEntity (critico_id, funcion_id) values (1001,1);
+    insert into CriticaEntity (critico_id, funcion_id) values (1001,1);
+    insert into CriticaEntity (critico_id, funcion_id) values (1001,1);
+    insert into CriticaEntity (critico_id, funcion_id) values (1001,1);
+    insert into CriticaEntity (critico_id, funcion_id) values (1001,1);
+    insert into CriticaEntity (critico_id, funcion_id) values (1001,1);
+    insert into CriticaEntity (critico_id, funcion_id) values (1001,1);
+    insert into CriticaEntity (critico_id, funcion_id) values (1001,1);
+    insert into CriticaEntity (critico_id, funcion_id) values (1001,1);
+    insert into CriticaEntity (critico_id, funcion_id) values (1001,1);
+
+    delete from CriticaEntity;
 
     insert into CriticaEntity (id, comentario, critico_id, funcion_id) values (1, 'In sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.
 

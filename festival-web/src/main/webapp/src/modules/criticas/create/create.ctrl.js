@@ -10,11 +10,11 @@
             $scope.createCritica = function () {
                 $http.post(criticasContext, {
                     comentario: $scope.criticaComentario,
-                    critico: {
-                        id: 1
+                    critico: { 
+                        id: $scope.critico 
                     },
-                    funcion: {
-                        id : 1
+                    funcion: { 
+                        id: $scope.funcion
                     }
                 }).then(function (response) {
                     //Silla created successfully.
