@@ -82,6 +82,25 @@
  						templateUrl: basePath + 'createPelicula.html'
  					}
  				}	
+ 			});
+
+
+ 			$stateProvider.state('updatePelicula',{
+ 				url: '/{peliculaModfId:int}/update',
+ 				parent: 'peliculas',
+ 				param:{
+ 					peliculaModfId: null
+ 				},
+ 				views: {
+ 					'listView': {
+ 						templateUrl: basePath + 'peliculas.list.html'
+ 					},
+ 					'updatePeliculaView': {
+ 						controller: 'updatePeliculaCtrl',
+ 						controllerAs: 'crtl',
+ 						templateUrl: basePath + 'updatePelicula.html'
+ 					}
+ 				}
  			})
  			;
  		}]);

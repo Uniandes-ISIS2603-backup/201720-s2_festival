@@ -1,0 +1,35 @@
+<div class="thumbnail">
+	<div class="panel panel-default"> 
+		<div class="panel-body">
+			<h4>Modificar película con Id: {{peliculaMd.id}} </h4>
+			<form ng-submit="updatePelicula()" name="updatePeliForm">
+				<div class="form-group">
+
+					<label for="nombre">Nombre:</label>
+					<input type="text" class="form-control" id="nombre" placeholder="{{peliculaMd.name}}" name="nombre" ng-model="peliculaNombre">
+					
+					<label for="director">Director:</label>
+					<input type="text" class="form-control" id="director" placeholder="{{peliculaMd.director}}" name="director" ng-model="peliculaDirector">
+
+					<label for="genero">Género:</label>
+					<input type="text" class="form-control" id="genero" placeholder="{{peliculaMd.genero}}" name="genero" ng-model="peliculaGenero">
+
+					<label for="duracion">Duración:</label>
+					<input type="number" min="0" class="form-control" id="duracion" placeholder="{{peliculaMd.duracionMinutos}}" name="duracion" ng-model="peliculaDuracion">
+
+					<label for="pais">País:</label>
+					<input type="text" class="form-control" id="pais" placeholder="{{peliculaMd.pais}}" name="pais" ng-model="peliculaPais">
+
+					<label for="creditos">Créditos:</label>
+					<input type="number" min="0" class="form-control" id="creditos" placeholder="{{peliculaMd.creditos}}" name="creditos" ng-model="peliculaCreditos">
+				</div>
+				<div class="form-group">
+					<label for="corto">Corto:</label>
+					<input type="url" class="form-control" id="url" placeholder="{{peliculaMd.corto}}" name="corto" ng-model="peliculaCorto">
+				</div>
+				<button type="submit" class="btn btn-primary">Crear</button>
+			</form>
+		</div>
+	</div>
+
+</div>
