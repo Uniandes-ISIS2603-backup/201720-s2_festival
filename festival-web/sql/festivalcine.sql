@@ -18,18 +18,8 @@ delete from PersonaEntity;
 delete from FuncionEntity;
 delete from SalaEntity;
 delete from PeliculaEntity;
-delete from FestivalEntity;
-
-
-
-delete from FuncionEntity;
-delete from SalaEntity;
-
 delete from TeatroEntity;
-
-delete from PeliculaEntity;
-
-
+delete from FestivalEntity;
 
    /* FestivalEnity*/
     insert into FestivalEntity(id, name, fechaInicio, fechaFin) values (1, 'verano', '8/20/2017','8/23/2017' );
@@ -97,14 +87,14 @@ delete from PeliculaEntity;
 
 
 delete from PeliculaEntity;
-   
-delete from PeliculaEntity;
     insert into PeliculaEntity (id, name, imagen, duracionMinutos, genero, pais, corto, director) values (1001, 'Batman', 'https://images-na.ssl-images-amazon.com/images/I/61sGxnXeqiL._SY550_.jpg', 33656, 'Drama|Thriller', 'Russia', 'https://www.youtube.com/embed/L_FONnnkdh4?ecver=2', 'Hillie Whyman');
     insert into PeliculaEntity (id, name, imagen, duracionMinutos, genero, pais, corto, director) values (1002, 'Tarzan', 'https://images-na.ssl-images-amazon.com/images/I/71ievnadZXL.SL1014.jpg', 3769, 'Action|Crime|Thriller', 'Hungary', 'https://www.youtube.com/embed/L_FONnnkdh4?ecver=2', 'Rodrique Kaines');
     insert into PeliculaEntity (id, name, imagen, duracionMinutos, genero, pais, corto, director) values (1003, 'Nemo', 'https://www.sonuit.fr/532/poster-mural-le-monde-de-nemo-panoramique-disney-komar.jpg', 749, 'Crime', 'Indonesia', 'https://www.youtube.com/embed/L_FONnnkdh4?ecver=2', 'Liana Illsley');  
     insert into PeliculaEntity (id, name, imagen, duracionMinutos, genero, pais, corto, director) values (1004, 'Coraline', 'http://s3.media.squarespace.com/production/465215/5307878/wp-content/uploads/2008/12/coraline1_large.jpg', 2589, 'Crime|Drama|Mystery|Thriller|War', 'Canada', 'https://www.youtube.com/embed/L_FONnnkdh4?ecver=2', 'Devonne Beeston');  
     insert into PeliculaEntity (id, name, imagen, duracionMinutos, genero, pais, corto, director) values (1005, 'As above so Below', 'https://klling.files.wordpress.com/2017/07/as-above-so-below.jpg', 2880, 'Drama', 'Indonesia', 'https://www.youtube.com/embed/L_FONnnkdh4?ecver=2', 'Maudie Brandreth');
 
+
+  
 
 
 
@@ -123,10 +113,6 @@ delete from PeliculaEntity;
     insert into FuncionEntity (id, name, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (10, 'Panic Room', '10/18/2016', '12/28/2016',1,1,1001);
 
 /* CriticoEntity */
-
-
-    delete from PersonaEntity where dtype = 'CriticoEntity';
-
     insert into PersonaEntity (id, name, dtype) values (1001, 'Inger Danielou', 'CriticoEntity');
     insert into PersonaEntity (id, name, dtype) values (1002, 'Muhammad Kerby', 'CriticoEntity');
     insert into PersonaEntity (id, name, dtype) values (1003, 'Poul Joselevitch', 'CriticoEntity');
@@ -176,6 +162,19 @@ delete from PeliculaEntity;
     insert into PeliculaEntity_PersonaEntity (peliculas_id, criticos_id) values (1001, 1008);
 
 /* CriticaEntity */
+
+    insert into CriticaEntity (critico_id, funcion_id) values (1001,1);
+    insert into CriticaEntity (critico_id, funcion_id) values (1001,1);
+    insert into CriticaEntity (critico_id, funcion_id) values (1001,1);
+    insert into CriticaEntity (critico_id, funcion_id) values (1001,1);
+    insert into CriticaEntity (critico_id, funcion_id) values (1001,1);
+    insert into CriticaEntity (critico_id, funcion_id) values (1001,1);
+    insert into CriticaEntity (critico_id, funcion_id) values (1001,1);
+    insert into CriticaEntity (critico_id, funcion_id) values (1001,1);
+    insert into CriticaEntity (critico_id, funcion_id) values (1001,1);
+    insert into CriticaEntity (critico_id, funcion_id) values (1001,1);
+
+    delete from CriticaEntity;
 
     insert into CriticaEntity (id, comentario, critico_id, funcion_id) values (1, 'In sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.
 
