@@ -6,6 +6,14 @@
 			if ($state.params.peliculaModfId !== undefined) {
 				$http.get(peliculasContext + $state.params.peliculaModfId).then(function (response) {
 					$scope.peliculaMd = response.data;
+					$scope.peliculaNombre = $scope.peliculaMd.name;
+					$scope.peliculaDirector = $scope.peliculaMd.director;
+					$scope.peliculaDuracion = $scope.peliculaMd.duracionMinutos;
+					$scope.peliculaPais =  $scope.peliculaMd.pais;
+					$scope.peliculaImagen = $scope.peliculaMd.imagen;
+					$scope.peliculaCorto = $scope.peliculaMd.corto;
+					$scope.peliculaGenero = $scope.peliculaMd.genero;
+
 					$scope.trustSrc = function(src) {
 						return $sce.trustAsResourceUrl(src);
 					};
@@ -18,13 +26,13 @@
 					director: $scope.peliculaDirector,
 					duracionMinutos: $scope.peliculaDuracion,
 					pais: $scope.peliculaPais,
-					creditos: $scope.peliculaCreditos,
+					imagen: $scope.peliculaimagen,
 					corto: $scope.peliculaCorto,
 					genero: $scope.peliculaGenero
 				}).then(function (response) {
 					$state.go('peliculaDetail', {peliculaId: response.data.id}, {reload : true});
 				});
 			};
-			
+
 		}]);
 })(angular);

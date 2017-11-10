@@ -19,7 +19,7 @@ public class PeliculaDTO {
     private String genero;
     private int duracionMinutos;
     private String director;
-    private int creditos;
+    private String imagen;
     private String pais;
     private String datos;
     private String corto;
@@ -35,7 +35,7 @@ public class PeliculaDTO {
             this.genero = pelicula.getGenero();
             this.duracionMinutos = pelicula.getDuracionMinutos();
             this.director = pelicula.getDirector();
-            this.creditos = pelicula.getCreditos();
+            this.imagen = pelicula.getImagen();
             this.pais = pelicula.getPais();
             this.datos = pelicula.getDatos();
             this.corto = pelicula.getCorto();
@@ -62,8 +62,8 @@ public class PeliculaDTO {
         return director;
     }
 
-    public int getCreditos() {
-        return creditos;
+    public String getImagen() {
+        return imagen;
     }
 
     public String getPais() {
@@ -94,8 +94,8 @@ public class PeliculaDTO {
         this.director = director;
     }
 
-    public void setCreditos(int creditos) {
-        this.creditos = creditos;
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
 
     public void setPais(String pais) {
@@ -109,8 +109,8 @@ public class PeliculaDTO {
     public void setDatos(String datos) {
         this.datos = datos;
     }
-    
-    public void setGenero(String genero){
+
+    public void setGenero(String genero) {
         this.genero = genero;
     }
 
@@ -122,7 +122,7 @@ public class PeliculaDTO {
         pelicula.setGenero(this.genero);
         pelicula.setDuracionMinutos(this.duracionMinutos);
         pelicula.setDirector(this.director);
-        pelicula.setCreditos(this.creditos);
+        pelicula.setImagen(this.imagen);
         pelicula.setPais(this.pais);
         pelicula.setCorto(this.corto);
         pelicula.setDatos(this.datos);

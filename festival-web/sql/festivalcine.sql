@@ -1,16 +1,13 @@
 delete from PeliculaEntity_PersonaEntity;
 delete from PERSONAENTITY_ABONOENTITY;
-DELETE FROM FESTIVALENTITY_FUNCIONENTITY;
 DELETE FROM FESTIVALENTITY_PELICULAENTITY;
 DELETE FROM FESTIVALENTITY_PERSONAENTITY;
-DELETE FROM FESTIVALENTITY_TEATROENTITY;
 DELETE FROM FUNCIONENTITY_BOLETAENTITY;
 DELETE FROM FUNCIONENTITY_CRITICAENTITY;
 DELETE FROM PELICULAENTITY_PERSONAENTITY;
 DELETE FROM PERSONAENTITY_BOLETAENTITY;
 DELETE FROM PERSONAENTITY_CRITICAENTITY;
 delete from salaentity_funcionentity;
-delete from teatroentity_salaentity;
 delete from CriticaEntity;
 delete from CalificacionEntity;
 delete from BoletaEntity;
@@ -100,21 +97,14 @@ delete from PeliculaEntity;
 
 
 delete from PeliculaEntity;
-    insert into PeliculaEntity (id, name, creditos, duracionMinutos, genero, pais, corto, director) values (1001, 'South, The (Lomalla)', 54, 33656, 'Drama|Thriller', 'Russia', 'https://goo.gl/ztJJlm', 'Hillie Whyman');
-    insert into PeliculaEntity (id, name, creditos, duracionMinutos, genero, pais, corto, director) values (1002, 'Ricochet', 32, 3769, 'Action|Crime|Thriller', 'Hungary', 'https://goo.gl/of7uuS', 'Rodrique Kaines');
-    insert into PeliculaEntity (id, name, creditos, duracionMinutos, genero, pais, corto, director) values (1003, 'Art of the Steal, The', 62, 749, 'Crime', 'Indonesia', 'https://goo.gl/oXrmyX', 'Liana Illsley');
-    insert into PeliculaEntity (id, name, creditos, duracionMinutos, genero, pais, corto, director) values (1004, 'Joint Security Area (Gongdong gyeongbi guyeok JSA)', 70, 2589, 'Crime|Drama|Mystery|Thriller|War', 'Canada', 'https://goo.gl/WFzElk', 'Devonne Beeston');
-    insert into PeliculaEntity (id, name, creditos, duracionMinutos, genero, pais, corto, director) values (1005, 'Month in the Country, A', 89, 2880, 'Drama', 'Indonesia', 'https://goo.gl/95GlK2', 'Maudie Brandreth');
-    insert into PeliculaEntity (id, name, creditos, duracionMinutos, genero, pais, corto, director) values (1006, 'Denise Calls Up', 77, 10272, 'Comedy', 'France', 'https://goo.gl/LMieu0', 'Donia Pound');
-    insert into PeliculaEntity (id, name, creditos, duracionMinutos, genero, pais, corto, director) values (1007, 'Les Invisibles', 21, 8752, 'Documentary', 'Iran', 'https://goo.gl/zlj0Pc', 'Robbie Friedank');
-    insert into PeliculaEntity (id, name, creditos, duracionMinutos, genero, pais, corto, director) values (1008, 'For Love of Ivy', 97, 2160, 'Comedy|Drama|Romance', 'Malawi', 'https://goo.gl/graS0a', 'Astrix Boyington');
-    insert into PeliculaEntity (id, name, creditos, duracionMinutos, genero, pais, corto, director) values (1009, 'Victor and the Secret of Crocodile Mansion', 26, 632, 'Adventure|Children|Mystery', 'China', 'https://goo.gl/pLVwrc', 'Berk Loch');
-    insert into PeliculaEntity (id, name, creditos, duracionMinutos, genero, pais, corto, director) values (1010, 'Outrage', 3, 25400, 'Crime|Drama|Thriller', 'South Korea', 'https://goo.gl/9ZqCWL', 'Alden Dilworth');
-    insert into PeliculaEntity (id, name, creditos, duracionMinutos, genero, pais, corto, director) values (1011, 'Blonde and Blonder', 59, 28024, 'Comedy|Crime', 'Japan', 'https://goo.gl/PDcsK7', 'Cele Di Bernardo');
-    insert into PeliculaEntity (id, name, creditos, duracionMinutos, genero, pais, corto, director) values (1012, 'Little Witches', 53, 10272, 'Horror|Thriller', 'Ukraine', 'https://goo.gl/4lNwT7', 'Murvyn Duval');
-    insert into PeliculaEntity (id, name, creditos, duracionMinutos, genero, pais, corto, director) values (1013, 'EXPO: Magic of the White City', 97, 27552, 'Documentary', 'China', 'https://goo.gl/GFQukr', 'Zorine Duddy');
-    insert into PeliculaEntity (id, name, creditos, duracionMinutos, genero, pais, corto, director) values (1014, 'Whore', 30, 889, 'Drama', 'Philippines', 'https://goo.gl/aTvMQM', 'Ealasaid Kauffman');
-    insert into PeliculaEntity (id, name, creditos, duracionMinutos, genero, pais, corto, director) values (1015, 'Iran vs EE.UU', 12, 889, 'Drama', 'EE.UU', 'https://www.youtube.com/embed/p1tO1p2Vl0w?ecver=2', 'Kauffman');
+   
+delete from PeliculaEntity;
+    insert into PeliculaEntity (id, name, imagen, duracionMinutos, genero, pais, corto, director) values (1001, 'Batman', 'https://images-na.ssl-images-amazon.com/images/I/61sGxnXeqiL._SY550_.jpg', 33656, 'Drama|Thriller', 'Russia', 'https://www.youtube.com/embed/L_FONnnkdh4?ecver=2', 'Hillie Whyman');
+    insert into PeliculaEntity (id, name, imagen, duracionMinutos, genero, pais, corto, director) values (1002, 'Tarzan', 'https://images-na.ssl-images-amazon.com/images/I/71ievnadZXL.SL1014.jpg', 3769, 'Action|Crime|Thriller', 'Hungary', 'https://www.youtube.com/embed/L_FONnnkdh4?ecver=2', 'Rodrique Kaines');
+    insert into PeliculaEntity (id, name, imagen, duracionMinutos, genero, pais, corto, director) values (1003, 'Nemo', 'https://www.sonuit.fr/532/poster-mural-le-monde-de-nemo-panoramique-disney-komar.jpg', 749, 'Crime', 'Indonesia', 'https://www.youtube.com/embed/L_FONnnkdh4?ecver=2', 'Liana Illsley');  
+    insert into PeliculaEntity (id, name, imagen, duracionMinutos, genero, pais, corto, director) values (1004, 'Coraline', 'http://s3.media.squarespace.com/production/465215/5307878/wp-content/uploads/2008/12/coraline1_large.jpg', 2589, 'Crime|Drama|Mystery|Thriller|War', 'Canada', 'https://www.youtube.com/embed/L_FONnnkdh4?ecver=2', 'Devonne Beeston');  
+    insert into PeliculaEntity (id, name, imagen, duracionMinutos, genero, pais, corto, director) values (1005, 'As above so Below', 'https://klling.files.wordpress.com/2017/07/as-above-so-below.jpg', 2880, 'Drama', 'Indonesia', 'https://www.youtube.com/embed/L_FONnnkdh4?ecver=2', 'Maudie Brandreth');
+
 
 
 
@@ -181,9 +171,9 @@ delete from PeliculaEntity;
     insert into PeliculaEntity_PersonaEntity (peliculas_id, criticos_id) values (1003, 1003);
     insert into PeliculaEntity_PersonaEntity (peliculas_id, criticos_id) values (1004, 1004);
     insert into PeliculaEntity_PersonaEntity (peliculas_id, criticos_id) values (1005, 1005);
-    insert into PeliculaEntity_PersonaEntity (peliculas_id, criticos_id) values (1006, 1006);
-    insert into PeliculaEntity_PersonaEntity (peliculas_id, criticos_id) values (1007, 1007);
-    insert into PeliculaEntity_PersonaEntity (peliculas_id, criticos_id) values (1007, 1008);
+    insert into PeliculaEntity_PersonaEntity (peliculas_id, criticos_id) values (1004, 1006);
+    insert into PeliculaEntity_PersonaEntity (peliculas_id, criticos_id) values (1002, 1007);
+    insert into PeliculaEntity_PersonaEntity (peliculas_id, criticos_id) values (1001, 1008);
 
 /* CriticaEntity */
 

@@ -25,7 +25,7 @@ public class PeliculaEntity extends BaseEntity implements Serializable {
     private String genero;
     private int duracionMinutos;
     private String director;
-    private int creditos;
+    private String imagen;
     private String pais;
     private String datos;
     private String corto;
@@ -54,8 +54,8 @@ public class PeliculaEntity extends BaseEntity implements Serializable {
         return director;
     }
 
-    public int getCreditos() {
-        return creditos;
+    public String getImagen() {
+        return imagen;
     }
 
     public String getPais() {
@@ -86,8 +86,8 @@ public class PeliculaEntity extends BaseEntity implements Serializable {
         this.director = director;
     }
 
-    public void setCreditos(int creditos) {
-        this.creditos = creditos;
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
 
     public void setPais(String pais) {

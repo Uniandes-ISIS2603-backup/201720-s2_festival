@@ -10,8 +10,6 @@
  		function($stateProvider, $urlRouterProvider){
 
  			var basePath = 'src/modules/peliculas/';
- 			$urlRouterProvider.otherwise("/peliculasList");
-
  			$stateProvider.state('peliculas', {
  				url: '/peliculas',
  				abstract : true,
@@ -101,8 +99,24 @@
  						templateUrl: basePath + 'updatePelicula.html'
  					}
  				}
- 			})
- 			;
+ 			});
+
+ 			$stateProvider.state('deletePelicula', {
+ 				url: '/{peliculaDeleteId:int}/delete',
+ 				parent: 'peliculas',
+ 				param: {
+ 					peliculaDeleteId: null
+ 				},
+ 				views: {
+ 					'listView': {
+ 						templateUrl: basePath + 'peliculas.list.html',
+ 						controller: 'peliculasCtrl',
+ 						controllerAs: "ctrl"
+ 					}
+ 				}
+ 			});
+
+
  		}]);
  })(angular);
 

@@ -8,12 +8,14 @@
 	<br>
 	<div class="row">
 		<div class="col-md-4" ng-repeat="pelicula in peliculasRecords">
-			
+			<button type="button" ui-sref="deletePelicula({peliculaDeleteId : pelicula.id})" class="close" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
 			<a  ui-sref="peliculaDetail({peliculaId : pelicula.id})" href="#" class="thumbnail">
 				<div class="caption">
 					<div  style="width: 14em; display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{pelicula.name}}</div>
 				</div>
-				<img class="img-responsive" src="https://78.media.tumblr.com/avatar_1ef5f8fb43ea_128.png"/><br>		
+				<img class="img-responsive" src="{{pelicula.imagen}}" style="width:  206.66px; height: 286.42px;"/><br>		
 			</a>
 			
 			

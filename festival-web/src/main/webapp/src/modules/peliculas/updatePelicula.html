@@ -1,33 +1,36 @@
 <div class="thumbnail">
 	<div class="panel panel-default"> 
 		<div class="panel-body">
-			<h4>Modificar película con Id: {{peliculaMd.id}} </h4>
+			<h4>Modificar  {{peliculaMd.name}} </h4>
 			<form ng-submit="updatePelicula()" name="updatePeliForm">
 				<div class="form-group">
 
 					<label for="nombre">Nombre:</label>
-					<input type="text" class="form-control" id="nombre" placeholder="{{peliculaMd.name}}" name="nombre" ng-model="peliculaNombre">
+					<input type="text" class="form-control" id="nombre" name="nombre" ng-model="peliculaNombre">
 					
 					<label for="director">Director:</label>
-					<input type="text" class="form-control" id="director" placeholder="{{peliculaMd.director}}" name="director" ng-model="peliculaDirector">
+					<input type="text" class="form-control" id="director" name="director" ng-model="peliculaDirector">
 
 					<label for="genero">Género:</label>
-					<input type="text" class="form-control" id="genero" placeholder="{{peliculaMd.genero}}" name="genero" ng-model="peliculaGenero">
+					<input type="text" class="form-control" id="genero" name="genero" ng-model="peliculaGenero">
 
 					<label for="duracion">Duración:</label>
-					<input type="number" min="0" class="form-control" id="duracion" placeholder="{{peliculaMd.duracionMinutos}}" name="duracion" ng-model="peliculaDuracion">
+					<input type="number" min="0" class="form-control" id="duracion" name="duracion" ng-model="peliculaDuracion">
 
 					<label for="pais">País:</label>
-					<input type="text" class="form-control" id="pais" placeholder="{{peliculaMd.pais}}" name="pais" ng-model="peliculaPais">
+					<input type="text" class="form-control" id="pais" name="pais" ng-model="peliculaPais">
 
-					<label for="creditos">Créditos:</label>
-					<input type="number" min="0" class="form-control" id="creditos" placeholder="{{peliculaMd.creditos}}" name="creditos" ng-model="peliculaCreditos">
+					
 				</div>
 				<div class="form-group">
+
+					<label for="imagen">Link Imagen:</label>
+					<input type="text" class="form-control" id="imagen" name="imagen" ng-model="peliculaImagen">
+
 					<label for="corto">Corto:</label>
-					<input type="url" class="form-control" id="url" placeholder="{{peliculaMd.corto}}" name="corto" ng-model="peliculaCorto">
+					<input type="url" class="form-control" id="url" name="corto" ng-model="peliculaCorto">
 				</div>
-				<button type="submit" class="btn btn-primary">Crear</button>
+				<button type="submit" class="btn btn-primary">Actualizar</button>
 			</form>
 		</div>
 	</div>
