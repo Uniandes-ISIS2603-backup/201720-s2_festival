@@ -6,15 +6,15 @@
 
 (function (ng) {
     var mod = ng.module("criticasModule");
-    mod.config(function ($stateProvider){
-        
+    mod.config(function ($stateProvider) {
+
         $stateProvider.state("criticas.delete", {
             url: "/criticas/{criticasId:int}/delete",
             param: {
-              criticasId : null  
+                criticasId: null
             },
             views: {
-                "criticasDetailView" :{
+                "criticasView": {
                     controller: "criticas.deleteCtrl",
                     controllerAs: "ctrl"
                 }

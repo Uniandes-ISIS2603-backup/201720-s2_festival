@@ -32,6 +32,7 @@ public class SillaLogic {
      * Ordena a la persistencia crear una SillaEntity.
      * @param entity La SillaEntity a ser creada.
      * @return La SillaEntity creada.
+     * @throws co.edu.uniandes.ergo.festival.exceptions.BusinessLogicException
      */
     public SillaEntity createSilla(SillaEntity entity) throws BusinessLogicException{
         LOGGER.log(Level.INFO, "Inicia proceso de crear una SillaEntity.");
@@ -73,6 +74,7 @@ public class SillaLogic {
     /**
      * Elimina una SillaEntity de la persistencia junto con sus BoletaEntity.
      * @param id el id de la SillaEntity a eliminar.
+     * @throws co.edu.uniandes.ergo.festival.exceptions.BusinessLogicException
      */
     public void deleteSilla(Long id) throws BusinessLogicException{
         LOGGER.log(Level.INFO, "Inicia proceso de borrar una SillaEntity.");

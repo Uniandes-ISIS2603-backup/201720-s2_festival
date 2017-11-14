@@ -5,29 +5,24 @@
  */
 (function (ng) {
     var mod = ng.module("abonosModule");
-    //console.log($scope);
-    mod.controller('abonos.updateCtrl',['$scope', '$http', 'abonosContext', '$state', '$rootScope',
-        function ($scope, $http, abonosContext, $state, $rootScope, $stateParams) {
-            console.log($stateParams);
-            $http.get(abonosContext+$state.params.abonoId).then( function (response) {
+    mod.controller('abonos.updateCtrl', ['$scope', '$http', 'abonosContext', '$state',
+        function ($scope, $http, abonosContext, $state) {
+            $scope.update = true;
+            $http.get(abonosContext + $state.params.abonoId).then(function (response) {
                 $scope.abono = response.data;
                 $scope.abonoPrecio = $scope.abono.precio;
-                $scope.abonoIdEspetador = $scope.abono.espectador.id;
-                $scope.abonoBoletas = $scope.abono.boletas;
+                $scope.abonoIDEspectador = $scope.abono.espectador.id;
             });
-            $rootScope.edit = false;
-            $scope.updateAbono = function () {
-                console.log($scope);
-                $http.put(abonosContext+$state.params.abonoId, {
-                    precio: $scope.abonoPrecio,
-                    espectador : { id : $scope.abonoIdEspectador}
+            $scope.actionForAbono = function () {
+                $http.put(abonosContext + $state.params.abonoId, {
+                    precio: $scope.abonoForm.abonoPrecioIn.$viewValue,
+                    espectador: {id: $scope.abonoForm.abonoIDEspectadorIn.$viewValue}
                 }).then(function (response) {
-                    //Author created successfully
-                    $state.go('abonosList', {boletaId: response.data.id}, {reload: true});
+                    $state.go('abonosGet', {abonoId: response.data.id});
                 });
             };
         }
-        
+
     ]);
 }
 )(angular);

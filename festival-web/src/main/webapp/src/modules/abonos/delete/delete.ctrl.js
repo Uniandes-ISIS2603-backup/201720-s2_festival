@@ -5,11 +5,11 @@
  */
 (function (ng) {
     var mod = ng.module("abonosModule");
-    mod.controller("abonos.deleteCtrl", ["$http", "$state", "abonosContext",  
+    mod.controller("abonos.deleteCtrl", ["$http", "$state", "abonosContext",
         function ($http, $state, abonosContext) {
             $http.delete(abonosContext + $state.params.abonoId, {
             }).then(function () {
-                $state.go('abonosList',{},{location:"replace"});
+                $state.go('abonosList', {}, {location: "replace"});
             });
         }
     ]);

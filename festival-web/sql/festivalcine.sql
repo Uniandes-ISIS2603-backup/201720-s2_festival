@@ -21,7 +21,8 @@ delete from PeliculaEntity;
 delete from TeatroEntity;
 delete from FestivalEntity;
 
-   /* FestivalEnity*/
+/* FestivalEnity*/
+
     insert into FestivalEntity(id, name, fechaInicio, fechaFin) values (1, 'verano', '8/20/2017','8/23/2017' );
     insert into FestivalEntity(id, name, fechaInicio, fechaFin) values (2, 'invierno', '8/24/2017','9/7/2017' );
     insert into FestivalEntity(id, name, fechaInicio, fechaFin) values (3, 'primavera', '9/8/2017','9/23/2017' );
@@ -52,12 +53,6 @@ delete from FestivalEntity;
     insert into SalaEntity (id) values (8);
     insert into SalaEntity (id) values (9);
     insert into SalaEntity (id) values (10);
-
-
-
-
-
-
 
 /* SillaEntity */
 
@@ -94,13 +89,8 @@ delete from PeliculaEntity;
     insert into PeliculaEntity (id, name, imagen, duracionMinutos, genero, pais, corto, director) values (1005, 'As above so Below', 'https://klling.files.wordpress.com/2017/07/as-above-so-below.jpg', 2880, 'Drama', 'Indonesia', 'https://www.youtube.com/embed/L_FONnnkdh4?ecver=2', 'Maudie Brandreth');
 
 
-  
-
-
-
 /* FuncionEntity */
   
-
     insert into FuncionEntity (id, name, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (1, 'Katalin Varga', '4/17/2017', '9/23/2016',1,1,1001);
     insert into FuncionEntity (id, name, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (2, 'Double Hour, The (La doppia ora)', '12/16/2016', '10/12/2016',1,1,1001);
     insert into FuncionEntity (id, name, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (3, 'Changeling, The', '11/27/2016', '5/4/2017',1,1,1001);
@@ -113,6 +103,7 @@ delete from PeliculaEntity;
     insert into FuncionEntity (id, name, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (10, 'Panic Room', '10/18/2016', '12/28/2016',1,1,1001);
 
 /* CriticoEntity */
+
     insert into PersonaEntity (id, name, dtype) values (1001, 'Inger Danielou', 'CriticoEntity');
     insert into PersonaEntity (id, name, dtype) values (1002, 'Muhammad Kerby', 'CriticoEntity');
     insert into PersonaEntity (id, name, dtype) values (1003, 'Poul Joselevitch', 'CriticoEntity');
@@ -146,9 +137,6 @@ delete from PeliculaEntity;
     insert into PERSONAENTITY (ID, NAME, DTYPE) values (1028, 'Adiana Gyenes', 'EspectadorEntity');
     insert into PERSONAENTITY (ID, NAME, DTYPE) values (1029, 'Dannie Cusick', 'EspectadorEntity');
     insert into PERSONAENTITY (ID, NAME, DTYPE) values (1030, 'Cassaundra Berney', 'EspectadorEntity');
-
-    
-
 
 /*PeliculaEntity - PersonaEntity */
 
@@ -185,43 +173,43 @@ delete from PeliculaEntity;
 
     In congue. Etiam justo. Etiam pretium iaculis justo.
 
-    In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.', 1001, 1);
+    In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.', 1001, 2);
     insert into CriticaEntity (id, comentario, critico_id, funcion_id) values (3, 'Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.
 
-    Fusce consequat. Nulla nisl. Nunc nisl.', 1002, 1);
+    Fusce consequat. Nulla nisl. Nunc nisl.', 1002, 3);
     insert into CriticaEntity (id, comentario, critico_id, funcion_id) values (4, 'Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.
 
     Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
 
-    Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.', 1001, 1);
+    Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.', 1001, 4);
     insert into CriticaEntity (id, comentario, critico_id, funcion_id) values (5, 'Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.
 
     Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.
 
-    Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.', 1003, 1);
+    Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.', 1003, 5);
     insert into CriticaEntity (id, comentario, critico_id, funcion_id) values (6, 'Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.
 
     Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.
 
-    Fusce consequat. Nulla nisl. Nunc nisl.', 1002, 1);
+    Fusce consequat. Nulla nisl. Nunc nisl.', 1002, 6);
     insert into CriticaEntity (id, comentario, critico_id, funcion_id) values (7, 'Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.
 
-    Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.', 1001, 1);
+    Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.', 1001, 7);
     insert into CriticaEntity (id, comentario, critico_id, funcion_id) values (8, 'Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.
 
     Fusce consequat. Nulla nisl. Nunc nisl.
 
-    Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.', 1004, 1);
+    Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.', 1004, 8);
     insert into CriticaEntity (id, comentario, critico_id, funcion_id) values (9, 'Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.
 
     Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.
 
 
-    Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus ', 1001, 1);
-    insert into CriticaEntity (id, comentario, critico_id, funcion_id) values (10, 'Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.', 1005, 1);
+    Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus ', 1001, 9);
+    insert into CriticaEntity (id, comentario, critico_id, funcion_id) values (10, 'Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.', 1005, 10);
 
+/* TeatroEntity */
 
-    /* TeatroEntity */
     insert into TeatroEntity(id, name, tarifaBasica) values (1, 'colombia', 8000);
     insert into TeatroEntity(id, name, tarifaBasica) values (2, 'chapinero', 7000);
     insert into TeatroEntity(id, name, tarifaBasica) values (3, 'colon', 7500);
@@ -233,9 +221,8 @@ delete from PeliculaEntity;
     insert into TeatroEntity(id, name, tarifaBasica) values (9, 'norte',9000);
     insert into TeatroEntity(id, name, tarifaBasica) values (10, 'sur' ,8600);
 
+/* boletas de Espectador*/
 
-
-    /* boletas de Espectador*/
     insert into PERSONAENTITY_BOLETAENTITY (ESPECTADORENTITY_ID, BOLETAS_ID) values (1011, 10);
     insert into PERSONAENTITY_BOLETAENTITY (ESPECTADORENTITY_ID, BOLETAS_ID) values (1012, 20);
     insert into PERSONAENTITY_BOLETAENTITY (ESPECTADORENTITY_ID, BOLETAS_ID) values (1013, 30);
@@ -243,22 +230,26 @@ delete from PeliculaEntity;
     insert into PERSONAENTITY_BOLETAENTITY (ESPECTADORENTITY_ID, BOLETAS_ID) values (1015, 50);
     insert into PERSONAENTITY_BOLETAENTITY (ESPECTADORENTITY_ID, BOLETAS_ID) values (1015, 60);
 
-/* BoletaEntity*/
-    insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id, funcion_id) values(10, 120, 1, 500.50, 1, 1);
-    insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id, funcion_id) values(20, 130, 2, 600.50, 2, 1);
-    insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id, funcion_id) values(30, 110, 1, 700.50, 3, 1);
-    insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id, funcion_id) values(40, 50, 3, 400.50, 4, 2);
-    insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id, funcion_id, espectador_id) values(50, 500, 3, 400.50, 5, 2, 1011);
-    insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id, funcion_id, espectador_id) values(60, 650, 3, 300.25, 2, 3, 1012);
+/* CalificacionEntity */
 
-    /* CalificacionEntity */
     insert into CalificacionEntity (id,calificacion, comentario) values(1,1.1,'a1');
     insert into CalificacionEntity (id,calificacion, comentario) values(2,2.2,'a2');
     insert into CalificacionEntity (id,calificacion, comentario) values(3,3.3,'a3');
     insert into CalificacionEntity (id,calificacion, comentario) values(4,4.4,'a4');
 
+/* BoletaEntity*/
 
-    /* AbonoEntity */
+    insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id, funcion_id) values(10, 120, 1, 500.50, 1, 1);
+    insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id, funcion_id) values(20, 130, 2, 600.50, 2, 1);
+    insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id, funcion_id) values(30, 110, 1, 700.50, 3, 1);
+    insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id, funcion_id) values(40, 50, 3, 400.50, 4, 2);
+    insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id, funcion_id, espectador_id) values(50, 500, 3, 400.50, 5, 2, 1011);
+    insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id, funcion_id, espectador_id, calificacion_id) values(60, 650, 3, 300.25, 2, 3, 1012, 1);
+
+/* AbonoEntity */
+
     insert into AbonoEntity (id, precio, espectador_id) values (200,7000, 1011);
-    /*abonos de Espectador*/
+
+/*abonos de Espectador*/
+
     insert into PERSONAENTITY_ABONOENTITY (ESPECTADORENTITY_ID, ABONOS_ID) values (1011, 200);

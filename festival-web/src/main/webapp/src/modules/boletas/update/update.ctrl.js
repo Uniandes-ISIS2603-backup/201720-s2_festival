@@ -5,11 +5,10 @@
  */
 (function (ng) {
     var mod = ng.module("boletasModule");
-    //console.log($scope);
-    mod.controller('boletas.updateCtrl',['$scope', '$http', 'boletasContext', '$state', '$rootScope',
-        function ($scope, $http, boletasContext, $state, $rootScope, $stateParams) {
-            console.log($stateParams);
-            $http.get(boletasContext+$state.params.boletaId).then( function (response) {
+    mod.controller('boletas.updateCtrl', ['$scope', '$http', 'boletasContext', '$state',
+        function ($scope, $http, boletasContext, $state) {
+            $scope.update = true;
+            $http.get(boletasContext + $state.params.boletaId).then(function (response) {
                 $scope.boleta = response.data;
                 $scope.boletaCodigoBarras = $scope.boleta.codigoDeBarras;
                 $scope.boletaEstado = $scope.boleta.estado;
@@ -18,23 +17,20 @@
                 $scope.idSilla = $scope.boleta.silla.id;
                 $scope.idEspectador = $scope.boleta.espectador.id;
             });
-            $rootScope.edit = false;
-            $scope.updateBoleta = function () {
-                console.log($scope);
-                $http.put(boletasContext+$state.params.boletaId, {
-                    codigoDeBarras: $scope.boletaCodigoBarras,
-                    estado: $scope.boletaEstado,
-                    precio: $scope.boletaPrecio,
-                    funcion: {id: $scope.idFuncion},
-                    silla : {id : $scope.idSilla}
-//                    espectador : {id : $scope.idEspectador}
+            $scope.actionForBoleta = function () {
+                $http.put(boletasContext + $state.params.boletaId, {
+                    codigoDeBarras: $scope.boletaForm.boletaCodigoBarrasIn.$viewValue,
+                    estado: $scope.boletaForm.boletaEstadoIn.$viewValue,
+                    precio: $scope.boletaForm.boletaPrecioIn.$viewValue,
+                    funcion: {id: $scope.boletaForm.idFuncionIn.$viewValue},
+                    silla: {id: $scope.boletaForm.idSillaIn.$viewValue},
+                    espectador: {id: $scope.boletaForm.idEspectadorIn.$viewValue}
                 }).then(function (response) {
-                    //Author created successfully
-                    $state.go('boletasList', {boletaId: response.data.id}, {reload: true});
+                    $state.go('boletasGet', {boletaId: response.data.id});
                 });
             };
         }
-        
+
     ]);
 }
 )(angular);

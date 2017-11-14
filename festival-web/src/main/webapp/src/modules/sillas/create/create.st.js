@@ -6,14 +6,14 @@
 
 (function (ng) {
     var mod = ng.module("sillasModule");
-    mod.config(function ($stateProvider){
-        var basePath = "src/modules/sillas/create/";
-        
+    mod.config(function ($stateProvider) {
+        var basePathDetail = "src/modules/sillas/detail/";
+
         $stateProvider.state("sillas.create", {
             url: "/sillas/create",
             views: {
-                "sillasDetailView" :{
-                    templateUrl: basePath + "create.html",
+                "sillasView": {
+                    templateUrl: basePathDetail + "detail.html",
                     controller: "sillas.createCtrl",
                     controllerAs: "ctrl"
                 }

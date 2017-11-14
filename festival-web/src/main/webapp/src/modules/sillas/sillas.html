@@ -1,4 +1,2 @@
-<h1>Acá aparecen las sillas.</h1>
-<a ui-sref="sillas.create">Crear silla</a>
-<div ui-view="sillasListView"></div>
-<div ui-view="sillasDetailView"></div>
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+<div ui-view="sillasView"></div>

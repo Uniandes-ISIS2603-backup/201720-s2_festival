@@ -8,7 +8,7 @@
     var mod = ng.module("sillasModule", ["ui.router"]);
     mod.constant("sillasContext", "api/sillas/");
     mod.config(["$stateProvider",
-        function ($stateProvider){
+        function ($stateProvider) {
             var basePath = "src/modules/sillas/";
 
             $stateProvider.state("sillas", {
@@ -21,5 +21,5 @@
                     }
                 }
             });
-    }]);
+        }]);
 })(angular);

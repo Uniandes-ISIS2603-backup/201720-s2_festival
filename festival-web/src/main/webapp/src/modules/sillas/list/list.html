@@ -1,17 +1,26 @@
-<table class="table table-striped">
-  <tr>
-    <th>id</th>
-    <th>Nombre</th>
-    <th>¿Es preferencial?</th>
-    <th>Acciones</th>
-  </tr>
-  <tr ng-repeat="silla in sillas">
-      <td><a ui-sref="sillas.detail ({ sillasId: silla.id })">{{ silla.id }}</a></td>
-    <td>{{ silla.tarifa }}</td>
-    <td>{{ silla.esPreferencial }}</td>
-    <td>
-        <a ui-sref="sillas.update ({ sillasId: silla.id })"><span class="glyphicon glyphicon-leaf"></span></a>
-        <a ui-sref="sillas.delete ({ sillasId: silla.id })"><span class="glyphicon glyphicon-fire"></span></a>
-    </td>
-  </tr>
-</table>
+<div class="row">
+    <div class="col-xs-12">
+        <h1>Sillas</h1>
+        <table class="table table-striped">
+            <tr>
+                <th>id</th>
+                <th>Nombre</th>
+                <th>¿Es preferencial?</th>
+            </tr>
+            <tr ng-repeat="silla in sillas">
+                <td><a ui-sref="sillas.detail ({ sillasId: silla.id })">{{ silla.id}}</a></td>
+                <td>{{ silla.tarifa}}</td>
+                <td>{{ silla.esPreferencial}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-offset-5 col-xs-2">
+        <a ui-sref="sillas.create">
+            <button class="btn btn-primary form-control" title="Crear">
+                <span class="glyphicon glyphicon-plus btn-a-icon"></span>
+            </button>      
+        </a>
+    </div>
+</div>

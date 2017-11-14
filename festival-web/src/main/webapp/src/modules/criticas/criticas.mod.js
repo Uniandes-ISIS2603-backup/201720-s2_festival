@@ -8,7 +8,7 @@
     var mod = ng.module("criticasModule", ["ui.router"]);
     mod.constant("criticasContext", "api/criticas/");
     mod.config(["$stateProvider",
-        function ($stateProvider){
+        function ($stateProvider) {
             var basePath = "src/modules/criticas/";
 
             $stateProvider.state("criticas", {
@@ -21,5 +21,5 @@
                     }
                 }
             });
-    }]);
+        }]);
 })(angular);

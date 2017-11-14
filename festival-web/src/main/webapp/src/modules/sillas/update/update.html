@@ -1,9 +1,0 @@
-<h2>Actualizar la silla {{ silla.id }}</h2>
-<form ng-submit="updateSilla()" name="sillaForm">
-    Tarifa: <input id="sillaTarifaa" type="number" required ng-model="sillaTarifa" value="{{ silla.tarifa }}"/>
-    Preferencial: <select id="sillaEsPreferencial" required ng-model="sillaEsPreferencial">
-        <option value="true" ng-selected="{{ silla.esPreferencial }}">Sí, es preferencial.</option>
-        <option value="false" ng-selected="{{ !silla.esPreferencial }}">No, no es preferencial.</option>
-    </select>
-    <input ng-show="sillaForm.$valid" type="submit" value="Actualizar"/>
-</form>

@@ -6,16 +6,15 @@
 
 (function (ng) {
     var mod = ng.module("sillasModule");
-    mod.config(function ($stateProvider){
-        var basePath = "src/modules/sillas/delete/";
-        
+    mod.config(function ($stateProvider) {
+
         $stateProvider.state("sillas.delete", {
             url: "/sillas/{sillasId:int}/delete",
             param: {
-              sillasId : null  
+                sillasId: null
             },
             views: {
-                "sillasDetailView" :{
+                "sillasView": {
 //                    templateUrl: basePath + "delete.html",
                     controller: "sillas.deleteCtrl",
                     controllerAs: "ctrl"

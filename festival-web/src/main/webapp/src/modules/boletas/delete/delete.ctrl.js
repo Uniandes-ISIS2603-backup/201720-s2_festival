@@ -5,11 +5,11 @@
  */
 (function (ng) {
     var mod = ng.module("boletasModule");
-    mod.controller("boletas.deleteCtrl", ["$http", "$state", "boletasContext",  
+    mod.controller("boletas.deleteCtrl", ["$http", "$state", "boletasContext",
         function ($http, $state, boletasContext) {
             $http.delete(boletasContext + $state.params.boletaId, {
             }).then(function () {
-                $state.go('boletasList',{},{location:"replace"});
+                $state.go('boletasList', {}, {location: "replace"});
             });
         }
     ]);

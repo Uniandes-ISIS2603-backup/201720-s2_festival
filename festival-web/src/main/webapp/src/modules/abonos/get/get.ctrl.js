@@ -5,14 +5,14 @@
  */
 (function (ng) {
     var mod = ng.module("abonosModule");
-    mod.controller('abonos.getCtrl', ['$scope', '$http', 'abonosContext', '$state',
-        function ($scope, $http, abonosContext, $stateParams, $state) {
-            console.log($stateParams);
-            $http.get(abonosContext+$stateParams.params.abonoId).then( function (response) {
+    mod.controller('abonos.getCtrl', ['$scope', '$http', 'abonosContext', '$stateParams',
+        function ($scope, $http, abonosContext, $stateParams) {
+            $scope.detail = true;
+            $http.get(abonosContext + $stateParams.abonoId).then(function (response) {
                 $scope.abono = response.data;
             });
 
-            }        
+        }
     ]);
 }
 )(angular);

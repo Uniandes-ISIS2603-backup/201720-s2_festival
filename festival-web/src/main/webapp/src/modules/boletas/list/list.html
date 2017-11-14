@@ -1,48 +1,40 @@
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
-<div class="container-fluid">
-    <div class="col-md-4">
-        <table class="table table-striped">
+<div class="row">
+    <div class="col-xs-12">
+        <h1>Boletas</h1>
+        <table class="table">
             <thead>
                 <tr>
-                    <th>Boletas</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                </tr>
-                <tr>
-                    <th>ID</th>
+                    <th>id</th>
                     <th>Estado</th>
                     <th>Precio</th>
-                    <th>CodigoDeBarras</th>
+                    <th>Código de barras</th>
                     <th>Silla</th>
-                    <th>Funcion</th>
-                    <th>Opciones</th>
-                    <th></th>
-                    <th></th>
+                    <th>Función</th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="i in boletas">
-                    <td id="{{$index}}-id">{{i.id}}</td>                                  
-                    <td id="{{$index}}-estado">{{i.estado}}</td> 
-                    <td id="{{$index}}-precio">{{i.precio}}</td> 
-                    <td id="{{$index}}-codigoDeBarras">{{i.codigoDeBarras}}}</td> 
-                    <td id="{{$index}}-silla">{{i.silla.id}}</td> 
-                    <td id="{{$index}}-funcion">{{i.funcion.name}}</td>
-                    <td><button type = "button" ng-click = "toBoletasGetFromList(i.id)">Detalles</button></td>
-                    <td><button type = "button" ng-click = "deleteBoleta(i.id)">Borrar</button></td>
+                    <td>
+                        <a ui-sref="boletasGet ({ boletaId: i.id })">
+                            {{i.id}}
+                        </a>
+                    </td>                                  
+                    <td>{{i.estado}}</td> 
+                    <td>{{i.precio}}</td> 
+                    <td>{{i.codigoDeBarras}}</td> 
+                    <td>{{i.silla.id}}</td> 
+                    <td>{{i.funcion.name}}</td>
                 </tr>
             </tbody>
         </table>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-offset-5 col-xs-2">
+        <a ui-sref="boletasCreate">
+            <button class="btn btn-primary form-control" title="Crear">
+                <span class="glyphicon glyphicon-plus btn-a-icon"></span>
+            </button>      
+        </a>
     </div>
 </div>

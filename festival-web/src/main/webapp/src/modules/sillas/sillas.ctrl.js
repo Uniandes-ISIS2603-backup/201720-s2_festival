@@ -7,7 +7,7 @@
     var mod = ng.module("sillasModule");
     mod.controller("sillasCtrl", ["$scope", "$http", "sillasContext", "$state",
         function ($scope, $http, sillasContext, $state) {
-            
+
         }
     ]);
 }

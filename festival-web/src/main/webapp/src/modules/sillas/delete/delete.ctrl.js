@@ -5,12 +5,12 @@
  */
 (function (ng) {
     var mod = ng.module("sillasModule");
-    mod.controller("sillas.deleteCtrl", ["$http", "$state", "sillasContext",  
+    mod.controller("sillas.deleteCtrl", ["$http", "$state", "sillasContext",
         function ($http, $state, sillasContext) {
             $http.delete(sillasContext + $state.params.sillasId, {
             }).then(function () {
                 //Silla created successfully.
-                $state.go('sillas.list',{},{location:"replace"});
+                $state.go('sillas.list', {}, {location: "replace"});
             });
         }
     ]);

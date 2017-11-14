@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-  (function (ng) {
+(function (ng) {
     // Definición del módulo
     var mod = ng.module("boletasModule", ['ui.router']);
     mod.constant("boletasContext", "api/boletas/");
-        
+
     // Configuración de los estados del módulo
-    mod.config(['$stateProvider', '$urlRouterProvider',
-        function ($stateProvider, $urlRouterProvider) {
+    mod.config(['$stateProvider',
+        function ($stateProvider) {
             // En basePath se encuentran los templates y controladores de módulo
             var basePath = 'src/modules/boletas/';
             // Mostrar la lista de editoriales será el estado por defecto del módulo
@@ -102,8 +102,5 @@
 //			});
         }
     ]);
-    
+
 })(window.angular);
-
-
-

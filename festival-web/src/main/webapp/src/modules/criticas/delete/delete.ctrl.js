@@ -5,11 +5,11 @@
  */
 (function (ng) {
     var mod = ng.module("criticasModule");
-    mod.controller("criticas.deleteCtrl", ["$http", "$state", "criticasContext",  
+    mod.controller("criticas.deleteCtrl", ["$http", "$state", "criticasContext",
         function ($http, $state, criticasContext) {
             $http.delete(criticasContext + $state.params.criticasId, {
             }).then(function () {
-                $state.go('criticas.list',{},{location:"replace"});
+                $state.go('criticas.list', {}, {location: "replace"});
             });
         }
     ]);
