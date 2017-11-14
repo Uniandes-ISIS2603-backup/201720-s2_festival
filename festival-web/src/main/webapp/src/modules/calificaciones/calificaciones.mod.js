@@ -3,7 +3,6 @@
     mod.constant("calificacionesContext", "api/calificaciones");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/calificaciones/';
-            $urlRouterProvider.otherwise("/calificacionesList");
 
             $stateProvider.state('calificaciones', {
                 url: '/calificaciones',

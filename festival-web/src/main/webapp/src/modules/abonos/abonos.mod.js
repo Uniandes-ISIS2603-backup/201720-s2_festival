@@ -14,7 +14,6 @@
             // En basePath se encuentran los templates y controladores de módulo
             var basePath = 'src/modules/abonos/';
             // Mostrar la lista de editoriales será el estado por defecto del módulo
-            $urlRouterProvider.otherwise("/abonosList");
             // Definición del estado 'editorialsList' donde se listan los editoriales
             //TODO: EL STATE PROVIDER ESTÁ GENERANDO ERROR, EL NOMBRE DEBERÍA SER: 'boletasList'
             $stateProvider.state('abonos', {

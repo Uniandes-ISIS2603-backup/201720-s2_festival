@@ -1,3 +1,28 @@
 ul {
     max-width: 500px;
 }
+
+body {
+	background-color: #293047;
+}
+
+
+#divMain {
+	float: fixed;  
+	width : inherit; 
+	padding : 0px;  
+	height : 100%
+}
+
+.thumbnail {
+    background: #efe8e6;
+}
+
+li {
+	 background: #e5dedc;
+	 min-width: 80px;
+	 max-width: 80px;
+	 text-align: left;
+	 margin-left: 5px;
+	 margin-right: 5px;
+}
