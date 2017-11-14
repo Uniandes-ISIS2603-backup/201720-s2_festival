@@ -10,17 +10,17 @@
         'funcionesModule',
         'teatrosModule',
         'festivalesModule',
-//        'espectadoresModule',
-//        'criticosModule',
+        'criticosModule',
         'peliculasModule',
         'salasModule',
         'patrocinadoresModule',
         'sillasModule',
         'criticasModule'
-    ]);
+        //        'espectadoresModule',
+        ]);
     
     // Resuelve problemas de las promesas
     app.config(['$qProvider', function ($qProvider) {
-            $qProvider.errorOnUnhandledRejections(false);
-        }]);
+        $qProvider.errorOnUnhandledRejections(false);
+    }]);
 })(window.angular);

@@ -1,0 +1,23 @@
+<div class="container-fluid">
+	<table>
+		<tr>
+			<button type="button" ui-sref="createCritico" class="btn btn-primary btn-block">Crear Crítico</button>
+		</tr>
+	</table>
+	<br>
+	<div class="row">
+		<div class="col-md-4" ng-repeat="critico in criticosRecords">
+			<button type="button" ui-sref="deleteCritico({criticoDeleteId : critico.id})" class="close" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+			<a  ui-sref="criticoDetail({criticoId : critico.id})" href="#" class="thumbnail">
+				<div class="caption">
+					<div  style="width: 14em; display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{critico.name}}</div>
+				</div>
+				<img class="img-responsive" src="http://lorempixel.com/200/200/animals/1" style="width:  200px; height: 200px;"/><br>		
+			</a>
+			
+			
+		</div>
+	</div>
+</div>				
