@@ -1,12 +1,13 @@
 <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
 <br>
 <div id="div-lg-azul">
-	<h1> CRÍTICOS </h1>
+	<h1> Críticos </h1>
 </div>
+<br>
 <div class="container.fluid" style="margin: 5px">
 	<div class="row">
 		<div class="criticosCol col-md-8">
-			<div class="thumbnail" ui-view="listView"></div>
+			<div id="thmb-grid" class="thumbnail" ui-view="listView"></div>
 		</div>
 		<div class="detalleCol col-md-4">
 			<div id="createCriticoDiv" ui-view="createCriticoView"></div>

@@ -1,15 +1,19 @@
 <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+<br>
+<div id="div-lg-azul">
+	<h1> Películas </h1>
+</div>
+<br>
 <div class="container.fluid">
 	<div class="row">
-		 <div class="peliculasCol col-md-8">
-		 	<div class="thumbnail" ui-view="listView"></div>
-		 </div>
-        <div class="detalleCol col-md-4">
-        	<div ui-view="updatePeliculaView"></div>
-        	<div id="createPeliculaDiv" ui-view="createPeliculaView"></div>
-        	<div ui-view="detailView"></div>
-        </div>
+		<div class="peliculasCol col-md-8">
+			<div id="thmb-grid" class="thumbnail" ui-view="listView"></div>
+		</div>
+		<div class="detalleCol col-md-4">
+			<div ui-view="updatePeliculaView"></div>
+			<div id="createPeliculaDiv" ui-view="createPeliculaView"></div>
+			<div ui-view="detailView"></div>
+		</div>
 	</div>
 </div>
 
-	

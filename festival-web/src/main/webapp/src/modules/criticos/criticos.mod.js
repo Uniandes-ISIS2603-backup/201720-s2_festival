@@ -43,7 +43,7 @@
  						templateUrl: basePath + 'criticos.list.html'
  					},
  					'detailView': {
- 						templateUrl: basePath + 'criticos.detail.html',
+ 						templateUrl: basePath + 'critico.detail.html',
  						controller: 'criticosCtrl',
  						controllerAs: 'ctrl'
  					}

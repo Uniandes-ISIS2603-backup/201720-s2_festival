@@ -11,9 +11,6 @@
 			if ($state.params.criticoId !== undefined) {
 				$http.get(criticosContext + $state.params.criticoId).then(function (response) {
 					$scope.critico = response.data;
-					$scope.trustSrc = function(src) {
-						return $sce.trustAsResourceUrl(src);
-					};
 				});
 			};
 		}]);

@@ -17,13 +17,16 @@ body {
 }
 
 h1 {
+	margin: 5px;
 	color: #efe8e6;
 	text-align: center;
 	font-size: 80px;
 	font-family: 'Bangers', cursive;
 	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
-
+button {
+	margin: 5px;
+}
 #mainDiv {
 	border-style: solid;
 	border-color: #ffffff;
@@ -35,10 +38,19 @@ h1 {
 	height : 100%
 }
 
-.thumbnail {
-	background: #efe8e6;
+#thmb-grid{
+	background-color: #efe8e6;
 	float: center;
 	align-content: center;
+	margin: 5px;
+}
+
+
+.thumbnail {
+	background: #d6dcdc;
+	float: center;
+	align-content: center;
+	margin: 5px;
 }
 
 #containerNavbar{
@@ -51,14 +63,14 @@ li {
 }
 
 #banner {
-    width:inherit;
-    padding:0px; 
+	width:inherit;
+	padding:0px; 
 }
 
 #div-lg-azul {
 	background-color: #293047;
-    width:inherit;
-    padding:0px; 
+	width:inherit;
+	padding:0px; 
 }
 
 #divBanner {

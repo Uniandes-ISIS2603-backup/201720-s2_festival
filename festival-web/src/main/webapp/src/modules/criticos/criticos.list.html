@@ -7,14 +7,22 @@
 	<br>
 	<div class="row">
 		<div class="col-md-4" ng-repeat="critico in criticosRecords">
-			<button type="button" ui-sref="deleteCritico({criticoDeleteId : critico.id})" class="close" aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-			</button>
 			<a  ui-sref="criticoDetail({criticoId : critico.id})" href="#" class="thumbnail">
-				<div class="caption">
-					<div  style="width: 14em; display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{critico.name}}</div>
+				<div class="row">
+					<div class="col-sm-10">
+						<div class="caption">
+							<div style="text-align: center; width: 14em; display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{critico.name}}</div>
+						</div>
+					</div>
+					<div class="col-sm-auto">
+						<div class="thumbnail" style="width:auto; display: inline-block; background-color: #ff6868; opacity: 0.7">
+							<button type="button" ui-sref="deleteCritico({criticoDeleteId : critico.id})" class="close" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+					</div>
 				</div>
-				<img class="img-responsive" src="http://lorempixel.com/200/200/animals/1" style="width:  200px; height: 200px;"/><br>		
+				<img class="img-responsive" src="http://lorempixel.com/200/200/animals/2" style="width:  200px; height: 200px;"/><br>		
 			</a>
 			
 			
