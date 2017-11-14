@@ -1,8 +1,8 @@
 .btn-a-icon{
-    color: #fff
+	color: #fff
 }
 ul {
-    max-width: 500px;
+	max-width: inherit;
 }
 
 body {
@@ -18,14 +18,26 @@ body {
 }
 
 .thumbnail {
-    background: #efe8e6;
+	background: #efe8e6;
+	float: center;
+	align-content: center;
+}
+
+#containerNavbar{
+	background: #e5dedc;
 }
 
 li {
-	 background: #e5dedc;
-	 min-width: 80px;
-	 max-width: 80px;
-	 text-align: left;
-	 margin-left: 5px;
-	 margin-right: 5px;
+	background: #e5dedc;
+	text-align: left;
+}
+
+#banner {
+    width:inherit;
+    padding:0px; 
+}
+
+#divBanner {
+	width: 100%;
+	height: 280px;
 }
