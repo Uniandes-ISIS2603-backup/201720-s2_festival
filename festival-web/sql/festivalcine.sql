@@ -9,8 +9,8 @@ DELETE FROM PERSONAENTITY_BOLETAENTITY;
 DELETE FROM PERSONAENTITY_CRITICAENTITY;
 delete from salaentity_funcionentity;
 delete from CriticaEntity;
-delete from CalificacionEntity;
 delete from BoletaEntity;
+delete from CalificacionEntity;
 delete from FuncionEntity;
 delete from SillaEntity;
 delete from AbonoEntity;
@@ -30,29 +30,16 @@ delete from FestivalEntity;
 
 /* SalaEntity */   
 
-    insert into SalaEntity (name) values ('a');
-    insert into SalaEntity (name) values ('a');
-    insert into SalaEntity (name) values ('a');
-    insert into SalaEntity (name) values ('a');
-    insert into SalaEntity (name) values ('a');
-    insert into SalaEntity (name) values ('a');
-    insert into SalaEntity (name) values ('a');
-    insert into SalaEntity (name) values ('a');
-    insert into SalaEntity (name) values ('a');
-    insert into SalaEntity (name) values ('a');
-
-    delete from SalaEntity;
-
-    insert into SalaEntity (id) values (1);
-    insert into SalaEntity (id) values (2);
-    insert into SalaEntity (id) values (3);
-    insert into SalaEntity (id) values (4);
-    insert into SalaEntity (id) values (5);
-    insert into SalaEntity (id) values (6);
-    insert into SalaEntity (id) values (7);
-    insert into SalaEntity (id) values (8);
-    insert into SalaEntity (id) values (9);
-    insert into SalaEntity (id) values (10);
+    insert into SalaEntity (id, name, numSillas, numSillasPreferenciales) values (1, 's1', 40, 10);
+    insert into SalaEntity (id, name, numSillas, numSillasPreferenciales) values (2, 's2', 40, 10);
+    insert into SalaEntity (id, name, numSillas, numSillasPreferenciales) values (3, 's3', 40, 10);
+    insert into SalaEntity (id, name, numSillas, numSillasPreferenciales) values (4, 's4', 40, 10);
+    insert into SalaEntity (id, name, numSillas, numSillasPreferenciales) values (5, 's5', 40, 10);
+    insert into SalaEntity (id, name, numSillas, numSillasPreferenciales) values (6, 's6', 40, 10);
+    insert into SalaEntity (id, name, numSillas, numSillasPreferenciales) values (7, 's7', 40, 10);
+    insert into SalaEntity (id, name, numSillas, numSillasPreferenciales) values (8, 's8', 40, 10);
+    insert into SalaEntity (id, name, numSillas, numSillasPreferenciales) values (9, 's9', 40, 10);
+    insert into SalaEntity (id, name, numSillas, numSillasPreferenciales) values (10, 's10', 40, 10);
 
 /* SillaEntity */
 
