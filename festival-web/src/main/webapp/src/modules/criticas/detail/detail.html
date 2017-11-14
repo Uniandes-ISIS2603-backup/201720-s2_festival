@@ -1,37 +1,67 @@
-<h2>Detalles de la critica {{ critica.id }}</h2>
-<table class="table table-striped">
-  <tr>
-    <th>id</th>
-    <th>Comentario</th>
-  </tr>
-  <tr>
-    <td>{{ critica.id }}</td>
-    <td>{{ critica.comentario }}</td>
-  </tr>
-</table>
-<h3>Crítico</h3>
-<table class="table table-striped">
-  <tr>
-    <th>id</th>
-    <th>Nombre</th>
-  </tr>
-  <tr>
-    <td>{{ critica.critico.id }}</td>
-    <td>{{ critica.critico.name }}</td>
-  </tr>
-</table>
-<h3>Función</h3>
-<table class="table table-striped">
-  <tr>
-    <th>id</th>
-    <th>Hora inicio</th>
-    <th>Hora fin</th>
-    <th>Nombre</th>
-  </tr>
-  <tr>
-    <td>{{ critica.funcion.id }}</td>
-    <td>{{ critica.funcion.horaInicio }}</td>
-    <td>{{ critica.funcion.horaFin }}</td>
-    <td>{{ critica.funcion.name }}</td>
-  </tr>
-</table>
+<h1 ng-if="create">Crear una crítica</h1>
+<h1 ng-if="detail">Detalle de la crítica {{ critica.id}}</h1>
+<h1 ng-if="update">Actualizar la crítica {{ critica.id}}</h1>
+<form ng-submit="actionForCritica()" name="criticaForm">
+    <table class="table">
+        <tr>
+            <th ng-if="detail || update">id</th>
+            <th>Comentario</th>
+        </tr>
+        <tr>
+            <td ng-if="detail || update">{{ critica.id}}</td>
+            <td ng-if="detail">{{ critica.comentario}}</td>
+            <td ng-if="create || update" >
+                <textarea name="criticaComentarioTa" class="form-control" rows="10" cols="50" required ng-model="criticaComentario"></textarea>
+            </td>
+        </tr>
+    </table>
+    <h2 ng-if="!update">Crítico</h2>
+    <table ng-if="!update" class="table">
+        <tr>
+            <th>id</th>
+            <th ng-if="detail">Nombre</th>
+        </tr>
+        <tr>
+            <td ng-if="detail">{{ critica.critico.id}}</td>
+            <td ng-if="detail">{{ critica.critico.name}}</td>
+            <td ng-if="create">
+                <input name="criticoIn" class="form-control" type="number" required ng-model="critico">
+            </td>
+        </tr>
+    </table>
+    <h2 ng-if="!update">Función</h2>
+    <table class="table" ng-if="!update">
+        <tr>
+            <th>id</th>
+            <th ng-if="detail">Nombre</th>
+            <th ng-if="detail">Hora inicio</th>
+            <th ng-if="detail">Hora fin</th>
+        </tr>
+        <tr>
+            <td ng-if="detail">{{ critica.funcion.id}}</td>
+            <td ng-if="detail">{{ critica.funcion.name}}</td>
+            <td ng-if="detail">{{ critica.funcion.horaInicio}}</td>
+            <td ng-if="detail">{{ critica.funcion.horaFin}}</td>
+            <td ng-if="create">
+                <input name="funcionIn" class="form-control" type="number" required ng-model="funcion">
+            </td>
+        </tr>
+    </table>
+    <div class="col-xs-offset-5 col-xs-2" ng-if="create || update">
+        <input class="btn btn-primary form-control" ng-show="criticaForm.$valid" type="submit" value="Guardar"/>
+    </div>
+</form>
+<div class="col-xs-offset-4 col-xs-1"  ng-if="detail">
+    <a ui-sref="criticas.update ({ criticasId: critica.id })">
+        <button class="btn btn-primary form-control" title="Actualizar">
+            <span class="glyphicon glyphicon-leaf btn-a-icon"></span>
+        </button>
+    </a>
+</div>
+<div class="col-xs-offset-2 col-xs-1"  ng-if="detail">
+    <a ui-sref="criticas.delete ({ criticasId: critica.id })">
+        <button class="btn btn-primary form-control" title="Incinerar">
+            <span class="glyphicon glyphicon-fire btn-a-icon"></span>
+        </button>
+    </a>
+</div>

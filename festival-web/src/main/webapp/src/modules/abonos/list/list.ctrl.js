@@ -5,12 +5,12 @@
  */
 (function (ng) {
     var mod = ng.module("abonosModule");
-    mod.controller('abonos.listCtrl', ['$scope', '$http', 'abonosContext', '$state',
-        function ($scope, $http, abonosContext, $state) {
-            $http.get(abonosContext).then( function (response) {
+    mod.controller('abonos.listCtrl', ['$scope', '$http', 'abonosContext',
+        function ($scope, $http, abonosContext) {
+            $http.get(abonosContext).then(function (response) {
                 $scope.abonos = response.data;
             });
-        }        
+        }
     ]);
 }
 )(angular);

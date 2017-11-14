@@ -5,16 +5,13 @@
  */
 (function (ng) {
     var mod = ng.module("boletasModule");
-    mod.controller('boletas.getCtrl', ['$scope', '$http', 'boletasContext', '$state',
+    mod.controller('boletas.getCtrl', ['$scope', '$http', 'boletasContext', '$stateParams',
         function ($scope, $http, boletasContext, $stateParams) {
-            console.log($stateParams)
-            $http.get(boletasContext+$stateParams.params.boletaId).then( function (response) {
+            $scope.detail = true;
+            $http.get(boletasContext + $stateParams.boletaId).then(function (response) {
                 $scope.boleta = response.data;
             });
         }
-        
     ]);
 }
 )(angular);
-
-

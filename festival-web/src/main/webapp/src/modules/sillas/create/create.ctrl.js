@@ -5,17 +5,17 @@
  */
 (function (ng) {
     var mod = ng.module("sillasModule");
-    mod.controller("sillas.createCtrl", ["$scope", "$http", "$state", "sillasContext",  
+    mod.controller("sillas.createCtrl", ["$scope", "$http", "$state", "sillasContext",
         function ($scope, $http, $state, sillasContext) {
-            $scope.createSilla = function () {
+            $scope.create = true;
+            $scope.actionForSilla = function () {
                 $http.post(sillasContext, {
-                    tarifa: $scope.sillaTarifa,
-                    esPreferencial: $scope.sillaEsPreferencial,
+                    tarifa: $scope.sillaForm.sillaTarifaIn.$viewValue,
+                    esPreferencial: $scope.sillaForm.sillaEsPreferencialIn.$viewValue,
                     sala: {
-                        id: $scope.sala
+                        id: $scope.sillaForm.salaIn.$viewValue
                     }
                 }).then(function (response) {
-                    //Silla created successfully.
                     $state.go('sillas.detail', {sillasId: response.data.id});
                 });
             };

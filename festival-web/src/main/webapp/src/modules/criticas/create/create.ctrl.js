@@ -5,16 +5,17 @@
  */
 (function (ng) {
     var mod = ng.module("criticasModule");
-    mod.controller("criticas.createCtrl", ["$scope", "$http", "$state", "criticasContext",  
+    mod.controller("criticas.createCtrl", ["$scope", "$http", "$state", "criticasContext",
         function ($scope, $http, $state, criticasContext) {
-            $scope.createCritica = function () {
+            $scope.create = true;
+            $scope.actionForCritica = function () {
                 $http.post(criticasContext, {
-                    comentario: $scope.criticaComentario,
-                    critico: { 
-                        id: $scope.critico 
+                    comentario: $scope.criticaForm.criticaComentarioTa.$viewValue,
+                    critico: {
+                        id: $scope.criticaForm.criticoIn.$viewValue
                     },
-                    funcion: { 
-                        id: $scope.funcion
+                    funcion: {
+                        id: $scope.criticaForm.funcionIn.$viewValue
                     }
                 }).then(function (response) {
                     //Silla created successfully.

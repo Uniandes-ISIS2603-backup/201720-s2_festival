@@ -6,13 +6,13 @@
 
 (function (ng) {
     var mod = ng.module("criticasModule");
-    mod.config(function ($stateProvider){
-        var basePath = "src/modules/criticas/list/"; 
-        
+    mod.config(function ($stateProvider) {
+        var basePath = "src/modules/criticas/list/";
+
         $stateProvider.state("criticas.list", {
             url: "/criticas",
             views: {
-                "criticasListView": {
+                "criticasView": {
                     templateUrl: basePath + "list.html",
                     controller: "criticas.listCtrl",
                     controllerAs: "ctrl"

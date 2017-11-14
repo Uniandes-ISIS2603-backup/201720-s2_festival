@@ -3,7 +3,7 @@
     mod.constant("funcionesContext", "api/funciones");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/funciones/';
-            $urlRouterProvider.otherwise("/funcionesList");
+            $urlRouterProvider.otherwise("/peliculasList");
 
             $stateProvider.state('funciones', {
                 url: '/funciones',

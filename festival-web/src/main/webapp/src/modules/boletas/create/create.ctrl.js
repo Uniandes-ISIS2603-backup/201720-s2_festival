@@ -5,20 +5,18 @@
  */
 (function (ng) {
     var mod = ng.module("boletasModule");
-    mod.controller('boletas.createCtrl', ['$scope', '$http', 'boletasContext', '$state', '$rootScope',
-        function ($scope, $http, boletasContext, $state, $rootScope) {
-            $rootScope.edit = false;
-            $scope.createBoleta = function () {
-                console.log($scope);
+    mod.controller('boletas.createCtrl', ['$scope', '$http', 'boletasContext', '$state',
+        function ($scope, $http, boletasContext, $state) {
+            $scope.create = true;
+            $scope.actionForBoleta = function () {
                 $http.post(boletasContext, {
-                    codigoDeBarras: $scope.boletaCodigoBarras,
-                    estado: $scope.boletaEstado,
-                    precio: $scope.boletaPrecio,
-                    funcion: {id: $scope.idFuncion},
-                    silla : {id : $scope.idSilla}
+                    codigoDeBarras: $scope.boletaForm.boletaCodigoBarrasIn.$viewValue,
+                    estado: $scope.boletaForm.boletaEstadoIn.$viewValue,
+                    precio: $scope.boletaForm.boletaPrecioIn.$viewValue,
+                    funcion: {id: $scope.boletaForm.idFuncionIn.$viewValue},
+                    silla : {id : $scope.boletaForm.idSillaIn.$viewValue}
                 }).then(function (response) {
-                    //Author created successfully
-                    $state.go('boletasList', {boletaId: response.data.id}, {reload: true});
+                    $state.go('boletasList', {boletaId: response.data.id});
                 });
             };
         }

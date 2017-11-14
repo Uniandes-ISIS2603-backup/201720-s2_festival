@@ -6,17 +6,17 @@
 
 (function (ng) {
     var mod = ng.module("criticasModule");
-    mod.config(function ($stateProvider){
-        var basePath = "src/modules/criticas/update/";
-        
+    mod.config(function ($stateProvider) {
+        var basePathDetail = "src/modules/criticas/detail/";
+
         $stateProvider.state("criticas.update", {
             url: "/criticas/{criticasId:int}/update",
             param: {
-              criticasId : null  
+                criticasId: null
             },
             views: {
-                "criticasDetailView" :{
-                    templateUrl: basePath + "update.html",
+                "criticasView": {
+                    templateUrl: basePathDetail + "detail.html",
                     controller: "criticas.updateCtrl",
                     controllerAs: "ctrl"
                 }

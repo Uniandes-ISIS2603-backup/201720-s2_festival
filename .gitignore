@@ -1,3 +1,7 @@
 /festival-back/nbproject/
 /festival-back/target/
 /festival-back/derby.log
+/.idea
+festival-back/festival-back.iml
+festival-web/festival-web.iml
+/festival.iml

@@ -7,7 +7,7 @@
     var mod = ng.module("criticasModule");
     mod.controller("criticasCtrl", ["$scope", "$http", "criticasContext", "$state",
         function ($scope, $http, criticasContext, $state) {
-            
+
         }
     ]);
 }

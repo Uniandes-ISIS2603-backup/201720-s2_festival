@@ -1,43 +1,75 @@
-<h2>Detalles de la silla {{ silla.id }}</h2>
-<table class="table table-striped">
-  <tr>
-    <th>id</th>
-    <th>tarifa</th>
-    <th>¿Es preferencial?</th>
-  </tr>
-  <tr>
-    <td>{{ silla.id }}</td>
-    <td>{{ silla.tarifa }}</td>
-    <td>{{ silla.esPreferencial }}</td>
-  </tr>
-</table>
-<h3>Boletas</h3>
-<table class="table table-striped">
-  <tr>
-    <th>id</th>
-    <th>Precio</th>
-    <th>Estado</th>
-    <th>Código de barras</th>
-  </tr>
-  <tr ng-repeat="boleta in silla.boletas">
-    <td>{{ boleta.id }}</td>
-    <td>{{ boleta.precio }}</td>
-    <td>{{ boleta.estado }}</td>
-    <td>{{ boleta.codigoDeBarras }}</td>
-  </tr>
-</table>
-<h3>Sala</h3>
-<table class="table table-striped">
-  <tr>
-    <th>id</th>
-    <th>Nombre</th>
-    <th>Número de sillas</th>
-    <th>Número de sillas preferenciales</th>
-  </tr>
-  <tr>
-    <td>{{ silla.sala.id }}</td>
-    <td>{{ silla.sala.name }}</td>
-    <td>{{ silla.sala.numSillas }}</td>
-    <td>{{ silla.sala.numSillasPreferenciales }}</td>
-  </tr>
-</table>
+<h1 ng-if="create">Crear una silla</h1>
+<h1 ng-if="detail">Detalle de la silla {{ silla.id}}</h1>
+<h1 ng-if="update">Actualizar la silla {{ silla.id}}</h1>
+<form ng-submit="actionForSilla()" name="sillaForm">
+    <table class="table">
+        <tr>
+            <th ng-if="detail || update">id</th>
+            <th>Tarifa</th>
+            <th>¿Es preferencial?</th> 
+        </tr>
+        <tr>
+            <td ng-if="detail || update">{{ silla.id}}</td>
+            <td ng-if="detail">{{ silla.tarifa}}</td>
+            <td ng-if="detail">{{ silla.esPreferencial}}</td>
+            <td ng-if="create || update" >
+                <input name="sillaTarifaIn" class="form-control" type="number" required ng-model="sillaTarifa">
+            </td>
+            <td ng-if="create || update">
+                <input name="sillaEsPreferencialIn" type="checkbox" ng-model="sillaEsPreferencial">
+            </td>
+        </tr>
+    </table>
+    <h2 ng-if="detail">Boletas</h2>
+    <table ng-if="detail" class="table">
+        <tr>
+            <th>id</th>
+            <th>Código de barras</th>
+            <th>Estado</th>
+            <th>Precio</th>
+        </tr>
+        <tr ng-repeat="boleta in silla.boletas">
+            <td>{{ boleta.id}}</td>
+            <td>{{ boleta.codigoDeBarras}}</td>
+            <td>{{ boleta.estado}}</td>
+            <td>{{ boleta.precio}}</td>
+        </tr>
+    </table>
+    <h2 ng-if="!update">Sala</h2>
+    <table class="table" ng-if="!update">
+        <tr>
+            <th>id</th>
+            <th ng-if="detail">Nombre</th>
+            <th ng-if="detail">Número de sillas</th>
+            <th ng-if="detail">Número de sillas preferenciales</th>
+        </tr>
+        <tr ng-if="detail">
+            <td>{{ silla.sala.id}}</td>
+            <td>{{ silla.sala.name}}</td>
+            <td>{{ silla.sala.numSillas}}</td>
+            <td>{{ silla.sala.numSillasPreferenciales}}</td>
+        </tr>
+        <tr ng-if="create">
+            <td>
+                <input name="salaIn" class="form-control" type="number" required ng-model="sala">
+            </td>
+        </tr>
+    </table>
+    <div class="col-xs-offset-5 col-xs-2" ng-if="create || update">
+        <input class="btn btn-primary form-control" ng-show="sillaForm.$valid" type="submit" value="Guardar"/>
+    </div>
+</form>
+<div class="col-xs-offset-4 col-xs-1"  ng-if="detail">
+    <a ui-sref="sillas.update ({ sillasId: silla.id })">
+        <button class="btn btn-primary form-control" title="Actualizar">
+            <span class="glyphicon glyphicon-leaf btn-a-icon"></span>
+        </button>
+    </a>
+</div>
+<div class="col-xs-offset-2 col-xs-1"  ng-if="detail">
+    <a ui-sref="sillas.delete ({ sillasId: silla.id })">
+        <button class="btn btn-primary form-control" title="Incinerar">
+            <span class="glyphicon glyphicon-fire btn-a-icon"></span>
+        </button>
+    </a>
+</div>

@@ -5,21 +5,18 @@
  */
 (function (ng) {
     var mod = ng.module("abonosModule");
-    mod.controller('abonos.createCtrl', ['$scope', '$http', 'abonosContext', '$state', '$rootScope',
-        function ($scope, $http, abonosContext, $state, $rootScope) {
-            $rootScope.edit = false;
-            $scope.createAbono = function () {
-                console.log($scope);
+    mod.controller('abonos.createCtrl', ['$scope', '$http', 'abonosContext', '$state',
+        function ($scope, $http, abonosContext, $state) {
+            $scope.create = true;
+            $scope.actionForAbono = function () {
                 $http.post(abonosContext, {
-                    precio: $scope.abonoPrecio,
-                    espectador : { id : $scope.abonoIDEspectador}
+                    precio: $scope.abonoForm.abonoPrecioIn.$viewValue,
+                    espectador: {id: $scope.abonoForm.abonoIDEspectadorIn.$viewValue}
                 }).then(function (response) {
-                    //Author created successfully
-                    $state.go('abonosList', {abonoId: response.data.id}, {reload: true});
+                    $state.go('abonosList', {abonoId: response.data.id});
                 });
             };
         }
-        
     ]);
 }
 )(angular);

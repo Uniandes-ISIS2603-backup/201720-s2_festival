@@ -5,16 +5,17 @@
  */
 (function (ng) {
     var mod = ng.module("criticasModule");
-    mod.controller("criticas.updateCtrl", ["$scope", "$http", "$state", "criticasContext",  
+    mod.controller("criticas.updateCtrl", ["$scope", "$http", "$state", "criticasContext",
         function ($scope, $http, $state, criticasContext) {
+            $scope.update = true;
             $http.get(criticasContext + $state.params.criticasId).then(function (response) {
                 $scope.critica = response.data;
+                $scope.criticaComentario = $scope.critica.comentario;
             });
-            $scope.updateCritica = function () {
+            $scope.actionForCritica = function () {
                 $http.put(criticasContext + $state.params.criticasId, {
-                    comentario: $scope.criticaComentario
+                    comentario: $scope.criticaForm.criticaComentarioTa.$viewValue
                 }).then(function (response) {
-                    //Silla created successfully.
                     $state.go('criticas.detail', {criticasId: response.data.id});
                 });
             };

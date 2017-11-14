@@ -7,6 +7,7 @@
     var mod = ng.module("criticasModule");
     mod.controller("criticas.detailCtrl", ["$scope", "$http", "criticasContext", "$state",
         function ($scope, $http, criticasContext, $state) {
+            $scope.detail = true;
             $http.get(criticasContext + $state.params.criticasId).then(function (response) {
                 $scope.critica = response.data;
             });

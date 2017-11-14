@@ -1,73 +1,84 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <title>Abono:</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
-<div class="container-fluid">
-    <div class="col-md-4">
-        <div class="row">
-            <dt>Identificador: </dt><dd><li id="{{$index}}-id">{{abono.id}}</li></dd>   
+<h1 ng-if="create">Crear un abono</h1>
+<h1 ng-if="detail">Detalle del abono {{ abono.id}}</h1>
+<h1 ng-if="update">Actualizar el abono {{ abono.id}}</h1>
+<form ng-submit="actionForAbono()" name="abonoForm">
+    <table class="table">
+        <tr>
+            <th ng-if="detail || update">id</th>
+            <th>Precio</th>
+        </tr>
+        <tr>
+            <td ng-if="detail || update">{{ abono.id}}</td>
+            <td ng-if="detail">{{ abono.precio}}</td>
+            <td ng-if="create || update" >
+                <input type="number" name="abonoPrecioIn" required ng-model="abonoPrecio" class="form-control"/>
+            </td>
+        </tr>
+    </table>
+    <h2>Espectador</h2>
+    <table class="table">
+        <tr>
+            <th>id</th>
+            <th ng-if="detail">Nombre</th>
+            <th ng-if="detail">Dirección</th>
+        </tr>
+        <tr>
+            <td ng-if="detail">{{ abono.espectador.id}}</td>
+            <td ng-if="detail">{{ abono.espectador.nombre}}</td>
+            <td ng-if="detail">{{ abono.espectador.direccion}}</td>
+            <td ng-if="create || update">
+                <input name="abonoIDEspectadorIn" class="form-control" type="number" required ng-model="abonoIDEspectador">
+            </td>
+        </tr>
+    </table>
+    <h2 ng-if="!create">Boletas</h2>
+    <table ng-if="!create" class="table">
+        <tr>
+            <th>id</th>
+            <th>Código de barras</th>
+            <th>Estado</th>
+            <th>Precio</th>
+            <th ng-if="update">Remover</th>
+        </tr>
+        <tr ng-repeat="boleta in abono.boletas">
+            <td>{{ boleta.id}}</td>
+            <td>{{ boleta.codigoDeBarras}}</td>
+            <td>{{ boleta.estado}}</td>
+            <td>{{ boleta.precio}}</td>
+            <td ng-if="update">
+                <button type = "button" ng-click = "removeBoletaFromAbono(abono.id, boleta.id)" class="btn btn-primary form-control">
+                    Remover de este Abono
+                </button>
+            </td>
+        </tr>
+    </table>
+    <div class="row">
+        <div ng-if="update" class="col-xs-2">
+            <input name="boletaIdIn" type = "number" ng-model = "boletaId" placeHolder = "10" class="form-control">
         </div>
-        <div class="row">
-            <dt>Precio: </dt><dd><li id="{{$index}}-id">{{abono.precio}}</li></dd>   
-        </div>
-        <div class="row">
-            <dt>Información espectador</dt>
-            <dt>Id: </dt><dd><li id="{{$index}}-id">{{abono.espectador.id}}</li></dd>
-            <dt>Nombre: </dt><dd><li id="{{$index}}-id">{{abono.espectador.nombre}}</li></dd>
-            <dt>Dirección: </dt><dd><li id="{{$index}}-id">{{abono.espectador.Direccion}}</li></dd>
-        </div>
-        <div class="row">
-            <dt>Boletas: </dt>   
-        </div>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                </tr>
-                <tr>
-                    <th>ID</th>
-                    <th>Estado</th>
-                    <th>Precio</th>
-                    <th>CodigoDeBarras</th>
-                    <th>Opciones</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="i in abono.boletas">
-                    <td id="{{$index}}-id">{{i.id}}</td>                                  
-                    <td id="{{$index}}-estado">{{i.estado}}</td> 
-                    <td id="{{$index}}-precio">{{i.precio}}</td> 
-                    <td id="{{$index}}-codigoDeBarras">{{i.codigoDeBarras}}}</td> 
-                    <td><button type = "button" ng-click = "toBoletasGetFromList(i.id)">Detalles</button></td>
-                    <td><button type = "button" ng-click = "removeBoletaFromAbono(abono.id, i.id)">Remover de este Abono</button></td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="row">
-            <button type = "button" ng-click = "addBoletaToAbono(abono.id, boletaId)">Agregar Boleta</button>
-            <input type = "text" id="{{$index}}-id" ng-model = "boletaId" placeHolder = "10"></input>
-        </div>
-        
-        <div class="row">
-            <button type = "button" ng-click = "toAbonos()">Regresar</button><button type = "button" ng-click = "toUpdateAbono(abono.id)">Modificar</button>
+        <div ng-if="update" class="col-xs-2">
+            <button type = "button" ng-click = "addBoletaToAbono(abono.id, $parent.abonoForm.boletaIdIn.$viewValue)" class="btn btn-primary form-control">
+                Agregar Boleta
+            </button>
         </div>
     </div>
+    <div class="row">
+        <div class="col-xs-offset-5 col-xs-2" ng-if="create || update">
+            <input class="btn btn-primary form-control" ng-show="abonoForm.$valid" type="submit" value="Guardar"/>
+        </div>
+    </div>
+</form>
+<div class="col-xs-offset-4 col-xs-1"  ng-if="detail">
+    <a ui-sref="abonosUpdate ({ abonoId: abono.id })">
+        <button class="btn btn-primary form-control" title="Actualizar">
+            <span class="glyphicon glyphicon-leaf btn-a-icon"></span>
+        </button>
+    </a>
 </div>
-    </body>
-</html>
+<div class="col-xs-offset-2 col-xs-1"  ng-if="detail">
+    <a ui-sref="abonosDelete ({ abonoId: abono.id })">
+        <button class="btn btn-primary form-control" title="Incinerar">
+            <span class="glyphicon glyphicon-fire btn-a-icon"></span>
+        </button>
+    </a>
+</div>

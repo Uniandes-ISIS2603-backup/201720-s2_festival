@@ -7,6 +7,7 @@
     var mod = ng.module("sillasModule");
     mod.controller("sillas.detailCtrl", ["$scope", "$http", "sillasContext", "$state",
         function ($scope, $http, sillasContext, $state) {
+            $scope.detail = true;
             $http.get(sillasContext + $state.params.sillasId).then(function (response) {
                 $scope.silla = response.data;
             });

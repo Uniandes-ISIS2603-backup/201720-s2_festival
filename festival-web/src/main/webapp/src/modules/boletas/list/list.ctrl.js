@@ -5,8 +5,8 @@
  */
 (function (ng) {
     var mod = ng.module("boletasModule");
-    mod.controller('boletas.listCtrl', ['$scope', '$http', 'boletasContext', '$state',
-        function ($scope, $http, boletasContext, $state) {
+    mod.controller('boletas.listCtrl', ['$scope', '$http', 'boletasContext',
+        function ($scope, $http, boletasContext) {
             $http.get(boletasContext).then( function (response) {
                 $scope.boletas = response.data;
             });
