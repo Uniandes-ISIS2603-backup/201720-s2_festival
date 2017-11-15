@@ -14,7 +14,7 @@
 
 			$stateProvider.state('espectadores', {
 				url: '/espectadores',
-				abstract: false,
+				abstract: true,
 				views: {
 					'mainView' : {
 						templateUrl: basePath + 'espectadores.html',

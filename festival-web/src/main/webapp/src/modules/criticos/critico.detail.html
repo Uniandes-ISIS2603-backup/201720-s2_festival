@@ -1,10 +1,24 @@
-
 <div class="thumbnail">
 	<div class="panel panel-default"> 
 		<div class="panel-body">
-			<h1 align="center">{{critico.name}}</h1>
-			<br>
 			<img class="thumbnail" src="http://lorempixel.com/600/600/animals/2" style="width: 100%; display: inline-block;"/>
+			<br>
+			<br>
+			<br>
+			<p id="letraCasual"> <b> Crítico: </b> {{critico.name}}.</p>
+			<br>
+			<div class="panel-group">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4 class="panel-title">
+							<a data-toggle="collapse" href="#collapse1">Críticas</a>
+						</h4>
+					</div>
+					<div id="collapse1" class="panel-collapse collapse">
+						<div class="panel-body" ng-repeat="critico in criticosRecords"></div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
