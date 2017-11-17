@@ -35,7 +35,7 @@ button {
 	border-style: solid;
 	border-color: #ffffff;
 	border-width: 5px;
-	background: #afafaf;
+	background: #efefef;
 	float: fixed;  
 	width : inherit; 
 	padding : 0px;  
@@ -58,7 +58,11 @@ button {
 }
 
 #containerNavbar{
-	background: #e5dedc;
+	background: #e5dedc; 
+}
+
+li.login {
+    background: #efefef;
 }
 
 li {
@@ -93,6 +97,15 @@ li {
 	margin: 5px;
 	font-family: 'Raleway', sans-serif;
 	text-align: center;
+}
+
+table.login {
+    width: 100%;
+    text-align: center;
+}
+
+div.patrocinadores {
+    background: #ffffff;
 }
 
 #byErgoDiv {

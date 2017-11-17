@@ -1,17 +1,18 @@
-<h2>Informacion del teatro {{teatro.id}}</h2>
-<table class="table table-striped">
-    <tr>
-        <th>id</th>
-        <th>Nombre</th>
-        <th>Tarifa basica</th>
-    </tr>
-    <tr>
-        <td>{{teatro.id}}</td>
-        <td>{{teatro.name}}</td>
-        <td>{{teatro.tarifaBasica}}</td>
-    </tr>
-</table>
-<h3>Salas</h3>
+<div class="thumbnail">
+	<div class="panel panel-default"> 
+		<div class="panel-body">
+                        <h2>Teatro {{teatro.nombre}}</h2>
+			<br>
+                        <p><b>Ubicación</b></p>
+                        <div class="map">
+                        </div>
+			<img class="thumbnail" src="{{teatro.ubicacion}}" style="width: 100%; display: inline-block;" />
+			<p><b>Tarifa básica: </b>${{teatro.tarifaBasica}}</p>
+                        
+                        <button type="button" ui-sref="teatro.detalle({teatrosId : teatro.id})" class="btn btn-primary btn-block">Ver funciones</button>
+	</div>
+</div>
+<!--<h3>Salas</h3>
 <table class="table table-striped">
   <tr>
     <th>id</th>
@@ -25,4 +26,4 @@
     <td>{{ sala.numSillas }}</td>
     <td>{{ sala.numSillasPreferenciales }}</td>
   </tr>
-</table>
+</table>-->

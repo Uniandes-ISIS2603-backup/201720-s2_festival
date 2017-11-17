@@ -125,6 +125,15 @@ delete from PeliculaEntity;
     insert into PERSONAENTITY (ID, NAME, DTYPE) values (1029, 'Dannie Cusick', 'EspectadorEntity');
     insert into PERSONAENTITY (ID, NAME, DTYPE) values (1030, 'Cassaundra Berney', 'EspectadorEntity');
 
+/*PatrocinadorEntity*/
+
+    insert into PersonaEntity (id, NIT, patrocinio, name, dtype) values (1040, 1010, 200000, 'Ministerio de cultura', 'PatrocinadorEntity');
+    insert into PersonaEntity (id, NIT, patrocinio, name, dtype) values (1042, 1020, 200000, 'Alcaldía mayor de Bogotá', 'PatrocinadorEntity');
+    insert into PersonaEntity (id, NIT, patrocinio, name, dtype) values (1041, 1030, 200000, 'Secretaría de cultura, recreación y deporte', 'PatrocinadorEntity');
+    insert into PersonaEntity (id, NIT, patrocinio, name, dtype) values (1043, 1040, 200000, 'Fundación procultura', 'PatrocinadorEntity');
+    insert into PersonaEntity (id, NIT, patrocinio, name, dtype) values (1044, 1050, 200000, 'Asociación colombiana de cine', 'PatrocinadorEntity');
+    insert into PersonaEntity (id, NIT, patrocinio, name, dtype) values (1045, 1060, 200000, 'Academia colombiana de producción cinematográfica', 'PatrocinadorEntity');
+
 /*PeliculaEntity - PersonaEntity */
 
     insert into PeliculaEntity_PersonaEntity (peliculas_id, criticos_id) values (1001, 1001);
