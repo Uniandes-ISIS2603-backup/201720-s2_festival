@@ -2,12 +2,12 @@
     <tr>
         <th>Nombre</th>
         <th>Tarifa Basica</th>
-        <th>Acciones</th>
+        <th ng-if="isAuthenticated()">Acciones</th>
     </tr>
     <tr ng-repeat="teatro in teatros">
         <td><a ui-sref="teatros.detail({teatrosId:teatro.id})">{{teatro.nombre }}</a></td>
         <td>{{teatro.tarifaBasica}}</td>
-        <td>
+        <td ng-if="isAuthenticated()">
             <a ui-sref="teatros.update({teatrosId: teatro.id})"><span class="glyphicon glyphicon-edit"></span></a>
             <a ui-sref="teatros.delete({teatrosId:teatro.id})"><span class="glyphicon glyphicon-trash"></span></a>
         </td>

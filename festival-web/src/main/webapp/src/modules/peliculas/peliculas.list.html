@@ -2,7 +2,7 @@
 	
 	<table>
 		<tr>
-			<button type="button" ui-sref="createPelicula" class="btn btn-primary btn-block">Crear Película</button>
+			<button ng-if="isAuthenticated()" type="button" ui-sref="createPelicula" class="btn btn-primary btn-block">Crear Película</button>
 		</tr>
 	</table>
 	<br>
@@ -18,7 +18,7 @@
 					</div>
 					<div class="col-sm-auto">
 						<div class="thumbnail" style="width:auto; display: inline-block; background-color: #ff6868; opacity: 0.7">
-							<button type="button" ui-sref="deletePelicula({peliculaDeleteId : pelicula.id})" class="close" aria-label="Close">
+							<button ng-if="isAuthenticated()" type="button" ui-sref="deletePelicula({peliculaDeleteId : pelicula.id})" class="close" aria-label="Close">
 								<span aria-hidden="true">&times;</span>
 							</button>
 						</div>

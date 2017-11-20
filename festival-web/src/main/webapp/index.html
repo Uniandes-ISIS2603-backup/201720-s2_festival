@@ -158,7 +158,8 @@
                         <li> <a ui-sref="patrocinadores.controles">Patrocinadores</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="login"><a ui-sref="login"><span class="glyphicon glyphicon-log-in"></span> Ingresar</a></li>
+                        <li class="login" ng-if="!isAuthenticated()"><a ui-sref="login"><span class="glyphicon glyphicon-log-in"></span> Ingresar</a></li>
+                        <li class="logout" ng-if="isAuthenticated()"><a class="logout-link" ui-sref="logout"><span class="logout glyphicon glyphicon-log-out"></span> Salir</a></li>
                     </ul>
                 </div>
             </div>

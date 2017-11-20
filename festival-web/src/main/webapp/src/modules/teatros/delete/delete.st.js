@@ -13,6 +13,10 @@
                     controller: "teatros.deleteCtrl",
                     controllerAs: "ctrl"
                 }
+            },
+            data: {
+                requireLogin: true,
+                roles: ['admin']
             }
         });
     });

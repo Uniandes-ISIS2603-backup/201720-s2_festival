@@ -19,6 +19,10 @@
                     controller: "teatros.updateCtrl",
                     controllerAs: "ctrl"
                 }
+            },
+            data: {
+                requireLogin: true,
+                roles: ['admin', 'assistant']
             }
         });
     });
