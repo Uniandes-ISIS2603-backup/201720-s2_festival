@@ -48,18 +48,11 @@ public class BoletaLogic
     @Inject
     private SillaPersistence persistenceSilla;
     @Inject
-    private FuncionPersistence persistenceFuncion;
-    
-//    @Inject
-//    private EspectadorLogic logicEspectador;
-    
+    private FuncionPersistence persistenceFuncion;    
     @Inject
     private CalificacionLogic logicCalificacion;
-    
     @Inject
     private AbonoLogic logicAbono;
-   // @Inject
-   // private CalificacionLogic calificacionLogic;
     /**
      * Método que crea una boleta nueva.
      * Restricciones:
@@ -328,11 +321,8 @@ public class BoletaLogic
         BoletaEntity newEntity = persistenceBoleta.update(entity);
         funcionAAsignar.setBoletas(boletasFuncion);
         logicFuncion.updateFuncion(funcionAAsignar);
-//      boletasFuncion.set(posBoletaEnBoletasFuncion, entity);
-//      funcion.setBoletas(boletasFuncion);
         sillaAAsignar.setBoletas(boletasSilla);
         logicSilla.updateSilla(sillaAAsignar);
-//        logicFuncion.updateFuncion(funcion);
         LOGGER.info("Termina proceso de creación de Boleta");
         
         
@@ -377,7 +367,6 @@ public class BoletaLogic
                 }
             }
             espectadorTemp.setBoletas(boletasEspectador);
-//            logicEspectador.updateEspectador(temp.getEspectador().getId(), espectadorTemp);//BORRAR LA BOLETA DEL ESPECTADOR.
             persistenceEspectador.update(espectadorTemp);
             LOGGER.info("Boleta exitosamente removida de Espectador.");
         }
@@ -397,11 +386,9 @@ public class BoletaLogic
             abonoTemp.setBoletas(boletasAbono);
             logicAbono.updateAbono(abonoTemp.getId(), abonoTemp);
             temp.setAbono(null);
-            //persistenceBoleta.update(temp);
             LOGGER.info("Boleta exitosamente removida del Abono.");
         }
         
-        //persistenceBoleta.update(temp);
         LOGGER.info("Procesando Funcion asociada.");
         FuncionEntity funcion = temp.getFuncion();
         List<BoletaEntity> boletasFuncion = funcion.getBoletas();
@@ -519,7 +506,7 @@ public class BoletaLogic
         
         //Agregando silla nueva a Boleta.
         boletaEntity.setSilla(logicSilla.getSilla(sillaId));
-        //PROCESANDO AGREGR BOLETA EN SILLA NUEVA.
+        //PROCESANDO AGREGAR BOLETA EN SILLA NUEVA.
         SillaEntity sillaNueva = logicSilla.getSilla(sillaId);
         List<BoletaEntity> boletasSillaNueva = sillaNueva.getBoletas();
         for(int i = 0; i < boletasSillaNueva.size(); i++)
@@ -670,29 +657,6 @@ public class BoletaLogic
         return entity; 
     }
     /**
-     * Método que asocia una calificacion a una boleta, la calificacion DEBE existir previamente.
-     * @param boletaId Long, ID de la boleta.
-     * @param calificacionId Long, ID de la calificacion a asociar.
-     * @return CalificacionEntity, calificacion que se acaba de asociar.
-     * @throws BusinessLogicException 
-     */
-//    public CalificacionEntity addCalificacionYaExistenteFromBoleta(Long boletaId, Long calificacionId) throws BusinessLogicException
-//    {
-//        LOGGER.log(Level.INFO, "Inicia proceso de agregar una calificacion ya existente a la Boleta con id = {0}", boletaId);
-//        BoletaEntity boletaEntity = getBoleta(boletaId);
-//        if(boletaEntity.getCalificacion() != null)
-//        {
-//            throw new BusinessLogicException("La Boleta con Id: \"" + boletaId +"\" ya tiene una calificacion asignada, usar el metodo PUT.");
-//        }
-//        if(persistenceCalificacion.find(calificacionId) == null)
-//        {
-//            throw new BusinessLogicException("La Funcion con Id: \"" + calificacionId +"\" no existe, usar el metodo POST auxiliar y crear una calificacion alli");
-//        }
-//        boletaEntity.setCalificacion(persistenceCalificacion.find(calificacionId));
-//        LOGGER.log(Level.INFO, "Termina proceso de agregar una calificacion a Boleta con id={0}", boletaEntity.getId());
-//        return boletaEntity.getCalificacion();
-//    }
-    /**
      * Método que reemplaza la calificacion asociada de una boleta con otra NUEVA que previamente NO existe en la base de datos.
      * @param boletaId Long, id de la boleta.
      * @param entity CalificacionEntity, calificacion nueva a asociar con la boleta.
@@ -713,31 +677,6 @@ public class BoletaLogic
         LOGGER.info("Termina proceso de actualizacion de Calificacion de Boleta");
         return entity;
     }
-    /**
-     * Método que actualiza una calificacion de una boleta con otra que PREVIAMENTE existe en la base de datos.
-     * @param boletaId Long, ID de la boleta.
-     * @param calificacionId Long, ID de la calificacion a asociar.
-     * @return CalificacionEntity, calificacion que se acaba de asociar.
-     * @throws co.edu.uniandes.ergo.festival.exceptions.BusinessLogicException
-     */
-//    public CalificacionEntity updateCalificacionYaExistenteFromBoleta(Long boletaId, Long calificacionId) throws BusinessLogicException
-//    {
-//        LOGGER.log(Level.INFO, "Inicia proceso de actualizar una calificacion ya existente a la Boleta con id = {0}", boletaId);
-//        BoletaEntity boletaEntity = getBoleta(boletaId);
-//        if(boletaEntity.getCalificacion() == null)
-//        {
-//            throw new BusinessLogicException("La Boleta con Id: \"" + boletaId +"\" no tiene una calificacion asignada, usar el metodo POST.");
-//        }
-//        if(persistenceCalificacion.find(calificacionId) == null)
-//        {
-//            throw new BusinessLogicException("La Calificacion con Id: \"" + calificacionId +"\" no existe, usar el metodo POST auxiliar y crear una calificacion alli");
-//        }
-//        Long idEntityABorrar = boletaEntity.getCalificacion().getId();
-//        boletaEntity.setCalificacion(persistenceCalificacion.find(calificacionId));
-//        persistenceCalificacion.delete(idEntityABorrar);
-//        LOGGER.log(Level.INFO, "Termina proceso de agregar una calificacion a Boleta con id={0}", boletaEntity.getId());
-//        return boletaEntity.getCalificacion();
-//    }
     /**
      * Método que des asocia una calificaion de una boleta, este método BORRA la calificacion de la base de datos.
      * @param boletaId

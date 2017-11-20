@@ -256,6 +256,27 @@ public class AbonoResource
         return listBoletaEntity2DetailDTO(boletasEntity);
     }
     /**
+     * Método que obtiene una Boleta contenida en un Abono.
+     * @param id Long, ID del abono.
+     * @param idBoleta Long, ID de la Boleta.
+     * @return BoletaDetailDTO, la Boleta contenida en el Abono.
+     * @throws BusinessLogicException 
+     */
+    @GET
+    @Path("{id: \\d+}/boletas/{boletaId: \\d+}")
+    public BoletaDetailDTO getBoletaFromAbono(@PathParam("id") Long id,@PathParam("boletaId")Long idBoleta) throws BusinessLogicException {
+        if (abonoLogic.getAbono(id) == null)
+        {
+            throw new WebApplicationException("El recurso /abonos/" + id + " no existe.", 404);
+        }
+        if(abonoLogic.getBoletaFromAbono(id, idBoleta) == null)
+        {
+            throw new WebApplicationException("El recurso /abonos/" + id + " no existe.", 404);
+        }
+        BoletaEntity respuesta = abonoLogic.getBoletaFromAbono(id, idBoleta);
+        return new BoletaDetailDTO(respuesta);
+    }
+    /**
      * Método que agrega una boleta a un Abono. La boleta NO debe estar previamente en el abono Y DEBE existir en la base de datos.
      * @param abonoId Long, ID del abono.
      * @param boletaId Long, ID de la boleta.
@@ -286,7 +307,7 @@ public class AbonoResource
         if (entity == null) {
             throw new WebApplicationException("El recurso /abonos/" + abonoId + " no existe.", 404);
         }
-        abonoLogic.deleteBoletaFromABono(abonoId, boletaId);
+        abonoLogic.deleteBoletaFromAbono(abonoId, boletaId);
     }
      /**
      *

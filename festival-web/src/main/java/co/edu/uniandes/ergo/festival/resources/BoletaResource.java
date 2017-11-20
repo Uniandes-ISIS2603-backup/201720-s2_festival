@@ -86,12 +86,6 @@ public class BoletaResource
     @POST
     public BoletaDetailDTO createBoleta(BoletaDetailDTO boleta) throws BusinessLogicException {
         // Convierte el DTO (json) en un objeto Entity para ser manejado por la lógica.
-        LOGGER.info("ENTRO A MÉTODO POST.");
-        LOGGER.info("codigo de barras: " + boleta.getCodigoDeBarras());
-        LOGGER.info("estado: " +boleta.getEstado());
-        LOGGER.info("precio: " +boleta.getPrecio());
-        LOGGER.info("idFuncion: " + boleta.getFuncion().getId());
-        LOGGER.info("idSilla: " + boleta.getSilla().getId());
         BoletaEntity boletaEntity = boleta.toEntity();
         // Invoca la lógica para crear la editorial nueva
         BoletaEntity nuevoBoleta = boletaLogic.createBoleta(boletaEntity);
@@ -227,8 +221,6 @@ public class BoletaResource
      *
      * En caso de no existir el id de la editorial a actualizar se retorna un
      * 404 con el mensaje.
-     * @throws java.sql.SQLException
-     *
      */
     @DELETE
     @Path("{id: \\d+}")
@@ -255,10 +247,6 @@ public class BoletaResource
             throw new WebApplicationException("El recurso /boletas/" + id + " no existe.", 404);
         }
         SillaDetailDTO respuesta = new SillaDetailDTO(boletaLogic.getSillaFromBoleta(id));
-        if(respuesta == null)
-        {
-            throw new WebApplicationException("No hay una silla asociada a el recurso /boletas/"+ id ,404);
-        }
         return respuesta;
     }
     /**
@@ -311,10 +299,6 @@ public class BoletaResource
             throw new WebApplicationException("El recurso /boletas/" + id + " no existe.", 404);
         }
         FuncionDTO respuesta = new FuncionDTO(boletaLogic.getFuncionFromBoleta(id));
-        if(respuesta == null)
-        {
-            throw new WebApplicationException("No hay una funcion asociada a el recurso /boletas/"+ id ,404);
-        }
         return respuesta;   
     }
     /**
@@ -366,10 +350,6 @@ public class BoletaResource
             throw new WebApplicationException("El recurso /boletas/" + id + " no existe.", 404);
         }
         CalificacionDTO respuesta = new CalificacionDTO(boletaLogic.getCalificacionFromBoleta(id));
-        if(respuesta == null)
-        {
-            throw new WebApplicationException("No hay una calificacion asociada a el recurso /boletas/"+ id ,404);
-        }
         return respuesta;
     }
     /**
@@ -478,10 +458,6 @@ public class BoletaResource
             throw new WebApplicationException("El recurso /boletas/" + id + " no existe.", 404);
         }
         EspectadorDetailDTO respuesta = new EspectadorDetailDTO(boletaLogic.getEspectadorFromBoleta(id));
-        if(respuesta == null)
-        {
-            throw new WebApplicationException("No hay un espectador asociada a el recurso /boletas/"+ id ,404);
-        }
         return respuesta;
     }
     /**
