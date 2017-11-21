@@ -110,13 +110,19 @@ public class AbonoLogic
     public void deleteAbono(Long id)throws BusinessLogicException
     {
         LOGGER.log(Level.INFO, "Inicia proceso de borrar abono con id={0}",id);
+        LOGGER.info("Iniciando proceso de des asociar Espectador.");
+        EspectadorEntity espectador = getAbono(id).getEspectador();
+        espectador.setAbonos(null);
+        persistenceEspectador.update(espectador);
+        LOGGER.info("Finalizando proceso de des asociar Espectador.");
         LOGGER.info("Iniciando proceso de borrar boletas.");
+        
         if(getAbono(id).getBoletas().size() > 0)
         {
             List<BoletaEntity> boletas = getAbono(id).getBoletas();
             for(int i = 0; i < boletas.size(); i++)
             {
-                deleteBoletaFromABono(id, boletas.get(i).getId());
+                deleteBoletaFromAbono(id, boletas.get(i).getId());
             }
         }
         LOGGER.info("Finalizando proceso de borrar boletas.");
@@ -238,14 +244,38 @@ public class AbonoLogic
         return persistenceAbono.find(abonoId).getBoletas();
     }
     /**
+     * Método que obtiene la Boleta de un Abono.
+     * @param abonoId Long, ID del Abono.
+     * @param boletaId Long, ID de la Boleta.
+     * @return BoletaEntity, Boleta contenida en el Abono.
+     */
+    public BoletaEntity getBoletaFromAbono(Long abonoId, Long boletaId)
+    {
+        LOGGER.log(Level.INFO, "Obteineindo boletas de un Abono con id = {0}", abonoId);
+        List<BoletaEntity> boletas = persistenceAbono.find(abonoId).getBoletas();
+        LOGGER.info("BOLETAS: " + boletas);
+        LOGGER.info("BOLETAS SIZE: " + boletas.size());
+        BoletaEntity respuesta = null;
+        for(int i = 0; i < boletas.size(); i++)
+        {
+            LOGGER.info("Entro a FOR");
+            if(boletas.get(i).getId().equals(boletaId))
+            {
+                respuesta = boletas.get(i);
+            }
+        }
+        LOGGER.info("TERMINO METODO LOGIC");
+        return respuesta;
+    }
+    /**
      * Método que des asocia una boleta de un Abono.
      * @param abonoId Long, ID del abono.
      * @param boletaId Long, ID de la boleta a des asociar, la boleta debe estar en el abono.
      * @throws BusinessLogicException 
      */
-    public void deleteBoletaFromABono(Long abonoId, Long boletaId) throws BusinessLogicException
+    public void deleteBoletaFromAbono(Long abonoId, Long boletaId) throws BusinessLogicException
     {
-        LOGGER.log(Level.INFO, "Inicia proceso de asociar una boleta a Abono con id = {0}", abonoId);
+        LOGGER.log(Level.INFO, "Inicia proceso de des asociar una boleta a Abono con id = {0}", abonoId);
         AbonoEntity abonoEntity = getAbono(abonoId);
         List<BoletaEntity> boletas = abonoEntity.getBoletas();
         int posBoleta = 0;
@@ -272,10 +302,11 @@ public class AbonoLogic
         LOGGER.info("BOLETAS DE ABONO ENTITY DESPUES DE SET: " + abonoEntity.getBoletas().size());
         LOGGER.info("BOLETAS DE ABONO ENTITY ANTES DE UPDATE: " + getAbono(abonoId).getBoletas().size());
         updateAbono(abonoId, abonoEntity);
+        persistenceBoleta.update(temp);
         LOGGER.info("BOLETAS DE ABONO ENTITY DESPUES DE UPDATE: " + getAbono(abonoId).getBoletas().size());
         LOGGER.log(Level.INFO, "Termina proceso de des asociar una boleta de Abono con id={0}", abonoId);
     }
-
+    
     AbonoEntity addEspectador(Long abonoId, EspectadorEntity espectador) {
         AbonoEntity abono = getAbono(abonoId);
         abono.setEspectador(espectador);

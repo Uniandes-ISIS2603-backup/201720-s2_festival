@@ -47,7 +47,11 @@ public class BoletaPersistence
         
         return em.find(BoletaEntity.class, id);
     }
-    
+    /**
+     * Método que obtiene una Boleta según su código de Barras.
+     * @param codigoDeBarras Long, Código de Baras de la Boleta.
+     * @return BoletaEntity, la Boleta con el código de Barras dado.
+     */
     public BoletaEntity findByCode(Long codigoDeBarras)
     {
         LOGGER.log(Level.INFO, "Consultando Boleta por codigo ", codigoDeBarras);
