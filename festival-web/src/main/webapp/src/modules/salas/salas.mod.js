@@ -22,7 +22,6 @@
                         }
                     })
                     .state('salas.controles', {
-                        parent: 'salas',
                         url: "/lista",
                         views : {
                             "lista@salas": {
@@ -71,7 +70,6 @@
                     })                            
                     .state('salas.detalleSala', {
                         url: "/{idSala:int}",
-                        parent: 'salas',
                         param: {
                             idSala : null  
                         },

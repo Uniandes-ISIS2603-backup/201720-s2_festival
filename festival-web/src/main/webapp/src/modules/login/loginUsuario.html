@@ -1,20 +1,32 @@
 <div class="thumbnail">
 	<div class="panel panel-default"> 
-		<div class="panel-body">
+		<div class="panel-body" ng-if="!isAuthenticated()">
                     <h2>Introduzca su usuario y contraseña</h2>
                     <br>
-                    <form>
+                    <form class="form-signin">
                         <table class="login table-hover">
+                            <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
                             <tr>
-                                <td>Usuario</td>
-                                <td><input type="text"/></td>
+                                <td class="tablaLogin">Usuario</td>
+                                <td class="tablaLogin"><input type="text" class="form-control" ng-model="data.username" required/></td>
                             </tr>
                             <tr>
-                                <td>Contraseña</td>
-                                <td><input type="password"/></td>
+                                <td class="tablaLogin">Contraseña</td>
+                                <td class="tablaLogin"><input type="password" class="form-control" ng-model="data.password" required/></td>
                             </tr>
-                        </table><br>
-                        <button type="submit" ui-sref="" class="btn btn-primary btn-block">Entrar</button>
+                            <tr>
+                                <td class="tablaLogin"></td>
+                                <td class="tablaLogin">
+                                    <select class="form-control" name="singleSelect" id="singleSelect" ng-model="data.rol" required="true">
+                                        <option value="">--- Seleccione un rol ---</option> <!-- not selected / blank option -->
+                                        <option value="admin">Administrador</option>
+                                        <option value="assistant">Asistente</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                        <br>
+                        <button type="submit" ng-click="autenticar()" class="btn btn-primary btn-block">Entrar</button>
                     </form>   
             </div>
     </div>

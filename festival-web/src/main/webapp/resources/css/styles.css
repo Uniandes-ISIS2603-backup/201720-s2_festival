@@ -104,6 +104,10 @@ table.login {
     text-align: center;
 }
 
+td.tablaLogin {
+    padding: 2px;
+}
+
 div.patrocinadores {
     background: #ffffff;
 }

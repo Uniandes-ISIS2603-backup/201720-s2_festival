@@ -22,7 +22,6 @@
                         }
                     })
                     .state('patrocinadores.controles', {
-                        parent: 'patrocinadores',
                         url: "/lista",
                         views : {
                             "lista@patrocinadores": {
@@ -69,7 +68,6 @@
                     })                            
                     .state('patrocinadores.detallePatrocinador', {
                         url: "/{idPatrocinador:int}",
-                        parent: 'patrocinadores',
                         param: {
                             idPatrocinador : null  
                         },
