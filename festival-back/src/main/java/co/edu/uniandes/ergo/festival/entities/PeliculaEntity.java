@@ -6,13 +6,10 @@
 package co.edu.uniandes.ergo.festival.entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
 
 /**
@@ -21,7 +18,9 @@ import uk.co.jemos.podam.common.PodamExclude;
  */
 @Entity
 public class PeliculaEntity extends BaseEntity implements Serializable {
-
+    /**
+     * Atributo que contiene el Género de la Película.
+     */
     private String genero;
     private int duracionMinutos;
     private String director;

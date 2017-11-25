@@ -9,7 +9,6 @@ package co.edu.uniandes.ergo.festival.resources;
 import co.edu.uniandes.ergo.festival.dtos.BoletaDTO;
 import co.edu.uniandes.ergo.festival.dtos.CriticaDTO;
 import co.edu.uniandes.ergo.festival.dtos.FuncionDetailDTO;
-import co.edu.uniandes.ergo.festival.ejb.CriticaLogic;
 import co.edu.uniandes.ergo.festival.ejb.FuncionLogic;
 import co.edu.uniandes.ergo.festival.entities.BoletaEntity;
 import co.edu.uniandes.ergo.festival.entities.CriticaEntity;
@@ -29,7 +28,6 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
-import org.hibernate.validator.HibernateValidator;
 
 /**
  *
@@ -40,10 +38,13 @@ import org.hibernate.validator.HibernateValidator;
 @Produces(MediaType.APPLICATION_JSON)
 @RequestScoped
 public class FuncionResource {
-     @Inject
+    /**
+     * Inyección de FuncionLogic.
+     */
+    @Inject
     private FuncionLogic funcionLogic;
      
-     /**
+    /**
   * Crea una nueva FuncionEntity.
   * @param dto información de la FuncionEntity.
   * @return Un FuncionDetailDTO con la información de la nueva entidad.
@@ -139,7 +140,12 @@ public class FuncionResource {
      }
      return list;
  }
- 
+    /**
+     * Método que obtiene las críticas de una Función.
+     * @param id Long, ID de la Función.
+     * @return CriticaDTO.
+     * @throws BusinessLogicException 
+     */
     @GET
     @Path("{id:\\d+}/criticas")
     public List<CriticaDTO> getCriticasFromFuncion(@PathParam("id")Long id) throws BusinessLogicException
@@ -155,7 +161,13 @@ public class FuncionResource {
         }
         return ans;
     }
-    
+    /**
+     * Método que obtiene una crítica específica de una Función.
+     * @param idFuncion Long, ID de la función.
+     * @param idCritica Long, ID de la Crítica.
+     * @return CriticaDTO.
+     * @throws BusinessLogicException 
+     */
     @GET
     @Path("{funcionid:\\d+}/criticas/{criticaid:\\d+}")
     public CriticaDTO getCriticaFromFuncion(@PathParam("funcionid")Long idFuncion,@PathParam("criticaid")Long idCritica) throws BusinessLogicException
@@ -170,7 +182,12 @@ public class FuncionResource {
         }
         return new CriticaDTO(preAns);
     }
-    
+    /**
+     * Método que obtiene las Boletas de una Función.
+     * @param id Long, ID de la Función.
+     * @return List<BoletaDTO>, Boletas de la Función.
+     * @throws BusinessLogicException 
+     */
     @GET
     @Path("{id:\\d+}/boletas")
     public List<BoletaDTO> getBoletasFromFuncion(@PathParam("id")Long id) throws BusinessLogicException
@@ -186,6 +203,13 @@ public class FuncionResource {
         }
         return ans;
     }
+    /**
+     * Método que obtiene una Boleta de una Función.
+     * @param idFuncion Long, ID de la Función.
+     * @param idBoleta Long, ID de la Boleta.
+     * @return BoletaDTO, Boleta de la Función.
+     * @throws BusinessLogicException 
+     */
     @GET
     @Path("{funcionid:\\d+}/boletas/{boletaid:\\d+}")
     public BoletaDTO getBoletaFromFuncion(@PathParam("funcionid")Long idFuncion,@PathParam("boletaid")Long idBoleta) throws BusinessLogicException

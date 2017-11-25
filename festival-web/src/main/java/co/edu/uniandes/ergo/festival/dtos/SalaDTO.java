@@ -12,15 +12,31 @@ import co.edu.uniandes.ergo.festival.entities.SalaEntity;
  * @author f.mayenberger10
  */
 public class SalaDTO {
-
+    /**
+     * Atributo que contiene el ID de esta Sala.
+     */
     private Long id;
+    /**
+     * Atributo que contiene el Nombre de esta Sala.
+     */
     private String name;
+    /**
+     * Atributo que contiene el número de sillas de esta Sala.
+     */
     private int numSillas;
+    /**
+     * Atributo que contiene el número de sillas preferenciales de esta Sala.
+     */
     private int numSillasPreferenciales;
-    
+    /**
+     * Método constructors por Defecto.
+     */
     public SalaDTO() {
     }
-    
+    /**
+     * Método constructors que construye una SalaDTO a partir de la version Entity.
+     * @param entity SalaEntity, Entidad de la Sala.
+     */
     public SalaDTO(SalaEntity entity) {
         this.id = entity.getId();
         this.name = entity.getName();
@@ -55,7 +71,10 @@ public class SalaDTO {
     public void setName(String name) {
         this.name = name;
     }
-    
+    /**
+     * Método que construye la versión Entity de esta Sala.
+     * @return SalaEntity
+     */
     public SalaEntity toEntity() {
         SalaEntity retornar = new SalaEntity();
         retornar.setId(this.id);

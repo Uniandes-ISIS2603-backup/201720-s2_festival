@@ -16,14 +16,24 @@ import java.util.List;
  * @author dj.bautista10
  */
 public class PeliculaDetailDTO extends PeliculaDTO {
-
+    /**
+     * Atributo que contiene la Lista de Críticos de esta Película.
+     */
     private List<CriticoDTO> criticos;
+    /**
+     * Atributo que contiene la lista de Funciones de esta Película.
+     */
     private List<FuncionDTO> funciones;
-
+    /**
+     * Método constructor por defecto.
+     */
     public PeliculaDetailDTO() {
         super();
     }
-
+    /**
+     * Método que construye una PeliculaDetailDTO a partir de la versión Entidad de Película.
+     * @param pelicula 
+     */
     public PeliculaDetailDTO(PeliculaEntity pelicula) {
         super(pelicula);
 
@@ -41,15 +51,24 @@ public class PeliculaDetailDTO extends PeliculaDTO {
             }
         }
     }
-
+    /**
+     * Método que obtiene la lista de Críticos de esta Película.
+     * @return List<CriticoDTO>, lista de Críticos de la Película.
+     */
     public List<CriticoDTO> getCriticos() {
         return criticos;
     }
-
+    /**
+     * Método que obtiene las Funciones de esta Película.
+     * @return List<FuncionDTO>, lista de Funciones de la Película.
+     */
     public List<FuncionDTO> getFunciones() {
         return funciones;
     }
-
+    /**
+     * Método que construye una PeliculaEntity a partir de este DTO.
+     * @return PeliculaEntity, Entidad de la Película.
+     */
     @Override
     public PeliculaEntity toEntity() {
         PeliculaEntity pelicula = super.toEntity();

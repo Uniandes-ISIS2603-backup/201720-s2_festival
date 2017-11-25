@@ -5,10 +5,8 @@
  */
 package co.edu.uniandes.ergo.festival.dtos;
 
-import co.edu.uniandes.ergo.festival.entities.FuncionEntity;
 import co.edu.uniandes.ergo.festival.entities.SalaEntity;
 import co.edu.uniandes.ergo.festival.entities.SillaEntity;
-import co.edu.uniandes.ergo.festival.entities.TeatroEntity;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,11 +19,16 @@ public class SalaDetailDTO extends SalaDTO {
     //private List<FuncionDTO> funcionesDTO;
     private List<SillaDTO> sillasDTO;
     //private TeatroDTO teatroDTO;
-    
+    /**
+     * Método constructor por Defecto.
+     */
     public SalaDetailDTO() {
         super();
     }
-
+    /**
+     * Método que construye una SalaDetailDTO a partir de la entidad.
+     * @param entity 
+     */
     public SalaDetailDTO(SalaEntity entity) {
         super(entity);
         System.out.println("1");
@@ -52,7 +55,10 @@ public class SalaDetailDTO extends SalaDTO {
             }
         }
     }
-
+    /**
+     * Método que convierte esta Sala a su versión Entidad.
+     * @return SalaEntity, Entidad de la Sala.
+     */
     @Override
     public SalaEntity toEntity() {
         SalaEntity retornar = super.toEntity();
@@ -91,6 +97,7 @@ public class SalaDetailDTO extends SalaDTO {
     }*/
 
     /**
+     * Método que obtiene las Sillas de esta Sala.
      * @return the sillasDTO
      */
     public List<SillaDTO> getSillasDTO() {
@@ -112,6 +119,7 @@ public class SalaDetailDTO extends SalaDTO {
     }*/
 
     /**
+     * Método que establece las Sillas de esta Sala.
      * @param sillasDTO the sillasDTO to set
      */
     public void setSillasDTO(List<SillaDTO> sillasDTO) {

@@ -74,7 +74,6 @@ public class BoletaDTO
             }
             else
             {
-                //TODO SOLUCIONAR CASO EXCEPCIONAL
                 this.estado = DISPONIBLE;
             }
             this.precio = boleta.getPrecio();
@@ -166,7 +165,6 @@ public class BoletaDTO
         }
         else
         {
-            //TODO SOLUCIONAR CASO EXCEPTIONAL
             entity.setEstado(BoletaEntity.DISPONIBLE);
         }
         entity.setPrecio(this.precio);

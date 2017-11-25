@@ -6,10 +6,7 @@
 package co.edu.uniandes.ergo.festival.resources;
 
 import co.edu.uniandes.ergo.festival.dtos.AbonoDTO;
-import co.edu.uniandes.ergo.festival.dtos.AbonoDetailDTO;
 import co.edu.uniandes.ergo.festival.dtos.BoletaDTO;
-import co.edu.uniandes.ergo.festival.dtos.BoletaDetailDTO;
-import co.edu.uniandes.ergo.festival.dtos.EspectadorDTO;
 import co.edu.uniandes.ergo.festival.dtos.EspectadorDetailDTO;
 import co.edu.uniandes.ergo.festival.ejb.BoletaLogic;
 import co.edu.uniandes.ergo.festival.ejb.EspectadorLogic;

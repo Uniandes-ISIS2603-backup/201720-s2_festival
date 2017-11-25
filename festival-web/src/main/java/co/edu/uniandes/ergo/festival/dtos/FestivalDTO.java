@@ -34,10 +34,21 @@ import java.util.Date;
  * @author ISIS2603
  */
 public class FestivalDTO {
-
+    /**
+     * Atributo que contiene el ID del Festival.
+     */
     private Long id;
+    /**
+     * Atrivuto que contiene el Nombre del Festival.
+     */
     private String nombre;
+    /**
+     * Atributo que contiene la Fecha de Inicio del Festival.
+     */
     private Date fechaInicio;
+    /**
+     * Atributo que contiene la Fecha de Terminación del Festival.
+     */
     private Date fechaFin;
     /**
      * Constructor por defecto
@@ -66,32 +77,51 @@ public class FestivalDTO {
     }
 
     /**
+     * Método que obtiene el ID del Festival.
      * @param id the id to set
      */
     public void setId(Long id) {
         this.id = id;
     }
-
+    /**
+     * Método que obtiene el Nombre del Festival.
+     * @return String, Nombre del Festival.
+     */
     public String getNombre() {
         return nombre;
     }
-
+    /**
+     * Método que establece el Nombre del Festival.
+     * @param nombre String, nuevo Nombre del Festival.
+     */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
+    /**
+     * Método que obtiene la Fecha de Inicio del Festival.
+     * @return Date, fecha de Inicio del Festival.
+     */
     public Date getFechaInicio() {
         return fechaInicio;
     }
-
+    /**
+     * Método que establece la Fecha de Inicio del Festival.
+     * @param fechaInicio Date, nueva Fecha de Inicio del Festival
+     */
     public void setFechaInicio(Date fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
-
+    /**
+     * Método que obtiene la Fecha de Terminación del Festival.
+     * @return Date, Fecha de Terminación del Festival.
+     */
     public Date getFechaFin() {
         return fechaFin;
     }
-
+    /**
+     * Método que establece la Fecha de Terminación del Festival.
+     * @param fechaDin Date, nueva Fecha de Terminación del Festival.
+     */
     public void setFechaFin(Date fechaDin) {
         this.fechaFin = fechaDin;
     }
@@ -109,6 +139,5 @@ public class FestivalDTO {
         entity.setFechaFin(this.fechaFin);
         return entity;
     }  
-
 }
     

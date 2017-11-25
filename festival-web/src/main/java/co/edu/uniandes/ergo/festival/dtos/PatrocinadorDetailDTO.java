@@ -13,18 +13,26 @@ import co.edu.uniandes.ergo.festival.entities.PatrocinadorEntity;
  */
 public class PatrocinadorDetailDTO extends PatrocinadorDTO {
     private FestivalDTO festival;
-    
+    /**
+     * Método constructor por defecto.
+     */
     public PatrocinadorDetailDTO() {
         super();
     }
-    
+    /**
+     * Método que contruye un PatrocinadorDetailDTO a partir de la versión entidad de Patrocinador.
+     * @param entity PatrocinadorEntity, Entidad de Patrocinador.
+     */
     public PatrocinadorDetailDTO(PatrocinadorEntity entity) {
         super(entity);
         
         if (entity.getFestival() != null)
             festival = new FestivalDTO(entity.getFestival());
     }
-
+    /**
+     * Método que construye un PatrocinadorEntity a partir de este DTO.
+     * @return PatrocinadorEntity.
+     */
     @Override
     public PatrocinadorEntity toEntity() {
         PatrocinadorEntity retornar = super.toEntity();
@@ -34,15 +42,15 @@ public class PatrocinadorDetailDTO extends PatrocinadorDTO {
         }
         return retornar;
     }
-    
     /**
+     * Método que obtiene el Festival de este Patrocinador.
      * @return the festival
      */
     public FestivalDTO getFestival() {
         return festival;
     }
-
     /**
+     * Método que establece el Festival de este Patrocinador.
      * @param festival the festival to set
      */
     public void setFestival(FestivalDTO festival) {

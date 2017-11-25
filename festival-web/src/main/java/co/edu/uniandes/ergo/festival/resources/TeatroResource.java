@@ -37,6 +37,9 @@ import javax.ws.rs.core.MediaType;
 @RequestScoped
 public class TeatroResource 
 {
+    /**
+     * Atributo que contiene la injección a teatroLogic.
+     */
     @Inject 
     private TeatroLogic teatroLogic;
     
@@ -52,8 +55,8 @@ public class TeatroResource
     }
     
     /**
-     * 
-     * @return 
+     * Método que obtiene los Teatros.
+     * @return List<TeatroDetailDTO>, lita de Teatros.
      */
     @GET
     public List<TeatroDetailDTO> getTeatros()
@@ -61,8 +64,9 @@ public class TeatroResource
         return listTeatroEntity2DTO(teatroLogic.getTeatros());
     }
     /** 
-     * @param id
-     * @return 
+     * Método que obtiene une Teatro dado su ID.
+     * @param id Long, ID del teatro.
+     * @return TeatroDetailDTO, Teatro.
      */
     @GET
     @Path("{id: \\d+}")
@@ -77,10 +81,10 @@ public class TeatroResource
     }
     
     /**
-     * 
-     * @param id
-     * @param teatro
-     * @return 
+     * Método que actualiza un Teatro con información nueva.
+     * @param id Long, ID del Teatro a actualizar.
+     * @param teatro TeatroDetailDTO, nueva información del Teatro.
+     * @return  TeatroDetailDTO, Teatro actualizado.
      */
     @PUT
     @Path("{id: \\d+}")    
@@ -96,8 +100,8 @@ public class TeatroResource
     }
     
     /**
-     * 
-     * @param id
+     * Método que borra un Teatro dado su ID.
+     * @param id Long, ID del Teatro a Borrar.
      */
     @DELETE
     @Path("{id: \\d+}")  
@@ -112,9 +116,9 @@ public class TeatroResource
     }
     
     /**
-     * 
-     * @param list
-     * @return 
+     * Método que convierte la lista de Teatros a DTOs
+     * @param list List<TeatroEntity>, Lista de teatros.
+     * @return list List<TeatroDetailDTO
      */
     public List<TeatroDetailDTO> listTeatroEntity2DTO(List<TeatroEntity> list)
     {
@@ -129,9 +133,9 @@ public class TeatroResource
     ///////salas///////
     
     /**
-     * 
-     * @param teatroId
-     * @return 
+     * Método que obtiene las salas de un Teatro.
+     * @param id Long, ID del Teatro.
+     * @return List<SalaDTO>, lista de Salas de un Teatro.
      */
     @GET
     @Path("{id: \\d+ }/salas")
@@ -146,7 +150,10 @@ public class TeatroResource
     }
     
     /**
-     * 
+     * Método que obtiene una sala específca de un teatro.
+     * @param teatroId Long, ID del Teatro.
+     * @param salasId Long, ID de la Sala del Teatro.
+     * @return SalaDTO.
      */
     @GET
     @Path("{TeatroId: \\d+ }/salas/{salasId: \\d+ }")
@@ -159,14 +166,24 @@ public class TeatroResource
         }
         return new SalaDTO(teatroLogic.getSala(teatroId, salasId));
     }
-    
+    /**
+     * Método que asocia una Sala a un Teatro.
+     * @param teatroId Long, ID del Teatro.
+     * @param salasId Long, ID de la Sala a asociar.
+     * @return SalaDTO, Sala asociada.
+     */
     @POST
     @Path("{TeatroId: \\d+ }/salas/{salasId: \\d+ }")
     public SalaDTO addSalaTeatro(@PathParam("TeatroId") Long teatroId, @PathParam("salasId") Long salasId)    
     {
         return new SalaDTO(teatroLogic.addSala(teatroId, salasId));
     }
-    
+    /**
+     * Método que actualiza una Sala de un Teatro.
+     * @param TeatroId Long, ID del teatro.
+     * @param salas List<SalaEntity>, 
+     * @return 
+     */
     @PUT
     @Path("{TeatroId: \\d+ }/salas")
     public List<SalaDTO> replaceSalas(@PathParam("TeatroId") Long TeatroId, List<SalaEntity> salas)
@@ -175,7 +192,9 @@ public class TeatroResource
     }
     
     /**
-     * 
+     * Método que elimina una Sala de un Teatro.
+     * @param TeatroId Long, ID del Teatro.
+     * @param salasId Long, ID de la Sala.
      */
     @DELETE
     @Path("{TeatroId: \\d+ }/salas/{salasId: \\d+ }")
@@ -185,9 +204,9 @@ public class TeatroResource
     }
 
     /**
-     * 
-     * @param entityList
-     * @return 
+     * Método que convierte una lista de entidades de sala a una lista de DTOS de Sala.
+     * @param entityList List<SalaEntity>, Entidades de Salas.
+     * @return List<SalaDTO>, DTOS de Salas.
      */
     private List<SalaDTO> salasListEntity2DTO(List<SalaEntity>  entityList)
     {

@@ -27,10 +27,8 @@ import co.edu.uniandes.ergo.festival.ejb.FestivalLogic;
 import co.edu.uniandes.ergo.festival.dtos.FestivalDetailDTO;
 import co.edu.uniandes.ergo.festival.entities.FestivalEntity;
 import co.edu.uniandes.ergo.festival.exceptions.BusinessLogicException;
-import co.edu.uniandes.ergo.festival.persistence.FestivalPersistence;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
 
