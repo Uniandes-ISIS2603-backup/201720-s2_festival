@@ -32,16 +32,29 @@ import java.util.*;
  * @author ISIS2603
  */
 public final class FestivalDetailDTO extends FestivalDTO {
+    /**
+     * Atributo que contiene la Lista de Teatros del Festival.
+     */
     private List<TeatroDTO> teatros;
-    
+    /**
+     * Atributo que contiene la Lista de Películas del Festival.
+     */
     private List<PeliculaDTO> peliculas;
-    
+    /**
+     * Atributo que contiene la Lista de Espectadores del Festival.
+     */
     private List<EspectadorDTO> espectadores;
-    
+    /**
+     * Atributo que contiene la Lista de Críticos del Festival.
+     */
     private List<CriticoDTO> criticos;
-    
+    /**
+     * Atributo que contiene la Lista de Patrocinadores del Festival.
+     */
     private List<PatrocinadorDTO> patrocinadores;
-    
+    /**
+     * Atributo que contiene la Lista de Funciones del Festival.
+     */
     private List<FuncionDTO> funciones;
     
     /**
@@ -51,7 +64,6 @@ public final class FestivalDetailDTO extends FestivalDTO {
     {
        
     }
-
     /**
      * Constructor para transformar un Entity a un DTO
      *
@@ -62,56 +74,91 @@ public final class FestivalDetailDTO extends FestivalDTO {
          teatros = listTeatros2DTO(entity);
          funciones = listFunciones2DTO(entity);
     }
-
+    /**
+     * Método que obtiene la Lista de Teatros del Festival.
+     * @return List<TeatroDTO> Lista de Teatros del Festival.
+     */
     public List<TeatroDTO> getTeatros() {
         return teatros;
     }
-
+    /**
+     * Método que establece la Lista de Teatros del Festival.
+     * @param teatros List<TeatroDTO>, nueva Lista de Teatros del Festival.
+     */
     public void setTeatros(List<TeatroDTO> teatros) {
         this.teatros = teatros;
     }
-
+    /**
+     * Método que obtiene la Lista de Películas del Festival.
+     * @return List<PeliculaDTO> Lista de Películas del Festival.
+     */
     public List<PeliculaDTO> getPeliculas() {
         return peliculas;
     }
-
+    /**
+     * Método que establece la Lista de Películas del Festival.
+     * @param peliculas List<PeliculaDTO> nueva Lista de Películas del Festival.
+     */
     public void setPeliculas(List<PeliculaDTO> peliculas) {
         this.peliculas = peliculas;
     }
-
+    /**
+     * Método que obtiene la Lista de Espectadores del Festival.
+     * @return List<EspectadorDTO> Lista de Espectadores del Festival.
+     */
     public List<EspectadorDTO> getEspectadores() {
         return espectadores;
     }
-
+    /**
+     * Método que Establece la Lista de Espectadores del Festival.
+     * @param espectadores List<EspectadorDTO>, nueva Lista de Espectadores del Festival.
+     */
     public void setEspectadores(List<EspectadorDTO> espectadores) {
         this.espectadores = espectadores;
     }
-
+    /**
+     * Método que obtiene la Lista de Críticos del Festival.
+     * @return List<CriticoDTO> Lista de Críticos del Festival.
+     */
     public List<CriticoDTO> getCriticos() {
         return criticos;
     }
-
+    /**
+     * Método que establece la Lista de Críticos del Festival.
+     * @param criticos List<CriticoDTO>, nueva Lista de Críticos del Festival.
+     */
     public void setCriticos(List<CriticoDTO> criticos) {
         this.criticos = criticos;
     }
-
+    /**
+     * Método que obtiene la Lista de Patrocinadores del Festival.
+     * @return List<PatrocinadorDTO>, Lista de Patrocinadores del Festival.
+     */
     public List<PatrocinadorDTO> getPatrocinadores() {
         return patrocinadores;
     }
-
+    /**
+     * Método que establece la Lista de Patrocinadores del Festival.
+     * @param patrocinador List<PatrocinadorDTO>, Lista de Patrocinadores del Festival.
+     */
     public void setPatrocinadores(List<PatrocinadorDTO> patrocinador) {
         this.patrocinadores = patrocinador;
     }
-
+    /**
+     * Método que obtiene la Lista de Funciones del Festival.
+     * @return List<FuncionDTO>, Lista de Funciones del Festival.
+     */
     public List<FuncionDTO> getFunciones() {
         return funciones;
     }
-
+    /**
+     * Método que establece la Lista de Funciones del Festival.
+     * @param funcion List<FuncionDTO>, nueva Lista de Funciones del Festival.
+     */
     public void setFunciones(List<FuncionDTO> funcion) {
         this.funciones = funcion;
     }
- 
-        /**
+    /**
      * Transformar un DTO a un Entity
      *
      * @return 
@@ -124,7 +171,11 @@ public final class FestivalDetailDTO extends FestivalDTO {
          return festivalE;
         
     }
-
+    /**
+     * Método que transforma una Lista de Entidades de Teatros a TeatroDTOs
+     * @param entity FestivalEntity
+     * @return List<TeatroDTO>, Teatros en formato DTO.
+     */
     public List<TeatroDTO> listTeatros2DTO(FestivalEntity entity) {
         List<TeatroDTO> lista = new ArrayList();
         for(TeatroEntity teatro: entity.getTeatros())
@@ -133,7 +184,10 @@ public final class FestivalDetailDTO extends FestivalDTO {
         }
         return lista;
     }
-    
+    /**
+     * Método que transforma los DTOS de Teatros a Entidades.
+     * @return List<TeatroEntity>, Teatros en formato Entity.
+     */
     public List<TeatroEntity> listDTO2Teatros()
     {
         List<TeatroEntity> lista = new ArrayList();
@@ -146,7 +200,11 @@ public final class FestivalDetailDTO extends FestivalDTO {
         }
         return lista;
     }
-
+    /**
+     * Método que transforma las Entidades de Funciones a DTOs.
+     * @param entity FestivalEntity
+     * @return List<FuncionDTO>, funciones en formato DTO.
+     */
     public List<FuncionDTO> listFunciones2DTO(FestivalEntity entity) {
         List<FuncionDTO> lista = new ArrayList();
         for(FuncionEntity funcion: entity.getFunciones())
@@ -155,7 +213,10 @@ public final class FestivalDetailDTO extends FestivalDTO {
         }
         return lista;
     }
-    
+    /**
+     * Método que transofrma los DTOs de Funciones a Entidades.
+     * @return List<FuncionEntity>, Lista de Funciones en formato Entity.
+     */
     public List<FuncionEntity> listDTO2Funciones()
     {
         List<FuncionEntity> lista = new ArrayList();

@@ -7,7 +7,6 @@ package co.edu.uniandes.ergo.festival.resources;
 
 
 import co.edu.uniandes.ergo.festival.dtos.SalaDetailDTO;
-import co.edu.uniandes.ergo.festival.dtos.SalaDTO;
 import co.edu.uniandes.ergo.festival.ejb.SalaLogic;
 import co.edu.uniandes.ergo.festival.entities.SalaEntity;
 import co.edu.uniandes.ergo.festival.exceptions.BusinessLogicException;

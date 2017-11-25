@@ -23,8 +23,6 @@ SOFTWARE.
  */
 package co.edu.uniandes.ergo.festival.resources;
 
-import co.edu.uniandes.ergo.festival.ejb.FestivalLogic;
-import co.edu.uniandes.ergo.festival.dtos.FestivalDetailDTO;
 import co.edu.uniandes.ergo.festival.ejb.BoletaLogic;
 import co.edu.uniandes.ergo.festival.dtos.BoletaDetailDTO;
 import co.edu.uniandes.ergo.festival.dtos.CalificacionDTO;
@@ -32,18 +30,14 @@ import co.edu.uniandes.ergo.festival.dtos.EspectadorDetailDTO;
 import co.edu.uniandes.ergo.festival.dtos.FuncionDTO;
 import co.edu.uniandes.ergo.festival.dtos.FuncionDetailDTO;
 import co.edu.uniandes.ergo.festival.dtos.SillaDetailDTO;
-import co.edu.uniandes.ergo.festival.entities.FestivalEntity;
 import co.edu.uniandes.ergo.festival.entities.BoletaEntity;
-import co.edu.uniandes.ergo.festival.entities.AbonoEntity;
 import co.edu.uniandes.ergo.festival.entities.CalificacionEntity;
 import co.edu.uniandes.ergo.festival.exceptions.BusinessLogicException;
 import co.edu.uniandes.ergo.festival.persistence.BoletaPersistence;
-import co.edu.uniandes.ergo.festival.persistence.FestivalPersistence;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.enterprise.context.RequestScoped;
 
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;

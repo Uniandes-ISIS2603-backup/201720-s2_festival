@@ -6,10 +6,6 @@
 package co.edu.uniandes.ergo.festival.dtos;
 
 import co.edu.uniandes.ergo.festival.entities.BoletaEntity;
-import co.edu.uniandes.ergo.festival.entities.SillaEntity;
-import co.edu.uniandes.ergo.festival.entities.FuncionEntity;
-import co.edu.uniandes.ergo.festival.entities.EspectadorEntity;
-import co.edu.uniandes.ergo.festival.entities.CalificacionEntity;
 /**
  *
  * @author jc.corrales

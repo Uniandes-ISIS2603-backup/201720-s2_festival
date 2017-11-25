@@ -8,7 +8,6 @@ package co.edu.uniandes.ergo.festival.dtos;
 import co.edu.uniandes.ergo.festival.entities.AbonoEntity;
 import co.edu.uniandes.ergo.festival.entities.BoletaEntity;
 import co.edu.uniandes.ergo.festival.entities.EspectadorEntity;
-import com.gs.collections.impl.list.fixed.ArrayAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,14 +16,24 @@ import java.util.List;
  * @author dj.bautista10
  */
 public class EspectadorDetailDTO extends EspectadorDTO {
-    
+    /**
+     * Atributo que contiene la Lista de Boletas.
+     */
     private List<BoletaDTO> boletas;
+    /**
+     * Atributo que contiene la Lista de Abonos.
+     */
     private List<AbonoDTO> abonos;
-    
+    /**
+     * Método constructor por defecto.
+     */
     public EspectadorDetailDTO(){ 
         super();
     }
-    
+    /**
+     * Método que construye un EspectadorDetail a partir de su versión Entity.
+     * @param espectador EspectadorEntity, Entidad de Espectador.
+     */
     public EspectadorDetailDTO(EspectadorEntity espectador){
         super(espectador);
         if(espectador.getAbonos() != null){
@@ -41,23 +50,38 @@ public class EspectadorDetailDTO extends EspectadorDTO {
             }
         }
     }
-    
+    /**
+     * Método que obtiene los Abonos del Espectador.
+     * @return List<AbonoDTO>, Lista de Abonos.
+     */
     public List<AbonoDTO> getAbonos(){
         return abonos;
     }
-    
+    /**
+     * Método que obtiene la Lista de Boletas de este Espectador.
+     * @return List<BoletaDTO>, Lista de Boletas del Espectador.
+     */
     public List<BoletaDTO> getBoletas(){
         return boletas;
     }
-    
+    /**
+     * Método que establece la Lista de Abonos del Espectador.
+     * @param abonos List<AbonoDTO>, nueva Lista de Abonos del Espectador.
+     */
     public void setAbonos(List<AbonoDTO> abonos){
         this.abonos = abonos;
     }
-    
+    /**
+     * Método que establece la Lista de Boletas del Espectador.
+     * @param boletas List<BoletaDTO>, nueva Lista de Boletas del Espectador.
+     */
     public void setBoletas(List<BoletaDTO> boletas){
         this.boletas = boletas;
     }
-    
+    /**
+     * Método que construye un objeto EspectadorEntity a partir de este DTO.
+     * @return EspectadorEntity, Entidad del Espectador.
+     */
     @Override
     public EspectadorEntity toEntity(){
         EspectadorEntity eEspectador = super.toEntity();
@@ -67,8 +91,7 @@ public class EspectadorDetailDTO extends EspectadorDTO {
                 eAbonos.add(a.toEntity());
             }
             eEspectador.setAbonos(eAbonos);
-        }
-        
+        }  
         if(this.getBoletas() != null){
             List<BoletaEntity> eBoletas = new ArrayList<>();
             for(BoletaDTO b : boletas){

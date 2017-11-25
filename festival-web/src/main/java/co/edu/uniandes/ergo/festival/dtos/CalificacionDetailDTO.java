@@ -5,8 +5,6 @@
  */
 package co.edu.uniandes.ergo.festival.dtos;
 
-import co.edu.uniandes.ergo.festival.ejb.BoletaLogic;
-import co.edu.uniandes.ergo.festival.entities.BoletaEntity;
 import co.edu.uniandes.ergo.festival.entities.CalificacionEntity;
 
 /**
@@ -14,11 +12,19 @@ import co.edu.uniandes.ergo.festival.entities.CalificacionEntity;
  * @author m.neira10
  */
 public class CalificacionDetailDTO extends CalificacionDTO{
-
+    /**
+     * Atributo que contiene la Boleta Asociada.
+     */
     private BoletaDTO boleta;
-    
+    /**
+     * Método Constructor por Defecto.
+     */
     public CalificacionDetailDTO(){
     }
+    /**
+     * Método que construye CalificacionDetailDTO a partir de su versión Entity.
+     * @param createCalificacion 
+     */
     public CalificacionDetailDTO(CalificacionEntity createCalificacion) {
         super(createCalificacion);
 //        if(!(createCalificacion.getBoleta()==null)){
@@ -29,7 +35,10 @@ public class CalificacionDetailDTO extends CalificacionDTO{
 //        }
         
     }
-
+    /**
+     * Método que construye un objeto Entity a partir de este DTO.
+     * @return CalificaciónEntity, Entidad de Calificación.
+     */
     public CalificacionEntity toEntity() {
         CalificacionEntity entity = new CalificacionEntity();
         entity.setCalificacion(this.getCalificacion());
@@ -40,11 +49,17 @@ public class CalificacionDetailDTO extends CalificacionDTO{
         return entity;
         
     }
-
+    /**
+     * Método que obtiene la Boleta de esta Calificación.
+     * @return 
+     */
     public BoletaDTO getBoleta() {
         return boleta;
     }
-
+    /**
+     * Método que establece la Boleta asociada a esta Calificación.
+     * @param boleta 
+     */
     public void setBoleta(BoletaDTO boleta) {
         this.boleta = boleta;
     }

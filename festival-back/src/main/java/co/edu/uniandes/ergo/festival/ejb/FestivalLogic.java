@@ -179,7 +179,10 @@ public class FestivalLogic {
     }
    
     /**
-     * 
+     * Método que reemplaza una Lista de Teatros con otra.
+     * @param idFestival Long, ID del Festival.
+     * @param listaTeatros List<TeatroEntity>, nueva Lista de Teatros.
+     * @return List<TeatroEntity>, nueva Lista de Teatros del Festival.
      */
     public List<TeatroEntity> replaceTeatros(Long idFestival, List<TeatroEntity> listaTeatros)
     {
@@ -200,7 +203,9 @@ public class FestivalLogic {
     }
 
     /**
-     * 
+     * Método que remueve un Teatro de un Festival.
+     * @param idFestival Long, ID del Festival.
+     * @param idTeatro Long, ID del Teatro a remover.
      */
     public void removeTeatro(Long idFestival, Long idTeatro)
     {
@@ -211,7 +216,12 @@ public class FestivalLogic {
     }
     
     ///////////OPERACIONES SOBRE FUNCION///////////////////
-    
+    /**
+     * Método que agrega una Función a un Festival.
+     * @param idFestival Long, ID del Festival.
+     * @param idFuncion Long, ID de la Función a asociar.
+     * @return FuncionEntity, Función agregada.
+     */
     public FuncionEntity addFuncion (Long idFestival, Long idFuncion)
     {
         FestivalEntity festival = getFestival(idFestival);
@@ -219,7 +229,11 @@ public class FestivalLogic {
         funcion.setFestival(festival);
         return funcion;
     }
-    
+    /**
+     * Método que obtiene la Lista de Funciones de un Festival.
+     * @param idFestival Long, ID del Festival.
+     * @return List<FuncionEntity>, Lista de Funciones del Festival.
+     */
     public List<FuncionEntity> getFunciones(Long idFestival)
     {
         LOGGER.log(Level.INFO, "Inicia proceso de buscar los teatros asociadosa al festival con id = {0}", idFestival);
@@ -229,7 +243,12 @@ public class FestivalLogic {
         }
         return getFestival(idFestival).getFunciones();
     }
-    
+    /**
+     * Método que obtiene una Función específica de un Festival.
+     * @param idFestival Long, ID del Festival.
+     * @param idFuncion Long, ID de la Funcion.
+     * @return FuncionEntity, Función buscada.
+     */
     public FuncionEntity getFuncion(Long idFestival, Long idFuncion)
     {
         LOGGER.log(Level.INFO, "Inicia el proceso de buscar un teatro en festival con el id", idFestival);
@@ -243,7 +262,12 @@ public class FestivalLogic {
         }
         return null;
     }
-    
+    /**
+     * Método que reemplaza la Lista de Funciones de un Festival.
+     * @param idFestival Long, ID del Festival.
+     * @param listaFunciones List<FuncionEntity>, nueva Lista de Funciones del Festival.
+     * @return List<FuncionEntity>, Lista de Funciones actualizada.
+     */
     public List<FuncionEntity> replaceFunciones(Long idFestival, List<FuncionEntity> listaFunciones)
     {
         FestivalEntity festival = getFestival(idFestival);
@@ -261,7 +285,11 @@ public class FestivalLogic {
         }
         return listaFunciones;
     }
-    
+    /**
+     * Método que remueve una Función de un Festival.
+     * @param idFestival Long, ID del Festival.
+     * @param idFuncion Long, ID de la Función a des asociar.
+     */
     public void removeFuncion(Long idFestival, Long idFuncion)
     {
         FestivalEntity festival = getFestival(idFestival);
@@ -271,7 +299,12 @@ public class FestivalLogic {
     }
     
     ///////////OPERACIONES SOBRE ESPECTADOR////////////////
-    
+    /**
+     * Método que asocia un Espectador a un Festival.
+     * @param idFestival Long, ID del Festival.
+     * @param idEspectador Long, ID del Espectador.
+     * @return EspectadorEntity, Espectador asociado.
+     */
     public EspectadorEntity addEspectador (Long idFestival, Long idEspectador)
     {
         FestivalEntity festival = getFestival(idFestival);
@@ -282,7 +315,11 @@ public class FestivalLogic {
         //  espectador.setFestival(festival);
         return espectador;
     }
-    
+    /**
+     * Método que obtiene la Lista de Espectadores de un Festival.
+     * @param idFestival Long, ID del Festival.
+     * @return Lis<EspectadorEntity>, Lista de Espectadores del Festival.
+     */
     public List<EspectadorEntity> getEspectadores(Long idFestival)
     {
         LOGGER.log(Level.INFO, "Inicia proceso de buscar los teatros asociadosa al festival con id = {0}", idFestival);
@@ -292,7 +329,12 @@ public class FestivalLogic {
         }
         return getFestival(idFestival).getEspectadores();
     }
-    
+    /**
+     * Método que obtiene un Espectador específico de un Festival.
+     * @param idFestival Long, ID del Festival.
+     * @param idEspectador Long, ID del Espectador.
+     * @return EspectadorEntity, Espectador.
+     */
     public EspectadorEntity getEspectador(Long idFestival, Long idEspectador)
     {
         LOGGER.log(Level.INFO, "Inicia el proceso de buscar un teatro en festival con el id", idFestival);
@@ -306,7 +348,12 @@ public class FestivalLogic {
         }
         return null;
     }
-       
+    /**
+     * Método que reemplaza la Lista de Espectadores del Festival con una nueva.
+     * @param idFestival Long, ID del Festival.
+     * @param listaEspectadores List<EspectadorEntity>, nueva Lista de Espectadores.
+     * @return List<EspectadorEntity>, Lista de Espectadores actualizada.
+     */
     public List<EspectadorEntity> replaceEspectadores(Long idFestival, List<EspectadorEntity> listaEspectadores)
     {
         FestivalEntity festival = getFestival(idFestival);
@@ -321,11 +368,10 @@ public class FestivalLogic {
         return listaEspectadores;
     }
             
-     /**
-     *
-     * @param idFestival
-     * @param idEspectador
-     * @param idFuncion
+    /**
+     * Método que des asocia un Espectador del Festival.
+     * @param idFestival Long, ID del Festival.
+     * @param idEspectador Long, ID del Espectador a des asociar.
      */
     public void removeEspectador(Long idFestival, Long idEspectador)
     {
@@ -338,7 +384,10 @@ public class FestivalLogic {
    ////////////OPERACIONES SOBRE PATROCINADOR//////////////
       
     /**
-     * 
+     * Método que asocia un Patrocinador a un Festival
+     * @param idFestival Long, ID del Festival.
+     * @param idPatrocinador Long, ID del Patrocinador.
+     * @return PatrocinadorEntity.
      */
     public PatrocinadorEntity addPatrocinador (Long idFestival, Long idPatrocinador)
     {
@@ -347,10 +396,11 @@ public class FestivalLogic {
         patrocinador.setFestival(festival);
         return patrocinador;
     }
-    
     /**
-     * 
-    */
+     * Método que obtiene la Lista de Patrocinadores.
+     * @param idFestival Long, ID del Festival.
+     * @return List<PatrocinadorEntity>, Lista de Patrocinadores del Festival.
+     */
     public List<PatrocinadorEntity> getPatrocinadores(Long idFestival)
     {
         FestivalEntity festival = getFestival(idFestival);
@@ -360,9 +410,11 @@ public class FestivalLogic {
         }
         return getFestival(idFestival).getPatrocinadores();
     }
-    
     /**
-     * 
+     * Método que obtiene un Patrocinador del Festival.
+     * @param idFestival Long, ID del Festival.
+     * @param idPatrociandor Long, ID del Patrocinador.
+     * @return PatrocinadorEntity, un Patrocinador del Festival.
      */
     public PatrocinadorEntity getPatrocinador(Long idFestival, Long idPatrociandor)
     {
@@ -376,9 +428,11 @@ public class FestivalLogic {
         }
         return null;
     }
-    
     /**
-     * 
+     * Método que reemplaza la Lista de Patrocinadores con una Nueva.
+     * @param idFestival Long, ID del Festival.
+     * @param lista List<PatrocinadorEntity>, nueva Lista de Patrocinadores.
+     * @return List<PatrocinadorEntity>, Lista de Patrocinadores actualizada.
      */
     public List<PatrocinadorEntity> replacePatrocinador(Long idFestival, List<PatrocinadorEntity> lista) 
     {
@@ -399,7 +453,9 @@ public class FestivalLogic {
     }
     
     /**
-     * 
+     * Método que des asocia un Patrocinador del Festival.
+     * @param idFestival Long, ID del Festival.
+     * @param idPatrociandor Long, ID del Patrocinador a des asociar.
      */
    public void removePatrociandor(Long idFestival, Long idPatrociandor)
     {
@@ -411,7 +467,13 @@ public class FestivalLogic {
 
 
    ///////////OPERACIONES SOBRE PELICULAS///////////////////
-    
+    /**
+     * Metodo que agrega una Película al Festival.
+     * @param idFestival Long, ID del Festival.
+     * @param idPelicula Long, ID de la Película.
+     * @return PeliculaEntity, Película agregada.
+     * @throws BusinessLogicException 
+     */
     public PeliculaEntity addPelicula (Long idFestival, Long idPelicula) throws BusinessLogicException
     {
         FestivalEntity festival = getFestival(idFestival);
@@ -421,7 +483,11 @@ public class FestivalLogic {
         festival.setPeliculas(list);
         return pelicula;
     }
-    
+    /**
+     * Método que obtiene la Lista de Películas del Festival.
+     * @param idFestival Long, ID del Festival.
+     * @return List<PeliculaEntity>, Lista de Películas del Festival.
+     */
     public List<PeliculaEntity> getPeliculas (Long idFestival)
     {
         LOGGER.log(Level.INFO, "Inicia proceso de buscar los teatros asociadosa al festival con id = {0}", idFestival);
@@ -431,7 +497,12 @@ public class FestivalLogic {
         }
         return getFestival(idFestival).getPeliculas();
     }
-    
+    /**
+     * Método que obtiene una Película del Festival.
+     * @param idFestival Long, ID del Festival.
+     * @param idPelicula Long, ID de la Película.
+     * @return PeliculaEntity, una Película del Festival.
+     */
     public PeliculaEntity getPelicula (Long idFestival, Long idPelicula)
     {
         LOGGER.log(Level.INFO, "Inicia el proceso de buscar un teatro en festival con el id", idFestival);
@@ -445,7 +516,12 @@ public class FestivalLogic {
         }
         return null;
     }
-       
+    /**
+     * Método que reemplaza una Lista de Películas con otra.
+     * @param idFestival Long, ID del Festival.
+     * @param listPeliculas List<PeliculaEntity>, nueva Lista de Películas del Festival.
+     * @return Lista de Películas actualizadas.
+     */
     public List<PeliculaEntity> replacePelicula (Long idFestival, List<PeliculaEntity> listPeliculas)
     {
         FestivalEntity festival = getFestival(idFestival);
@@ -459,12 +535,11 @@ public class FestivalLogic {
        }
         return listPeliculas;
     }
-            
-     /**
-     *
-     * @param idFestival
-     * @param idEspectador
-     * @param idFuncion
+    /**
+     * Método que des asocia una Película de un Festival.
+     * @param idFestival Long, ID del Festival.
+     * @param idPelicula Long, ID de la Película.
+     * @throws BusinessLogicException 
      */
     public void removePelicula(Long idFestival, Long idPelicula) throws BusinessLogicException
     {
@@ -472,5 +547,4 @@ public class FestivalLogic {
         PeliculaEntity pelicula = peliculaLogic.getPelicula(idPelicula);
         festival.getPeliculas().remove(pelicula);
     }
-    
 }

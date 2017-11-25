@@ -7,9 +7,7 @@ package co.edu.uniandes.ergo.festival.resources;
 
 import co.edu.uniandes.ergo.festival.dtos.FuncionDTO;
 import co.edu.uniandes.ergo.festival.dtos.FuncionDetailDTO;
-import co.edu.uniandes.ergo.festival.dtos.PeliculaDTO;
 import co.edu.uniandes.ergo.festival.dtos.PeliculaDetailDTO;
-import co.edu.uniandes.ergo.festival.ejb.FuncionLogic;
 import co.edu.uniandes.ergo.festival.ejb.PeliculaLogic;
 import co.edu.uniandes.ergo.festival.entities.FuncionEntity;
 import co.edu.uniandes.ergo.festival.entities.PeliculaEntity;
