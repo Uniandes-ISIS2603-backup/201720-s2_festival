@@ -23,28 +23,45 @@ public class PatrocinadorLogic {
     
     @Inject
     private PatrocinadorPersistence persistence;
-    
+    /**
+     * Método que crea un nuevo Patrocinador.
+     * @param entity PatrocinadorEntity, toda la información del Patrocinador.
+     * @return PatrocinadorEntity.
+     */
     public PatrocinadorEntity create (PatrocinadorEntity entity) {
         LOGGER.log(Level.INFO, "Logic creando patrocinador");
         return persistence.create(entity);
     }
-    
+    /**
+     * Método que obtiene una Lista con todos los Patrocinadores.
+     * @return List<PatrocinadorEntity>, Lista con todos los Patrocinadores.
+     */
     public List<PatrocinadorEntity> get() {
         LOGGER.log(Level.INFO, "Logic buscando todos los patrocinadores");
         return persistence.findAll();
     }
-    
+    /**
+     * Método que obtiene un Patrocinador especificado por su ID.
+     * @param id Long, ID del Patrocinador.
+     * @return PatrocinadorEntity, Patrocinador buscado.
+     */
     public PatrocinadorEntity get(Long id) {
         LOGGER.log(Level.INFO, "Logic buscando patrocinador con id {0}" , id);
         return persistence.find(id);
     }
-    
-    
+    /**
+     * Método que actualiza la información de un Patrocinador.
+     * @param nuevo PatrocinadorEntity, nueva información de un Patrocinador.
+     * @return 
+     */
     public PatrocinadorEntity update(PatrocinadorEntity nuevo) {
         LOGGER.log(Level.INFO, "Logic updateando el patrocinador con id {0}", nuevo.getId());
         return persistence.update(nuevo);
     }
-    
+    /**
+     * Método que borra un Patrocinador especificado por su ID.
+     * @param id Long, ID del Patrocinador a borrar.
+     */
     public void remove(Long id) {
         LOGGER.log(Level.INFO, "Logic eliminando patrocinador con id {0}", id);
         persistence.remove(id);

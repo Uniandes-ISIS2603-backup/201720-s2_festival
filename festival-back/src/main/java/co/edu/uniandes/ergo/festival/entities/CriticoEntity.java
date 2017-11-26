@@ -17,34 +17,58 @@ import uk.co.jemos.podam.common.PodamExclude;
  */
 @Entity
 public class CriticoEntity extends PersonaEntity{
-    
+    /**
+     * Atributo que contiene la Lista de Críticas del Crítico.
+     */
     @PodamExclude
     @OneToMany
     private List<CriticaEntity> criticas;
+    /**
+     * Atributo que contiene la Lista de Películas del Crítico.
+     */
     @PodamExclude
     @ManyToMany(mappedBy = "criticos")
     private List<PeliculaEntity> peliculas;
     
-
+    /**
+     * Métogo que obtiene la Lista de Críticas del Crítico.
+     * @return List<CriticaEntity>, Lista de Críticas del Crítico.
+     */
     public List<CriticaEntity> getCriticas(){
         return criticas;
     }
-    
+    /**
+     * Método que obtiene la Lista de Películas del Crítico.
+     * @return List<PeliculaEntity>, Lista de Pelíuclas del Crítico.
+     */
     public List<PeliculaEntity> GetPeliculas(){
         return peliculas;
     }
-    
+    /**
+     * Método que establece la Lista de Películas del Crítico.
+     * @param peliculas List<PeliculaEntity>, nueva Lista de Películas del Crítico.
+     */
     public void setPeliculas(List<PeliculaEntity> peliculas){
         this.peliculas = peliculas;
     }
+    /**
+     * Método que establece la Lista de Críticas del Crítico.
+     * @param criticas List<CriticaEntity>, nueva Lista de Críticas del Crítico.
+     */
     public void setCriticas(List<CriticaEntity> criticas){
         this.criticas = criticas;
     }
-    
+    /**
+     * Método que agrega una Crítica a la Lista de Críticas del Crítico.
+     * @param critica CriticaEntity, nueva Crítica.
+     */
     public void addCritica(CriticaEntity critica){
         criticas.add(critica);
     }
-
+    /**
+     * Método que agrega una nueva Película a la Lista de Películas del Crítico.
+     * @param pelicula PeliculaEntity, nueva Película del Crítico.
+     */
     public void addPelicula(PeliculaEntity pelicula) {
         peliculas.add(pelicula);
     }
