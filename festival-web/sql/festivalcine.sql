@@ -80,11 +80,11 @@ delete from FestivalEntity;
 
 
 delete from PeliculaEntity;
-    insert into PeliculaEntity (id, name, imagen, duracionMinutos, genero, pais, corto, director) values (1001, 'Batman', 'https://images-na.ssl-images-amazon.com/images/I/61sGxnXeqiL._SY550_.jpg', 33656, 'Drama|Thriller', 'Russia', 'https://www.youtube.com/embed/L_FONnnkdh4?ecver=2', 'Hillie Whyman');
-    insert into PeliculaEntity (id, name, imagen, duracionMinutos, genero, pais, corto, director) values (1002, 'Tarzan', 'https://images-na.ssl-images-amazon.com/images/I/71ievnadZXL.SL1014.jpg', 3769, 'Action|Crime|Thriller', 'Hungary', 'https://www.youtube.com/embed/L_FONnnkdh4?ecver=2', 'Rodrique Kaines');
-    insert into PeliculaEntity (id, name, imagen, duracionMinutos, genero, pais, corto, director) values (1003, 'Nemo', 'https://www.sonuit.fr/532/poster-mural-le-monde-de-nemo-panoramique-disney-komar.jpg', 749, 'Crime', 'Indonesia', 'https://www.youtube.com/embed/L_FONnnkdh4?ecver=2', 'Liana Illsley');  
-    insert into PeliculaEntity (id, name, imagen, duracionMinutos, genero, pais, corto, director) values (1004, 'Coraline', 'http://s3.media.squarespace.com/production/465215/5307878/wp-content/uploads/2008/12/coraline1_large.jpg', 2589, 'Crime|Drama|Mystery|Thriller|War', 'Canada', 'https://www.youtube.com/embed/L_FONnnkdh4?ecver=2', 'Devonne Beeston');  
-    insert into PeliculaEntity (id, name, imagen, duracionMinutos, genero, pais, corto, director) values (1005, 'As above so Below', 'https://klling.files.wordpress.com/2017/07/as-above-so-below.jpg', 2880, 'Drama', 'Indonesia', 'https://www.youtube.com/embed/L_FONnnkdh4?ecver=2', 'Maudie Brandreth');
+    insert into PeliculaEntity (id, name, imagen, duracionMinutos, genero, pais, corto, director, sinopsis) values (1001, 'Batman', 'https://images-na.ssl-images-amazon.com/images/I/61sGxnXeqiL._SY550_.jpg', 33656, 'Drama|Thriller', 'Russia', 'https://www.youtube.com/embed/L_FONnnkdh4?ecver=2', 'Hillie Whyman', 'a');
+    insert into PeliculaEntity (id, name, imagen, duracionMinutos, genero, pais, corto, director, sinopsis) values (1002, 'Tarzan', 'https://images-na.ssl-images-amazon.com/images/I/71ievnadZXL.SL1014.jpg', 3769, 'Action|Crime|Thriller', 'Hungary', 'https://www.youtube.com/embed/L_FONnnkdh4?ecver=2', 'Rodrique Kaines', 'a');
+    insert into PeliculaEntity (id, name, imagen, duracionMinutos, genero, pais, corto, director, sinopsis) values (1003, 'Nemo', 'https://www.sonuit.fr/532/poster-mural-le-monde-de-nemo-panoramique-disney-komar.jpg', 749, 'Crime', 'Indonesia', 'https://www.youtube.com/embed/L_FONnnkdh4?ecver=2', 'Liana Illsley', 'a');
+    insert into PeliculaEntity (id, name, imagen, duracionMinutos, genero, pais, corto, director, sinopsis) values (1004, 'Coraline', 'http://s3.media.squarespace.com/production/465215/5307878/wp-content/uploads/2008/12/coraline1_large.jpg', 2589, 'Crime|Drama|Mystery|Thriller|War', 'Canada', 'https://www.youtube.com/embed/L_FONnnkdh4?ecver=2', 'Devonne Beeston', 'a');
+    insert into PeliculaEntity (id, name, imagen, duracionMinutos, genero, pais, corto, director, sinopsis) values (1005, 'As above so Below', 'https://klling.files.wordpress.com/2017/07/as-above-so-below.jpg', 2880, 'Drama', 'Indonesia', 'https://www.youtube.com/embed/L_FONnnkdh4?ecver=2', 'Maudie Brandreth', 'a');
 
 
 /* FuncionEntity */

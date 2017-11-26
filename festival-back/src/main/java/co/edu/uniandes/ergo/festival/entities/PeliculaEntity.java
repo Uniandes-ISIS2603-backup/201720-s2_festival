@@ -49,6 +49,10 @@ public class PeliculaEntity extends BaseEntity implements Serializable {
     /**
      * Atributo que contiene la Lista de Funciones que presentan esta Película.
      */
+    /**
+     * Atributo que contiene la Sinopsis de la Película.
+     */
+    private String sinopsis;
     @PodamExclude
     @OneToMany(mappedBy = "pelicula")
     private List<FuncionEntity> funciones;
@@ -204,5 +208,21 @@ public class PeliculaEntity extends BaseEntity implements Serializable {
      */
     public void removeCritico(CriticoEntity critico) {
         criticos.remove(critico);
+    }
+    /**
+     * Método que obtiene la Sinopsis de una Película.
+     * @return String, Sinopsis de la Película.
+     */
+    public String getSinopsis()
+    {
+        return sinopsis;
+    }
+    /**
+     * Método que establece la Sinopsis de una Película.
+     * @param sinopsis String, nueva Sinopsis de la Película.
+     */
+    public void setSinopsis(String sinopsis)
+    {
+        this.sinopsis = sinopsis;
     }
 }
