@@ -9,10 +9,13 @@ package co.edu.uniandes.ergo.festival.resources;
 import co.edu.uniandes.ergo.festival.dtos.BoletaDTO;
 import co.edu.uniandes.ergo.festival.dtos.CriticaDTO;
 import co.edu.uniandes.ergo.festival.dtos.FuncionDetailDTO;
+import co.edu.uniandes.ergo.festival.dtos.TeatroDTO;
 import co.edu.uniandes.ergo.festival.ejb.FuncionLogic;
 import co.edu.uniandes.ergo.festival.entities.BoletaEntity;
 import co.edu.uniandes.ergo.festival.entities.CriticaEntity;
 import co.edu.uniandes.ergo.festival.entities.FuncionEntity;
+import co.edu.uniandes.ergo.festival.entities.SalaEntity;
+import co.edu.uniandes.ergo.festival.entities.TeatroEntity;
 import co.edu.uniandes.ergo.festival.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
@@ -224,5 +227,22 @@ public class FuncionResource {
         }
         return new BoletaDTO(preAns);
     }
-    
+    /**
+     * Método que obtiene el Teatro que está presentando la Función por ID.
+     * @param idFuncion Long, ID función.
+     * @return TeatroDTO, Teatro que presenta la Función.
+     * @throws BusinessLogicException 
+     */
+    @GET
+    @Path("{funcionid:\\d+}/teatros")
+    public TeatroDTO getTeatroFromFuncion(@PathParam("funcionid")Long idFuncion) throws BusinessLogicException
+    {
+        FuncionEntity entity = funcionLogic.getFuncion(idFuncion);
+        SalaEntity sala = entity.getSala();
+        TeatroEntity teatro = sala.getTeatro();
+        if (entity == null) {
+            throw new WebApplicationException("La funcion con el id:" + idFuncion + " no existe.", 404);
+        }
+        return new TeatroDTO(teatro);
+    }
 }

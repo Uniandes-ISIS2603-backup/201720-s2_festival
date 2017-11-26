@@ -1,0 +1,122 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Festival Resource",
+		"_postman_id": "5768202a-47c7-6f76-333d-bb767b8f2068",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/festival-web/api/festivales",
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/festivales",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"type\": \"festivalDetailDTO\",\n        \"fechaFin\": \"2017-08-23T00:00:00-05:00\",\n        \"fechaInicio\": \"2017-08-20T00:00:00-05:00\",\n        \"id\": 5,\n        \"nombre\": \"HALLOWEN\",\n        \"funciones\": [],\n        \"teatros\": []\n    }"
+				},
+				"description": "Agregar un nuevo festival"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/festival-web/api/festivales",
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/festivales",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"type\": \"festivalDetailDTO\",\n        \"fechaFin\": \"2017-08-23T00:00:00-05:00\",\n        \"fechaInicio\": \"2017-08-20T00:00:00-05:00\",\n        \"id\": 5,\n        \"nombre\": \"HALLOWEN\",\n        \"funciones\": [],\n        \"teatros\": []\n    }"
+				},
+				"description": "obtener los festivales"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/festival-web/api/festivales/5",
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/festivales/5",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"type\": \"festivalDetailDTO\",\n        \"fechaFin\": \"2017-08-23T00:00:00-05:00\",\n        \"fechaInicio\": \"2017-08-20T00:00:00-05:00\",\n        \"id\": 5,\n        \"nombre\": \"navidad\",\n        \"funciones\": [],\n        \"teatros\": []\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/festival-web/api/festivales/8",
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/festivales/8",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"type\": \"festivalDetailDTO\",\n        \"fechaFin\": \"2017-08-23T00:00:00-05:00\",\n        \"fechaInicio\": \"2017-08-20T00:00:00-05:00\",\n        \"id\": 5,\n        \"nombre\": \"navidad\",\n        \"funciones\": [],\n        \"teatros\": []\n    }"
+				},
+				"description": "obtener un festival que no existe"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/festival-web/api/festivales/2",
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/festivales/2",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": "eliminar un festival"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/festival-web/api/festivales/1",
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/festivales/1",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"type\": \"festivalDetailDTO\",\n        \"fechaFin\": \"2017-08-23T00:00:00-05:00\",\n        \"fechaInicio\": \"2017-08-20T00:00:00-05:00\",\n        \"id\": 5,\n        \"nombre\": \"HALLOWEN\",\n        \"funciones\": [],\n        \"teatros\": []\n    }"
+				},
+				"description": "obtener un festival especifico"
+			},
+			"response": []
+		}
+	]
+}

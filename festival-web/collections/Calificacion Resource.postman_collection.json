@@ -1,7 +1,7 @@
 {
 	"variables": [],
 	"info": {
-		"name": "CalificacionResource",
+		"name": "Calificacion Resource",
 		"_postman_id": "21397c38-380e-5983-a359-e156e69d68cd",
 		"description": "Pruebas iniciales del proyecto para el recurso calificacion. ",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"

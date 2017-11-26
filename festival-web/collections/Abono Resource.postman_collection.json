@@ -1,7 +1,7 @@
 {
 	"variables": [],
 	"info": {
-		"name": "Abonos",
+		"name": "Abono Resource",
 		"_postman_id": "798856eb-150c-5270-174b-1992d3de0a82",
 		"description": "Carpeta que contiene todas las pruebas relacionadas a los abonos.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
