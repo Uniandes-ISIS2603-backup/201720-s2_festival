@@ -1,8 +1,8 @@
 {
 	"variables": [],
 	"info": {
-		"name": "CriticoResource",
-		"_postman_id": "e14555ec-1db2-db28-a53d-6210e0345e62",
+		"name": "Critico Resource",
+		"_postman_id": "43536354-10d5-c0ea-9c0e-58ff3cddcadd",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -16,15 +16,13 @@
 						"type": "text/javascript",
 						"exec": [
 							"tests[\"Status code is 200\"] = responseCode.code === 200;",
-							"",
-							"var jsonData = JSON.parse(responseBody);",
-							"tests[\"Tiene una Pucula.\"] = jsonData.length === 1;"
+							""
 						]
 					}
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/festival-web/api/criticos/1/peliculas",
+				"url": "http://localhost:8080/festival-web/api/criticos/1001/peliculas",
 				"method": "GET",
 				"header": [],
 				"body": {},
@@ -40,17 +38,17 @@
 					"script": {
 						"type": "text/javascript",
 						"exec": [
-							"tests[\"Status code is 404\"] = responseCode.code === 404;"
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
 						]
 					}
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/festival-web/api/criticos/100/peliculas",
+				"url": "http://localhost:8080/festival-web/api/criticos/1009/peliculas",
 				"method": "GET",
 				"header": [],
 				"body": {},
-				"description": ""
+				"description": "Esta consulta obtiene una Lista Inicializada pero Vacía."
 			},
 			"response": []
 		},
@@ -64,8 +62,7 @@
 						"exec": [
 							"tests[\"Status code is 200\"] = responseCode.code === 200;",
 							"",
-							"var jsonData = JSON.parse(responseBody);",
-							"tests[\"Se actualizaron correcamente la PeliculaEntity\"] = jsonData.peliculas.length === 2;"
+							"//tests[\"Se actualizaron correcamente la PeliculaEntity\"] = jsonData.peliculas.length === 2;"
 						]
 					}
 				}

@@ -1,39 +1,14 @@
 {
 	"variables": [],
 	"info": {
-		"name": "Abonos",
-		"_postman_id": "798856eb-150c-5270-174b-1992d3de0a82",
-		"description": "Carpeta que contiene todas las pruebas relacionadas a los abonos.",
+		"name": "Patrocinador Resource",
+		"_postman_id": "e08b1104-546c-095e-ca92-07c470617063",
+		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Get Abono",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"type": "text/javascript",
-						"exec": [
-							"tests[\"Status code is 200\"] = responseCode.code ===200;"
-						]
-					}
-				}
-			],
-			"request": {
-				"url": "http://localhost:8080/festival-web/api/abonos/200",
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"description": "Metodo no debe recibir un abono."
-			},
-			"response": []
-		},
-		{
-			"name": "Metodo para crear un abono. copy",
+			"name": "POST",
 			"event": [
 				{
 					"listen": "test",
@@ -46,7 +21,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/festival-web/api/abonos",
+				"url": "http://localhost:8080/festival-web/api/patrocinadores",
 				"method": "POST",
 				"header": [
 					{
@@ -57,76 +32,14 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"precio\" : 550, \"espectador\": {\"id\": 1011}}"
+					"raw": "{\n\t\"name\":\"Sra. Patrocinadora\",\n\t\"NIT\":1234,\n\t\"patrocinio\":50000.00\n}"
 				},
-				"description": "Este metodo debe actualizar un Abono."
+				"description": ""
 			},
 			"response": []
 		},
 		{
-			"name": "Metodo para asociar una boleta a un abono. copy",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"type": "text/javascript",
-						"exec": [
-							"tests[\"Status code is 200\"] = responseCode.code === 200;"
-						]
-					}
-				}
-			],
-			"request": {
-				"url": "http://localhost:8080/festival-web/api/abonos/200/boletas/20",
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"description": "Este metodo debe asociar una boleta a un abono."
-			},
-			"response": []
-		},
-		{
-			"name": "Metodo para obtener una boleta de un abono",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"type": "text/javascript",
-						"exec": [
-							"tests[\"Status code is 200\"] = responseCode.code === 200;"
-						]
-					}
-				}
-			],
-			"request": {
-				"url": "http://localhost:8080/festival-web/api/abonos/200/boletas/20",
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"description": "Este metodo debe obtener una Boleta."
-			},
-			"response": []
-		},
-		{
-			"name": "Metodo para obtener una boleta de un abono (error)",
+			"name": "GET uno no Existente (error)",
 			"event": [
 				{
 					"listen": "test",
@@ -139,7 +52,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/festival-web/api/abonos/200/boletas/30",
+				"url": "http://localhost:8080/festival-web/api/patrocinadores/1",
 				"method": "GET",
 				"header": [
 					{
@@ -150,14 +63,14 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": ""
+					"raw": "{\n\t\"name\":\"Sr. Patrocinador\",\n\t\"NIT\":1234556,\n\t\"patrocinio\":250000.00\n}"
 				},
-				"description": "Este metodo no debe obtener una Boleta, debe arrojar error."
+				"description": ""
 			},
 			"response": []
 		},
 		{
-			"name": "Metodo para obtener las boletas de un abono, el arreglo debe estar vacío. copy",
+			"name": "GET uno",
 			"event": [
 				{
 					"listen": "test",
@@ -170,7 +83,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/festival-web/api/abonos/200/boletas",
+				"url": "http://localhost:8080/festival-web/api/patrocinadores/1040",
 				"method": "GET",
 				"header": [
 					{
@@ -181,14 +94,78 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": ""
+					"raw": "{\n\t\"name\":\"Sr. Patrocinador\",\n\t\"NIT\":1234556,\n\t\"patrocinio\":250000.00\n}"
 				},
-				"description": "Este metodo debe obtener un arreglo vacío del abono."
+				"description": ""
 			},
 			"response": []
 		},
 		{
-			"name": "Metodo para borrar una boleta de un abono. copy",
+			"name": "GET todos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/patrocinadores/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"Sr. Patrocinador\",\n\t\"NIT\":1234556,\n\t\"patrocinio\":250000.00\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "PUT",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/patrocinadores/1040",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"Sr. Patrocinador\",\n\t\"NIT\":1234556,\n\t\"patrocinio\":250000.00\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE",
 			"event": [
 				{
 					"listen": "test",
@@ -201,7 +178,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/festival-web/api/abonos/200/boletas/20",
+				"url": "http://localhost:8080/festival-web/api/patrocinadores/1045",
 				"method": "DELETE",
 				"header": [
 					{
@@ -214,32 +191,38 @@
 					"mode": "raw",
 					"raw": ""
 				},
-				"description": "Este metodo debe des asociar una boleta a un abono."
+				"description": ""
 			},
 			"response": []
 		},
 		{
-			"name": "Delete Abono copy",
+			"name": "DELETE no existente (error)",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"type": "text/javascript",
 						"exec": [
-							"tests[\"Status code is 204\"] = responseCode.code === 204;"
+							"tests[\"Status code is 404\"] = responseCode.code === 404;"
 						]
 					}
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/festival-web/api/abonos/200",
+				"url": "http://localhost:8080/festival-web/api/patrocinadores/1",
 				"method": "DELETE",
-				"header": [],
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": ""
 				},
-				"description": "Metodo debe eliminar un abono."
+				"description": ""
 			},
 			"response": []
 		}

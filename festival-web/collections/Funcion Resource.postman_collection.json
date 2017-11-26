@@ -1,8 +1,8 @@
 {
 	"variables": [],
 	"info": {
-		"name": "FuncionResource",
-		"_postman_id": "1be775f9-b2d4-d0c7-8e00-2d9980927378",
+		"name": "Funcion Resource",
+		"_postman_id": "de5a11e2-93d7-facb-baf4-0e82750e70cb",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -620,7 +620,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "  {\n        \"type\": \"funcionDetailDTO\",\n        \"horaFin\": \"2016-09-23T00:00:00-05:00\",\n        \"horaInicio\": \"2017-04-17T00:00:00-05:00\",\n        \"name\": \"Guerra de los codigos2\",\n        \"sala\":{\"id\":1},\n        \"festival\":{\"id\":1},\n        \"pelicula\":{\"id\":1}\n       \n    }\n"
+					"raw": "  {\n        \"type\": \"funcionDetailDTO\",\n        \"horaFin\": \"2016-09-23T00:00:00-05:00\",\n        \"horaInicio\": \"2017-04-17T00:00:00-05:00\",\n        \"name\": \"Guerra de los codigos2\",\n        \"sala\":{\"id\":1},\n        \"festival\":{\"id\":1},\n        \"pelicula\":{\"id\":1001}\n       \n    }\n"
 				},
 				"description": ""
 			},
@@ -657,6 +657,28 @@
 					"mode": "raw",
 					"raw": ""
 				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Teatro de Función con ID:1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/funciones/1/teatros",
+				"method": "GET",
+				"header": [],
+				"body": {},
 				"description": ""
 			},
 			"response": []

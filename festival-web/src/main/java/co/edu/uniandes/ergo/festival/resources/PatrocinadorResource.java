@@ -19,6 +19,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 
 @Path("/patrocinadores")
@@ -29,7 +30,10 @@ public class PatrocinadorResource {
     
     @Inject
     private PatrocinadorLogic logic;
-    
+    /**
+     * Método que obtiene una Lisa con todos los Patrocinadores.
+     * @return List<PatrocinadorDetailDTO>, Lista con todos los Patrocinadores.
+     */
     @GET
     public List<PatrocinadorDetailDTO> get() {
         List<PatrocinadorEntity> respuesta = logic.get();
@@ -39,29 +43,58 @@ public class PatrocinadorResource {
         }
         return retorno;
     }
-    
+    /**
+     * Método que obtiene un Patrocinador según su ID.
+     * @param id Long, ID del Patrocinador a consultar.
+     * @return PatrocinadorDetailDTO, Información del Patrocinador consultado.
+     */
     @GET
     @Path("{id: \\d+}")
     public PatrocinadorDetailDTO get(@PathParam("id") Long id) {
-         return new PatrocinadorDetailDTO(logic.get(id));
+        PatrocinadorEntity patrocinador = logic.get(id);
+        if(patrocinador == null)
+        {
+            throw new WebApplicationException("El recurso /patrocinadores/" + id + " no existe.", 404);
+        }
+        return new PatrocinadorDetailDTO();
     }
-    
+    /**
+     * Método que actualiza un Patrocinador.
+     * @param id Long, ID del Patrocinador a actualizar.
+     * @param patrocinador PatrocinadorDetailDTO, nueva información del Patrocinador.
+     * @return PatrocinadorDetaiLDTO, información actualiada del Patrocinador.
+     */
     @PUT
     @Path("{id: \\d+}")
     public PatrocinadorDetailDTO update(@PathParam("id") Long id, PatrocinadorDetailDTO patrocinador) {
+        patrocinador.setId(id);
+        PatrocinadorEntity entidad = logic.get(id);
+        if(entidad == null)
+        {
+            throw new WebApplicationException("El recurso /patrocinadores/" + id + " no existe.", 404);
+        }
         PatrocinadorEntity nuevo = patrocinador.toEntity();
         nuevo.setId(id);
         logic.update(nuevo);
         return new PatrocinadorDetailDTO(logic.get(id));
     }
-    
+    /**
+     * Método que crea un Patrocinador nuevo.
+     * @param nuevo PatrocinadorDetailDTO, información del Patrocinador creado.
+     * @return PatrocinadorDetailDTO, Información del Patrocinador creado.
+     */
     @POST
     public PatrocinadorDetailDTO create(PatrocinadorDetailDTO nuevo) {
         return new PatrocinadorDetailDTO(logic.create(nuevo.toEntity()));
     }
+    /**
+     * Método que borra un Patrocinador según su ID.
+     * @param id Long, ID del Patrocinador a Borrar.
+     */
     @DELETE
     @Path("{id: \\d+}")
     public void remove(@PathParam("id") Long id) {
+        get(id);
         logic.remove(id);
     }
 }
