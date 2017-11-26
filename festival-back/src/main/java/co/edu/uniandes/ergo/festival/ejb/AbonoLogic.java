@@ -6,12 +6,10 @@
 package co.edu.uniandes.ergo.festival.ejb;
 
 
-//import co.edu.uniandes.ergo.festival.entities.BoletaEntity;
 import co.edu.uniandes.ergo.festival.entities.AbonoEntity;
 import co.edu.uniandes.ergo.festival.entities.BoletaEntity;
 import co.edu.uniandes.ergo.festival.entities.EspectadorEntity;
 import co.edu.uniandes.ergo.festival.exceptions.BusinessLogicException;
-//import co.edu.uniandes.ergo.festival.persistence.BoletaPersistence;
 import co.edu.uniandes.ergo.festival.persistence.AbonoPersistence;
 import co.edu.uniandes.ergo.festival.persistence.BoletaPersistence;
 import co.edu.uniandes.ergo.festival.persistence.EspectadorPersistence;
@@ -33,8 +31,7 @@ public class AbonoLogic
     @Inject
     private BoletaPersistence persistenceBoleta;
     @Inject
-    private EspectadorPersistence persistenceEspectador;
-    
+    private EspectadorPersistence persistenceEspectador;   
     /**
      * Método que crea un Abono nueva.
      * @param entity, AbonoEntity, Abono a introducir en la Base de datos

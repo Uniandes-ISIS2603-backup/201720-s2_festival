@@ -30,14 +30,22 @@ public class PeliculaLogic {
   
     @Inject
     private FuncionLogic funLogic;
-
+    /**
+     * Método que obtiene una Lista con todas las Películas.
+     * @return List<PeliculaEntity>, Lista con todas las Películas.
+     */
     public List<PeliculaEntity> getPeliculas() {
         LOGGER.info("Inicia el proceso de consultar todas las películas.");
         List<PeliculaEntity> peliculas = persistence.findAll();
         LOGGER.info("Termina el proceso de consultar todas las películas.");
         return peliculas;
     }
-
+    /**
+     * Método que obtiene una Película según su ID.
+     * @param id Long, ID de la Película.
+     * @return PeliculaEntity, información de la Película buscada.
+     * @throws BusinessLogicException 
+     */
     public PeliculaEntity getPelicula(Long id) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar la película con id={0}", id);
 
@@ -51,7 +59,12 @@ public class PeliculaLogic {
         LOGGER.log(Level.INFO, "Termina proceso de consultar la película con id={0}", id);
         return pelicula;
     }
-
+    /**
+     * Método que crea una nueva Película.
+     * @param nueva PeliculaEntity, Información de la Película a crear.
+     * @return PeliculaEntity, Información de la Película a crear.
+     * @throws BusinessLogicException 
+     */
     public PeliculaEntity createPelicula(PeliculaEntity nueva) throws BusinessLogicException {
         LOGGER.info("Inicia proceso de creación de la película.");
 
@@ -70,7 +83,13 @@ public class PeliculaLogic {
         LOGGER.info("Termina proceso de creación de la película.");
         return conId;
     }
-
+    /**
+     * Método que actualiza una Película.
+     * @param id Long, ID de la Película a actualizar.
+     * @param entity PeliculaEntity, Nueva Información de la Película.
+     * @return PeliculaEntity, información actualizada de la Película.
+     * @throws BusinessLogicException 
+     */
     public PeliculaEntity updatePelicula(Long id, PeliculaEntity entity) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de actualizar libro con id={0}", id);
         if (persistence.find(id) == null) {
@@ -80,36 +99,34 @@ public class PeliculaLogic {
         LOGGER.log(Level.INFO, "Termina proceso de actualizar la pelícla con id={0}", entity.getId());
         return newEntity;
     }
-
+    /**
+     * Método para Borrar una Película.
+     * @param id Long, ID de la Película a Borrar.
+     */
     public void deletePelicula(Long id) {
         LOGGER.log(Level.INFO, "Inicia proceso de borrar la película con id={0}", id);
         persistence.delete(id);
         LOGGER.log(Level.INFO, "Termina proceso de borrar la película con id={0}", id);
     }
-
-//    public int ValidarCreate(PeliculaEntity peli) {
-//        LOGGER.log(Level.INFO, "corto={0}", peli.getCorto());
-//        LOGGER.log(Level.INFO, "nombre={0}", peli.getName());
-//        LOGGER.log(Level.INFO, "diracionMinutos={0}", peli.getDuracionMinutos());
-//        LOGGER.log(Level.INFO, "director={0}", peli.getDirector());
-//        LOGGER.log(Level.INFO, "creiditos={0}", peli.getCreditos());
-//        LOGGER.log(Level.INFO, "pais={0}", peli.getPais());
-//        LOGGER.log(Level.INFO, "datos={0}", peli.getDatos());
-//        return (peli.getName() == null || peli.getName().isEmpty()) ? 1
-//                : (persistence.findByName(peli.getName()) != null) ? 2
-//                : (peli.getDuracionMinutos() == 0) ? 3
-//                : (peli.getGeneros() == null || peli.getGeneros().isEmpty()) ? 4
-//                : 0;
-//
-//    }
-
+    /**
+     * Método para asociar un Crítico a una Película.
+     * @param pelId Long, ID de la Película.
+     * @param critico CriticoEntity, información del Crítico.
+     * @return PeliculaEntity, información de la Película.
+     * @throws BusinessLogicException 
+     */
     public PeliculaEntity addCritico(Long pelId, CriticoEntity critico) throws BusinessLogicException {
         PeliculaEntity peli = getPelicula(pelId);
         peli.addCritico(critico);
         persistence.update(peli);
         return peli;
     }
-    
+    /**
+     * Método para des asociar un Crítico de una Película.
+     * @param pelId Long, ID de la Pelicula.
+     * @param crId Long, ID del Crítico.
+     * @throws BusinessLogicException 
+     */
     public void removeCritico(Long pelId, Long crId) throws BusinessLogicException{
         PeliculaEntity pelicula = getPelicula(pelId);
         CriticoEntity borrar = new CriticoEntity();
@@ -117,7 +134,13 @@ public class PeliculaLogic {
         pelicula.removeCritico(borrar);
         persistence.update(pelicula);
     }
-    
+    /**
+     * Metodo que agrega una Función a una Película.
+     * @param pelId Long, ID de la Película.
+     * @param funId Long, ID de la Función.
+     * @return PeliculaEntity, información de la Película.
+     * @throws BusinessLogicException 
+     */
     public PeliculaEntity addFuncion(Long pelId, Long funId) throws BusinessLogicException{
         PeliculaEntity pelicula = getPelicula(pelId);
         LOGGER.log(Level.INFO, "Inicia proceso de asociar la función con id ={0}", funId);
@@ -126,7 +149,12 @@ public class PeliculaLogic {
         persistence.update(pelicula); // NO ESTOY SEGURO SI SE DEBE PONER ESE UPDATE
         return pelicula;
     }
-    
+    /**
+     * Metodo que obtiene una Lista con todas las Funciones de una Película.
+     * @param id Long, ID de la Película.
+     * @return List<FuncionEntity>, Lista de Funciones de una Película.
+     * @throws BusinessLogicException 
+     */
     public List<FuncionEntity> getFunciones(Long id) throws BusinessLogicException {
         PeliculaEntity pelicula = getPelicula(id);
         List<FuncionEntity> pelis = pelicula.getFunciones();
@@ -135,7 +163,13 @@ public class PeliculaLogic {
         }
         return pelis;
     }
-    
+    /**
+     * Método que obtiene una Función específica de una Película.
+     * @param peliculaId Long, ID de la Película.
+     * @param funcionId Long, ID de la Función.
+     * @return FuncionEntity, Información de la Función de la Película.
+     * @throws BusinessLogicException 
+     */
     public FuncionEntity getFuncion(Long peliculaId, Long funcionId) throws BusinessLogicException {
 
         PeliculaEntity pelicula = getPelicula(peliculaId);

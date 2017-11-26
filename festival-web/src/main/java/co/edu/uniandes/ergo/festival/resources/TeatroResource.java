@@ -5,10 +5,12 @@
  */
 package co.edu.uniandes.ergo.festival.resources;
 
+import co.edu.uniandes.ergo.festival.dtos.FuncionDTO;
 import co.edu.uniandes.ergo.festival.dtos.SalaDTO;
 import co.edu.uniandes.ergo.festival.dtos.SalaDetailDTO;
 import co.edu.uniandes.ergo.festival.dtos.TeatroDetailDTO;
 import co.edu.uniandes.ergo.festival.ejb.TeatroLogic;
+import co.edu.uniandes.ergo.festival.entities.FuncionEntity;
 import co.edu.uniandes.ergo.festival.entities.SalaEntity;
 import co.edu.uniandes.ergo.festival.entities.TeatroEntity;
 import co.edu.uniandes.ergo.festival.exceptions.BusinessLogicException;
@@ -202,7 +204,25 @@ public class TeatroResource
     {
         teatroLogic.removeSala(TeatroId, salasId);
     }
-
+    /**
+     * Método que obtiene las Funciones de un Teatro especificado mediante ID.
+     * @param teatroId Long, ID del Teatro.
+     * @return List<FuncionDTO>, Lista de Funciones de un Teatro.
+     */
+    @GET
+    @Path("{TeatroId: \\d+ }/funciones")
+    public List<FuncionDTO> getFunciones(@PathParam("TeatroId") Long teatroId)
+    {
+        TeatroEntity teatro = teatroLogic.getTeatro(teatroId);
+        if (teatro == null)
+        {
+            throw new WebApplicationException("El teatro con id: " + teatroId + " no existe.", 404);
+        }
+        List<FuncionDTO> respuesta = funcionesListEntity2DTO(teatroLogic.getFuncionesFromTeatro(teatroId));
+        
+        return respuesta;
+    }
+    
     /**
      * Método que convierte una lista de entidades de sala a una lista de DTOS de Sala.
      * @param entityList List<SalaEntity>, Entidades de Salas.
@@ -214,6 +234,20 @@ public class TeatroResource
         for(SalaEntity entity : entityList)
         {
             list.add(new SalaDTO( entity));
+        }
+        return list;
+    }
+    /**
+     * Método que convierte una Lista de Entidades de Funciones a FuncionDTOs
+     * @param entityList List<FuncionEntity>, lista de Entidades de Funciones.
+     * @return List<FuncionDTO> Lista de DTOS de Funciones.
+     */
+    private List<FuncionDTO> funcionesListEntity2DTO(List<FuncionEntity> entityList)
+    {
+        List<FuncionDTO> list = new ArrayList<>();
+        for(FuncionEntity entity : entityList)
+        {
+            list.add(new FuncionDTO(entity));
         }
         return list;
     }

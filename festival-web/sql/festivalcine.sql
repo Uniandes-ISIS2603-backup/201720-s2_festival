@@ -27,19 +27,30 @@ delete from FestivalEntity;
     insert into FestivalEntity(id, name, fechaInicio, fechaFin) values (2, 'invierno', '8/24/2017','9/7/2017' );
     insert into FestivalEntity(id, name, fechaInicio, fechaFin) values (3, 'primavera', '9/8/2017','9/23/2017' );
     insert into FestivalEntity(id, name, fechaInicio, fechaFin) values (4, 'otonio', '9/24/2017','10/7/2017' );
+/* TeatroEntity */
 
+    insert into TeatroEntity(id, name, tarifaBasica) values (1, 'colombia', 8000);
+    insert into TeatroEntity(id, name, tarifaBasica) values (2, 'chapinero', 7000);
+    insert into TeatroEntity(id, name, tarifaBasica) values (3, 'colon', 7500);
+    insert into TeatroEntity(id, name, tarifaBasica) values (4, 'catellana', 8500);
+    insert into TeatroEntity(id, name, tarifaBasica) values (5, 'country', 9000);
+    insert into TeatroEntity(id, name, tarifaBasica) values (6, 'occidental', 8500);
+    insert into TeatroEntity(id, name, tarifaBasica) values (7, 'central' ,7500);
+    insert into TeatroEntity(id, name, tarifaBasica) values (8, 'oriental', 7500);
+    insert into TeatroEntity(id, name, tarifaBasica) values (9, 'norte',9000);
+    insert into TeatroEntity(id, name, tarifaBasica) values (10, 'sur' ,8600);
 /* SalaEntity */   
 
-    insert into SalaEntity (id, name, numSillas, numSillasPreferenciales) values (1, 's1', 40, 10);
-    insert into SalaEntity (id, name, numSillas, numSillasPreferenciales) values (2, 's2', 40, 10);
-    insert into SalaEntity (id, name, numSillas, numSillasPreferenciales) values (3, 's3', 40, 10);
-    insert into SalaEntity (id, name, numSillas, numSillasPreferenciales) values (4, 's4', 40, 10);
-    insert into SalaEntity (id, name, numSillas, numSillasPreferenciales) values (5, 's5', 40, 10);
-    insert into SalaEntity (id, name, numSillas, numSillasPreferenciales) values (6, 's6', 40, 10);
-    insert into SalaEntity (id, name, numSillas, numSillasPreferenciales) values (7, 's7', 40, 10);
-    insert into SalaEntity (id, name, numSillas, numSillasPreferenciales) values (8, 's8', 40, 10);
-    insert into SalaEntity (id, name, numSillas, numSillasPreferenciales) values (9, 's9', 40, 10);
-    insert into SalaEntity (id, name, numSillas, numSillasPreferenciales) values (10, 's10', 40, 10);
+    insert into SalaEntity (id, name, numSillas, numSillasPreferenciales, teatro_id) values (1, 's1', 40, 10, 1);
+    insert into SalaEntity (id, name, numSillas, numSillasPreferenciales, teatro_id) values (2, 's2', 40, 10, 2);
+    insert into SalaEntity (id, name, numSillas, numSillasPreferenciales, teatro_id) values (3, 's3', 40, 10, 3);
+    insert into SalaEntity (id, name, numSillas, numSillasPreferenciales, teatro_id) values (4, 's4', 40, 10, 4);
+    insert into SalaEntity (id, name, numSillas, numSillasPreferenciales, teatro_id) values (5, 's5', 40, 10, 5);
+    insert into SalaEntity (id, name, numSillas, numSillasPreferenciales, teatro_id) values (6, 's6', 40, 10, 6);
+    insert into SalaEntity (id, name, numSillas, numSillasPreferenciales, teatro_id) values (7, 's7', 40, 10, 7);
+    insert into SalaEntity (id, name, numSillas, numSillasPreferenciales, teatro_id) values (8, 's8', 40, 10, 8);
+    insert into SalaEntity (id, name, numSillas, numSillasPreferenciales, teatro_id) values (9, 's9', 40, 10, 9);
+    insert into SalaEntity (id, name, numSillas, numSillasPreferenciales, teatro_id) values (10, 's10', 40, 10, 10);
 
 /* SillaEntity */
 
@@ -89,6 +100,17 @@ delete from PeliculaEntity;
     insert into FuncionEntity (id, name, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (9, 'Holokaustin värit', '3/2/2017', '7/13/2017',1,1,1001);
     insert into FuncionEntity (id, name, horaInicio, horaFin,sala_id,festival_id,pelicula_id) values (10, 'Panic Room', '10/18/2016', '12/28/2016',1,1,1001);
 
+/* SalaEntity_FuncionEntity*/
+insert into SalaEntity_FuncionEntity(SalaEntity_ID,Funciones_ID) values(1,1);
+insert into SalaEntity_FuncionEntity(SalaEntity_ID,Funciones_ID) values(1,2);
+insert into SalaEntity_FuncionEntity(SalaEntity_ID,Funciones_ID) values(3,3);
+insert into SalaEntity_FuncionEntity(SalaEntity_ID,Funciones_ID) values(4,4);
+insert into SalaEntity_FuncionEntity(SalaEntity_ID,Funciones_ID) values(5,5);
+insert into SalaEntity_FuncionEntity(SalaEntity_ID,Funciones_ID) values(6,6);
+insert into SalaEntity_FuncionEntity(SalaEntity_ID,Funciones_ID) values(7,7);
+insert into SalaEntity_FuncionEntity(SalaEntity_ID,Funciones_ID) values(8,8);
+insert into SalaEntity_FuncionEntity(SalaEntity_ID,Funciones_ID) values(9,9);
+insert into SalaEntity_FuncionEntity(SalaEntity_ID,Funciones_ID) values(10,10);
 /* CriticoEntity */
 
     insert into PersonaEntity (id, name, dtype) values (1001, 'Inger Danielou', 'CriticoEntity');
@@ -203,19 +225,6 @@ delete from PeliculaEntity;
 
     Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus ', 1001, 9);
     insert into CriticaEntity (id, comentario, critico_id, funcion_id) values (10, 'Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.', 1005, 10);
-
-/* TeatroEntity */
-
-    insert into TeatroEntity(id, name, tarifaBasica) values (1, 'colombia', 8000);
-    insert into TeatroEntity(id, name, tarifaBasica) values (2, 'chapinero', 7000);
-    insert into TeatroEntity(id, name, tarifaBasica) values (3, 'colon', 7500);
-    insert into TeatroEntity(id, name, tarifaBasica) values (4, 'catellana', 8500);
-    insert into TeatroEntity(id, name, tarifaBasica) values (5, 'country', 9000);
-    insert into TeatroEntity(id, name, tarifaBasica) values (6, 'occidental', 8500);
-    insert into TeatroEntity(id, name, tarifaBasica) values (7, 'central' ,7500);
-    insert into TeatroEntity(id, name, tarifaBasica) values (8, 'oriental', 7500);
-    insert into TeatroEntity(id, name, tarifaBasica) values (9, 'norte',9000);
-    insert into TeatroEntity(id, name, tarifaBasica) values (10, 'sur' ,8600);
 
 /* boletas de Espectador*/
 

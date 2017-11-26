@@ -25,7 +25,11 @@ public class CalificacionPersistence {
     
     @PersistenceContext(unitName = "festivalPU")
     protected EntityManager em;
-    
+    /**
+     * Método que crea una nueva Calificación.
+     * @param entity
+     * @return 
+     */
     public CalificacionEntity create(CalificacionEntity entity){
         LOGGER.log(Level.INFO, "Creando la calificacion nueva.");
         
@@ -35,13 +39,20 @@ public class CalificacionPersistence {
         
         return entity;
     }
-    
+    /**
+     * Método que busca una Calificación según su ID.
+     * @param id Long ID de la Calificación a buscar.
+     * @return CalificaciónEntity, Calificacion buscada.
+     */
     public CalificacionEntity find(Long id){
         LOGGER.log(Level.INFO, "Buscando calificacion con id: ", id);
         
         return em.find(CalificacionEntity.class, id);
     }
-    
+    /**
+     * Metodo que obtiene una Lista con todas las Calificaiones.
+     * @return List<CalificacionEntity>, Lista de Calificaciones.
+     */
     public List<CalificacionEntity> findAll(){
         LOGGER.log(Level.INFO, "Buscando todas las calificaciones.");
         
@@ -49,12 +60,21 @@ public class CalificacionPersistence {
         
         return query.getResultList();
     }
+    /**
+     * Método que actualiza una Calificación.
+     * @param entity CalificacionEntity, nueva información de la Calificación.
+     * @return CalificacionEntity, Calificación actualizada.
+     */
     public CalificacionEntity update(CalificacionEntity entity){
         LOGGER.log(Level.INFO, "Actualizando calificacion con id: {0}", entity.getId());
         
         return em.merge(entity);
     }
-    
+    /**
+     * Metodo que elimina una Calificación según su ID.
+     * @param id Long, ID de la Calificación a borrar.
+     * @return CalificacionEntity, Calificación Borrada.
+     */
     public CalificacionEntity delete(Long id){
         LOGGER.log(Level.INFO, "Borrando la calificacion con id: ", id);
         CalificacionEntity ent =em.find(CalificacionEntity.class, id);

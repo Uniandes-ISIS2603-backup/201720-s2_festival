@@ -25,7 +25,6 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 
@@ -42,12 +41,19 @@ public class EspectadorResource {
     @Inject
     private EspectadorLogic logic;
     @Inject BoletaLogic bLogic;
-
+    /**
+     * Método que obtiene todos los Espectadores.
+     * @return List<EspectadorDetailDTO>, Lista de Espectadores.
+     */
     @GET
     public List<EspectadorDetailDTO> getEspectadores() {
         return listEntity2DTO(logic.getEspectadores());
     }
-
+    /**
+     * Método que obtiene un Espectador según su ID.
+     * @param id Long, ID del Espectador.
+     * @return EspectadorDetailDTO, información de un Espectador.
+     */
     @GET
     @Path("{id: \\d+}")
     public EspectadorDetailDTO getEspectadorById(@PathParam("id") Long id) {
@@ -59,12 +65,23 @@ public class EspectadorResource {
         return new EspectadorDetailDTO(cri);
 
     }
-
+    /**
+     * Método que crea un Espectador.
+     * @param cri EspectadorDetailDTO, Información del Espectador a crear.
+     * @return EspectadorDeatailDTO, Espectador creado.
+     * @throws BusinessLogicException 
+     */
     @POST
     public EspectadorDetailDTO createEspectador(EspectadorDetailDTO cri) throws BusinessLogicException {
         return new EspectadorDetailDTO(logic.createEspectador(cri.toEntity()));
     }
-
+    /**
+     * Método que actualiza la información de un Espectador.
+     * @param id Long, ID del Espectador a actualizar.
+     * @param cri EspectadorDetailDTO, nueva Información del Espectador.
+     * @return EspectadorDetailDTO, Espectador actualizado.
+     * @throws BusinessLogicException 
+     */
     @PUT
     @Path("{id: \\d+}")
     public EspectadorDetailDTO updateEspectador(@PathParam("id") Long id, EspectadorDetailDTO cri) throws BusinessLogicException {
@@ -72,7 +89,10 @@ public class EspectadorResource {
         entity.setId(id);
         return new EspectadorDetailDTO(logic.updateEspectador(id, entity));
     }
-
+    /**
+     * Método que borra un Espectador según su ID.
+     * @param id Long, ID del Espectador a Borrar.
+     */
     @DELETE
     @Path("{id: \\d+}")
     public void deleteEspectador(@PathParam("id") Long id) {
@@ -84,12 +104,23 @@ public class EspectadorResource {
     }
 
     //ABONOS DE ESPECTADOR 
+    /**
+     * Método que obtiene los Abonos de un Espectador.
+     * @param id Long, ID del Espectador cuyos abonos se desean obtener.
+     * @return List<AbonoDTO>, Abonos del Espectador.
+     */
     @GET
     @Path("{id: \\d+}/abonos")
     public List<AbonoDTO> darAbonos(@PathParam("id") Long id) {
         return listAbonoEntity2DTO(logic.darMisAbonos(id));
     }
-
+    /**
+     * Método que crea un Abono a nombre de un Espectador.
+     * @param id Long, ID del Espectador.
+     * @param abono AbonoEntity, Información del Abono a agregar.
+     * @return EspectadorDetailDTO, Espectador actualizado con el nuevo Abono.
+     * @throws BusinessLogicException 
+     */
     @POST
     @Path("{id: \\d+}/abonos")
     public EspectadorDetailDTO crearAbono(@PathParam("id") Long id, AbonoEntity abono) throws BusinessLogicException {
@@ -99,21 +130,13 @@ public class EspectadorResource {
         }
         return new EspectadorDetailDTO(logic.addAbono(id, abono));
     }
-
-    /*
-    @PUT
-    @Path("{id: \\d+}/abonos/{idA: \\d+}")
-    public EspectadorDetailDTO actualizarAbono(@PathParam("id") Long id, @PathParam("idA") Long idAbono, AbonoEntity abono) throws BusinessLogicException {
-        EspectadorEntity espectador = logic.getEspectador(id);
-        if (espectador == null) {
-            throw new WebApplicationException("El espectador con id: " + id + " no existe.", 404);
-        }
-        abono.setId(idAbono);
-        return new EspectadorDetailDTO(logic.updateAbono(id, abono));
-    }
-     */
     //FIN ABONOS
     //BOLETAS DE ESPECTADOR
+    /**
+     * Método que obtiene las Boletas de un Espectador.
+     * @param id Long, ID del Espectador.
+     * @return List<BoletaDTO>, Lista de Boletas de un Espectador.
+     */
     @GET
     @Path("{especId: \\d+}/boletas")
     public List<BoletaDTO> darBoletasDeEspectador(@PathParam("especId") Long id) {
@@ -123,29 +146,12 @@ public class EspectadorResource {
         }
         return listBoletaEntity2DTO(logic.darBoletasEspec(id));
     }
-    /*
-      @POST
-    public EspectadorDetailDTO agregarBoleta(@PathParam("espectadorId") Long id, @QueryParam("idBoleta") Long idBoleta) throws BusinessLogicException {
-        EspectadorEntity espectador = logic.getEspectador(id);
-        if (espectador == null) {
-            throw new WebApplicationException("El espectador con id: " + id + " no existe.", 404);
-        }
-        BoletaEntity boleta = bLogic.getBoleta(idBoleta);
-        if (boleta == null) {
-            throw new WebApplicationException("La boleta con id: " + idBoleta + " no existe.", 404);
-        }
-
-        espectador.addBoleta(boleta);
-        bLogic.addEspectadorFromBoleta(idBoleta, espectador.getId());
-
-        return new EspectadorDetailDTO(logic.asociarBoleta(id, bLogic.getBoleta(idBoleta)));
-    }
-*/
     //FIN DE BOLETAS
-    
-    
-    
-    
+    /**
+     * Método que transforma una lista de Entidades de Espectador a sus versiones DTO.
+     * @param entityList List<EspectadorEntity>, Lista de Entidades de Espectadores.
+     * @return List<EspectadorDetailDTO> Lista de DTOS de Espectadores.
+     */
     private List<EspectadorDetailDTO> listEntity2DTO(List<EspectadorEntity> entityList) {
         List<EspectadorDetailDTO> list = new ArrayList<>();
         for (EspectadorEntity entity : entityList) {

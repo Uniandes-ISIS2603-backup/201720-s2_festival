@@ -35,9 +35,12 @@ public class CriticoPeliculaResource {
 
     @Inject
     private CriticoLogic criticoLogic;
-    @Inject
-    private PeliculaLogic peliculaLogic;
-
+    /**
+     * Método que obtiene todas las Películas de un Crítico.
+     * @param idCritico Long, ID del Crítico.
+     * @return List<PeliculaDTO>, Lista de Películas del Crítico.
+     * @throws BusinessLogicException 
+     */
     @GET
     public List<PeliculaDTO> getPeliculasCritico(@PathParam("CriticoId") Long idCritico) throws BusinessLogicException {
         CriticoEntity critico = criticoLogic.getCritico(idCritico);
@@ -46,7 +49,13 @@ public class CriticoPeliculaResource {
         }
         return listEntity2listDTO(criticoLogic.getPeliculas(idCritico));
     }
-
+    /**
+     * Método que obtiene una Película de un Crítico.
+     * @param criticoId Long, ID del Crítico.
+     * @param pelId Long, ID de la Película.
+     * @return
+     * @throws BusinessLogicException 
+     */
     @GET
     @Path("{PeliculaId: \\d+}")
     public PeliculaDetailDTO getPelicula(@PathParam("CriticoId") Long criticoId, @PathParam("PeliculaId") Long pelId) throws BusinessLogicException {
@@ -56,7 +65,13 @@ public class CriticoPeliculaResource {
         }
         return new PeliculaDetailDTO(criticoLogic.getPelicula(criticoId, pelId));
     }
-
+    /**
+     * Método que asocia una Película a un Crítico
+     * @param pelId Long, ID de la Película a asociar.
+     * @param crId Long, ID del Crítico.
+     * @return PeliculaDetailDTO, Película asociada.
+     * @throws BusinessLogicException 
+     */
     @POST
     @Path("{PeliculaId: \\d+}")
     public PeliculaDetailDTO addPelicula(@PathParam("PeliculaId") Long pelId, @PathParam("CriticoId") Long crId) throws BusinessLogicException {
@@ -66,7 +81,12 @@ public class CriticoPeliculaResource {
         }
         return new PeliculaDetailDTO(criticoLogic.addPelicula(crId, pelId));
     }
-    
+    /**
+     * Método que remueve una Película.
+     * @param crId Long, ID del Crítico.
+     * @param pelId Long, ID de la Película.
+     * @throws BusinessLogicException 
+     */
     @DELETE
     @Path("{PeliculaId: \\d+}")
     public void removePelicula(@PathParam("CriticoId") Long crId, @PathParam("PeliculaId") Long pelId) throws BusinessLogicException{

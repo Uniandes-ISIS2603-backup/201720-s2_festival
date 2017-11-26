@@ -8,6 +8,7 @@ package co.edu.uniandes.ergo.festival.ejb;
 import co.edu.uniandes.ergo.festival.entities.*;
 import co.edu.uniandes.ergo.festival.exceptions.BusinessLogicException;
 import co.edu.uniandes.ergo.festival.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -178,5 +179,28 @@ public class TeatroLogic
         sala.setTeatro(null);
         teatro.getSalas().remove(sala);
     }
-
+    /**
+     * Método que obtiene las Funciones de un Teatro.
+     * @param id
+     * @return 
+     */
+    public List<FuncionEntity> getFuncionesFromTeatro(Long id)
+    {
+        LOGGER.info("Entró a método");
+        TeatroEntity teatro = getTeatro(id);
+        List<SalaEntity> salas = teatro.getSalas();
+        LOGGER.info("Obtiene Salas");
+        LOGGER.info("Salas.size(): " + salas.size());
+        List<FuncionEntity> funciones = new ArrayList<FuncionEntity>();
+        for(int i = 0; i < salas.size(); i++)
+        {
+            List<FuncionEntity> temp = salaLogic.get(salas.get(i).getId()).getFunciones();
+            LOGGER.info("tempsize(): " + temp.size());
+            for(int j = 0; j < temp.size(); j++)
+            {
+                funciones.add(temp.get(j));
+            }
+        }
+        return funciones;
+    }
 }
