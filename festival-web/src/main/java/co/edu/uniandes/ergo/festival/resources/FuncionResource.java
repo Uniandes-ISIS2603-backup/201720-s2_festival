@@ -7,11 +7,14 @@ package co.edu.uniandes.ergo.festival.resources;
 
 
 import co.edu.uniandes.ergo.festival.dtos.BoletaDTO;
+import co.edu.uniandes.ergo.festival.dtos.CalificacionDTO;
+import co.edu.uniandes.ergo.festival.dtos.CalificacionDetailDTO;
 import co.edu.uniandes.ergo.festival.dtos.CriticaDTO;
 import co.edu.uniandes.ergo.festival.dtos.FuncionDetailDTO;
 import co.edu.uniandes.ergo.festival.dtos.TeatroDTO;
 import co.edu.uniandes.ergo.festival.ejb.FuncionLogic;
 import co.edu.uniandes.ergo.festival.entities.BoletaEntity;
+import co.edu.uniandes.ergo.festival.entities.CalificacionEntity;
 import co.edu.uniandes.ergo.festival.entities.CriticaEntity;
 import co.edu.uniandes.ergo.festival.entities.FuncionEntity;
 import co.edu.uniandes.ergo.festival.entities.SalaEntity;
@@ -245,4 +248,31 @@ public class FuncionResource {
         }
         return new TeatroDTO(teatro);
     }
+    /**
+     * Método que obtiene las Calificaciones de una Funcion.
+     * @param idFuncion Long, ID de la Función.
+     * @return List<CalificacionDetailDTO>, Lista con todas las Calificaciones asignadas a esta Función.
+     * @throws BusinessLogicException 
+     */
+    @GET
+    @Path("{funcionid:\\d+}/calificaciones")
+    public List<CalificacionDetailDTO> getCalificacionesFromFuncion(@PathParam("funcionid")Long idFuncion)throws BusinessLogicException
+    {
+        getFuncion(idFuncion);
+        List<CalificacionEntity> entities = funcionLogic.getCalificacionesPorFuncion(idFuncion);
+        return listCalificacionEntity2DTO(entities);
+    }
+    
+    /**
+    * Convierte una lista de CalificacionEntity a una lista de CalificacionDetailDTO.     *
+    * @param entityList Lista de AuthorEntity a convertir.
+    * @return Lista de AuthorDetailDTO convertida.     * 
+    */
+   private List<CalificacionDetailDTO> listCalificacionEntity2DTO(List<CalificacionEntity> entityList) {
+       List<CalificacionDetailDTO> list = new ArrayList<>();
+       for (CalificacionEntity entity : entityList) {
+           list.add(new CalificacionDetailDTO(entity));
+       }
+       return list;
+   }
 }
