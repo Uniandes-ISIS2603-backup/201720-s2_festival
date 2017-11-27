@@ -167,11 +167,12 @@ div.sticky {
 	margin: 0;
 	margin-top: 0;
 	transform: translateY(-10%);
+	border-bottom: 2px solid red;
 }
 
 div.calificaciones {
 	
-	background-color: blue;
+	
 }
 
 div.calificacionN {
