@@ -5,10 +5,12 @@
  */
 package co.edu.uniandes.ergo.festival.resources;
 
+import co.edu.uniandes.ergo.festival.dtos.CalificacionDTO;
 import co.edu.uniandes.ergo.festival.dtos.FuncionDTO;
 import co.edu.uniandes.ergo.festival.dtos.FuncionDetailDTO;
 import co.edu.uniandes.ergo.festival.dtos.PeliculaDetailDTO;
 import co.edu.uniandes.ergo.festival.ejb.PeliculaLogic;
+import co.edu.uniandes.ergo.festival.entities.CalificacionEntity;
 import co.edu.uniandes.ergo.festival.entities.FuncionEntity;
 import co.edu.uniandes.ergo.festival.entities.PeliculaEntity;
 import co.edu.uniandes.ergo.festival.exceptions.BusinessLogicException;
@@ -149,6 +151,16 @@ public class PeliculaResource {
         }
         return new FuncionDetailDTO(logic.getFuncion(peliculaId, pelId));
     }
+    
+    @GET
+    @Path("{id: \\d+}/calificaciones")
+    public List<CalificacionDTO> getCalificacionesFromPelicula(@PathParam("id") Long peliculaId) throws BusinessLogicException{
+        PeliculaEntity pelicula = logic.getPelicula(peliculaId);
+        if (pelicula == null) {
+            throw new WebApplicationException("El crítico con id: " + peliculaId + " no existe.", 404);
+        }
+        return listCalificacionEntity2CalificacionDTO(logic.getCalificaciones(peliculaId));
+    }
     /**
      * Método que transforma una Lista de Entidades de Películas a sus versiones DTOS.
      * @param entityList LIst<PeliculaEntity>, Lista de Entidades de Películas.
@@ -174,4 +186,13 @@ public class PeliculaResource {
         }
         return funcionesDTO;
     }
+    
+       private List<CalificacionDTO> listCalificacionEntity2CalificacionDTO(List<CalificacionEntity> entityList) {
+       List<CalificacionDTO> list = new ArrayList<>();
+       for (CalificacionEntity entity : entityList) {
+           list.add(new CalificacionDTO(entity));
+       }
+       return list;
+   }
+    
 }

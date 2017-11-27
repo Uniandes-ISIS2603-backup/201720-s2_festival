@@ -71,15 +71,13 @@
 				<div style="margin: 0px;"> 
 					<p>header no fijo</p>
 				</div>
-				<div class="sticky" id="promedio-calificacion" style="background-color: red;">
+				<div class="sticky" id="promedio-calificacion" style="background-color: yellow;">
 					<p>buenas header fijo</p>
 				</div>
 				<div class="calificaciones">
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt fermentum enim, ut consectetur massa tempor ac. Nunc dapibus ipsum ac dolor malesuada pretium. Nulla dapibus id augue ut accumsan. Cras ornare vehicula egestas. Mauris vestibulum aliquam odio a malesuada. Fusce auctor lorem ullamcorper luctus eleifend. Nullam finibus nec nisi a facilisis. Integer elementum, est quis convallis hendrerit, mauris ante tempus felis, id congue nunc lectus id massa. Vestibulum quis est sed purus consequat congue nec quis risus. Phasellus luctus, quam bibendum pretium tempus, neque diam iaculis erat, quis eleifend leo tellus eget massa. Sed condimentum eget augue quis dictum. Ut posuere nunc eros, at suscipit massa hendrerit id. Nulla in nulla aliquam, ullamcorper lacus ut, laoreet lacus. Vivamus commodo eros ut nunc rutrum, eu rhoncus justo semper.
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt fermentum enim, ut consectetur massa tempor ac. Nunc dapibus ipsum ac dolor malesuada pretium. Nulla dapibus id augue ut accumsan. Cras ornare vehicula egestas. Mauris vestibulum aliquam odio a malesuada. Fusce auctor lorem ullamcorper luctus eleifend. Nullam finibus nec nisi a facilisis. Integer elementum, est quis convallis hendrerit, mauris ante tempus felis, id congue nunc lectus id massa. Vestibulum quis est sed purus consequat congue nec quis risus. Phasellus luctus, quam bibendum pretium tempus, neque diam iaculis erat, quis eleifend leo tellus eget massa. Sed condimentum eget augue quis dictum. Ut posuere nunc eros, at suscipit massa hendrerit id. Nulla in nulla aliquam, ullamcorper lacus ut, laoreet lacus. Vivamus commodo eros ut nunc rutrum, eu rhoncus justo semper.
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt fermentum enim, ut consectetur massa tempor ac. Nunc dapibus ipsum ac dolor malesuada pretium. Nulla dapibus id augue ut accumsan. Cras ornare vehicula egestas. Mauris vestibulum aliquam odio a malesuada. Fusce auctor lorem ullamcorper luctus eleifend. Nullam finibus nec nisi a facilisis. Integer elementum, est quis convallis hendrerit, mauris ante tempus felis, id congue nunc lectus id massa. Vestibulum quis est sed purus consequat congue nec quis risus. Phasellus luctus, quam bibendum pretium tempus, neque diam iaculis erat, quis eleifend leo tellus eget massa. Sed condimentum eget augue quis dictum. Ut posuere nunc eros, at suscipit massa hendrerit id. Nulla in nulla aliquam, ullamcorper lacus ut, laoreet lacus. Vivamus commodo eros ut nunc rutrum, eu rhoncus justo semper.
-					</p>
+					<div class="calificacionN" ng-repeat="calificacion in calificaciones">
+						<p> {{calificacion.comentario}} </p>
+					</div>
 				</div>
 			</div>
 		</div>

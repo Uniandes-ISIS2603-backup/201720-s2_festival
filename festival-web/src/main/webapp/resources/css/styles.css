@@ -173,3 +173,7 @@ div.calificaciones {
 	
 	background-color: blue;
 }
+
+div.calificacionN {
+	border-bottom: 2px solid red;
+}
