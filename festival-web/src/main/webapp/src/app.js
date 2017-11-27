@@ -16,7 +16,8 @@
         'patrocinadoresModule',
         'sillasModule',
         'criticasModule',
-        'loginModule'
+        'loginModule',
+        'peliculaAmpliadaModule'
         //        'espectadoresModule',
         ]);
     
