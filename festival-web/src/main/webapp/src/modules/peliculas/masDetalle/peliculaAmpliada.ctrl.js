@@ -9,9 +9,13 @@
 				$scope.trustSrc = function(src) {
 					return $sce.trustAsResourceUrl(src);
 				};
-				
+
 				$http.get(peliculasContext + $state.params.peliculaId + '/calificaciones').then(function (response) {
 					$scope.calificaciones = response.data;
+				});
+
+				$http.get(peliculasContext + $state.params.peliculaId + '/promedioCalificaciones').then(function (response) {
+					$scope.promedio = response.data.calificacion;
 				});
 
 				$http.get(peliculasContext + $state.params.peliculaId + '/funciones').then(function (response) {

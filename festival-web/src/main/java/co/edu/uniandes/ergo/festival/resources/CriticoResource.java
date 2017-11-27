@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package co.edu.uniandes.ergo.festival.resources;
-
 import co.edu.uniandes.ergo.festival.dtos.CriticoDetailDTO;
 import co.edu.uniandes.ergo.festival.dtos.PeliculaDTO;
 import co.edu.uniandes.ergo.festival.ejb.CriticoLogic;

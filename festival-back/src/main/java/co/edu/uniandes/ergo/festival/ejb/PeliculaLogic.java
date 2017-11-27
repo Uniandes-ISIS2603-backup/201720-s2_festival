@@ -214,4 +214,14 @@ public class PeliculaLogic {
         return calificaciones;
     }
 
+    public Double getCalificacionPromedioFromPelicula(Long peliculaId) throws BusinessLogicException {
+        Double promedio = 0.0;
+        List<CalificacionEntity> calificaciones = getCalificaciones(peliculaId);
+        
+        for (CalificacionEntity cal : calificaciones){
+            promedio += cal.getCalificacion();
+        }
+        return promedio / calificaciones.size();
+    }
+
 }

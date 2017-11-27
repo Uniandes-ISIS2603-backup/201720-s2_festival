@@ -168,6 +168,7 @@ div.sticky {
 	margin-top: 0;
 	transform: translateY(-10%);
 	border-bottom: 2px solid red;
+	background-color: #efefef;
 }
 
 div.calificaciones {
