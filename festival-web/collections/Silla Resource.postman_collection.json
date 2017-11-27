@@ -1,14 +1,14 @@
 {
 	"variables": [],
 	"info": {
-		"name": "CriticaResource",
-		"_postman_id": "3c5f7533-e7f2-fb69-954a-63ab08d0d8b9",
+		"name": "Silla Resource",
+		"_postman_id": "4f41f984-324b-676e-7e79-cd9ec9569922",
 		"description": "Pruebas de los servicios REST de SillaResource.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Crear una CriticoEntity",
+			"name": "Crear una SillaEntity",
 			"event": [
 				{
 					"listen": "test",
@@ -21,7 +21,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/festival-web/api/criticas",
+				"url": "http://localhost:8080/festival-web/api/sillas",
 				"method": "POST",
 				"header": [
 					{
@@ -32,14 +32,14 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"comentario\":\"Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.\\n\\nPraesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.\\n\\nMorbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.\", \"critico\":{\"id\":\"1001\"},\"funcion\":{\"id\":\"1\"}}"
+					"raw": "{\"tarifa\":73.78,\"esPreferencial\":false, \"sala\":{\"id\":5}}"
 				},
 				"description": ""
 			},
 			"response": []
 		},
 		{
-			"name": "Crear una CriticaEntity con una CriticoEntity que no existe",
+			"name": "Crear una SillaEntity sin SalaEntity",
 			"event": [
 				{
 					"listen": "test",
@@ -52,7 +52,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/festival-web/api/criticas",
+				"url": "http://localhost:8080/festival-web/api/sillas",
 				"method": "POST",
 				"header": [
 					{
@@ -63,14 +63,14 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"comentario\":\"Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.\\n\\nPraesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.\\n\\nMorbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.\", \"critico\":{\"id\":\"40\"},\"funcion\":{\"id\":\"1\"}}"
+					"raw": "{\"tarifa\":73.78,\"esPreferencial\":false}"
 				},
 				"description": ""
 			},
 			"response": []
 		},
 		{
-			"name": "Crear una CriticaEntity con una FuncionEntity que no existe",
+			"name": "Crear una SillaEntity con una SalaEntity que no existe",
 			"event": [
 				{
 					"listen": "test",
@@ -83,7 +83,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/festival-web/api/criticas",
+				"url": "http://localhost:8080/festival-web/api/sillas",
 				"method": "POST",
 				"header": [
 					{
@@ -94,79 +94,14 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"comentario\":\"Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.\\n\\nPraesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.\\n\\nMorbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.\", \"critico\":{\"id\":\"1\"},\"funcion\":{\"id\":\"100\"}}"
+					"raw": "{\"tarifa\":73.78,\"esPreferencial\":false, \"sala\":{\"id\":500}}"
 				},
 				"description": ""
 			},
 			"response": []
 		},
 		{
-			"name": "Crear una CriticaEntity sin CriticoEntity",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"type": "text/javascript",
-						"exec": [
-							"tests[\"Status code is 200\"] = responseCode.code === 200;",
-							"",
-							"var jsonData = JSON.parse(responseBody);",
-							"tests[\"Se creó la CriticaEntity\"] = jsonData.hasOwnProperty(\"id\");"
-						]
-					}
-				}
-			],
-			"request": {
-				"url": "http://localhost:8080/festival-web/api/criticas",
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\"comentario\":\"Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.\\n\\nPraesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.\\n\\nMorbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.\", \"funcion\":{\"id\":\"1\"}}"
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Crear una CriticaEntity sin FuncionEntity",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"type": "text/javascript",
-						"exec": [
-							"tests[\"Status code is 500\"] = responseCode.code === 500;"
-						]
-					}
-				}
-			],
-			"request": {
-				"url": "http://localhost:8080/festival-web/api/criticas",
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\"comentario\":\"Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.\\n\\nPraesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.\\n\\nMorbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.\", \"critico\":{\"id\":\"1\"}}"
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Obtener una CriticaEntity",
+			"name": "Obtener una SillaEntity",
 			"event": [
 				{
 					"listen": "test",
@@ -181,7 +116,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/festival-web/api/criticas/1",
+				"url": "http://localhost:8080/festival-web/api/sillas/1",
 				"method": "GET",
 				"header": [],
 				"body": {
@@ -193,7 +128,7 @@
 			"response": []
 		},
 		{
-			"name": "Obtener una CriticaEntity que no existe",
+			"name": "Obtener una SillaEntity que no existe",
 			"event": [
 				{
 					"listen": "test",
@@ -206,7 +141,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/festival-web/api/criticas/100",
+				"url": "http://localhost:8080/festival-web/api/sillas/100",
 				"method": "GET",
 				"header": [],
 				"body": {
@@ -218,7 +153,7 @@
 			"response": []
 		},
 		{
-			"name": "Obtener todas las CriticaEntity",
+			"name": "Obtener todas las SillaEntity",
 			"event": [
 				{
 					"listen": "test",
@@ -233,7 +168,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/festival-web/api/criticas",
+				"url": "http://localhost:8080/festival-web/api/sillas",
 				"method": "GET",
 				"header": [
 					{
@@ -251,7 +186,7 @@
 			"response": []
 		},
 		{
-			"name": "Actualizar una CriticaEntity",
+			"name": "Actualizar una SillaEntity",
 			"event": [
 				{
 					"listen": "test",
@@ -266,7 +201,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/festival-web/api/criticas/1",
+				"url": "http://localhost:8080/festival-web/api/sillas/1",
 				"method": "PUT",
 				"header": [
 					{
@@ -277,14 +212,14 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"comentario\":\"Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.\\n\\nPraesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.\"}"
+					"raw": "{\n    \"esPreferencial\": true,\n    \"tarifa\": 25.9\n}"
 				},
 				"description": ""
 			},
 			"response": []
 		},
 		{
-			"name": "Actualizar una CriticaEntity que no existe",
+			"name": "Actualizar una SillaEntity que no existe",
 			"event": [
 				{
 					"listen": "test",
@@ -297,7 +232,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/festival-web/api/criticas/100",
+				"url": "http://localhost:8080/festival-web/api/sillas/100",
 				"method": "PUT",
 				"header": [
 					{
@@ -308,14 +243,14 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"comentario\":\"Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.\\n\\nPraesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.\"}"
+					"raw": "{\n    \"esPreferencial\": true,\n    \"tarifa\": 25.9\n}"
 				},
 				"description": ""
 			},
 			"response": []
 		},
 		{
-			"name": "Borrar una CriticaEntity",
+			"name": "Borrar una SillaEntity",
 			"event": [
 				{
 					"listen": "test",
@@ -328,7 +263,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/festival-web/api/criticas/10",
+				"url": "http://localhost:8080/festival-web/api/sillas/10",
 				"method": "DELETE",
 				"header": [
 					{
@@ -359,7 +294,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/festival-web/api/criticas/100",
+				"url": "http://localhost:8080/festival-web/api/sillas/1000",
 				"method": "DELETE",
 				"header": [
 					{
@@ -377,7 +312,7 @@
 			"response": []
 		},
 		{
-			"name": "Validar que la CriticaEntity se borró",
+			"name": "Validar que la SillaEntity se borró",
 			"event": [
 				{
 					"listen": "test",
@@ -390,7 +325,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/festival-web/api/criticas/10",
+				"url": "http://localhost:8080/festival-web/api/sillas/10",
 				"method": "GET",
 				"header": [],
 				"body": {
@@ -402,7 +337,7 @@
 			"response": []
 		},
 		{
-			"name": "Obtener la CriticoEntity de una CriticaEntity",
+			"name": "Obtener las BoletaEntity asociadas",
 			"event": [
 				{
 					"listen": "test",
@@ -412,78 +347,13 @@
 							"console.log(responseBody);",
 							"var data = JSON.parse(responseBody);",
 							"tests[\"Status code is 200\"] = responseCode.code === 200;",
-							"tests[\"Tiene una CriticoEntity\"] = data.hasOwnProperty(\"id\");"
+							"tests[\"Tiene una BoletaEntity asociada\"] = data.length === 1;"
 						]
 					}
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/festival-web/api/criticas/1/critico",
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\"nombre\":\"text\"}"
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Obtener la CriticoEntity de una CriticaEntity que no existe",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"type": "text/javascript",
-						"exec": [
-							"tests[\"Status code is 404\"] = responseCode.code === 404;"
-						]
-					}
-				}
-			],
-			"request": {
-				"url": "http://localhost:8080/festival-web/api/criticas/100/critico",
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\"nombre\":\"text\"}"
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Obtener la FuncionEntity de una CriticaEntity",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"type": "text/javascript",
-						"exec": [
-							"console.log(responseBody);",
-							"var data = JSON.parse(responseBody);",
-							"tests[\"Status code is 200\"] = responseCode.code === 200;",
-							"tests[\"Tiene una FuncionEntity\"] = data.hasOwnProperty(\"id\");"
-						]
-					}
-				}
-			],
-			"request": {
-				"url": "http://localhost:8080/festival-web/api/criticas/1/funcion",
+				"url": "http://localhost:8080/festival-web/api/sillas/1/boletas",
 				"method": "GET",
 				"header": [],
 				"body": {
@@ -495,7 +365,89 @@
 			"response": []
 		},
 		{
-			"name": "Obtener la FuncionEntity de una CriticaEntity que no existe",
+			"name": "Obtener las BoletaEntity asociadas de una SillaEntity sin boletas",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"console.log(responseBody);",
+							"var data = JSON.parse(responseBody);",
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"No tiene una BoletaEntity asociada\"] = data.length === 0;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/sillas/9/boletas",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener las BoletaEntity asociadas a una SillaEntity que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"console.log(responseBody);",
+							"tests[\"Status code is 404\"] = responseCode.code === 404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/sillas/100/boletas",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener la SalaEntity de una SillaEntity",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"console.log(responseBody);",
+							"var data = JSON.parse(responseBody);",
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Tiene una SalaEntity asociada\"] = data.hasOwnProperty(\"id\");"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/sillas/1/sala",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener la SalaEntity de una SillaEntity que no existe",
 			"event": [
 				{
 					"listen": "test",
@@ -508,7 +460,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/festival-web/api/criticas/100/funcion",
+				"url": "http://localhost:8080/festival-web/api/sillas/100/sala",
 				"method": "GET",
 				"header": [],
 				"body": {

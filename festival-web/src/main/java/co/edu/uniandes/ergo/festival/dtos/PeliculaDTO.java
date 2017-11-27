@@ -49,6 +49,10 @@ public class PeliculaDTO {
      */
     private String corto;
     /**
+     * Atributo que contiene la Sinopsis de la Película.
+     */
+    private String sinopsis;
+    /**
      * Constructor por Defecto.
      */
     public PeliculaDTO() {
@@ -69,6 +73,7 @@ public class PeliculaDTO {
             this.pais = pelicula.getPais();
             this.datos = pelicula.getDatos();
             this.corto = pelicula.getCorto();
+            this.sinopsis = pelicula.getSinopsis();
         }
     }
     /**
@@ -196,6 +201,22 @@ public class PeliculaDTO {
      */
     public void setGenero(String genero) {
         this.genero = genero;
+    }
+    /**
+     * Método que obtiene la Sinopsis de una Película.
+     * @return String, Sinopsis de la Película.
+     */
+    public String getSinopsis()
+    {
+        return sinopsis;
+    }
+    /**
+     * Método que establece la Sinopsis de la Película.
+     * @param sinopsis String, nueva Sinopsis de la Película.
+     */
+    public void setSinopsis(String sinopsis)
+    {
+        this.sinopsis = sinopsis;
     }
     /**
      * Método que construye una Entidad de Película a partir de este DTO.

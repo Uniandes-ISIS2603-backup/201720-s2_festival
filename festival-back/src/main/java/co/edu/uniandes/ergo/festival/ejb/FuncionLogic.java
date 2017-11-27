@@ -7,10 +7,12 @@ package co.edu.uniandes.ergo.festival.ejb;
 
 
 import co.edu.uniandes.ergo.festival.entities.BoletaEntity;
+import co.edu.uniandes.ergo.festival.entities.CalificacionEntity;
 import co.edu.uniandes.ergo.festival.entities.CriticaEntity;
 import co.edu.uniandes.ergo.festival.entities.FuncionEntity;
 import co.edu.uniandes.ergo.festival.entities.PeliculaEntity;
 import co.edu.uniandes.ergo.festival.persistence.FuncionPersistence;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -123,5 +125,26 @@ public class FuncionLogic {
         FuncionEntity funcion = getFuncion(funId);
         funcion.setPelicula(pelicula);
         return funcion;
+    }
+    /**
+     * Método que obtiene las Calificaciones de una Función.
+     * @param id Long, ID de la Función cuyas Calificaciones se desean obtener.
+     * @return List<CalificacionEntiy>, Lista con todas las Calificaciones de una Función.
+     */
+    public List<CalificacionEntity> getCalificacionesPorFuncion(Long id)
+    {
+        LOGGER.info("Entro a metodo Logic");
+        List<BoletaEntity> boletas = getFuncion(id).getBoletas();
+        List<CalificacionEntity> calificaciones = new ArrayList<>();
+        LOGGER.info("Boletas size: " + boletas.size());
+        for(int i = 0; i < boletas.size(); i++)
+        {
+            if(boletas.get(i).getCalificacion() != null)
+            {
+                CalificacionEntity temp = boletas.get(i).getCalificacion();
+                calificaciones.add(temp);
+            }
+        }
+        return calificaciones;
     }
 }

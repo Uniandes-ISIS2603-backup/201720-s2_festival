@@ -43,7 +43,11 @@ public class CriticoResource {
     public List<CriticoDetailDTO> getCriticos() {
         return listEntity2DTO(logic.getCriticos());
     }
-
+    /**
+     * Método que obtiene un Crítico según su ID.
+     * @param id Long, ID del Crítico a buscar.
+     * @return CriticoDetailDTO, información del Crítico a buscar.
+     */
     @GET
     @Path("{id: \\d+}")
     public CriticoDetailDTO getCriticoById(@PathParam("id") Long id) {
@@ -54,12 +58,23 @@ public class CriticoResource {
         return new CriticoDetailDTO(cri);
 
     }
-
+    /**
+     * Método que crea un nuevo Crítico.
+     * @param cri CriticoDetailDTO, toda la Información del Crítico.
+     * @return CriticoDetailDTO, información del Crítico creado.
+     * @throws BusinessLogicException 
+     */
     @POST
     public CriticoDetailDTO createCritico(CriticoDetailDTO cri) throws BusinessLogicException {
         return new CriticoDetailDTO(logic.createCritico(cri.toEntity()));
     }
-
+    /**
+     * Método que actualiza la información de un Crítico.
+     * @param id Long, ID del Crítico a actualizar.
+     * @param cri CriticoDetailDTO, nueva información del Crítico.
+     * @return CriticoDetailDTO, información actualizada del Crítico.
+     * @throws BusinessLogicException 
+     */
     @PUT
     @Path("{id: \\d+}")
     public CriticoDetailDTO updateCritico(@PathParam("id") Long id, CriticoDetailDTO cri) throws BusinessLogicException {
@@ -67,7 +82,10 @@ public class CriticoResource {
         entity.setId(id);
         return new CriticoDetailDTO(logic.updateCritico(id, entity));
     }
-
+    /**
+     * Método que borra un Crítico según su ID.
+     * @param id Long, ID del Crítico a eliminar.
+     */
     @DELETE
     @Path("{id: \\d+}")
     public void deleteCritico(@PathParam("id") Long id) {
@@ -77,7 +95,11 @@ public class CriticoResource {
         }
         logic.deleteCritico(id);
     }
-
+    /**
+     * Método que transforma una Lsita de Entidades de Crítico a una Lista de DTOS de Críticos.
+     * @param entityList List<CriticoEntity>, Lista de Entidades de Críticos.
+     * @return List<CriticoDetailDTO>, Lista de DTOS de Críticos.
+     */
     private List<CriticoDetailDTO> listEntity2DTO(List<CriticoEntity> entityList) {
         List<CriticoDetailDTO> list = new ArrayList<>();
         for (CriticoEntity entity : entityList) {
@@ -85,7 +107,11 @@ public class CriticoResource {
         }
         return list;
     }
-
+    /**
+     * Método que transforma una Lista de Entidades de Película a una Lista de DTOS de Películas.
+     * @param pelis List<PeliculaEntity>, Lista de Entidades de Película.
+     * @return List<PeliculaDTO>, Lista de DTOS de Películas.
+     */
     private List<PeliculaDTO> listPeliEntity2DTO(List<PeliculaEntity> pelis) {
         List<PeliculaDTO> rta = new ArrayList<>();
         for (PeliculaEntity peli : pelis) {
@@ -93,7 +119,12 @@ public class CriticoResource {
         }
         return rta;
     }
-
+    /**
+     * Método que obtiene la Películas de un Crítico.
+     * @param id Long, ID del Crítico.
+     * @return Class<CriticoPeliculaResource>
+     * @throws WebApplicationException 
+     */
     @Path("{CriticoId: \\d+}/peliculas")
     public Class<CriticoPeliculaResource> getCriticoPeliculaResource(@PathParam("CriticoId") Long id) throws WebApplicationException{
         CriticoEntity critico = logic.getCritico(id);

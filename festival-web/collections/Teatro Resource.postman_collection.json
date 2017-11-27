@@ -1,0 +1,234 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Teatro Resource",
+		"_postman_id": "f926d76b-9f77-38fa-5577-5e5ac259e294",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Obtener Teatros",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/teatros/",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Get \nObtener todos los teatros\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar Teatro no existente con ID:34 (error)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 412\"] = responseCode.code === 412;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/teatros/34",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": "DELETE\nEliminar un teatro con ID dado, pero el Teatro no existe."
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener un Teatro con ID:10",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/teatros/10",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n        \"type\": \"teatroDetailDTO\",\n        \"id\": 3,\n        \"nombre\": \"norte\",\n        \"tarifaLunes\": 8000,\n        \"salas\": []\n    }"
+				},
+				"description": "GET\nObtener un teatro con un ID especificado."
+			},
+			"response": []
+		},
+		{
+			"name": "Agregar un Teatro",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/teatros",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n        \"type\": \"teatroDetailDTO\",\n        \"id\": 40,\n        \"nombre\": \"sur\",\n        \"tarifaLunes\": 7000,\n        \"salas\": []\n    }"
+				},
+				"description": "POST\nCrear un nuevo teatro"
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar Teatro con ID:5",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/teatros/5",
+				"method": "PUT",
+				"header": [],
+				"body": {},
+				"description": "PUT\nActualizar un teatro con un ID especificado."
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar Teatro que no existe con ID:39 (error)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 404\"] = responseCode.code === 404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/teatros/39",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n        \"type\": \"teatroDetailDTO\",\n        \"id\": 3,\n        \"nombre\": \"norte\",\n        \"tarifaLunes\": 8000,\n        \"salas\": []\n    }"
+				},
+				"description": "PUT\nActualizar un teatro con un ID especificado, pero el Teatro no existe."
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar Teatro con ID: 10",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 204\"] = responseCode.code === 204;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/teatros/10",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": "DELETE\nEliminar un teatro."
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Teatro que no existe con ID: 10 (error)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 404\"] = responseCode.code === 404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/teatros/10",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n        \"type\": \"teatroDetailDTO\",\n        \"id\": 3,\n        \"nombre\": \"norte\",\n        \"tarifaLunes\": 8000,\n        \"salas\": []\n    }"
+				},
+				"description": "GET\nObtener un teatro con id que no existe"
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener las Funciones del Teatro con ID: 1",
+			"request": {
+				"url": "http://localhost:8080/festival-web/api/teatros/1/funciones",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
