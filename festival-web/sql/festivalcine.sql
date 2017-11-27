@@ -237,10 +237,10 @@ insert into SalaEntity_FuncionEntity(SalaEntity_ID,Funciones_ID) values(10,10);
 
 /* CalificacionEntity */
 
-    insert into CalificacionEntity (id,calificacion, comentario) values(1,1.1,'a1');
-    insert into CalificacionEntity (id,calificacion, comentario) values(2,2.2,'a2');
-    insert into CalificacionEntity (id,calificacion, comentario) values(3,3.3,'a3');
-    insert into CalificacionEntity (id,calificacion, comentario) values(4,4.4,'a4');
+    insert into CalificacionEntity (id,calificacion, comentario) values(100,1.1,'a1');
+    insert into CalificacionEntity (id,calificacion, comentario) values(101,2.2,'a2');
+    insert into CalificacionEntity (id,calificacion, comentario) values(102,3.3,'a3');
+    insert into CalificacionEntity (id,calificacion, comentario) values(103,4.4,'a4');
 
 /* BoletaEntity*/
 
@@ -249,8 +249,15 @@ insert into SalaEntity_FuncionEntity(SalaEntity_ID,Funciones_ID) values(10,10);
     insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id, funcion_id) values(30, 110, 1, 700.50, 3, 1);
     insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id, funcion_id) values(40, 50, 3, 400.50, 4, 2);
     insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id, funcion_id, espectador_id) values(50, 500, 3, 400.50, 5, 2, 1011);
-    insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id, funcion_id, espectador_id, calificacion_id) values(60, 650, 3, 300.25, 2, 3, 1012, 1);
+    insert into BoletaEntity (id, codigoDeBarras, estado, precio, silla_id, funcion_id, espectador_id, calificacion_id) values(60, 650, 3, 300.25, 2, 3, 1012, 100);
 
+
+    insert into FuncionEntity_BoletaEntity (FuncionEntity_ID, Boletas_ID)  values (1, 10);
+    insert into FuncionEntity_BoletaEntity (FuncionEntity_ID, Boletas_ID)  values (1, 20);
+    insert into FuncionEntity_BoletaEntity (FuncionEntity_ID, Boletas_ID)  values (1, 30);
+    insert into FuncionEntity_BoletaEntity (FuncionEntity_ID, Boletas_ID)  values (2, 40);
+    insert into FuncionEntity_BoletaEntity (FuncionEntity_ID, Boletas_ID)  values (2, 50);
+    insert into FuncionEntity_BoletaEntity (FuncionEntity_ID, Boletas_ID)  values (3, 60);
 /* AbonoEntity */
 
     insert into AbonoEntity (id, precio, espectador_id) values (200,7000, 1011);
