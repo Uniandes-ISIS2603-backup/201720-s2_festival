@@ -7,17 +7,19 @@ package co.edu.uniandes.ergo.festival.resources;
 
 
 import co.edu.uniandes.ergo.festival.dtos.BoletaDTO;
-import co.edu.uniandes.ergo.festival.dtos.CalificacionDTO;
 import co.edu.uniandes.ergo.festival.dtos.CalificacionDetailDTO;
 import co.edu.uniandes.ergo.festival.dtos.CriticaDTO;
 import co.edu.uniandes.ergo.festival.dtos.FuncionDetailDTO;
 import co.edu.uniandes.ergo.festival.dtos.TeatroDTO;
+import co.edu.uniandes.ergo.festival.ejb.BoletaLogic;
 import co.edu.uniandes.ergo.festival.ejb.FuncionLogic;
+import co.edu.uniandes.ergo.festival.ejb.SalaLogic;
 import co.edu.uniandes.ergo.festival.entities.BoletaEntity;
 import co.edu.uniandes.ergo.festival.entities.CalificacionEntity;
 import co.edu.uniandes.ergo.festival.entities.CriticaEntity;
 import co.edu.uniandes.ergo.festival.entities.FuncionEntity;
 import co.edu.uniandes.ergo.festival.entities.SalaEntity;
+import co.edu.uniandes.ergo.festival.entities.SillaEntity;
 import co.edu.uniandes.ergo.festival.entities.TeatroEntity;
 import co.edu.uniandes.ergo.festival.exceptions.BusinessLogicException;
 import java.util.ArrayList;
@@ -49,24 +51,47 @@ public class FuncionResource {
      */
     @Inject
     private FuncionLogic funcionLogic;
-     
+    
+    @Inject
+    private SalaLogic salaLogic;
+    @Inject
+    private BoletaLogic boletaLogic;
     /**
   * Crea una nueva FuncionEntity.
   * @param dto información de la FuncionEntity.
   * @return Un FuncionDetailDTO con la información de la nueva entidad.
   */
  @POST
- public FuncionDetailDTO createFuncion(FuncionDetailDTO dto){
-     if(dto.getSala()==null){
-         throw new WebApplicationException("La Funcion no tiene una sala como parametro.", 404);
-     }
-     if(dto.getFestival()==null){
-         throw new WebApplicationException("La Funcion no tiene un festival como parametro.", 404);
-     }
-     if(dto.getPelicula()==null){
-         throw new WebApplicationException("La Funcion no tiene una pelicula como parametro.", 404);
-     }
-     return new FuncionDetailDTO(funcionLogic.createFuncion(dto.toEntity()));
+ public FuncionDetailDTO createFuncion(FuncionDetailDTO dto) throws BusinessLogicException
+ {
+    if(dto.getSala()==null){
+        throw new WebApplicationException("La Funcion no tiene una sala como parametro.", 404);
+    }
+    if(dto.getFestival()==null){
+        throw new WebApplicationException("La Funcion no tiene un festival como parametro.", 404);
+    }
+    if(dto.getPelicula()==null){
+        throw new WebApplicationException("La Funcion no tiene una pelicula como parametro.", 404);
+    }
+    FuncionEntity respuesta = funcionLogic.createFuncion(dto.toEntity());
+    List<SillaEntity> sillas = salaLogic.get(respuesta.getSala().getId()).getSillas();
+    List<BoletaEntity> boletas = new ArrayList<>();
+        for (int i = 0; i < sillas.size(); i++) {
+            BoletaEntity temp = new BoletaEntity();
+            temp.setEstado(BoletaEntity.DISPONIBLE);
+            temp.setFuncion(respuesta);
+            temp.setSilla(sillas.get(i));
+            String codigoDeBarrasString = "" + respuesta.getId() + respuesta.getSala().getId() + respuesta.getHoraInicio().getYear() + respuesta.getHoraInicio().getMonth() + + respuesta.getHoraInicio().getDate() + + respuesta.getHoraInicio().getHours() + respuesta.getHoraInicio().getMinutes() + i;
+            Long codigoDeBarras = Long.parseLong(codigoDeBarrasString);
+            temp.setCodigoDeBarras(codigoDeBarras);
+            Double precio = (sillas.get(i).getTarifa() + getTeatroFromFuncion(respuesta.getId()).getTarifaBasica());
+            temp.setPrecio(precio);
+            
+            boletaLogic.createBoleta(temp);
+            boletas.add(temp);
+        }
+        respuesta.setBoletas(boletas);
+    return new FuncionDetailDTO(respuesta);
  }
  
  /**
