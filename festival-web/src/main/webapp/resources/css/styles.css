@@ -148,13 +148,21 @@ div.patrocinadores {
 .scrollableDivSquare {
 	border: 0px;
 	padding: .5em;
-
 	white-space: pre-wrap;
-	height: 300px;
+
 	overflow-y: scroll;
+	width: auto;
+	display: inline-block;
+	border-top: 2px solid black;
+	margin-top: 40px;
+
+	
 }
 
 
+#scrollCalificaciones{
+	height: 350px;
+}
 .scrollableDivSquare::-webkit-scrollbar { 
 	/* This is the magic bit */
 	display: none;
@@ -166,16 +174,43 @@ div.sticky {
 	top: 0;
 	margin: 0;
 	margin-top: 0;
-	transform: translateY(-10%);
+	transform: translateY(-15%);
 	border-bottom: 2px solid red;
 	background-color: #efefef;
+	display: table;
+	height: auto;
+	z-index: 1;
+
 }
 
 div.calificaciones {
-	
-	
+		background-color: #f5f5f5;
 }
 
 div.calificacionN {
-	border-bottom: 2px solid red;
+	border-bottom: 2px solid #ff6868;
+
+}
+
+
+
+div.panel-body {
+	background-color: #f5f5f5;
+}
+
+
+div.resumenCal {
+	width: inherit;
+	height: auto;
+	display: table;
+	margin: 0px;
+	position: relative;
+	background-color: #efefef;
+
+}
+
+table.tabla-promedio{
+	align-items: center;
+	float: center;
+	align-content: center;
 }
