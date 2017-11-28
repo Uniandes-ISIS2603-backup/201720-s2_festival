@@ -88,6 +88,20 @@
                                 controllerAs: "ctrl"
                             }
                         }
+                    })
+                    .state("boletasTake", {
+                        url: "/take/{boletasId:int}",
+                        parent: 'boletas',
+                        param: {
+                            boletasId: null
+                        },
+                        views: {
+                            boletasView: {
+                                templateUrl: basePath + 'get/get.html',
+                                controller: 'boletas.takeCtrl',
+                                controllerAs: "ctrl"
+                            }
+                        }
                     });
         }
     ]);

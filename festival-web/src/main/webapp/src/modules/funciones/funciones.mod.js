@@ -48,32 +48,40 @@
                 views: {
                     'listView': {
                         templateUrl: basePath + 'funciones.list.html',
-                        controller : "funciones.deleteCtrl",
-                        controllerAs : "ctrl"
+                        controller: "funciones.deleteCtrl",
+                        controllerAs: "ctrl"
                     }
 
                 }
-             }).state('funcionCreate', {
+            }).state('funcionCreate', {
                 url: '/funcion/create',
                 parent: 'funciones',
-                
+
                 views: {
                     'listView': {
                         templateUrl: basePath + 'create.html',
-                        controller : "funciones.createCtrl",
-                        controllerAs : "ctrl"
+                        controller: "funciones.createCtrl",
+                        controllerAs: "ctrl"
                     }
 
                 }
-                }).state('funcionUpdate', {
-                url: '/{funcionId:int}/update',
+            }).state('funcionesBoletasDetail', {
+                url: '/{funcionId:int}/boletas',
                 parent: 'funciones',
-                
+                param: {
+                    funcionId: null
+                },
+
                 views: {
-                    'listView': {
-                        templateUrl: basePath + 'update.html',
-                        controller : "funciones.updateCtrl",
-                        controllerAs : "ctrl"
+                    'boletasDetailView': {
+                        templateUrl: basePath + 'boletasDetail/funciones.boletasDetail.html',
+                        controller: "funciones.boletasDetailCtrl",
+                        controllerAs: "ctrl"
+                    },
+                    'detailView': {
+                        templateUrl: basePath + 'funciones.detail.html',
+                        controller: 'funcionesCtrl',
+                        controllerAs: 'ctrl'
                     }
 
                 }
