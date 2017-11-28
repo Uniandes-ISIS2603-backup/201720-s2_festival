@@ -27,7 +27,9 @@ import javax.ws.rs.core.MediaType;
 @Produces(MediaType.APPLICATION_JSON)
 
 public class PatrocinadorResource {
-    
+    /**
+     * Atributo que contiene la Lógica de este Recurso.
+     */
     @Inject
     private PatrocinadorLogic logic;
     /**

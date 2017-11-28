@@ -60,6 +60,7 @@ public class FuncionResource {
   * Crea una nueva FuncionEntity.
   * @param dto información de la FuncionEntity.
   * @return Un FuncionDetailDTO con la información de la nueva entidad.
+  * @throws co.edu.uniandes.ergo.festival.exceptions.BusinessLogicException
   */
  @POST
  public FuncionDetailDTO createFuncion(FuncionDetailDTO dto) throws BusinessLogicException
