@@ -34,10 +34,15 @@ import javax.ws.rs.core.MediaType;
 
 public class CriticoResource {
 
-  
+    /**
+     * Atributo que contiene la Lógica principal de este Recurso.
+     */
     @Inject
     private CriticoLogic logic;
-
+    /**
+     * Método que obtiene una Lista con todos los Críticos.
+     * @return List<CriticoDetailDTO>, Lista con todos los Críticos.
+     */
     @GET
     public List<CriticoDetailDTO> getCriticos() {
         return listEntity2DTO(logic.getCriticos());

@@ -157,7 +157,7 @@
 			"response": []
 		},
 		{
-			"name": "Get Boleta 20",
+			"name": "Get Boleta 1020",
 			"event": [
 				{
 					"listen": "test",
@@ -170,19 +170,19 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/festival-web/api/boletas/20",
+				"url": "http://localhost:8080/festival-web/api/boletas/1020",
 				"method": "GET",
 				"header": [],
 				"body": {
 					"mode": "raw",
 					"raw": ""
 				},
-				"description": "Debe obtener un arreglo de boletas."
+				"description": "Debe obtener una Boleta."
 			},
 			"response": []
 		},
 		{
-			"name": "Get Silla de la boleta 30",
+			"name": "Get Silla de la boleta 1030",
 			"event": [
 				{
 					"listen": "test",
@@ -195,7 +195,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/festival-web/api/boletas/30/sillas",
+				"url": "http://localhost:8080/festival-web/api/boletas/1030/sillas",
 				"method": "GET",
 				"header": [],
 				"body": {},
@@ -204,7 +204,7 @@
 			"response": []
 		},
 		{
-			"name": "Get Funcion de la boleta 40",
+			"name": "Get Funcion de la boleta 1040",
 			"event": [
 				{
 					"listen": "test",
@@ -217,7 +217,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/festival-web/api/boletas/40/funciones",
+				"url": "http://localhost:8080/festival-web/api/boletas/1040/funciones",
 				"method": "GET",
 				"header": [],
 				"body": {},
@@ -239,7 +239,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/festival-web/api/boletas/40",
+				"url": "http://localhost:8080/festival-web/api/boletas/1040",
 				"method": "PUT",
 				"header": [
 					{
@@ -257,7 +257,7 @@
 			"response": []
 		},
 		{
-			"name": "Actualización de silla de la boleta 40 copy",
+			"name": "Actualización de silla de la boleta 1040 copy",
 			"event": [
 				{
 					"listen": "test",
@@ -270,7 +270,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/festival-web/api/boletas/40",
+				"url": "http://localhost:8080/festival-web/api/boletas/1040",
 				"method": "PUT",
 				"header": [
 					{
@@ -301,7 +301,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/festival-web/api/boletas/40/calificaciones",
+				"url": "http://localhost:8080/festival-web/api/boletas/1040/calificaciones",
 				"method": "POST",
 				"header": [
 					{
@@ -332,7 +332,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/festival-web/api/boletas/20/calificaciones",
+				"url": "http://localhost:8080/festival-web/api/boletas/1020/calificaciones",
 				"method": "POST",
 				"header": [
 					{
@@ -363,7 +363,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/festival-web/api/boletas/40/calificaciones",
+				"url": "http://localhost:8080/festival-web/api/boletas/1040/calificaciones",
 				"method": "GET",
 				"header": [
 					{
@@ -394,7 +394,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/festival-web/api/boletas/40/calificaciones",
+				"url": "http://localhost:8080/festival-web/api/boletas/1040/calificaciones",
 				"method": "PUT",
 				"header": [
 					{
@@ -425,7 +425,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/festival-web/api/boletas/40/calificaciones",
+				"url": "http://localhost:8080/festival-web/api/boletas/1040/calificaciones",
 				"method": "DELETE",
 				"header": [
 					{
@@ -456,7 +456,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/festival-web/api/boletas/40/calificaciones",
+				"url": "http://localhost:8080/festival-web/api/boletas/1040/calificaciones",
 				"method": "GET",
 				"header": [
 					{
@@ -518,7 +518,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/festival-web/api/abonos/200/boletas/20",
+				"url": "http://localhost:8080/festival-web/api/abonos/200/boletas/1020",
 				"method": "POST",
 				"header": [
 					{
@@ -580,7 +580,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/festival-web/api/abonos/200/boletas/20",
+				"url": "http://localhost:8080/festival-web/api/abonos/200/boletas/1020",
 				"method": "DELETE",
 				"header": [
 					{
@@ -679,7 +679,7 @@
 			"response": []
 		},
 		{
-			"name": "Borrar Boleta 20",
+			"name": "Borrar Boleta 1020",
 			"event": [
 				{
 					"listen": "test",
@@ -692,7 +692,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/festival-web/api/boletas/20",
+				"url": "http://localhost:8080/festival-web/api/boletas/1020",
 				"method": "DELETE",
 				"header": [],
 				"body": {
@@ -704,7 +704,7 @@
 			"response": []
 		},
 		{
-			"name": "Get Boleta 20 no Existente.",
+			"name": "Get Boleta 1020 no Existente.",
 			"event": [
 				{
 					"listen": "test",
@@ -717,7 +717,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/festival-web/api/boletas/20",
+				"url": "http://localhost:8080/festival-web/api/boletas/1020",
 				"method": "GET",
 				"header": [],
 				"body": {

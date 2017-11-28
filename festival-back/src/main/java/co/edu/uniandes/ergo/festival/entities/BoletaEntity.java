@@ -68,7 +68,7 @@ public class BoletaEntity extends BaseEntity implements Serializable
      */
 
     @PodamExclude
-    @OneToOne(orphanRemoval = true,cascade = CascadeType.REMOVE)
+    @OneToOne(orphanRemoval = true)
     @JoinColumn(unique=true)
     private CalificacionEntity calificacion;
     /**
