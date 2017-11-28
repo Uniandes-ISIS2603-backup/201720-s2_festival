@@ -213,7 +213,12 @@ public class PeliculaLogic {
         }
         return calificaciones;
     }
-
+    /**
+     * Método que obtiene la Calificación promedio por película.
+     * @param peliculaId Long, ID de Película.
+     * @return Double, Valor de la Calificación promedio por Película.
+     * @throws BusinessLogicException 
+     */
     public Double getCalificacionPromedioFromPelicula(Long peliculaId) throws BusinessLogicException {
         Double promedio = 0.0;
         List<CalificacionEntity> calificaciones = getCalificaciones(peliculaId);
