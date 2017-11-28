@@ -5,11 +5,13 @@
  */
 package co.edu.uniandes.ergo.festival.ejb;
 
+import co.edu.uniandes.ergo.festival.entities.CalificacionEntity;
 import co.edu.uniandes.ergo.festival.entities.CriticoEntity;
 import co.edu.uniandes.ergo.festival.entities.FuncionEntity;
 import co.edu.uniandes.ergo.festival.entities.PeliculaEntity;
 import co.edu.uniandes.ergo.festival.exceptions.BusinessLogicException;
 import co.edu.uniandes.ergo.festival.persistence.PeliculaPersistence;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,11 +29,13 @@ public class PeliculaLogic {
 
     @Inject
     private PeliculaPersistence persistence;
-  
+
     @Inject
     private FuncionLogic funLogic;
+
     /**
      * Método que obtiene una Lista con todas las Películas.
+     *
      * @return List<PeliculaEntity>, Lista con todas las Películas.
      */
     public List<PeliculaEntity> getPeliculas() {
@@ -40,11 +44,13 @@ public class PeliculaLogic {
         LOGGER.info("Termina el proceso de consultar todas las películas.");
         return peliculas;
     }
+
     /**
      * Método que obtiene una Película según su ID.
+     *
      * @param id Long, ID de la Película.
      * @return PeliculaEntity, información de la Película buscada.
-     * @throws BusinessLogicException 
+     * @throws BusinessLogicException
      */
     public PeliculaEntity getPelicula(Long id) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar la película con id={0}", id);
@@ -59,11 +65,13 @@ public class PeliculaLogic {
         LOGGER.log(Level.INFO, "Termina proceso de consultar la película con id={0}", id);
         return pelicula;
     }
+
     /**
      * Método que crea una nueva Película.
+     *
      * @param nueva PeliculaEntity, Información de la Película a crear.
      * @return PeliculaEntity, Información de la Película a crear.
-     * @throws BusinessLogicException 
+     * @throws BusinessLogicException
      */
     public PeliculaEntity createPelicula(PeliculaEntity nueva) throws BusinessLogicException {
         LOGGER.info("Inicia proceso de creación de la película.");
@@ -78,17 +86,19 @@ public class PeliculaLogic {
 
             throw new BusinessLogicException(excepcion);
         }
-        
+
         PeliculaEntity conId = persistence.create(nueva);
         LOGGER.info("Termina proceso de creación de la película.");
         return conId;
     }
+
     /**
      * Método que actualiza una Película.
+     *
      * @param id Long, ID de la Película a actualizar.
      * @param entity PeliculaEntity, Nueva Información de la Película.
      * @return PeliculaEntity, información actualizada de la Película.
-     * @throws BusinessLogicException 
+     * @throws BusinessLogicException
      */
     public PeliculaEntity updatePelicula(Long id, PeliculaEntity entity) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de actualizar libro con id={0}", id);
@@ -99,8 +109,10 @@ public class PeliculaLogic {
         LOGGER.log(Level.INFO, "Termina proceso de actualizar la pelícla con id={0}", entity.getId());
         return newEntity;
     }
+
     /**
      * Método para Borrar una Película.
+     *
      * @param id Long, ID de la Película a Borrar.
      */
     public void deletePelicula(Long id) {
@@ -108,12 +120,14 @@ public class PeliculaLogic {
         persistence.delete(id);
         LOGGER.log(Level.INFO, "Termina proceso de borrar la película con id={0}", id);
     }
+
     /**
      * Método para asociar un Crítico a una Película.
+     *
      * @param pelId Long, ID de la Película.
      * @param critico CriticoEntity, información del Crítico.
      * @return PeliculaEntity, información de la Película.
-     * @throws BusinessLogicException 
+     * @throws BusinessLogicException
      */
     public PeliculaEntity addCritico(Long pelId, CriticoEntity critico) throws BusinessLogicException {
         PeliculaEntity peli = getPelicula(pelId);
@@ -121,27 +135,31 @@ public class PeliculaLogic {
         persistence.update(peli);
         return peli;
     }
+
     /**
      * Método para des asociar un Crítico de una Película.
+     *
      * @param pelId Long, ID de la Pelicula.
      * @param crId Long, ID del Crítico.
-     * @throws BusinessLogicException 
+     * @throws BusinessLogicException
      */
-    public void removeCritico(Long pelId, Long crId) throws BusinessLogicException{
+    public void removeCritico(Long pelId, Long crId) throws BusinessLogicException {
         PeliculaEntity pelicula = getPelicula(pelId);
         CriticoEntity borrar = new CriticoEntity();
         borrar.setId(crId);
         pelicula.removeCritico(borrar);
         persistence.update(pelicula);
     }
+
     /**
      * Metodo que agrega una Función a una Película.
+     *
      * @param pelId Long, ID de la Película.
      * @param funId Long, ID de la Función.
      * @return PeliculaEntity, información de la Película.
-     * @throws BusinessLogicException 
+     * @throws BusinessLogicException
      */
-    public PeliculaEntity addFuncion(Long pelId, Long funId) throws BusinessLogicException{
+    public PeliculaEntity addFuncion(Long pelId, Long funId) throws BusinessLogicException {
         PeliculaEntity pelicula = getPelicula(pelId);
         LOGGER.log(Level.INFO, "Inicia proceso de asociar la función con id ={0}", funId);
         FuncionEntity funcion = funLogic.addPelicula(funId, pelicula);
@@ -149,11 +167,13 @@ public class PeliculaLogic {
         persistence.update(pelicula); // NO ESTOY SEGURO SI SE DEBE PONER ESE UPDATE
         return pelicula;
     }
+
     /**
      * Metodo que obtiene una Lista con todas las Funciones de una Película.
+     *
      * @param id Long, ID de la Película.
      * @return List<FuncionEntity>, Lista de Funciones de una Película.
-     * @throws BusinessLogicException 
+     * @throws BusinessLogicException
      */
     public List<FuncionEntity> getFunciones(Long id) throws BusinessLogicException {
         PeliculaEntity pelicula = getPelicula(id);
@@ -163,12 +183,14 @@ public class PeliculaLogic {
         }
         return pelis;
     }
+
     /**
      * Método que obtiene una Función específica de una Película.
+     *
      * @param peliculaId Long, ID de la Película.
      * @param funcionId Long, ID de la Función.
      * @return FuncionEntity, Información de la Función de la Película.
-     * @throws BusinessLogicException 
+     * @throws BusinessLogicException
      */
     public FuncionEntity getFuncion(Long peliculaId, Long funcionId) throws BusinessLogicException {
 
@@ -182,4 +204,24 @@ public class PeliculaLogic {
         }
         throw new BusinessLogicException("no existe la función con id " + funcionId + " asignada al pelicula con id " + peliculaId);
     }
+
+    public List<CalificacionEntity> getCalificaciones(Long peliculaId) throws BusinessLogicException {
+        List<FuncionEntity> funciones = getFunciones(peliculaId);
+        List<CalificacionEntity> calificaciones = new ArrayList<CalificacionEntity>();
+        for (FuncionEntity funcion : funciones) {
+            calificaciones.addAll(funLogic.getCalificacionesPorFuncion(funcion.getId()));
+        }
+        return calificaciones;
+    }
+
+    public Double getCalificacionPromedioFromPelicula(Long peliculaId) throws BusinessLogicException {
+        Double promedio = 0.0;
+        List<CalificacionEntity> calificaciones = getCalificaciones(peliculaId);
+        
+        for (CalificacionEntity cal : calificaciones){
+            promedio += cal.getCalificacion();
+        }
+        return promedio / calificaciones.size();
+    }
+
 }

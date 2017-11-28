@@ -1,14 +1,15 @@
 <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
-<br>
-<div id="div-lg-azul">
-	<h1> Película {{pelicula.name}} </h1>
-</div>
-<br>
 
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"/>
+<link rel="stylesheet" type="text/css" href="resources/css/starrr.css">
+<script  src="src/modules/peliculas/starrr.js"></script>
 
-
-
-
+<script>
+	$('#funciones-panel').resize(function() {
+		$('#scrollCalificaciones').height($('#funciones-panel').height());
+	});
+</script>
 
 <div class="container">
 	<div class="row">
@@ -30,11 +31,13 @@
 	</div>
 	<div class="row">
 		<div class="col-sm-12 col-lg-8">
-			<div class="panel-group">
+			<br>
+			<br>
+			<div class="panel-group" id="funciones-panel">
 				<div class="panel panel-default">
-					<div class="panel-heading">
+					<div class="panel-heading" data-toggle="collapse" data-target="#funciones">
 						<h4 class="panel-title">
-							<a data-toggle="collapse" data-target="#funciones">Funciones</a>
+							<p>Funciones</p>
 						</h4>
 					</div>
 					<div id="funciones" class="panel-collapse collapse">
@@ -67,26 +70,46 @@
 			</div>
 		</div>
 		<div class="col-sm-12 col-lg-4">
-			<div class="scrollableDivSquare">
-				<div style="margin: 0px;"> 
-					<p>header no fijo</p>
+			<di
+			<div class="scrollableDivSquare" id="scrollCalificaciones">
+				
+				<div class="resumenCal"> 
+					<p style="display: table-row;"><b>Total Calificaciones: </b> {{totalCal}} </p>
 				</div>
-				<div class="sticky" id="promedio-calificacion" style="background-color: red;">
-					<p>buenas header fijo</p>
+				<div class="sticky" id="promedio-calificacion">
+					<table class="tabla-promedio">
+						<tr>
+							<th>
+								<p>Calificación:</p>
+							</th>
+							<th>
+								<div class="cointainerEstrellas">
+									<div class="star-ratings-css" title="{{darPromEstrella(darPromedioRond(promedio, 3))}}"></div>
+								</div>
+								<span > Promedio: {{darPromedioRond(promedio, 2)}} </span>
+							</th>
+						</tr>
+					</table>
+
+
+
 				</div>
 				<div class="calificaciones">
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt fermentum enim, ut consectetur massa tempor ac. Nunc dapibus ipsum ac dolor malesuada pretium. Nulla dapibus id augue ut accumsan. Cras ornare vehicula egestas. Mauris vestibulum aliquam odio a malesuada. Fusce auctor lorem ullamcorper luctus eleifend. Nullam finibus nec nisi a facilisis. Integer elementum, est quis convallis hendrerit, mauris ante tempus felis, id congue nunc lectus id massa. Vestibulum quis est sed purus consequat congue nec quis risus. Phasellus luctus, quam bibendum pretium tempus, neque diam iaculis erat, quis eleifend leo tellus eget massa. Sed condimentum eget augue quis dictum. Ut posuere nunc eros, at suscipit massa hendrerit id. Nulla in nulla aliquam, ullamcorper lacus ut, laoreet lacus. Vivamus commodo eros ut nunc rutrum, eu rhoncus justo semper.
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt fermentum enim, ut consectetur massa tempor ac. Nunc dapibus ipsum ac dolor malesuada pretium. Nulla dapibus id augue ut accumsan. Cras ornare vehicula egestas. Mauris vestibulum aliquam odio a malesuada. Fusce auctor lorem ullamcorper luctus eleifend. Nullam finibus nec nisi a facilisis. Integer elementum, est quis convallis hendrerit, mauris ante tempus felis, id congue nunc lectus id massa. Vestibulum quis est sed purus consequat congue nec quis risus. Phasellus luctus, quam bibendum pretium tempus, neque diam iaculis erat, quis eleifend leo tellus eget massa. Sed condimentum eget augue quis dictum. Ut posuere nunc eros, at suscipit massa hendrerit id. Nulla in nulla aliquam, ullamcorper lacus ut, laoreet lacus. Vivamus commodo eros ut nunc rutrum, eu rhoncus justo semper.
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt fermentum enim, ut consectetur massa tempor ac. Nunc dapibus ipsum ac dolor malesuada pretium. Nulla dapibus id augue ut accumsan. Cras ornare vehicula egestas. Mauris vestibulum aliquam odio a malesuada. Fusce auctor lorem ullamcorper luctus eleifend. Nullam finibus nec nisi a facilisis. Integer elementum, est quis convallis hendrerit, mauris ante tempus felis, id congue nunc lectus id massa. Vestibulum quis est sed purus consequat congue nec quis risus. Phasellus luctus, quam bibendum pretium tempus, neque diam iaculis erat, quis eleifend leo tellus eget massa. Sed condimentum eget augue quis dictum. Ut posuere nunc eros, at suscipit massa hendrerit id. Nulla in nulla aliquam, ullamcorper lacus ut, laoreet lacus. Vivamus commodo eros ut nunc rutrum, eu rhoncus justo semper.
-					</p>
+					<div class="calificacionN" ng-repeat="calificacion in calificaciones">
+						<div style="margin: 15px">
+							<p style="font-size: 18px; height: auto; margin: 0px;"> {{darPromedioRond(calificacion.calificacion, 2)}} </p>
+							<div class="cointainerEstrellas" style="opacity: 0.6; margin: 0px;">
+								<div class="star-ratings-css" title="{{darPromEstrella(darPromedioRond(calificacion.calificacion, 3))}}"></div>
+							</div>
+
+							<p style="font-size: 15px;"> {{calificacion.comentario}} </p>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-
-
 
 
 

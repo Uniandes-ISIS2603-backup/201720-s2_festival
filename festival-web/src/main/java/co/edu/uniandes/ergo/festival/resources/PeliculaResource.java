@@ -5,10 +5,12 @@
  */
 package co.edu.uniandes.ergo.festival.resources;
 
+import co.edu.uniandes.ergo.festival.dtos.CalificacionDTO;
 import co.edu.uniandes.ergo.festival.dtos.FuncionDTO;
 import co.edu.uniandes.ergo.festival.dtos.FuncionDetailDTO;
 import co.edu.uniandes.ergo.festival.dtos.PeliculaDetailDTO;
 import co.edu.uniandes.ergo.festival.ejb.PeliculaLogic;
+import co.edu.uniandes.ergo.festival.entities.CalificacionEntity;
 import co.edu.uniandes.ergo.festival.entities.FuncionEntity;
 import co.edu.uniandes.ergo.festival.entities.PeliculaEntity;
 import co.edu.uniandes.ergo.festival.exceptions.BusinessLogicException;
@@ -25,6 +27,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -36,22 +39,27 @@ import javax.ws.rs.core.MediaType;
 
 public class PeliculaResource {
 
+   
+    
     @Inject
     private PeliculaLogic logic;
 
     /**
      * Método que obtiene todas las Películas.
-     * @return 
+     *
+     * @return
      */
     @GET
     public List<PeliculaDetailDTO> getPeliculas() {
         return listEntity2DTO(logic.getPeliculas());
     }
+
     /**
      * Método que obtiene una Película específica.
+     *
      * @param id Long, ID de la Película a buscar.
      * @return PeliculaDetailDTO, información de la Película consultada.
-     * @throws BusinessLogicException 
+     * @throws BusinessLogicException
      */
     @GET
     @Path("{id: \\d+}")
@@ -63,23 +71,27 @@ public class PeliculaResource {
         return new PeliculaDetailDTO(peli);
 
     }
+
     /**
      * Método para crear una nueva Película.
+     *
      * @param peli PeliculaDetailDTO, información de la Pelicula a c´rear.
      * @return PeliculaDetailDTO, Película creada.
-     * @throws BusinessLogicException 
+     * @throws BusinessLogicException
      */
     @POST
     public PeliculaDetailDTO createPelicula(PeliculaDetailDTO peli) throws BusinessLogicException {
         System.out.println(peli.getname());
         return new PeliculaDetailDTO(logic.createPelicula(peli.toEntity()));
     }
+
     /**
      * Método para actualizar una Película.
+     *
      * @param id Long, ID de la Película a actualizar.
      * @param peli PeliculaDetailDTO, nueva información de la Película.
      * @return PeliculaDetailDTO, información actualizada de la película.
-     * @throws BusinessLogicException 
+     * @throws BusinessLogicException
      */
     @PUT
     @Path("{id: \\d+}")
@@ -88,10 +100,12 @@ public class PeliculaResource {
         entity.setId(id);
         return new PeliculaDetailDTO(logic.updatePelicula(id, entity));
     }
+
     /**
      * Método que borra una Película según su ID.
+     *
      * @param id Long, ID de la Película a Borrar.
-     * @throws BusinessLogicException 
+     * @throws BusinessLogicException
      */
     @DELETE
     @Path("{id: \\d+}")
@@ -102,12 +116,14 @@ public class PeliculaResource {
         }
         logic.deletePelicula(id);
     }
+
     /**
      * Método que asocia una Función a la Película.
+     *
      * @param pelId Long, ID de Película.
      * @param funId Long, ID de la Función a asociar.
      * @return PeliculaDetailDTO, Información de la Película asociada.
-     * @throws BusinessLogicException 
+     * @throws BusinessLogicException
      */
     @POST
     @Path("{id: \\d+}/funciones/{Fid: \\d+}")
@@ -118,11 +134,14 @@ public class PeliculaResource {
         }
         return new PeliculaDetailDTO(logic.addFuncion(pelId, funId));
     }
+
     /**
      * Método que obtiene las Funciones de una Película segun su ID.
+     *
      * @param idpelicula Long, ID de la Película.
-     * @return List<FuncionDTO>, Lista de Funciones que presentan la Película con ID dado.
-     * @throws BusinessLogicException 
+     * @return List<FuncionDTO>, Lista de Funciones que presentan la Película
+     * con ID dado.
+     * @throws BusinessLogicException
      */
     @GET
     @Path("{peliculaId: \\d+}/funciones/")
@@ -133,12 +152,14 @@ public class PeliculaResource {
         }
         return listFuncionEntity2listFuncionDTO(logic.getFunciones(idpelicula));
     }
+
     /**
      * Método que obtiene una Función específica de una Película.
+     *
      * @param peliculaId Long, ID de la Película.
      * @param pelId Long, ID de la Función.
      * @return FuncionDetailDTO, Información de la Función asociada.
-     * @throws BusinessLogicException 
+     * @throws BusinessLogicException
      */
     @GET
     @Path("{id: \\d+}/funciones/{FuncionId: \\d+}")
@@ -149,8 +170,34 @@ public class PeliculaResource {
         }
         return new FuncionDetailDTO(logic.getFuncion(peliculaId, pelId));
     }
+
+    @GET
+    @Path("{id: \\d+}/calificaciones")
+    public List<CalificacionDTO> getCalificacionesFromPelicula(@PathParam("id") Long peliculaId) throws BusinessLogicException {
+        PeliculaEntity pelicula = logic.getPelicula(peliculaId);
+        if (pelicula == null) {
+            throw new WebApplicationException("El crítico con id: " + peliculaId + " no existe.", 404);
+        }
+        return listCalificacionEntity2CalificacionDTO(logic.getCalificaciones(peliculaId));
+    }
+
+    @GET
+    @Path("{id: \\d+}/promedioCalificaciones")
+    public CalificacionDTO getPromedioCalificacionFromPelicula(@PathParam("id") Long peliculaId) throws BusinessLogicException {
+        PeliculaEntity pelicula = logic.getPelicula(peliculaId);
+        if (pelicula == null) {
+            throw new WebApplicationException("El crítico con id: " + peliculaId + " no existe.", 404);
+        }
+        Double prom = logic.getCalificacionPromedioFromPelicula(peliculaId);
+        CalificacionDTO calificacion = new CalificacionDTO();
+        calificacion.setCalificacion(prom);
+        return calificacion;
+    }
+
     /**
-     * Método que transforma una Lista de Entidades de Películas a sus versiones DTOS.
+     * Método que transforma una Lista de Entidades de Películas a sus versiones
+     * DTOS.
+     *
      * @param entityList LIst<PeliculaEntity>, Lista de Entidades de Películas.
      * @return List<PeliculaDetialDTO>, Lista de PeliculasDetailDTOS.
      */
@@ -161,8 +208,10 @@ public class PeliculaResource {
         }
         return list;
     }
+
     /**
      * Método que transforma una Lista de Entidades de Funciones a FuncionDTOs.
+     *
      * @param funciones List<FuncionEntity>, Lista de Entidades de Función.
      * @return List<FuncionDTO>, Lista de Funciones DTO.
      */
@@ -174,4 +223,13 @@ public class PeliculaResource {
         }
         return funcionesDTO;
     }
+
+    private List<CalificacionDTO> listCalificacionEntity2CalificacionDTO(List<CalificacionEntity> entityList) {
+        List<CalificacionDTO> list = new ArrayList<>();
+        for (CalificacionEntity entity : entityList) {
+            list.add(new CalificacionDTO(entity));
+        }
+        return list;
+    }
+
 }
