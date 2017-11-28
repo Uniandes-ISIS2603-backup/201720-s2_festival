@@ -59,17 +59,19 @@
         <input class="btn btn-primary form-control" ng-show="sillaForm.$valid" type="submit" value="Guardar"/>
     </div>
 </form>
-<div class="col-xs-offset-4 col-xs-1"  ng-if="detail">
-    <a ui-sref="sillas.update ({ sillasId: silla.id })">
-        <button class="btn btn-primary form-control" title="Actualizar">
-            <span class="glyphicon glyphicon-leaf btn-a-icon"></span>
-        </button>
-    </a>
-</div>
-<div class="col-xs-offset-2 col-xs-1"  ng-if="detail">
-    <a ui-sref="sillas.delete ({ sillasId: silla.id })">
-        <button class="btn btn-primary form-control" title="Incinerar">
-            <span class="glyphicon glyphicon-fire btn-a-icon"></span>
-        </button>
-    </a>
+<div class="row">
+    <div class="col-xs-offset-4 col-xs-1"  ng-if="detail">
+        <a ui-sref="sillas.update ({ sillasId: silla.id })">
+            <button class="btn btn-primary form-control" title="Actualizar">
+                <span class="glyphicon glyphicon-leaf btn-a-icon"></span>
+            </button>
+        </a>
+    </div>
+    <div class="col-xs-offset-2 col-xs-1"  ng-if="detail">
+        <a ui-sref="sillas.delete ({ sillasId: silla.id })">
+            <button class="btn btn-primary form-control" title="Incinerar">
+                <span class="glyphicon glyphicon-fire btn-a-icon"></span>
+            </button>
+        </a>
+    </div>
 </div>

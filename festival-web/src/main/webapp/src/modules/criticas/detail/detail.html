@@ -51,17 +51,19 @@
         <input class="btn btn-primary form-control" ng-show="criticaForm.$valid" type="submit" value="Guardar"/>
     </div>
 </form>
-<div class="col-xs-offset-4 col-xs-1"  ng-if="detail">
-    <a ui-sref="criticas.update ({ criticasId: critica.id })">
-        <button class="btn btn-primary form-control" title="Actualizar">
-            <span class="glyphicon glyphicon-leaf btn-a-icon"></span>
-        </button>
-    </a>
-</div>
-<div class="col-xs-offset-2 col-xs-1"  ng-if="detail">
-    <a ui-sref="criticas.delete ({ criticasId: critica.id })">
-        <button class="btn btn-primary form-control" title="Incinerar">
-            <span class="glyphicon glyphicon-fire btn-a-icon"></span>
-        </button>
-    </a>
+<div class="row">
+    <div class="col-xs-offset-4 col-xs-1"  ng-if="detail">
+        <a ui-sref="criticas.update ({ criticasId: critica.id })">
+            <button class="btn btn-primary form-control" title="Actualizar">
+                <span class="glyphicon glyphicon-leaf btn-a-icon"></span>
+            </button>
+        </a>
+    </div>
+    <div class="col-xs-offset-2 col-xs-1"  ng-if="detail">
+        <a ui-sref="criticas.delete ({ criticasId: critica.id })">
+            <button class="btn btn-primary form-control" title="Incinerar">
+                <span class="glyphicon glyphicon-fire btn-a-icon"></span>
+            </button>
+        </a>
+    </div>
 </div>

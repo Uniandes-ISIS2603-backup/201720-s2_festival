@@ -1,19 +1,20 @@
 <h1 ng-if="create">Crear una boleta</h1>
 <h1 ng-if="detail">Detalle de la boleta {{ boleta.id}}</h1>
 <h1 ng-if="update">Actualizar la boleta {{ boleta.id}}</h1>
+<h1 ng-if="take">Conseguir boleta {{ boleta.id }}</h1>
 <form ng-submit="actionForBoleta()" name="boletaForm">
     <table class="table">
         <tr>
-            <th ng-if="detail || update">id</th>
+            <th ng-if="detail || update || take">id</th>
             <th>Código de barras</th>
             <th>Estado</th>
             <th>Precio</th>
         </tr>
         <tr>
-            <td ng-if="detail || update">{{ boleta.id}}</td>
-            <td ng-if="detail">{{ boleta.codigoDeBarras}}</td>
-            <td ng-if="detail">{{ boleta.estado}}</td>
-            <td ng-if="detail">{{ boleta.precio}}</td>
+            <td ng-if="detail || update || take">{{ boleta.id}}</td>
+            <td ng-if="detail || take">{{ boleta.codigoDeBarras}}</td>
+            <td ng-if="detail || take">{{ boleta.estado}}</td>
+            <td ng-if="detail || take">{{ boleta.precio}}</td>
             <td ng-if="create || update" >
                 <input type="number" name="boletaCodigoBarrasIn" required ng-model="boletaCodigoBarras" class="form-control"/>
             </td>
@@ -29,15 +30,15 @@
     <table class="table">
         <tr>
             <th>id</th>
-            <th ng-if="detail">Nombre</th>
-            <th ng-if="detail">Hora inicio</th>
-            <th ng-if="detail">Hora fin</th>
+            <th ng-if="detail || take">Nombre</th>
+            <th ng-if="detail || take">Hora inicio</th>
+            <th ng-if="detail || take">Hora fin</th>
         </tr>
         <tr>
-            <td ng-if="detail">{{ boleta.funcion.id}}</td>
-            <td ng-if="detail">{{ boleta.funcion.name}}</td>
-            <td ng-if="detail">{{ boleta.funcion.horaInicio}}</td>
-            <td ng-if="detail">{{ boleta.funcion.horaFin}}</td>
+            <td ng-if="detail || take">{{ boleta.funcion.id}}</td>
+            <td ng-if="detail || take">{{ boleta.funcion.name}}</td>
+            <td ng-if="detail || take">{{ boleta.funcion.horaInicio}}</td>
+            <td ng-if="detail || take">{{ boleta.funcion.horaFin}}</td>
             <td ng-if="create || update">
                 <input name="idFuncionIn" class="form-control" type="number" required ng-model="idFuncion">
             </td>
@@ -47,18 +48,20 @@
     <table class="table">
         <tr>
             <th>id</th>
-            <th ng-if="detail">Tarifa</th>
-            <th ng-if="detail">¿Es preferencial?</th>
+            <th ng-if="detail || take">Tarifa</th>
+            <th ng-if="detail || take">¿Es preferencial?</th>
         </tr>
         <tr>
-            <td ng-if="detail">{{ boleta.silla.id}}</td>
-            <td ng-if="detail">{{ boleta.silla.tarifa}}</td>
-            <td ng-if="detail">{{ boleta.silla.esPreferencial}}</td>
+            <td ng-if="detail || take">{{ boleta.silla.id}}</td>
+            <td ng-if="detail || take">{{ boleta.silla.tarifa}}</td>
+            <td ng-if="detail || take">{{ boleta.silla.esPreferencial}}</td>
             <td ng-if="create || update">
                 <input name="idSillaIn" class="form-control" type="number" required ng-model="idSilla">
             </td>
         </tr>
     </table>
+<!--    <h2 ng-if="!(create || take)">Espectador</h2>
+    <table class="table" ng-if="!(create || take)">-->
     <h2 ng-if="!create">Espectador</h2>
     <table class="table" ng-if="!create">
         <tr>
@@ -70,7 +73,8 @@
             <td ng-if="detail">{{ boleta.espectador.id}}</td>
             <td ng-if="detail">{{ boleta.espectador.nombre}}</td>
             <td ng-if="detail">{{ boleta.espectador.direccion}}</td>
-            <td ng-if="update">
+            <!--<td ng-if="update">-->
+            <td ng-if="update || take">
                 <input name="idEspectadorIn" class="form-control" type="number" ng-model="idEspectador">
             </td>
         </tr>
@@ -94,17 +98,33 @@
         <input class="btn btn-primary form-control" ng-show="boletaForm.$valid" type="submit" value="Guardar"/>
     </div>
 </form>
-<div class="col-xs-offset-4 col-xs-1"  ng-if="detail">
-    <a ui-sref="boletasUpdate ({ boletaId: boleta.id })">
-        <button class="btn btn-primary form-control" title="Actualizar">
-            <span class="glyphicon glyphicon-leaf btn-a-icon"></span>
-        </button>
-    </a>
-</div>
-<div class="col-xs-offset-2 col-xs-1"  ng-if="detail">
-    <a ui-sref="boletasDelete ({ boletaId: boleta.id })">
-        <button class="btn btn-primary form-control" title="Incinerar">
-            <span class="glyphicon glyphicon-fire btn-a-icon"></span>
-        </button>
-    </a>
+<div class="row">
+    <div class="col-xs-offset-4 col-xs-1"  ng-if="detail">
+        <a ui-sref="boletasUpdate ({ boletaId: boleta.id })">
+            <button class="btn btn-primary form-control" title="Actualizar">
+                <span class="glyphicon glyphicon-leaf btn-a-icon"></span>
+            </button>
+        </a>
+    </div>
+    <div class="col-xs-offset-2 col-xs-1"  ng-if="detail">
+        <a ui-sref="boletasDelete ({ boletaId: boleta.id })">
+            <button class="btn btn-primary form-control" title="Incinerar">
+                <span class="glyphicon glyphicon-fire btn-a-icon"></span>
+            </button>
+        </a>
+    </div>
+    <div class="col-xs-offset-4 col-xs-1"  ng-if="take">
+        <a ng-click="comprarBoletas()">
+            <button class="btn btn-primary form-control">
+                Comprar
+            </button>
+        </a>
+    </div>
+    <div class="col-xs-offset-2 col-xs-1"  ng-if="take">
+        <a ng-click="reservarBoletas()">
+            <button class="btn btn-primary form-control" title="Reservar">
+                Reservar
+            </button>
+        </a>
+    </div>
 </div>
