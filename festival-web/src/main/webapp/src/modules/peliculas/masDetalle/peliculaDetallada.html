@@ -6,8 +6,13 @@
 <script  src="src/modules/peliculas/starrr.js"></script>
 
 <script>
-	$('#funciones-panel').resize(function() {
-		$('#scrollCalificaciones').height($('#funciones-panel').height());
+	$(document).ready(function(){
+		$("#funcionesBoton").click(function(){
+			setTimeout(function(){ 
+				$("#scrollCalificaciones").animate({height : $('#tamFunc').height()});
+			}, 500);
+			
+		});
 	});
 </script>
 
@@ -33,14 +38,14 @@
 		<div class="col-sm-12 col-lg-8">
 			<br>
 			<br>
-			<div class="panel-group" id="funciones-panel">
+			<div class="panel-group" id="tamFunc">
 				<div class="panel panel-default">
-					<div class="panel-heading" data-toggle="collapse" data-target="#funciones">
+					<div class="panel-heading" data-toggle="collapse" data-target="#funciones-collapse" id="funcionesBoton">
 						<h4 class="panel-title">
 							<p>Funciones</p>
 						</h4>
 					</div>
-					<div id="funciones" class="panel-collapse collapse">
+					<div id="funciones-collapse" class="panel-collapse collapse">
 						<div class="panel-body">
 							<table class="table table-striped">
 								<thead>
@@ -70,7 +75,7 @@
 			</div>
 		</div>
 		<div class="col-sm-12 col-lg-4">
-			<di
+			
 			<div class="scrollableDivSquare" id="scrollCalificaciones">
 				
 				<div class="resumenCal"> 
@@ -90,9 +95,6 @@
 							</th>
 						</tr>
 					</table>
-
-
-
 				</div>
 				<div class="calificaciones">
 					<div class="calificacionN" ng-repeat="calificacion in calificaciones">
