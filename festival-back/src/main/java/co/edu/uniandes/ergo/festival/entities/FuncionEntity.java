@@ -33,11 +33,11 @@ public class FuncionEntity extends BaseEntity implements Serializable{
     private Date horaFin;
     
     @PodamExclude
-    @OneToMany
+    @OneToMany(mappedBy = "funcion", orphanRemoval = true)
     private List<BoletaEntity> boletas;
 
     @PodamExclude
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(orphanRemoval = true, mappedBy = "funcion")
     private List<CriticaEntity> criticas;
     
     @PodamExclude

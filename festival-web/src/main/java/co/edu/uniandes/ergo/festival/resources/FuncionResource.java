@@ -7,7 +7,6 @@ package co.edu.uniandes.ergo.festival.resources;
 
 
 import co.edu.uniandes.ergo.festival.dtos.BoletaDTO;
-import co.edu.uniandes.ergo.festival.dtos.CalificacionDTO;
 import co.edu.uniandes.ergo.festival.dtos.CalificacionDetailDTO;
 import co.edu.uniandes.ergo.festival.dtos.CriticaDTO;
 import co.edu.uniandes.ergo.festival.dtos.FuncionDetailDTO;
@@ -241,11 +240,11 @@ public class FuncionResource {
     public TeatroDTO getTeatroFromFuncion(@PathParam("funcionid")Long idFuncion) throws BusinessLogicException
     {
         FuncionEntity entity = funcionLogic.getFuncion(idFuncion);
-        SalaEntity sala = entity.getSala();
-        TeatroEntity teatro = sala.getTeatro();
         if (entity == null) {
             throw new WebApplicationException("La funcion con el id:" + idFuncion + " no existe.", 404);
         }
+        SalaEntity sala = entity.getSala();
+        TeatroEntity teatro = sala.getTeatro();
         return new TeatroDTO(teatro);
     }
     /**
