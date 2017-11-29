@@ -77,7 +77,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/festival-web/api/abonos/200/boletas/20",
+				"url": "http://localhost:8080/festival-web/api/abonos/200/boletas/1020",
 				"method": "POST",
 				"header": [
 					{
@@ -108,7 +108,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/festival-web/api/abonos/200/boletas/20",
+				"url": "http://localhost:8080/festival-web/api/abonos/200/boletas/1020",
 				"method": "GET",
 				"header": [
 					{
@@ -139,7 +139,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/festival-web/api/abonos/200/boletas/30",
+				"url": "http://localhost:8080/festival-web/api/abonos/200/boletas/1030",
 				"method": "GET",
 				"header": [
 					{
@@ -157,7 +157,7 @@
 			"response": []
 		},
 		{
-			"name": "Metodo para obtener las boletas de un abono, el arreglo debe estar vacío. copy",
+			"name": "Metodo para obtener las boletas de un abono",
 			"event": [
 				{
 					"listen": "test",
@@ -201,7 +201,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/festival-web/api/abonos/200/boletas/20",
+				"url": "http://localhost:8080/festival-web/api/abonos/200/boletas/1020",
 				"method": "DELETE",
 				"header": [
 					{

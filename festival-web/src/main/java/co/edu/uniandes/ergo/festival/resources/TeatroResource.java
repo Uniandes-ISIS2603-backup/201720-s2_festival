@@ -7,7 +7,6 @@ package co.edu.uniandes.ergo.festival.resources;
 
 import co.edu.uniandes.ergo.festival.dtos.FuncionDTO;
 import co.edu.uniandes.ergo.festival.dtos.SalaDTO;
-import co.edu.uniandes.ergo.festival.dtos.SalaDetailDTO;
 import co.edu.uniandes.ergo.festival.dtos.TeatroDetailDTO;
 import co.edu.uniandes.ergo.festival.ejb.TeatroLogic;
 import co.edu.uniandes.ergo.festival.entities.FuncionEntity;

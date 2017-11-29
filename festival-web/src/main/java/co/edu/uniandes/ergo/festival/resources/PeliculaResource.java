@@ -168,7 +168,12 @@ public class PeliculaResource {
         }
         return new FuncionDetailDTO(logic.getFuncion(peliculaId, pelId));
     }
-
+    /**
+     * Método que obtiene las Calificaciones de una Película.
+     * @param peliculaId Long, ID de la Película.
+     * @return List<CalificacionDTO>, Lista con todas las Calificaciones de una Película.
+     * @throws BusinessLogicException 
+     */
     @GET
     @Path("{id: \\d+}/calificaciones")
     public List<CalificacionDTO> getCalificacionesFromPelicula(@PathParam("id") Long peliculaId) throws BusinessLogicException {

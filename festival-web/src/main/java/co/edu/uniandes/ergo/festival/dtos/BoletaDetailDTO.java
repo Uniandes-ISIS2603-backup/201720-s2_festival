@@ -12,9 +12,6 @@ import co.edu.uniandes.ergo.festival.entities.BoletaEntity;
  */
 public class BoletaDetailDTO extends BoletaDTO {
 
-    public BoletaDetailDTO() {
-        //Método constructor por Defecto.
-    }
     /**
      * Atributo que contiene el ID de la silla asociada;
      */
@@ -35,6 +32,12 @@ public class BoletaDetailDTO extends BoletaDTO {
      * Atributos que contienen
      */
     private AbonoDTO abono;
+    /**
+     * Método constructor de la Clase por defecto.
+     */
+    public BoletaDetailDTO() {
+        //Método constructor por Defecto.
+    }
     /**
      * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
      * la entidad que viene de argumento.

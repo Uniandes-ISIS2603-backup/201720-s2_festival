@@ -9,8 +9,6 @@ import co.edu.uniandes.ergo.festival.dtos.BoletaDTO;
 import co.edu.uniandes.ergo.festival.dtos.SalaDetailDTO;
 import co.edu.uniandes.ergo.festival.dtos.SillaDTO;
 import co.edu.uniandes.ergo.festival.dtos.SillaDetailDTO;
-import co.edu.uniandes.ergo.festival.ejb.BoletaLogic;
-import co.edu.uniandes.ergo.festival.ejb.SalaLogic;
 import co.edu.uniandes.ergo.festival.ejb.SillaLogic;
 import co.edu.uniandes.ergo.festival.entities.BoletaEntity;
 import co.edu.uniandes.ergo.festival.entities.SalaEntity;
