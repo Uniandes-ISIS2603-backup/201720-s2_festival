@@ -32,7 +32,7 @@ public class CalificacionDTO {
      * Método contructor por Defecto.
      */
     public CalificacionDTO(){
-
+        //Método constructor por Defecto.
     }
     /**
      * Método que construye una CalificacionDTO a partir de su versión Entidad.

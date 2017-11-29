@@ -56,7 +56,7 @@ public class PeliculaDTO {
      * Constructor por Defecto.
      */
     public PeliculaDTO() {
-
+        //Método constructor por Defecto.
     }
     /**
      * Métoco constructor de la Película. Utiliza la versión entity para construir una PeliculaDTO.
@@ -84,11 +84,25 @@ public class PeliculaDTO {
         return id;
     }
     /**
+     * Método que establece el ID de la Película.
+     * @param id Long, nuevo ID de la Película.
+     */
+    public void setId(long id) {
+        this.id = id;
+    }
+    /**
      * Método que obtiene el Nombre de la Película.
      * @return String, Nombre de la Película.
      */
     public String getname() {
         return nombre;
+    }
+        /**
+     * Método que establece el nombre de la Película.
+     * @param nombre String, nuevo nombre de la Película.
+     */
+    public void setname(String nombre) {
+        this.nombre = nombre;
     }
     /**
      * Método que obtiene el género de la Película.
@@ -98,11 +112,24 @@ public class PeliculaDTO {
         return genero;
     }
     /**
+     * Método que establece el género de la Película.
+     * @param genero String, nuevo género de la Película.
+     */
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+    /**
      * Método que obtiene la duración en minutos de la Película.
      * @return int, duración en minutos de la Película.
      */
     public int getDuracionMinutos() {
         return duracionMinutos;
+    } /**
+     * Método que establece la duración en minutos de la Película.
+     * @param duracionMinutos int, Nueva duración en minutos de la Película.
+     */
+    public void setDuracionMinutos(int duracionMinutos) {
+        this.duracionMinutos = duracionMinutos;
     }
     /**
      * Método que obtiene el nombre del Director de la Película.
@@ -112,60 +139,18 @@ public class PeliculaDTO {
         return director;
     }
     /**
-     * Método que obtiene la URL de la Imagen de la Película.
-     * @return Stirng, URL de la Imagen de la Película.
-     */
-    public String getImagen() {
-        return imagen;
-    }
-    /**
-     * Metodo que obtiene el nombre del País de la Película.
-     * @return String, nombre del país de la película.
-     */
-    public String getPais() {
-        return pais;
-    }
-    /**
-     * Método que obtiene el nombre del Corto de la Película.
-     * @return String, nombre del corto de la película.
-     */
-    public String getCorto() {
-        return corto;
-    }
-    /**
-     * Método que obtiene datos adicionales de la Película.
-     * @return String, Datos adicionales de la Película.
-     */
-    public String getDatos() {
-        return datos;
-    }
-    /**
-     * Método que establece el nombre de la Película.
-     * @param nombre String, nuevo nombre de la Película.
-     */
-    public void setname(String nombre) {
-        this.nombre = nombre;
-    }
-    /**
-     * Método que establece el ID de la Película.
-     * @param id Long, nuevo ID de la Película.
-     */
-    public void setId(long id) {
-        this.id = id;
-    }
-    /**
-     * Método que establece la duración en minutos de la Película.
-     * @param duracionMinutos int, Nueva duración en minutos de la Película.
-     */
-    public void setDuracionMinutos(int duracionMinutos) {
-        this.duracionMinutos = duracionMinutos;
-    }
-    /**
      * Método que establece el nombre del Director de la Película.
      * @param director String, nuevo Nombre del Director de la Película.
      */
     public void setDirector(String director) {
         this.director = director;
+    }
+    /**
+     * Método que obtiene la URL de la Imagen de la Película.
+     * @return Stirng, URL de la Imagen de la Película.
+     */
+    public String getImagen() {
+        return imagen;
     }
     /**
      * Método que establece la URL de la Imagen de la Película.
@@ -175,11 +160,25 @@ public class PeliculaDTO {
         this.imagen = imagen;
     }
     /**
+     * Metodo que obtiene el nombre del País de la Película.
+     * @return String, nombre del país de la película.
+     */
+    public String getPais() {
+        return pais;
+    }
+    /**
      * Método que establece el nombre del País de la Película.
      * @param pais String, nuevo Nombre del País de la Película.
      */
     public void setPais(String pais) {
         this.pais = pais;
+    }
+    /**
+     * Método que obtiene el nombre del Corto de la Película.
+     * @return String, nombre del corto de la película.
+     */
+    public String getCorto() {
+        return corto;
     }
     /**
      * Método que establece el nombre del Corto de la Película.
@@ -189,18 +188,18 @@ public class PeliculaDTO {
         this.corto = corto;
     }
     /**
+     * Método que obtiene datos adicionales de la Película.
+     * @return String, Datos adicionales de la Película.
+     */
+    public String getDatos() {
+        return datos;
+    }
+    /**
      * Método que establece los datos adicionales de la Película.
      * @param datos String, nuevos datos adicionales de la Película.
      */
     public void setDatos(String datos) {
         this.datos = datos;
-    }
-    /**
-     * Método que establece el género de la Película.
-     * @param genero String, nuevo género de la Película.
-     */
-    public void setGenero(String genero) {
-        this.genero = genero;
     }
     /**
      * Método que obtiene la Sinopsis de una Película.
@@ -233,7 +232,7 @@ public class PeliculaDTO {
         pelicula.setPais(this.pais);
         pelicula.setCorto(this.corto);
         pelicula.setDatos(this.datos);
-
+        pelicula.setSinopsis(this.sinopsis);
         return pelicula;
     }
 }

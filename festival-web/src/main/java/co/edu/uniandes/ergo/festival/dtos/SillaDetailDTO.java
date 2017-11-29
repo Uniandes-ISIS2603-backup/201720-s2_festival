@@ -30,7 +30,7 @@ public class SillaDetailDTO extends SillaDTO {
      * Constructor sin parámetros.
      */
     public SillaDetailDTO(){
-        
+        //Método constructor por Defecto.
     }
     
     /**
@@ -92,6 +92,7 @@ public class SillaDetailDTO extends SillaDTO {
      * Convierte una SillaEntity en Representación Detail a una SillaEntity.
      * @return La SillaEntity.
      */
+    @Override
     public SillaEntity toEntity(){
         SillaEntity entity = super.toEntity();
         if (sala != null) {

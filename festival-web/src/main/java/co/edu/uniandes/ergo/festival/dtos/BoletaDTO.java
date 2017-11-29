@@ -15,15 +15,15 @@ public class BoletaDTO
         /**
      * Constante que representa que esta boleta está disponible.
      */
-    public final static String DISPONIBLE="DISPONIBLE";
+    public static final String DISPONIBLE="DISPONIBLE";
     /**
      * Constante que representa que esta boleta está reservada.
      */
-    public final static String RESERVADA="RESERVADA";
+    public static final String RESERVADA="RESERVADA";
     /**
      * Constate que representa que esta boleta está comprada.
      */
-    public final static String COMPRADA="COMPRADA";
+    public static final String COMPRADA="COMPRADA";
     /**
      * Atributo que contiene el ID.
      */
@@ -45,9 +45,8 @@ public class BoletaDTO
      */
     public BoletaDTO()
     {
-        
+        //Método constructor por Defecto.
     }
-    
      /**
      * Conviertir Entity a DTO
      * (Crea un nuevo DTO con los valores que recibe en la entidad que viene de argumento.

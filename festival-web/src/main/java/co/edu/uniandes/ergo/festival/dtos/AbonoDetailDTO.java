@@ -27,6 +27,7 @@ public class AbonoDetailDTO extends AbonoDTO
      * Método constructor vacío de AbonoDetailDTO, es necesario dejarlo vacío por razones de funcionalidad.
      */
     public AbonoDetailDTO() {
+        //Método constructor por Defecto.
     }
         
     /**
@@ -57,7 +58,7 @@ public class AbonoDetailDTO extends AbonoDTO
         }
         if(boletas != null)
         {
-            List <BoletaEntity> boletasEntity = new ArrayList<BoletaEntity>();
+            List <BoletaEntity> boletasEntity = new ArrayList<>();
             for(int i = 0; i < boletas.size(); i++)
             {
                 boletasEntity.add(boletas.get(i).toEntity());

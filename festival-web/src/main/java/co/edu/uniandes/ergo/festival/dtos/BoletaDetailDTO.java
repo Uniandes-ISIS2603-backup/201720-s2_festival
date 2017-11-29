@@ -13,6 +13,7 @@ import co.edu.uniandes.ergo.festival.entities.BoletaEntity;
 public class BoletaDetailDTO extends BoletaDTO {
 
     public BoletaDetailDTO() {
+        //Método constructor por Defecto.
     }
     /**
      * Atributo que contiene el ID de la silla asociada;
@@ -157,7 +158,6 @@ public class BoletaDetailDTO extends BoletaDTO {
         {
             entity.setSilla(silla.toEntity());
         }
-        //entity.setFuncion(tempFuncion);
         return entity;
     }
 }
