@@ -67,7 +67,7 @@ public class FestivalResource {
     /**
      * POST http://localhost:8080/festival-web/api/festivales
      *
-     * @param Festival correponde a la representación java del objeto json
+     * @param festival correponde a la representación java del objeto json
      * enviado en el llamado.
      * @return Devuelve el objeto json de entrada que contiene el id creado por
      * la base de datos y el tipo del objeto java. Ejemplo: { "type":
@@ -75,11 +75,11 @@ public class FestivalResource {
      * @throws BusinessLogicException
      */
     @POST
-    public FestivalDetailDTO createFestival(FestivalDetailDTO Festival) throws BusinessLogicException {
+    public FestivalDetailDTO createFestival(FestivalDetailDTO festival) throws BusinessLogicException {
         // Convierte el DTO (json) en un objeto Entity para ser manejado por la lógica.
-        FestivalEntity FestivalEntity = Festival.toEntity();
+        FestivalEntity festivalEntity = festival.toEntity();
         // Invoca la lógica para crear la festival nuevo
-        FestivalEntity nuevoFestival = festivalLogic.createFestival(FestivalEntity);
+        FestivalEntity nuevoFestival = festivalLogic.createFestival(festivalEntity);
         // Como debe retornar un DTO (json) se invoca el constructor del DTO con argumento el entity nuevo
         return new FestivalDetailDTO(nuevoFestival);
     }

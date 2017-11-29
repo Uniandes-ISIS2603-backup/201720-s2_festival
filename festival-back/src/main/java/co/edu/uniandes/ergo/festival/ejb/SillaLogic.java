@@ -115,11 +115,8 @@ public class SillaLogic {
      * @return La SalaEntity asociada.
      */
     public SalaEntity getSalaSilla(Long id){
-        LOGGER.log(Level.INFO, "Consultando SalaEntity de la SillaEntity con id: {0}", id);
-        
-        SalaEntity sala = getSilla(id).getSala();
-        
-        return sala;
+        LOGGER.log(Level.INFO, "Consultando SalaEntity de la SillaEntity con id: {0}", id);       
+        return getSilla(id).getSala();
     }
     
 //    /**

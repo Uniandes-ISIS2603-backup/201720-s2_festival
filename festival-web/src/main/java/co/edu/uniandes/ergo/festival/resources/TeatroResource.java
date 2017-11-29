@@ -187,9 +187,9 @@ public class TeatroResource
      */
     @PUT
     @Path("{TeatroId: \\d+ }/salas")
-    public List<SalaDTO> replaceSalas(@PathParam("TeatroId") Long TeatroId, List<SalaEntity> salas)
+    public List<SalaDTO> replaceSalas(@PathParam("TeatroId") Long teatroId, List<SalaEntity> salas)
     {
-        return salasListEntity2DTO(teatroLogic.replaceSalas(TeatroId, salas));
+        return salasListEntity2DTO(teatroLogic.replaceSalas(teatroId, salas));
     }
     
     /**
@@ -199,9 +199,9 @@ public class TeatroResource
      */
     @DELETE
     @Path("{TeatroId: \\d+ }/salas/{salasId: \\d+ }")
-    public void removeSalas(@PathParam("TeatroId") Long TeatroId, @PathParam("salasId") Long salasId)
+    public void removeSalas(@PathParam("TeatroId") Long teatroId, @PathParam("salasId") Long salasId)
     {
-        teatroLogic.removeSala(TeatroId, salasId);
+        teatroLogic.removeSala(teatroId, salasId);
     }
     /**
      * Método que obtiene las Funciones de un Teatro especificado mediante ID.
@@ -216,10 +216,8 @@ public class TeatroResource
         if (teatro == null)
         {
             throw new WebApplicationException("El teatro con id: " + teatroId + " no existe.", 404);
-        }
-        List<FuncionDTO> respuesta = funcionesListEntity2DTO(teatroLogic.getFuncionesFromTeatro(teatroId));
-        
-        return respuesta;
+        }       
+        return funcionesListEntity2DTO(teatroLogic.getFuncionesFromTeatro(teatroId));
     }
     
     /**
