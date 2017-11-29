@@ -43,6 +43,49 @@ public class FuncionDetailDTO extends FuncionDTO{
         //Método constructor por Defecto.
     }
     /**
+     * Método que construye un FuncionDetailDTO a partir de la versión Entidad de Función.
+     * @param entity FuncionEntity, entidad de Función.
+     */
+    public FuncionDetailDTO(FuncionEntity entity) {
+        super(entity); 
+        if(!(entity.getBoletas().isEmpty())){
+            boletas= new ArrayList<>();
+            for(BoletaEntity bol: entity.getBoletas()){
+                boletas.add(new BoletaDTO(bol));
+            }
+        }
+        else{
+            boletas = new ArrayList<>();
+        }
+        if(!(entity.getCriticas().isEmpty())){
+            criticas = new ArrayList<>();
+            for(CriticaEntity crit : entity.getCriticas()){
+                criticas.add(new CriticaDTO(crit));
+            }
+        }
+        else{
+            criticas = new ArrayList<>();
+        }
+        if(!(entity.getPelicula()==null)){
+            pelicula = new PeliculaDTO(entity.getPelicula());
+        }
+        else{
+            pelicula = new PeliculaDTO();
+        }
+        if(!(entity.getSala()==null)){
+            sala = new SalaDTO(entity.getSala());
+        }
+        else{
+            sala = new SalaDTO();
+        }
+        if(!(entity.getFestival()==null)){
+            festival = new FestivalDTO(entity.getFestival());
+        }
+        else{
+            festival = new FestivalDTO();
+        }
+    }
+    /**
      * Método que obtiene la lista de Boletas de esta Función.
      * @return List<BoletaDTO>, Lista de Boletas de esta Función.
      */
@@ -111,49 +154,6 @@ public class FuncionDetailDTO extends FuncionDTO{
      */
     public void setFestival(FestivalDTO festival) {
         this.festival = festival;
-    }
-    /**
-     * Método que construye un FuncionDetailDTO a partir de la versión Entidad de Función.
-     * @param entity FuncionEntity, entidad de Función.
-     */
-    public FuncionDetailDTO(FuncionEntity entity) {
-        super(entity); 
-        if(!(entity.getBoletas().isEmpty())){
-            boletas= new ArrayList<>();
-            for(BoletaEntity bol: entity.getBoletas()){
-                boletas.add(new BoletaDTO(bol));
-            }
-        }
-        else{
-            boletas = new ArrayList<>();
-        }
-        if(!(entity.getCriticas().isEmpty())){
-            criticas = new ArrayList<>();
-            for(CriticaEntity crit : entity.getCriticas()){
-                criticas.add(new CriticaDTO(crit));
-            }
-        }
-        else{
-            criticas = new ArrayList<>();
-        }
-        if(!(entity.getPelicula()==null)){
-            pelicula = new PeliculaDTO(entity.getPelicula());
-        }
-        else{
-            pelicula = new PeliculaDTO();
-        }
-        if(!(entity.getSala()==null)){
-            sala = new SalaDTO(entity.getSala());
-        }
-        else{
-            sala = new SalaDTO();
-        }
-        if(!(entity.getFestival()==null)){
-            festival = new FestivalDTO(entity.getFestival());
-        }
-        else{
-            festival = new FestivalDTO();
-        }
     }
     /**
      * Método que construye un objeto FuncionEntity a partir de este DTO.

@@ -27,7 +27,7 @@ public class PatrocinadorDTO {
     /**
      * Atributo que contiene el NIT del Patrocinador.
      */
-    private Long NIT;
+    private Long nit;
     /**
      * Constructor por Defecto.
      */
@@ -42,7 +42,7 @@ public class PatrocinadorDTO {
         this.id = entity.getId();
         this.name = entity.getName();
         this.patrocinio = entity.getPatrocinio();
-        this.NIT = entity.getNIT();
+        this.nit = entity.getNIT();
     }
 
     /**
@@ -92,14 +92,14 @@ public class PatrocinadorDTO {
      * @return the NIT
      */
     public Long getNIT() {
-        return NIT;
+        return nit;
     }
     /**
      * Método que establece el NIT del Patrocinador.
      * @param NIT the NIT to set
      */
-    public void setNIT(Long NIT) {
-        this.NIT = NIT;
+    public void setNIT(Long nit) {
+        this.nit = nit;
     }
     /**
      * Método que construye un PatrocinadorEntity a partir de este DTO:
@@ -108,7 +108,7 @@ public class PatrocinadorDTO {
     public PatrocinadorEntity toEntity() {
         PatrocinadorEntity retornar = new PatrocinadorEntity();
         retornar.setId(this.getId());
-        retornar.setNIT(NIT);
+        retornar.setNIT(nit);
         retornar.setPatrocinio(patrocinio);
         retornar.setName(this.getName());
         return retornar;
