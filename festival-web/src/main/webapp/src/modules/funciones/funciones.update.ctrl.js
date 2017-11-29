@@ -5,14 +5,14 @@
  */
 (function (ng) {
     var mod = ng.module("funcionesModule");
-    //console.log($scope);
+    // 
     mod.controller('funciones.updateCtrl',['$scope', '$http', 'funcionesContext', '$state', '$rootScope',
         function ($scope, $http, funcionesContext, $state, $rootScope, $stateParams) {
-            console.log("update funcion http");
+             
             
             $rootScope.edit = false;
             $scope.update = function () {
-                console.log($scope.fechaInicio);
+                 
                 $http.put(funcionesContext+"/"+$state.params.funcionId, {
                     
                     horaInicio: $scope.fechaInicio,

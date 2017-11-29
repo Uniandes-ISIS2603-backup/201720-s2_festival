@@ -11,7 +11,7 @@
 			};
 
 			$scope.loadDefaultState = function () {
-				console.log('entró ijo de tu re mil pta madre :v ');
+				 
 				$state.go('boletasFuncionLista' , {funcionId : $state.params.funcionId});
 			};
 		}]);

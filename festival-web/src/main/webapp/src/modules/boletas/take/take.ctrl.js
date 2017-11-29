@@ -9,7 +9,7 @@
         function ($scope, $http, boletasContext, $state, $modal) {
             $scope.take = true;
             $scope.init = function () {
-                console.log('buenas, esto es take :v');
+                 
                /* document.getElementById("elPapaDelModal").removeChild(document.getElementById("cajaFunciones"));*/
 
             }; 

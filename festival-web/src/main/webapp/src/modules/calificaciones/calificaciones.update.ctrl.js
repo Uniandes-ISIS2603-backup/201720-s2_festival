@@ -5,14 +5,14 @@
  */
 (function (ng) {
     var mod = ng.module("calificacionesModule");
-    //console.log($scope);
+    // 
     mod.controller('calificaciones.updateCtrl',['$scope', '$http', 'calificacionesContext', '$state', '$rootScope',
         function ($scope, $http, calificacionesContext, $state, $rootScope, $stateParams) {
-            console.log("update calificacion http");
+             
             
             $rootScope.edit = false;
             $scope.updateCalificacion = function () {
-                console.log($scope);
+                 
                 $http.put(calificacionesContext+"/"+$state.params.calificacionId, {
                     calificacion: $scope.calificacion,
                     comentario: $scope.comentario,

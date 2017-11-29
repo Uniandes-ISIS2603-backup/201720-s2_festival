@@ -12,7 +12,7 @@
 				});
 
 			if($state.params.peliculaDeleteId !== undefined) {
-				console.log('entrooo');
+				 
 				$http.delete(peliculasContext + $state.params.peliculaDeleteId, {}).then(function () {
 					$state.go('peliculasList',{},{reload : true});
 				});

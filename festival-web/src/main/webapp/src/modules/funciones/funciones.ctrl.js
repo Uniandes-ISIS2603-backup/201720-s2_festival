@@ -21,15 +21,15 @@
                 $state.go('funcionesList');
             };
             $scope.deleteFuncion = function(param){
-                console.log("controler deleteFuncion");
+                 
                 $state.go('funcionDelete',{funcionId:param});
             };
             $scope.updateFuncion = function(param){
-                console.log("controler updateFuncion");
+                 
                 $state.go('funcionUpdate',{funcionId:param});
             };
             $scope.createFuncion = function(){
-                console.log("controler createFuncion");
+                 
                 $state.go('funcionCreate');
             };
         }

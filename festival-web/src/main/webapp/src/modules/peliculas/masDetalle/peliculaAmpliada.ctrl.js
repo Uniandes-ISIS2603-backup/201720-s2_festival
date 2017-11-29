@@ -9,13 +9,13 @@
 			$scope.sortReverse  = false; 
 
 			$scope.onLoad = function () { 
-				console.log('hola1 ' + $state.params.comprada);
-				console.log('otro1 ' + $state.params.idBoletaComprada);
+				 
+				 
 				if($state.params.idBoletaComprada !== undefined && $state.params.comprada !== undefined){
-					console.log('entró al primer if al menos');
+					 
 					if($state.params.comprada == true){
 						document.getElementById('elPapaDelModal').removeChild(document.getElementById('cajaFunciones'));
-						console.log('entro al segundo if al menos');
+						 
 						
 						$state.go('boletasTake', {boletasId : $state.params.idBoletaComprada}, {reload : true, notify: true});
 						

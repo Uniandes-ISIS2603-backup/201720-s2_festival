@@ -1,7 +1,14 @@
-<h1 ng-if="create">Crear una boleta</h1>
-<h1 ng-if="detail">Detalle de la boleta {{ boleta.id}}</h1>
-<h1 ng-if="update">Actualizar la boleta {{ boleta.id}}</h1>
-<h1 ng-if="take" >Conseguir boleta {{ boleta.id }}</h1>
+
+<br>
+<div id="div-lg-azul">
+    <h1 class="blanco" ng-if="create">Crear una boleta</h1>
+    <h1 class="blanco" ng-if="detail">Detalle de la boleta {{ boleta.id}}</h1>
+    <h1 class="blanco" ng-if="update">Actualizar la boleta {{ boleta.id}}</h1>
+    <h1 class="blanco" ng-if="take" >Conseguir boleta {{ boleta.id }}</h1>
+</div>
+<br>
+
+
 <form ng-submit="actionForBoleta()" name="boletaForm">
     <table class="table">
         <tr>
@@ -62,69 +69,69 @@
     </table>
 <!--    <h2 ng-if="!(create || take)">Espectador</h2>
     <table class="table" ng-if="!(create || take)">-->
-    <h2 ng-if="!create">Espectador</h2>
-    <table class="table" ng-if="!create">
-        <tr>
-            <th>id</th>
-            <th ng-if="detail">Nombre</th>
-            <th ng-if="detail">Dirección</th>
-        </tr>
-        <tr>
-            <td ng-if="detail">{{ boleta.espectador.id}}</td>
-            <td ng-if="detail">{{ boleta.espectador.nombre}}</td>
-            <td ng-if="detail">{{ boleta.espectador.direccion}}</td>
-            <!--<td ng-if="update">-->
-            <td ng-if="update || take">
-                <input name="idEspectadorIn" class="form-control" type="number" ng-model="idEspectador">
-            </td>
-        </tr>
-    </table>
-    <h2 ng-if="detail">Calificación</h2>
-    <table class="table" ng-if="detail">
-        <tr>
-            <th>id</th>
-            <th>Título</th>
-            <th>Comentario</th>
-            <th>Calificación</th>
-        </tr>
-        <tr>
-            <td>{{ boleta.calificacion.id}}</td>
-            <td>{{ boleta.calificacion.name}}</td>
-            <td>{{ boleta.calificacion.comentario}}</td>
-            <td>{{ boleta.calificacion.calificacion}}</td>
-        </tr>
-    </table>
-    <div class="col-xs-offset-5 col-xs-2" ng-if="create || update">
-        <input class="btn btn-primary form-control" ng-show="boletaForm.$valid" type="submit" value="Guardar"/>
-    </div>
-</form>
-<div class="row">
-    <div class="col-xs-offset-4 col-xs-1"  ng-if="detail">
-        <a ui-sref="boletasUpdate ({ boletaId: boleta.id })">
-            <button class="btn btn-primary form-control" title="Actualizar">
-                <span class="glyphicon glyphicon-leaf btn-a-icon"></span>
-            </button>
-        </a>
-    </div>
-    <div class="col-xs-offset-2 col-xs-1"  ng-if="detail">
-        <a ui-sref="boletasDelete ({ boletaId: boleta.id })">
-            <button class="btn btn-primary form-control" title="Incinerar">
-                <span class="glyphicon glyphicon-fire btn-a-icon"></span>
-            </button>
-        </a>
-    </div>
-    <div class="col-xs-offset-4 col-xs-1"  ng-if="take">
-        <a ng-click="comprarBoletas()">
-            <button class="btn btn-primary form-control">
-                Comprar
-            </button>
-        </a>
-    </div>
-    <div class="col-xs-offset-2 col-xs-1"  ng-if="take">
-        <a ng-click="reservarBoletas()">
-            <button class="btn btn-primary form-control" title="Reservar">
-                Reservar
-            </button>
-        </a>
-    </div>
-</div>
+        <h2 ng-if="!create">Espectador</h2>
+        <table class="table" ng-if="!create">
+            <tr>
+                <th>id</th>
+                <th ng-if="detail">Nombre</th>
+                <th ng-if="detail">Dirección</th>
+            </tr>
+            <tr>
+                <td ng-if="detail">{{ boleta.espectador.id}}</td>
+                <td ng-if="detail">{{ boleta.espectador.nombre}}</td>
+                <td ng-if="detail">{{ boleta.espectador.direccion}}</td>
+                <!--<td ng-if="update">-->
+                    <td ng-if="update || take">
+                        <input name="idEspectadorIn" class="form-control" type="number" ng-model="idEspectador">
+                    </td>
+                </tr>
+            </table>
+            <h2 ng-if="detail">Calificación</h2>
+            <table class="table" ng-if="detail">
+                <tr>
+                    <th>id</th>
+                    <th>Título</th>
+                    <th>Comentario</th>
+                    <th>Calificación</th>
+                </tr>
+                <tr>
+                    <td>{{ boleta.calificacion.id}}</td>
+                    <td>{{ boleta.calificacion.name}}</td>
+                    <td>{{ boleta.calificacion.comentario}}</td>
+                    <td>{{ boleta.calificacion.calificacion}}</td>
+                </tr>
+            </table>
+            <div class="col-xs-offset-5 col-xs-2" ng-if="create || update">
+                <input class="btn btn-primary form-control" ng-show="boletaForm.$valid" type="submit" value="Guardar"/>
+            </div>
+        </form>
+        <div class="row">
+            <div class="col-xs-offset-4 col-xs-1"  ng-if="detail">
+                <a ui-sref="boletasUpdate ({ boletaId: boleta.id })">
+                    <button class="btn btn-primary form-control" title="Actualizar">
+                        <span class="glyphicon glyphicon-leaf btn-a-icon"></span>
+                    </button>
+                </a>
+            </div>
+            <div class="col-xs-offset-2 col-xs-1"  ng-if="detail">
+                <a ui-sref="boletasDelete ({ boletaId: boleta.id })">
+                    <button class="btn btn-primary form-control" title="Incinerar">
+                        <span class="glyphicon glyphicon-fire btn-a-icon"></span>
+                    </button>
+                </a>
+            </div>
+            <div class="col-xs-offset-4 col-xs-1"  ng-if="take">
+                <a ng-click="comprarBoletas()">
+                    <button class="btn btn-primary form-control">
+                        Comprar
+                    </button>
+                </a>
+            </div>
+            <div class="col-xs-offset-2 col-xs-1"  ng-if="take">
+                <a ng-click="reservarBoletas()">
+                    <button class="btn btn-primary form-control" title="Reservar">
+                        Reservar
+                    </button>
+                </a>
+            </div>
+        </div>

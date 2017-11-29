@@ -1,6 +1,12 @@
-<h1 ng-if="create">Crear un abono</h1>
-<h1 ng-if="detail">Detalle del abono {{ abono.id}}</h1>
-<h1 ng-if="update">Actualizar el abono {{ abono.id}}</h1>
+<br>
+<div id="div-lg-azul">
+    <h1 class="blanco" ng-if="create">Crear un abono</h1>
+    <h1 class="blanco" ng-if="detail">Detalle del abono {{ abono.id}}</h1>
+    <h1 class="blanco" ng-if="update">Actualizar el abono {{ abono.id}}</h1>
+</div>
+<br>
+
+
 <form ng-submit="actionForAbono()" name="abonoForm">
     <table class="table">
         <tr>

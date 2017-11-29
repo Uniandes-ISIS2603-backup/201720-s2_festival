@@ -7,10 +7,10 @@
 			$scope.prepararCorto = function (url){
 				var a = url.split("/");
 				var b = a[3];
-				console.log(b);
+				 
 				if(b.match(/watch.*/)){
 					var c = b.split("=");
-					console.log(c);
+					 
 					return "https://www.youtube.com/embed/" + c[1] + "?ecver=2"
 				}
 				return "https://www.youtube.com/embed/" + a[3] + "?ecver=2";

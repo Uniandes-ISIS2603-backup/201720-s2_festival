@@ -18,11 +18,11 @@
             };
             
             $scope.deleteCalificacion = function(param){
-              console.log("entro a deleteCAl");
+               
               $state.go('calificacionDelete',{calificacionId:param});  
             };
             $scope.actualizarCalificacion = function(param){
-              console.log("entro a actualizarCal");
+               
               $state.go('update',{calificacionId:param});  
             };
             
