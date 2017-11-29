@@ -62,7 +62,7 @@ public final class FestivalDetailDTO extends FestivalDTO {
      */
     public FestivalDetailDTO() 
     {
-       
+       //Método constructor por Defecto.
     }
     /**
      * Constructor para transformar un Entity a un DTO

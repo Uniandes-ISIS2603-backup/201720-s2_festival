@@ -25,7 +25,7 @@ public class AbonoDTO
      */
     public AbonoDTO()
     {
-        
+        //Método constructor por Defecto.
     }
     
      /**

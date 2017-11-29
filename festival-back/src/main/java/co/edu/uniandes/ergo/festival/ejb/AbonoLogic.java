@@ -114,7 +114,7 @@ public class AbonoLogic
         LOGGER.info("Finalizando proceso de des asociar Espectador.");
         LOGGER.info("Iniciando proceso de borrar boletas.");
         
-        if(getAbono(id).getBoletas().size() > 0)
+        if(!getAbono(id).getBoletas().isEmpty())
         {
             List<BoletaEntity> boletas = getAbono(id).getBoletas();
             for(int i = 0; i < boletas.size(); i++)

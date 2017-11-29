@@ -74,7 +74,7 @@ public class PeliculaDetailDTO extends PeliculaDTO {
         PeliculaEntity pelicula = super.toEntity();
 
         if (this.getCriticos() != null) {
-            List<CriticoEntity> entCriticos = new ArrayList<CriticoEntity>();
+            List<CriticoEntity> entCriticos = new ArrayList<>();
             for (CriticoDTO cri : criticos) {
                 entCriticos.add(cri.toEntity());
             }
@@ -82,7 +82,7 @@ public class PeliculaDetailDTO extends PeliculaDTO {
         }
 
         if (this.getFunciones() != null) {
-            List<FuncionEntity> entFunciones = new ArrayList<FuncionEntity>();
+            List<FuncionEntity> entFunciones = new ArrayList<>();
             for (FuncionDTO func : funciones) {
                 entFunciones.add(func.toEntity());
             }

@@ -27,7 +27,7 @@ public class CriticaDTO {
      * Constructor sin parámetros.
      */
     public CriticaDTO(){
-        
+        //Método constructor por Defecto.
     }
     
     /**
