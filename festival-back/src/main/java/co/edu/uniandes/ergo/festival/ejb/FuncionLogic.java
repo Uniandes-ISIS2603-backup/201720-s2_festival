@@ -113,7 +113,16 @@ public class FuncionLogic {
     public BoletaEntity getBoleta(Long idFuncion, Long idBoleta) {
          LOGGER.log(Level.INFO, "Inicia proceso de encontrar una boleta de una funcion."); 
         FuncionEntity entity = persistence.find(idFuncion);
-        return persistence.getBoleta(entity,idBoleta);
+        List<BoletaEntity> boletas = entity.getBoletas();
+        BoletaEntity respuesta = null;
+        for(int i = 0; i < boletas.size(); i++)
+        {
+            if(boletas.get(i).getId().equals(idBoleta))
+            {
+                respuesta = boletas.get(i);
+            }
+        }
+        return respuesta;
     }
     /**
      * Método que agrega una Película a una Función.

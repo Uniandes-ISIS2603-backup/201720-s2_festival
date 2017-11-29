@@ -109,7 +109,7 @@ public class BoletaLogic
         List <BoletaEntity> boletasSilla = logicSilla.getSilla(entity.getSilla().getId()).getBoletas();
         for(int i = 0; i < boletasSilla.size(); i++)
         {
-            if((boletasSilla.get(i).getFuncion().getId().equals(entity.getFuncion().getId())))
+            if(boletasSilla.get(i).getFuncion().getId().equals(entity.getFuncion().getId()))
             {
                 throw new BusinessLogicException("La silla con id: \"" + entity.getSilla().getId()+"\" ya tiene una boleta asignada a esa función."); 
             }
@@ -117,7 +117,7 @@ public class BoletaLogic
         LOGGER.info("La Silla asignada no tiene una boleta asignada para la misma función.");
         for(int i = 0; i < boletasSilla.size(); i++)
         {
-            if((boletasSilla.get(i).getId().equals(entity.getId())))
+            if(boletasSilla.get(i).getId().equals(entity.getId()))
             {
                 throw new BusinessLogicException("La silla con id: \"" + entity.getSilla().getId()+"\" ya tiene esta misma boleta asociada."); 
             }
@@ -242,10 +242,8 @@ public class BoletaLogic
         List<BoletaEntity> boletasSilla;
         List<BoletaEntity> boletasSillaVieja;
         SillaEntity sillaAAsignar;
-        boolean hayCambioDeSilla = false;
         if(entity.getSilla().getId().equals(getBoleta(id).getSilla().getId()))
         {
-            hayCambioDeSilla = false;
             sillaAAsignar = logicSilla.getSilla(getBoleta(id).getSilla().getId());
             boletasSilla = sillaAAsignar.getBoletas();
             for(int i = 0; i < boletasSilla.size(); i++)
@@ -258,7 +256,6 @@ public class BoletaLogic
         }
         else
         {
-            hayCambioDeSilla = true;
             sillaAAsignar = logicSilla.getSilla(entity.getSilla().getId());
             boletasSilla = sillaAAsignar.getBoletas();
             SillaEntity sillaVieja = getBoleta(id).getSilla();
@@ -278,10 +275,8 @@ public class BoletaLogic
         List<BoletaEntity> boletasFuncion;
         List<BoletaEntity> boletasFuncionVieja;
         FuncionEntity funcionAAsignar;
-        boolean hayCambioDeFuncion = false;
         if(entity.getFuncion().getId().equals(getBoleta(id).getFuncion().getId()))
         {
-            hayCambioDeFuncion= false;
             funcionAAsignar = logicFuncion.getFuncion(getBoleta(id).getFuncion().getId());
             boletasFuncion = funcionAAsignar.getBoletas();
             for(int i = 0; i < boletasFuncion.size(); i++)
@@ -294,7 +289,6 @@ public class BoletaLogic
         }
         else
         {
-            hayCambioDeFuncion = true;
             funcionAAsignar = logicFuncion.getFuncion(entity.getFuncion().getId());
             boletasFuncion = funcionAAsignar.getBoletas();
             FuncionEntity funcionVieja = getBoleta(id).getFuncion();
@@ -532,7 +526,7 @@ public class BoletaLogic
      * @param boletaId Long, ID de la boleta.
      * @return FuncionEntity, la Funcion asociada.
      */
-    public FuncionEntity getFuncionFromBoleta(Long boletaId)throws WebApplicationException
+    public FuncionEntity getFuncionFromBoleta(Long boletaId)
     {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar una funcion de la boleta con id = {0}", boletaId);
         FuncionEntity respuesta = new FuncionEntity();
@@ -621,7 +615,7 @@ public class BoletaLogic
      * @param boletaId Long, ID de la boleta.
      * @return CalificaionEntity, Calificacion asociada a una boleta.
      */
-    public CalificacionEntity getCalificacionFromBoleta(Long boletaId)throws WebApplicationException
+    public CalificacionEntity getCalificacionFromBoleta(Long boletaId)
     {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar una calificacion de la boleta con id = {0}", boletaId);
         CalificacionEntity respuesta = new CalificacionEntity();

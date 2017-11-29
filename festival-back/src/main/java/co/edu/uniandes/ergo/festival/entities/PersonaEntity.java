@@ -15,15 +15,5 @@ import javax.persistence.Entity;
  */
 
 @Entity
-public class PersonaEntity extends BaseEntity implements Serializable{
-    
-    /**
-     * Nombre de la persona.
-     */
-    private String nombre;
-    
-    
-    
-    
-    
+public class PersonaEntity extends BaseEntity implements Serializable{    
 }

@@ -124,8 +124,6 @@
 					"script": {
 						"type": "text/javascript",
 						"exec": [
-							"",
-							"var data = JSON.parse(responseBody);",
 							"tests[\"no genera error en el Post\"] = responseCode.code === 200;",
 							"tests[\"Critica id\"] = data.id === 10;",
 							""
@@ -134,7 +132,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/festival-web/api/funciones/1/boletas/10",
+				"url": "http://localhost:8080/festival-web/api/funciones/1/boletas/1010",
 				"method": "GET",
 				"header": [
 					{

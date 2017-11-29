@@ -9,6 +9,17 @@
 	"item": [
 		{
 			"name": "http://localhost:8080/festival-web/api/festivales",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
 			"request": {
 				"url": "http://localhost:8080/festival-web/api/festivales",
 				"method": "POST",
@@ -29,6 +40,17 @@
 		},
 		{
 			"name": "http://localhost:8080/festival-web/api/festivales",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
 			"request": {
 				"url": "http://localhost:8080/festival-web/api/festivales",
 				"method": "GET",
@@ -48,9 +70,20 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:8080/festival-web/api/festivales/5",
+			"name": "http://localhost:8080/festival-web/api/festivales/1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Response time is less than 200ms\"] = responseTime < 200;"
+						]
+					}
+				}
+			],
 			"request": {
-				"url": "http://localhost:8080/festival-web/api/festivales/5",
+				"url": "http://localhost:8080/festival-web/api/festivales/1",
 				"method": "PUT",
 				"header": [
 					{
@@ -69,6 +102,17 @@
 		},
 		{
 			"name": "http://localhost:8080/festival-web/api/festivales/8",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 404\"] = responseCode.code === 404;"
+						]
+					}
+				}
+			],
 			"request": {
 				"url": "http://localhost:8080/festival-web/api/festivales/8",
 				"method": "GET",
@@ -89,6 +133,17 @@
 		},
 		{
 			"name": "http://localhost:8080/festival-web/api/festivales/2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 204\"] = responseCode.code === 204;"
+						]
+					}
+				}
+			],
 			"request": {
 				"url": "http://localhost:8080/festival-web/api/festivales/2",
 				"method": "DELETE",
@@ -100,6 +155,17 @@
 		},
 		{
 			"name": "http://localhost:8080/festival-web/api/festivales/1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
 			"request": {
 				"url": "http://localhost:8080/festival-web/api/festivales/1",
 				"method": "GET",

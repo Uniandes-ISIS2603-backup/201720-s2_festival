@@ -84,8 +84,7 @@ public class TeatroLogic
         {
             LOGGER.log(Level.SEVERE,"No existe un teatro con ese id para actualizarlo", id);
         }
-        TeatroEntity nuevo = persistence.update(entity);
-        return nuevo;
+        return persistence.update(entity);
     }
    
     /**
