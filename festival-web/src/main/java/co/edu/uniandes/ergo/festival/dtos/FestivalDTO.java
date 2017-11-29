@@ -60,14 +60,13 @@ public class FestivalDTO {
     /**
      * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
      * la entidad que viene de argumento.
-     *
-     * @param Festival: Es la entidad que se va a convertir a DTO
+     * @param festival: Es la entidad que se va a convertir a DTO
      */
-    public FestivalDTO(FestivalEntity Festival) {
-        this.id = Festival.getId();
-        this.nombre = Festival.getName();
-        this.fechaInicio = Festival.getFechaInicio();
-        this.fechaFin = Festival.getFechaFin();
+    public FestivalDTO(FestivalEntity festival) {
+        this.id = festival.getId();
+        this.nombre = festival.getName();
+        this.fechaInicio = festival.getFechaInicio();
+        this.fechaFin = festival.getFechaFin();
     }
 
     /**

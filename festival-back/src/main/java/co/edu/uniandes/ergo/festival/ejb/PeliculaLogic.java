@@ -204,7 +204,12 @@ public class PeliculaLogic {
         }
         throw new BusinessLogicException("no existe la función con id " + funcionId + " asignada al pelicula con id " + peliculaId);
     }
-
+    /**
+     * Método que obtiene las Calificaciones de una Película.
+     * @param peliculaId Long, ID de la Película.
+     * @return List<CalificacionEntity>, Lista con todas las Calificaciones de una Película.
+     * @throws BusinessLogicException 
+     */
     public List<CalificacionEntity> getCalificaciones(Long peliculaId) throws BusinessLogicException {
         List<FuncionEntity> funciones = getFunciones(peliculaId);
         List<CalificacionEntity> calificaciones = new ArrayList<CalificacionEntity>();

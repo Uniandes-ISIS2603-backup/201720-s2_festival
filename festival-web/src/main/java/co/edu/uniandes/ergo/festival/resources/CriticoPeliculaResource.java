@@ -8,7 +8,6 @@ package co.edu.uniandes.ergo.festival.resources;
 import co.edu.uniandes.ergo.festival.dtos.PeliculaDTO;
 import co.edu.uniandes.ergo.festival.dtos.PeliculaDetailDTO;
 import co.edu.uniandes.ergo.festival.ejb.CriticoLogic;
-import co.edu.uniandes.ergo.festival.ejb.PeliculaLogic;
 import co.edu.uniandes.ergo.festival.entities.CriticoEntity;
 import co.edu.uniandes.ergo.festival.entities.PeliculaEntity;
 import co.edu.uniandes.ergo.festival.exceptions.BusinessLogicException;

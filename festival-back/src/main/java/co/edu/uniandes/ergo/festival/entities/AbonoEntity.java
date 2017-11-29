@@ -25,9 +25,7 @@ package co.edu.uniandes.ergo.festival.entities;
 
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
