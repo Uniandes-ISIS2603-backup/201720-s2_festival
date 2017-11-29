@@ -1,0 +1,23 @@
+<!--<p>Funciones de un teatro </p>-->
+<h3 class="panel-title">
+    <h4>Funciones</h4>
+</h3>
+<table class="table table-striped">
+    <tr>
+        <th>Nombre</th>
+        <th>Hora Inicio</th>
+        <th>Hora Fin</th>
+    </tr>
+    <tr ng-repeat="funcion in funciones">
+        <td>{{funcion.name}}</td>
+        <td>{{funcion.horaInicio}}</td>
+        <td>{{funcion.horaFin}}</td>
+        
+<!--        <td><a ui-sref="teatros.detail({teatrosId:teatro.id})">{{teatro.nombre }}</a></td>
+        <td>{{teatro.tarifaBasica}}</td>
+        <td ng-if="isAuthenticated()">
+            <a ui-sref="teatros.update({teatrosId: teatro.id})"><span class="glyphicon glyphicon-edit"></span></a>
+            <a ui-sref="teatros.delete({teatrosId:teatro.id})"><span class="glyphicon glyphicon-trash"></span></a>
+        </td>-->
+    </tr>
+</table>
