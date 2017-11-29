@@ -40,7 +40,7 @@ public class FuncionDetailDTO extends FuncionDTO{
      * Método constructor por defecto.
      */
     public FuncionDetailDTO() {
-        
+        //Método constructor por Defecto.
     }
     /**
      * Método que obtiene la lista de Boletas de esta Función.
@@ -159,6 +159,7 @@ public class FuncionDetailDTO extends FuncionDTO{
      * Método que construye un objeto FuncionEntity a partir de este DTO.
      * @return FuncionEntity.
      */
+    @Override
     public FuncionEntity toEntity() {
         FuncionEntity entity = new FuncionEntity();
         entity.setHoraInicio(this.getHoraInicio());

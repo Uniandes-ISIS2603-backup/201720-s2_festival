@@ -46,7 +46,7 @@ public class FuncionDTO {
      * Método constructor por Defecto.
      */
     public FuncionDTO(){
-        
+        //Método constructor por Defecto.
     }
     /**
      * Método que obtiene la hora de inicio de esta Función.

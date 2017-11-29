@@ -33,7 +33,7 @@ public class SillaDTO {
      * Constructor sin parámetros.
      */
     public SillaDTO(){
-        
+        //Método constructor por Defecto.
     }
     
     /**

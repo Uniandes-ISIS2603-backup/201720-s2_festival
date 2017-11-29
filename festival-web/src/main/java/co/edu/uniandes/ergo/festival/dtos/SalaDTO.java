@@ -32,6 +32,7 @@ public class SalaDTO {
      * Método constructors por Defecto.
      */
     public SalaDTO() {
+        //Método constructor por Defecto.
     }
     /**
      * Método constructors que construye una SalaDTO a partir de la version Entity.

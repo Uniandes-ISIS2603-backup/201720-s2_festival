@@ -68,6 +68,9 @@
             }).state('funcionesBoletasDetail', {
                 url: '/{funcionId:int}/boletas',
                 parent: 'funciones',
+                param: {
+                    funcionId: null
+                },
 
                 views: {
                     'boletasDetailView': {

@@ -21,7 +21,7 @@ import uk.co.jemos.podam.common.PodamExclude;
 public class SalaEntity extends BaseEntity implements Serializable {
 
     @PodamExclude
-    @OneToMany
+    @OneToMany(mappedBy = "sala", cascade = CascadeType.REMOVE)
     private List<FuncionEntity> funciones;
     @PodamExclude
     @OneToMany(mappedBy="sala", cascade = {CascadeType.REMOVE})

@@ -16,9 +16,7 @@ import co.edu.uniandes.ergo.festival.exceptions.BusinessLogicException;
 import co.edu.uniandes.ergo.festival.persistence.BoletaPersistence;
 import co.edu.uniandes.ergo.festival.persistence.EspectadorPersistence;
 import co.edu.uniandes.ergo.festival.persistence.SillaPersistence;
-import co.edu.uniandes.ergo.festival.persistence.CalificacionPersistence;
 import co.edu.uniandes.ergo.festival.persistence.FuncionPersistence;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -317,16 +315,19 @@ public class BoletaLogic
         LOGGER.info("Reglas de negocio correctamente validadas.");
         
         // Invoca la persistencia para crear la boleta
-        LOGGER.info("actializando Boleta.");
+        LOGGER.info("actualizando Boleta.");
         BoletaEntity newEntity = persistenceBoleta.update(entity);
         funcionAAsignar.setBoletas(boletasFuncion);
         logicFuncion.updateFuncion(funcionAAsignar);
         sillaAAsignar.setBoletas(boletasSilla);
         logicSilla.updateSilla(sillaAAsignar);
-        LOGGER.info("Termina proceso de creación de Boleta");
+        LOGGER.info("Termina proceso de actualización de Boleta");
         
-        
-        LOGGER.log(Level.INFO, "Termina proceso de actualizar editorial con id={0}", entity.getId());
+        BoletaEntity test1 = getBoleta(entity.getId());
+        BoletaEntity test2 = getBoleta(id);
+        LOGGER.info("test 1: " + test1.getId());
+        LOGGER.info("test 2: " + test2.getId());
+        LOGGER.log(Level.INFO, "Termina proceso de actualizar boleta con id={0}", entity.getId());
         return newEntity;
     }
     /**

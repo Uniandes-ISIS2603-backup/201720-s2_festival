@@ -5,7 +5,6 @@
  */
 package co.edu.uniandes.ergo.festival.entities;
 
-import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;

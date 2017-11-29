@@ -19,7 +19,7 @@ public class TeatroDetailDTO extends TeatroDTO
     
    public TeatroDetailDTO()
    {
-       
+       //Método constructor por Defecto.
    }
     /**
      * Constructor para transformar un Entity a un DTO

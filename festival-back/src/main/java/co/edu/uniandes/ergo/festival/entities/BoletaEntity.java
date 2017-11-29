@@ -24,13 +24,10 @@ SOFTWARE.
 package co.edu.uniandes.ergo.festival.entities;
 
 import java.io.Serializable;
-import java.util.List;
 import java.util.Objects;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
 /**
@@ -43,15 +40,15 @@ public class BoletaEntity extends BaseEntity implements Serializable
     /**
      * Constante que representa que esta boleta está disponible.
      */
-    public final static Integer DISPONIBLE=1;
+    public static final Integer DISPONIBLE=1;
     /**
      * Constante que representa que esta boleta está reservada.
      */
-    public final static Integer RESERVADA=2;
+    public static final Integer RESERVADA=2;
     /**
      * Constate que representa que esta boleta está comprada.
      */
-    public final static Integer COMPRADA=3;
+    public static final Integer COMPRADA=3;
     
     /**
      * Atributo que contiene el código de barras de a boleta.
@@ -70,7 +67,8 @@ public class BoletaEntity extends BaseEntity implements Serializable
      */
 
     @PodamExclude
-    @OneToOne(orphanRemoval = true,cascade = CascadeType.REMOVE)
+    @OneToOne(orphanRemoval = true)
+    @JoinColumn(unique=true)
     private CalificacionEntity calificacion;
     /**
      * Atributo que contiene la información del espectador asociado.
@@ -244,7 +242,7 @@ public class BoletaEntity extends BaseEntity implements Serializable
         }
         else
         {
-            
+            this.estado = DISPONIBLE;
         }
     }
 }

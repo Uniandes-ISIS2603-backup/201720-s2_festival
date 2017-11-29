@@ -9,8 +9,6 @@ import co.edu.uniandes.ergo.festival.dtos.BoletaDTO;
 import co.edu.uniandes.ergo.festival.dtos.SalaDetailDTO;
 import co.edu.uniandes.ergo.festival.dtos.SillaDTO;
 import co.edu.uniandes.ergo.festival.dtos.SillaDetailDTO;
-import co.edu.uniandes.ergo.festival.ejb.BoletaLogic;
-import co.edu.uniandes.ergo.festival.ejb.SalaLogic;
 import co.edu.uniandes.ergo.festival.ejb.SillaLogic;
 import co.edu.uniandes.ergo.festival.entities.BoletaEntity;
 import co.edu.uniandes.ergo.festival.entities.SalaEntity;
@@ -170,28 +168,7 @@ public class SillaResource {
             list.add(new BoletaDTO(entity));
         }
         return list;
-    }
-    
-//    /**
-//     * Asocia una SalaEntity a una SillaEntity.
-//     * @param sillasid Identificación de la SillaEntity.
-//     * @param salaid Identificación de la SalaEntity.
-//     * @return La SalaEntity en Representación Detail.
-//     */
-//    @POST
-//    @Path("{sillasid: \\d+}/sala/{salaid: \\d+}")
-//    public SalaDetailDTO setSala(@PathParam("sillasid") Long sillasid, 
-//            @PathParam("salaid") Long salaid){
-//        SalaEntity sala = salaLogic.get(salaid);
-//        SillaEntity silla = sillaLogic.getSilla(sillasid);
-//        if (silla == null){
-//            throw new WebApplicationException("La SillaEntity con id: " + sillasid + " no existe.", 404);
-//        } else if (sala == null){
-//            throw new WebApplicationException("La SalaEntity con id: " + salaid + " no existe.", 404);
-//        }
-//        return new SalaDetailDTO(sillaLogic.setSalaSilla(sillasid, salaid));
-//    }
-    
+    }    
     /**
      * Retorna la SalaEntity asociada a una SillaEntity.
      * @param id de la SillaEntity.

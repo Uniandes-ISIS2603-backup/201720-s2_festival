@@ -204,7 +204,12 @@ public class PeliculaLogic {
         }
         throw new BusinessLogicException("no existe la función con id " + funcionId + " asignada al pelicula con id " + peliculaId);
     }
-
+    /**
+     * Método que obtiene las Calificaciones de una Película.
+     * @param peliculaId Long, ID de la Película.
+     * @return List<CalificacionEntity>, Lista con todas las Calificaciones de una Película.
+     * @throws BusinessLogicException 
+     */
     public List<CalificacionEntity> getCalificaciones(Long peliculaId) throws BusinessLogicException {
         List<FuncionEntity> funciones = getFunciones(peliculaId);
         List<CalificacionEntity> calificaciones = new ArrayList<CalificacionEntity>();
@@ -213,7 +218,12 @@ public class PeliculaLogic {
         }
         return calificaciones;
     }
-
+    /**
+     * Método que obtiene la Calificación promedio por película.
+     * @param peliculaId Long, ID de Película.
+     * @return Double, Valor de la Calificación promedio por Película.
+     * @throws BusinessLogicException 
+     */
     public Double getCalificacionPromedioFromPelicula(Long peliculaId) throws BusinessLogicException {
         Double promedio = 0.0;
         List<CalificacionEntity> calificaciones = getCalificaciones(peliculaId);

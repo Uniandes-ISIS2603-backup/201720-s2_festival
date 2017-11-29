@@ -25,9 +25,13 @@ import javax.ws.rs.core.MediaType;
 @Path("/patrocinadores")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-
+/**
+ * Clase que administra los Recursos de un Patrocinador.
+ */
 public class PatrocinadorResource {
-    
+    /**
+     * Atributo que contiene la Lógica de este Recurso.
+     */
     @Inject
     private PatrocinadorLogic logic;
     /**

@@ -20,25 +20,20 @@ public class CalificacionDetailDTO extends CalificacionDTO{
      * Método Constructor por Defecto.
      */
     public CalificacionDetailDTO(){
+        //Método constructor por Defecto.
     }
     /**
      * Método que construye CalificacionDetailDTO a partir de su versión Entity.
      * @param createCalificacion 
      */
     public CalificacionDetailDTO(CalificacionEntity createCalificacion) {
-        super(createCalificacion);
-//        if(!(createCalificacion.getBoleta()==null)){
-//            boleta = new BoletaDTO(createCalificacion.getBoleta());
-//        }
-//        else{
-//            boleta = new BoletaDTO();
-//        }
-        
+        super(createCalificacion);        
     }
     /**
      * Método que construye un objeto Entity a partir de este DTO.
      * @return CalificaciónEntity, Entidad de Calificación.
      */
+    @Override
     public CalificacionEntity toEntity() {
         CalificacionEntity entity = new CalificacionEntity();
         entity.setCalificacion(this.getCalificacion());

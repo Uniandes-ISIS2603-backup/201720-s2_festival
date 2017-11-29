@@ -139,6 +139,9 @@ public class BoletaResource
     public BoletaDetailDTO updateBoleta(@PathParam("id") Long id, BoletaDetailDTO boleta) throws BusinessLogicException {
         boleta.setId(id);
         BoletaEntity entity = boletaLogic.getBoleta(id);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /boletas/" + id + " no existe.", 404);
+        }
         if(boleta.getSilla() == null)
         {
             boleta.setSilla(new SillaDetailDTO(entity.getSilla()));
@@ -200,10 +203,6 @@ public class BoletaResource
         {
             boleta.setPrecio(entity.getPrecio());
         }
-        
-        if (entity == null) {
-            throw new WebApplicationException("El recurso /boletas/" + id + " no existe.", 404);
-        }
         return new BoletaDetailDTO(boletaLogic.updateBoleta(id, boleta.toEntity()));
     }
     
@@ -240,8 +239,7 @@ public class BoletaResource
         if (entity == null) {
             throw new WebApplicationException("El recurso /boletas/" + id + " no existe.", 404);
         }
-        SillaDetailDTO respuesta = new SillaDetailDTO(boletaLogic.getSillaFromBoleta(id));
-        return respuesta;
+        return new SillaDetailDTO(boletaLogic.getSillaFromBoleta(id));
     }
     /**
      * Métod que le asocia a boleta una silla, la silla debe existir en la base de datos.
@@ -292,8 +290,7 @@ public class BoletaResource
         if (entity == null) {
             throw new WebApplicationException("El recurso /boletas/" + id + " no existe.", 404);
         }
-        FuncionDTO respuesta = new FuncionDTO(boletaLogic.getFuncionFromBoleta(id));
-        return respuesta;   
+        return new FuncionDTO(boletaLogic.getFuncionFromBoleta(id));    
     }
     /**
      * Método que asocia una función a una Boleta.
@@ -343,26 +340,8 @@ public class BoletaResource
         if (entity == null) {
             throw new WebApplicationException("El recurso /boletas/" + id + " no existe.", 404);
         }
-        CalificacionDTO respuesta = new CalificacionDTO(boletaLogic.getCalificacionFromBoleta(id));
-        return respuesta;
+        return new CalificacionDTO(boletaLogic.getCalificacionFromBoleta(id));
     }
-    /**
-     * Método que asocia una calificación previamente existente a una boleta, la calificación DEBE existir en la base de datos.
-     * @param boletaId Long, ID de la boleta.
-     * @param calificacionId Long, ID de la calificación a asociar.
-     * @return CalificacionDTO, Calificación asociada.
-     * @throws BusinessLogicException 
-     */
-//    @POST
-//    @Path("{boletaid:\\d+}/calificaciones/{calificacionid:\\d+}")
-//    public CalificacionDTO addCalificacionExistenteFromBoleta(@PathParam("boletaid")Long boletaId, @PathParam("calificacionid")Long calificacionId) throws BusinessLogicException
-//    {
-//        BoletaEntity entity = boletaLogic.getBoleta(boletaId);
-//        if (entity == null) {
-//            throw new WebApplicationException("El recurso /boletas/" + boletaId + " no existe.", 404);
-//        }
-//        return new CalificacionDTO(boletaLogic.addCalificacionYaExistenteFromBoleta(boletaId, calificacionId));
-//    }
     /**
      * Método que crea una nueva calificacion y la asocia inmediatamente a la boleta designada por parámetro, se CREA una NUEVA calificación en la base de datos.
      * @param boletaId Long, ID de la boleta.
@@ -384,23 +363,6 @@ public class BoletaResource
         // Como debe retornar un DTO (json) se invoca el constructor del DTO con argumento el entity nuevo
         return new CalificacionDTO(nuevaCalificacion);
     }
-    /**
-     * Método que actualiza la calificación de una boleta, al reemplazarla con otra, la calificacion original no es eliminada de la base de datos.
-     * @param boletaId Long, ID de la boleta.
-     * @param calificacionId Long, ID de la calificacion nueva a asociar.
-     * @return CalificacionDTO, calificación nueva asociada a la boleta.
-     * @throws BusinessLogicException 
-     */
-//    @PUT
-//    @Path("{boletaid:\\d+}/calificaciones/{calificacionid:\\d+}")
-//    public CalificacionDTO updateCalificacionExistenteFromBoleta(@PathParam("boletaid")Long boletaId, @PathParam("calificacionid")Long calificacionId) throws BusinessLogicException
-//    {
-//        BoletaEntity entity = boletaLogic.getBoleta(boletaId);
-//        if (entity == null) {
-//            throw new WebApplicationException("El recurso /boletas/" + boletaId + " no existe.", 404);
-//        }
-//        return new CalificacionDTO(boletaLogic.updateCalificacionYaExistenteFromBoleta(boletaId, calificacionId));
-//    }
     /**
      * Metodo que actualizar una calificación con otra nueva, este método CREA una calificación nueva en la base de datos Y la calificación originao NO es eliminada de la base de datos.
      * @param boletaId Long, ID de la boleta.

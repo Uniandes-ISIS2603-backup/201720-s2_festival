@@ -27,7 +27,6 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -81,7 +80,6 @@ public class PeliculaResource {
      */
     @POST
     public PeliculaDetailDTO createPelicula(PeliculaDetailDTO peli) throws BusinessLogicException {
-        System.out.println(peli.getname());
         return new PeliculaDetailDTO(logic.createPelicula(peli.toEntity()));
     }
 
@@ -170,7 +168,12 @@ public class PeliculaResource {
         }
         return new FuncionDetailDTO(logic.getFuncion(peliculaId, pelId));
     }
-
+    /**
+     * Método que obtiene las Calificaciones de una Película.
+     * @param peliculaId Long, ID de la Película.
+     * @return List<CalificacionDTO>, Lista con todas las Calificaciones de una Película.
+     * @throws BusinessLogicException 
+     */
     @GET
     @Path("{id: \\d+}/calificaciones")
     public List<CalificacionDTO> getCalificacionesFromPelicula(@PathParam("id") Long peliculaId) throws BusinessLogicException {
@@ -180,7 +183,12 @@ public class PeliculaResource {
         }
         return listCalificacionEntity2CalificacionDTO(logic.getCalificaciones(peliculaId));
     }
-
+    /**
+     * Método que obtiene la Calificación promedio de una Película.
+     * @param peliculaId Long, ID de la Película a consultar.
+     * @return CalificacionDTO, Calificación con la Información de la Calificación Promedio de la Película.
+     * @throws BusinessLogicException 
+     */
     @GET
     @Path("{id: \\d+}/promedioCalificaciones")
     public CalificacionDTO getPromedioCalificacionFromPelicula(@PathParam("id") Long peliculaId) throws BusinessLogicException {
@@ -223,7 +231,11 @@ public class PeliculaResource {
         }
         return funcionesDTO;
     }
-
+    /**
+     * Método que transforma una Lista de Entidades de Calificación a su versión DTO.
+     * @param entityList List<CalificacionEntity>, Lista de Entidades de Calificación.
+     * @return List<CalificacionDTO>, Lista de DTOs de Calificaciones.
+     */
     private List<CalificacionDTO> listCalificacionEntity2CalificacionDTO(List<CalificacionEntity> entityList) {
         List<CalificacionDTO> list = new ArrayList<>();
         for (CalificacionEntity entity : entityList) {
