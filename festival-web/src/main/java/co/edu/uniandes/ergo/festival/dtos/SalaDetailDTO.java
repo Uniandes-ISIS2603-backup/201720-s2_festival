@@ -16,9 +16,9 @@ import java.util.List;
  */
 public class SalaDetailDTO extends SalaDTO {
     
-    //private List<FuncionDTO> funcionesDTO;
+    
     private List<SillaDTO> sillasDTO;
-    //private TeatroDTO teatroDTO;
+
     /**
      * Método constructor por Defecto.
      */
@@ -32,20 +32,6 @@ public class SalaDetailDTO extends SalaDTO {
     public SalaDetailDTO(SalaEntity entity) {
         super(entity);
         System.out.println("1");
-        /*TeatroEntity teatro = entity.getTeatro();
-        if (teatro != null) {
-            teatroDTO = new TeatroDTO(teatro);
-        }
-        
-        System.out.println("2");
-        List<FuncionEntity> funciones = entity.getFunciones();
-        if (funciones !=  null) {
-            funcionesDTO = new ArrayList<>();
-            for (FuncionEntity funcion : funciones) {
-                funcionesDTO.add(new FuncionDTO(funcion));
-            }
-        }
-        */
         List<SillaEntity> sillas = entity.getSillas();
         if (sillas != null) {
             sillasDTO = new ArrayList<>();
@@ -61,21 +47,6 @@ public class SalaDetailDTO extends SalaDTO {
     @Override
     public SalaEntity toEntity() {
         SalaEntity retornar = super.toEntity();
-        
-        /*System.out.println("4");
-        if (getTeatroDTO() != null) {
-            retornar.setTeatro(getTeatroDTO().toEntity());
-        }
-        
-        System.out.println("5");
-        if (getFuncionesDTO() != null) {
-            List<FuncionEntity> funciones = new ArrayList<>();
-            for (FuncionDTO dto : getFuncionesDTO()) {
-                funciones.add(dto.toEntity());
-            }
-            retornar.setFunciones(funciones);
-        }
-        */
         if (getSillasDTO() != null) {
             List<SillaEntity> sillas = new ArrayList<>();
             for (SillaDTO dto : getSillasDTO()) {
@@ -88,13 +59,6 @@ public class SalaDetailDTO extends SalaDTO {
     }
 
     /**
-     * @return the funcionesDTO
-     */
-    /*public List<FuncionDTO> getFuncionesDTO() {
-        return funcionesDTO;
-    }*/
-
-    /**
      * Método que obtiene las Sillas de esta Sala.
      * @return the sillasDTO
      */
@@ -103,31 +67,10 @@ public class SalaDetailDTO extends SalaDTO {
     }
 
     /**
-     * @return the teatroDTO
-     */
-    /*public TeatroDTO getTeatroDTO() {
-        return teatroDTO;
-    }*/
-    
-    /**
-     * @param funcionesDTO the funcionesDTO to set
-     */
-    /*public void setFuncionesDTO(List<FuncionDTO> funcionesDTO) {
-        this.funcionesDTO = funcionesDTO;
-    }*/
-
-    /**
      * Método que establece las Sillas de esta Sala.
      * @param sillasDTO the sillasDTO to set
      */
     public void setSillasDTO(List<SillaDTO> sillasDTO) {
         this.sillasDTO = sillasDTO;
     }
-
-    /**
-     * @param teatroDTO the teatroDTO to set
-     */
-    /*public void setTeatroDTO(TeatroDTO teatroDTO) {
-        this.teatroDTO = teatroDTO;
-    }*/
 }
