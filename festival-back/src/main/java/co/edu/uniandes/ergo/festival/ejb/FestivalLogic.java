@@ -525,8 +525,8 @@ public class FestivalLogic {
     public List<PeliculaEntity> replacePelicula (Long idFestival, List<PeliculaEntity> listPeliculas)
     {
         FestivalEntity festival = getFestival(idFestival);
-        List<EspectadorEntity> pelicula = espectadorLogic.getEspectadores();
-        for(EspectadorEntity entity : pelicula)
+        List<PeliculaEntity> pelicula = peliculaLogic.getPeliculas();
+        for(PeliculaEntity entity : pelicula)
         {
             if(listPeliculas.contains(entity))
             {
