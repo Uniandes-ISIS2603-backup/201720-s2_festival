@@ -1,0 +1,29 @@
+<h3>Boletas</h3>
+<div class="row">
+    <div class="col-xs-offset-4 col-xs-4">
+        <div class="row">
+            <h4>Selecciones la boleta que desea comprar</h4>
+            <p>Las boletas en azul están disponibles.</p>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 alert alert-info text-center">
+                Pantalla
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-2" ng-repeat="boleta in boletas">
+                <a ng-if="boleta.estado === 'DISPONIBLE'" data-dismiss="modal" ui-sref="peliculaAmpliada({peliculaId : pelicula.id, comprada : true, idBoletaComprada : boleta.id})">
+                    <button class="btn btn-primary btn-a-icon">
+                        <span class="glyphicon glyphicon-film"></span>
+                    </button>
+                </a>
+                <a ng-if="boleta.estado !== 'DISPONIBLE'">
+                    <button class="btn btn-danger btn-a-icon" disabled>
+                        <span class="glyphicon glyphicon-film"></span>
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+

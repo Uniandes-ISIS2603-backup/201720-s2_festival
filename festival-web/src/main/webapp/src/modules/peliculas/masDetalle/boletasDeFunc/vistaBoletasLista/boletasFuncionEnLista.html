@@ -1,0 +1,28 @@
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>N°</th>
+			<th>Precio</th>
+			<th>Código de Barras</th>
+			<th>Estado</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="boleta in boletasRet">
+
+			<td id="{{$index}}-id">{{boleta.id}}</td>
+			<td id="{{$index}}-precio"><p> {{boleta.precio}} </p></td>
+			<td id="{{$index}}-codigoDeBarras"><p class="codigoBarras"> {{boleta.codigoDeBarras}} </p></td>
+			<td id="{{$index}}-estado">{{boleta.estado}}</td>
+			
+
+
+			
+			<!--<td>
+				<button id="comprarBoton" class="btn btn-md" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()" data-toggle="modal" data-target="#cajaFunciones" ui-sref="boletasDeFucion({funcionId : funcion.id})">
+					<span style="text-align: center; color: #f5f5f5;" class="glyphicon glyphicon-usd"></span></button>
+				</td>
+			-->
+		</tr>
+	</tbody>
+</table>

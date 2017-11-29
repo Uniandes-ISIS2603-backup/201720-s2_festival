@@ -12,8 +12,10 @@
  			var basePath = 'src/modules/peliculas/masDetalle/';
  			$stateProvider.state('peliculaAmpliada', {
  				url: '/peliculas/{peliculaId:int}/inf',
- 				param: {
- 					peliculaId: null
+ 				params: {
+ 					peliculaId: null,
+ 					comprada : null,
+ 					idBoletaComprada : null
  				},
  				views: {
  					"mainView": {
@@ -24,7 +26,60 @@
  				}
  			})
 
- 		
+ 			.state('boletasDeFuncion', {
+ 				url: '/funciones/{funcionId:int}/boletas',
+ 				param: {
+ 					funcionId: null
+ 				},
+ 				parent: 'peliculaAmpliada' ,
+ 				views: {
+ 					'mainView': {
+ 						templateUrl: basePath + 'peliculaDetallada.html'
+ 					},
+
+ 					"funcBoletasView": {
+ 						templateUrl: basePath + 'boletasDeFunc/boletasFunc.html',
+ 						controller: "boletasFuncionCtrl",
+ 						controllerAs: 'ctrl'
+ 					} 
+ 				}
+ 			}).state('boletasFuncionLista', {
+ 				url: '/lista',
+ 				param: {
+ 					funcionId: null
+ 				},
+ 				parent: 'boletasDeFuncion' ,
+ 				views: {
+ 					"funcBoletasView": {
+ 						templateUrl: basePath + 'boletasDeFunc/boletasFunc.html'
+ 					},
+
+ 					"vistaVarible": {
+ 						templateUrl: basePath + 'boletasDeFunc/vistaBoletasLista/boletasFuncionEnLista.html',
+ 						controller: "vistaboletasListaCtrl",
+ 						controllerAs: 'ctrl'
+ 					} 
+ 				}
+ 			});
+
+ 			$stateProvider.state('funcionesBoletasDetalle', {
+ 				url: '/detalle',
+ 				param: {
+ 					funcionId: null
+ 				},
+ 				parent: 'boletasDeFuncion',
+ 				views: {
+ 					"funcBoletasView": {
+ 						templateUrl: basePath + 'boletasDeFunc/boletasFunc.html'
+ 					},
+ 					'vistaVarible': {
+ 						templateUrl: basePath + 'boletasDeFunc/vistaBoletasDetalle/boletasDeFuncionDetalle.html',
+ 						controller: 'vistaBoletasDeFuncionDetalleCtrl',
+ 						controllerAs: 'ctrl'
+ 					}
+
+ 				}
+ 			});
 
  			
  		}]);

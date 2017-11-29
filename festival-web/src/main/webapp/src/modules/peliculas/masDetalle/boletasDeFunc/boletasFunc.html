@@ -1,0 +1,19 @@
+<div class="modal-header" ng-controller="boletasFuncionCtrl" ng-init="loadDefaultState()">
+	<table style=" display: table; margin: 0 auto;">
+		<tr>
+			<th>
+				<button type="button" class="btn btn-default" ui-sref="boletasFuncionLista({funcionId : tugf})">
+					Lista
+				</button>
+			</th>
+			<th>
+				<button type="button" class="btn btn-default" ui-sref="funcionesBoletasDetalle({funcionId : tugf})">
+					Detalle
+				</button>
+			</th>
+		</tr>
+	</table>
+</div>
+
+<div ui-view="vistaVarible"></div>
+

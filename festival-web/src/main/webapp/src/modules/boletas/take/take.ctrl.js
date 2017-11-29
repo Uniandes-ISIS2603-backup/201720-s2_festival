@@ -3,11 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-(function (ng) {
+ (function (ng) {
     var mod = ng.module("boletasModule");
     mod.controller('boletas.takeCtrl', ['$scope', '$http', 'boletasContext', '$state',
-        function ($scope, $http, boletasContext, $state) {
+        function ($scope, $http, boletasContext, $state, $modal) {
             $scope.take = true;
+            $scope.init = function () {
+                console.log('buenas, esto es take :v');
+               /* document.getElementById("elPapaDelModal").removeChild(document.getElementById("cajaFunciones"));*/
+
+            }; 
             $http.get(boletasContext + $state.params.boletasId).then(function (response) {
                 $scope.boleta = response.data;
             });
@@ -29,6 +34,6 @@
             };
         }
 
-    ]);
+        ]);
 }
 )(angular);

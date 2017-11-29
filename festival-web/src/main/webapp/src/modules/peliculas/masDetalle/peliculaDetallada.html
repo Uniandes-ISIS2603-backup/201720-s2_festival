@@ -3,6 +3,7 @@
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"/>
 <link rel="stylesheet" type="text/css" href="resources/css/starrr.css">
+<script data-require="jquery@*" data-semver="3.1.1" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script  src="src/modules/peliculas/starrr.js"></script>
 
 <script>
@@ -10,14 +11,34 @@
 		$("#funcionesBoton").click(function(){
 			setTimeout(function(){ 
 				$("#scrollCalificaciones").animate({height : $('#tamFunc').height()});
-			}, 500);
-			
+			}, 500);	
 		});
 	});
 </script>
 
-<div class="container">
-	<div class="row">
+
+<div class="container" id="elPapaDelModal">
+
+
+	<div class="modal fade" id="cajaFunciones" role="dialog" style="width: auto; margin-left: 200px; margin-right: 200px">
+		<div class="modal-dialog" style="width: auto;">
+			<div class="modal-content" style="width: auto;">
+				<div class="modal-header" style="width: auto;">
+					<button type="button" class="close" data-dismiss="modal" ui-sref="peliculaAmpliada({peliculaId : pelicula.id, comprada : false})">&times;</button>
+					<h3 class="modal-title">Boletas Disponibles</h3>
+				</div>
+				<div class="modal-body" style="width: auto;">
+					<div class="panel-body" ui-view="funcBoletasView"></div>
+				</div>
+				<div class="modal-footer" style="width: auto;">
+					<button type="button" class="btn btn-default" data-dismiss="modal" ui-sref="peliculaAmpliada({peliculaId : pelicula.id, comprada : false})">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="row" >
 		<div class="col-sm-12 col-lg-4">
 			<img class="thumbnail" src="{{pelicula.imagen}}" style="width: 100%; display: inline-block;" />
 		</div>
@@ -29,7 +50,7 @@
 			<p><b>País: </b>{{pelicula.pais}}</p>
 			
 			<br>
-			<p style="text-align: justify;">
+			<p id="tugfa" style="text-align: justify;">
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt fermentum enim, ut consectetur massa tempor ac. Nunc dapibus ipsum ac dolor malesuada pretium. Nulla dapibus id augue ut accumsan. Cras ornare vehicula egestas. Mauris vestibulum aliquam odio a malesuada. Fusce auctor lorem ullamcorper luctus eleifend. Nullam finibus nec nisi a facilisis. Integer elementum, est quis convallis hendrerit, mauris ante tempus felis, id congue nunc lectus id massa. Vestibulum quis est sed purus consequat congue nec quis risus. Phasellus luctus, quam bibendum pretium tempus, neque diam iaculis erat, quis eleifend leo tellus eget massa. Sed condimentum eget augue quis dictum. Ut posuere nunc eros, at suscipit massa hendrerit id. Nulla in nulla aliquam, ullamcorper lacus ut, laoreet lacus. Vivamus commodo eros ut nunc rutrum, eu rhoncus justo semper.
 			</p>
 		</div>
@@ -40,10 +61,10 @@
 			<br>
 			<div class="panel-group" id="tamFunc">
 				<div class="panel panel-default">
-					<div class="panel-heading" data-toggle="collapse" data-target="#funciones-collapse" id="funcionesBoton">
-						<h4 class="panel-title">
-							<p>Funciones</p>
-						</h4>
+					<div class="panel-heading" data-toggle="collapse" data-target="#funciones-collapse" id="funcionesBoton" style="background-color: #d6dcdc; border-bottom: 0.5px solid black; border-top: 2px solid black">
+						<h3 class="panel-title">
+							<h4>Funciones</h4>
+						</h3>
 					</div>
 					<div id="funciones-collapse" class="panel-collapse collapse">
 						<div class="panel-body">
@@ -55,17 +76,22 @@
 										<th>Fecha</th>
 										<th>Hora Inicio</th>
 										<th>Hora Fin</th>
-
+										<th>Comprar o Reservar</th>
 									</tr>
 								</thead>
 								<tbody>
-									<tr ng-repeat="funcion in funcionesRet">
+									<tr ng-repeat="funcion in funcionesRet | orderBy:sortType:sortReverse">
 
 										<td id="{{$index}}-id">{{funcion.no}}</td>
-										<td id="{{$index}}-teatro"><p> teatro en construcción </p></td>
+										<td id="{{$index}}-teatro"><p> {{funcion.id}} </p></td>
 										<td id="{{$index}}-fecha"><p> {{funcion.fecha}} </p></td>
 										<td id="{{$index}}-horaInicio">{{funcion.horaInicio}}</td>
 										<td id="{{$index}}-horaFin">{{funcion.horaFin}}</td>
+										<td>
+											<button id="comprarBoton" class="btn btn-md" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()" data-toggle="modal" data-target="#cajaFunciones" ui-sref="boletasDeFuncion({funcionId : funcion.id})">
+												<span style="text-align: center; color: #f5f5f5;" class="glyphicon glyphicon-usd"></span>
+											</button>
+										</td>
 									</tr>
 								</tbody>
 							</table>
@@ -75,9 +101,9 @@
 			</div>
 		</div>
 		<div class="col-sm-12 col-lg-4">
-			
+
 			<div class="scrollableDivSquare" id="scrollCalificaciones">
-				
+
 				<div class="resumenCal"> 
 					<p style="display: table-row;"><b>Total Calificaciones: </b> {{totalCal}} </p>
 				</div>
@@ -96,8 +122,8 @@
 						</tr>
 					</table>
 				</div>
-				<div class="calificaciones">
-					<div class="calificacionN" ng-repeat="calificacion in calificaciones">
+				<div class="calificaciones" data-ng-init="onLoad()">
+					<div class="calificacionN" ng-repeat="calificacion in calificaciones" >
 						<div style="margin: 15px">
 							<p style="font-size: 18px; height: auto; margin: 0px;"> {{darPromedioRond(calificacion.calificacion, 2)}} </p>
 							<div class="cointainerEstrellas" style="opacity: 0.6; margin: 0px;">
@@ -112,6 +138,4 @@
 		</div>
 	</div>
 </div>
-
-
 
