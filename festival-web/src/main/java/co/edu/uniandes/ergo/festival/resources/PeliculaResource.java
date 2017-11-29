@@ -27,7 +27,6 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -81,7 +80,6 @@ public class PeliculaResource {
      */
     @POST
     public PeliculaDetailDTO createPelicula(PeliculaDetailDTO peli) throws BusinessLogicException {
-        System.out.println(peli.getname());
         return new PeliculaDetailDTO(logic.createPelicula(peli.toEntity()));
     }
 

@@ -29,7 +29,7 @@ public class TeatroDTO
      * Constructor vacío para JAX-RS.
      */
     public TeatroDTO(){
-        
+        //Método constructor por Defecto.
     }
     /**
      * Método que construye un TeatroDTO a partir de la versión Entity.

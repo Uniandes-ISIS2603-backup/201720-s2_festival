@@ -22,7 +22,7 @@ public class CriticoDTO {
     private String nombre;
 
     public CriticoDTO() {
-
+        //Método constructor por Defecto.
     }
     /**
      * Método que construye un CríticoDTO a partir de su versión Entity-

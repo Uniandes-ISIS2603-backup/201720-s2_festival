@@ -54,6 +54,7 @@ public class FestivalDTO {
      * Constructor por defecto
      */
     public FestivalDTO() {
+        //Método constructor por Defecto.
     }
 
     /**

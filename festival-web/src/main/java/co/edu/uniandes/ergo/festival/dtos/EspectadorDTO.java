@@ -28,7 +28,7 @@ public class EspectadorDTO {
      * Método constructor por defecto.
      */
     public EspectadorDTO() {
-
+        //Método constructor por Defecto.
     }
     /**
      * Método que construye un EspectadorDTO a partir de su versión Entidad.
@@ -36,11 +36,8 @@ public class EspectadorDTO {
      */
     public EspectadorDTO(EspectadorEntity espec) {
         if (espec != null) {
-
-            System.out.println("-------------------------------------------------------> " + espec.getName());
             this.id = espec.getId();
             this.nombre = espec.getName();
-            System.out.println("direccion -------------------------------------------------------> " + espec.getDireccion());
             this.direccion = espec.getDireccion();
         }
     }

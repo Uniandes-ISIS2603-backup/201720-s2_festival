@@ -46,7 +46,6 @@ public class SalaDetailDTO extends SalaDTO {
             }
         }
         */
-        System.out.println("3");
         List<SillaEntity> sillas = entity.getSillas();
         if (sillas != null) {
             sillasDTO = new ArrayList<>();
@@ -77,7 +76,6 @@ public class SalaDetailDTO extends SalaDTO {
             retornar.setFunciones(funciones);
         }
         */
-        System.out.println("6");
         if (getSillasDTO() != null) {
             List<SillaEntity> sillas = new ArrayList<>();
             for (SillaDTO dto : getSillasDTO()) {

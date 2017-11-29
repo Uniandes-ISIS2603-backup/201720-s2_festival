@@ -32,7 +32,7 @@ public class PatrocinadorDTO {
      * Constructor por Defecto.
      */
     public PatrocinadorDTO() {
-        
+        //Método constructor por Defecto.
     }
     /**
      * Método que construye un PatrocinadorDTO a partir de su versión Entity.

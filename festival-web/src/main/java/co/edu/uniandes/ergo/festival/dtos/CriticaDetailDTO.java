@@ -27,7 +27,7 @@ public class CriticaDetailDTO extends CriticaDTO {
      * Constructor sin parámetros.
      */
     public CriticaDetailDTO(){
-        
+        //Método constructor por Defecto.
     }
     
     /**
@@ -48,6 +48,7 @@ public class CriticaDetailDTO extends CriticaDTO {
      * Convierte la CriticaDetailDTO a un entity.
      * @return La CriticaEntity.
      */
+    @Override
     public CriticaEntity toEntity(){
         CriticaEntity critica = super.toEntity();
         if (critico != null){
