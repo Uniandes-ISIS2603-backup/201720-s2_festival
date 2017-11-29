@@ -180,8 +180,8 @@
                     <li> <a ui-sref="criticas.list">Críticas</a></li>
                     <li> <a ui-sref="patrocinadores.controles">Patrocinadores</a></li>
                 </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="login" ng-if="!isAuthenticated()"><a ui-sref="login"><span class="glyphicon glyphicon-log-in"></span> Ingresar</a></li>
+                <ul class="nav navbar-nav navbar-right" style="background-color: #e5dedc;">
+                    <li class="login" ng-if="!isAuthenticated()" style="background-color: #e5dedc; border-bottom-style: 5px solid black"><a ui-sref="login" style="background-color: #e5dedc;"><span class="glyphicon glyphicon-log-in" style="background-color: #e5dedc;"></span> Ingresar </a></li>
                     <li class="logout" ng-if="isAuthenticated()"><a class="logout-link" ui-sref="logout"><span class="logout glyphicon glyphicon-log-out"></span> Salir</a></li>
                 </ul>
             </div>
