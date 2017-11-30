@@ -9,7 +9,7 @@
 					function (response) {
 						
 
-						var boletasReturn = new Array();
+						var boletasReturn = [];
 						var boletas = response.data;
 						for (i = 0; i < boletas.length; i++){
 							
