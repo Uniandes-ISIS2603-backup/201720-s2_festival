@@ -46,7 +46,7 @@ public class CriticaDetailDTO extends CriticaDTO {
     
     /**
      * Convierte la CriticaDetailDTO a un entity.
-     * @return La CriticaEntity.
+     * @return La CriticaEntity. hola 
      */
     @Override
     public CriticaEntity toEntity(){
